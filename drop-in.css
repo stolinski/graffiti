@@ -392,6 +392,12 @@ label {
   margin-inline-start: auto;
 }
 
+.layout-holy-grail {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--layout-gap, var(--gap, 2rem));
+}
+
 /* Full Bleed - Break out of readable container */
 .layout-readable .full-bleed {
   width: 100vw;

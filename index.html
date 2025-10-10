@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Graffiti Debug</title>
+    <title>Graffiti - A minimal CSS toolkit</title>
     <link rel="stylesheet" href="drop-in.css" />
   </head>
 
@@ -30,7 +30,7 @@
     </style>
 
     <header class="split">
-      <h1 class="fs-xxl" style="margin-top: 0">Graffiti</h1>
+      <h1 class="fs-xxl heading" style="margin-top: 0">Graffiti</h1>
       <a href="https://github.com/stolinski/graffiti"
         ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
           <title>github</title>
@@ -42,7 +42,10 @@
       ></a>
     </header>
 
-    <section class="layout-readable center stack" style="align-items: center">
+    <section
+      class="layout-readable center stack"
+      style="align-items: center; margin-block-end: 6rem"
+    >
       <h2>Install</h2>
       <p class="code">npm install @drop-in/graffiti</p>
       <p>Then drop in to your project.</p>
@@ -58,8 +61,8 @@
     </section>
 
     <!-- Typography Demos -->
+    <h2 class="heading">Typography</h2>
     <section class="demo-section">
-      <h2 class="heading">Typography Scale</h2>
       <h1 class="fs-xxxl">Extra Large</h1>
       <h1>H1 - Large Heading</h1>
       <h2>H2 - Med Heading</h2>
@@ -70,10 +73,11 @@
     </section>
 
     <!-- Layout Card -->
+    <h2 class="heading">Layouts</h2>
     <section class="demo-section stack">
       <h2>.layout-card</h2>
       <p>Auto-fill responsive card grid</p>
-      <div class="layout-card">
+      <div class="layout-card" style="background: var(--tint-or-shade)">
         <div class="demo-box">Card 1</div>
         <div class="demo-box">Card 2</div>
         <div class="demo-box">Card 3</div>
@@ -85,25 +89,25 @@
     <section class="demo-section stack">
       <h2>.layout-sidebar</h2>
       <p>Sidebar + main content (250px default)</p>
-      <div class="layout-sidebar">
+      <div class="layout-sidebar" style="background: var(--tint-or-shade)">
         <aside class="demo-box">Sidebar</aside>
         <main class="demo-box">Main Content</main>
       </div>
 
       <h3>.layout-sidebar.narrow</h3>
-      <div class="layout-sidebar narrow">
+      <div class="layout-sidebar narrow" style="background: var(--tint-or-shade)">
         <aside class="demo-box">150px Sidebar</aside>
         <main class="demo-box">Main Content</main>
       </div>
 
       <h3>.layout-sidebar.wide</h3>
-      <div class="layout-sidebar wide">
+      <div class="layout-sidebar wide" style="background: var(--tint-or-shade)">
         <aside class="demo-box">350px Sidebar</aside>
         <main class="demo-box">Main Content</main>
       </div>
 
       <h3>.layout-sidebar.invert</h3>
-      <div class="layout-sidebar invert">
+      <div class="layout-sidebar invert" style="background: var(--tint-or-shade)">
         <main class="demo-box">Main Content</main>
         <aside class="demo-box">Sidebar</aside>
       </div>
@@ -113,14 +117,14 @@
     <section class="demo-section stack">
       <h2>.layout-split</h2>
       <p>50/50 two column layout</p>
-      <div class="layout-split">
+      <div class="layout-split" style="background: var(--tint-or-shade)">
         <div class="demo-box">Left Column</div>
         <div class="demo-box">Right Column</div>
       </div>
 
       <h3>.layout-split.no-stack</h3>
       <p>Stays side-by-side on mobile</p>
-      <div class="layout-split no-stack">
+      <div class="layout-split no-stack" style="background: var(--tint-or-shade)">
         <div class="demo-box">Left</div>
         <div class="demo-box">Right</div>
       </div>
@@ -130,7 +134,7 @@
     <section class="demo-section stack">
       <h2>.layout-three-col</h2>
       <p>Three equal columns</p>
-      <div class="layout-three-col">
+      <div class="layout-three-col" style="background: var(--tint-or-shade)">
         <div class="demo-box">Column 1</div>
         <div class="demo-box">Column 2</div>
         <div class="demo-box">Column 3</div>
@@ -138,32 +142,58 @@
     </section>
 
     <!-- Layout Readable -->
-    <section class="demo-section">
+    <section class="demo-section stack">
       <h2>.layout-readable</h2>
       <p>Max-width for optimal readability (default: start-aligned)</p>
       <div class="layout-readable" style="background: var(--tint-or-shade)">
-        <p>
-          Learning to drop in on a skateboard is an exciting and challenging milestone for any
-          skateboarder. Before attempting to drop in, ensure that you have a solid foundation of
-          basic skateboarding skills.
-        </p>
+        <div class="demo-box">
+          <p>
+            Learning to drop in on a skateboard is an exciting and challenging milestone for any
+            skateboarder. Before attempting to drop in, ensure that you have a solid foundation of
+            basic skateboarding skills.
+          </p>
+        </div>
       </div>
 
       <h3>.layout-readable.center</h3>
       <div class="layout-readable center" style="background: var(--tint-or-shade)">
-        <p>Centered readable content with max-width constraint.</p>
+        <div class="demo-box">
+          <p>Centered readable content with max-width constraint.</p>
+        </div>
       </div>
 
       <h3>.layout-readable.end</h3>
       <div class="layout-readable end" style="background: var(--tint-or-shade)">
-        <p>End-aligned readable content with max-width constraint.</p>
+        <div class="demo-box">
+          <p>End-aligned readable content with max-width constraint.</p>
+        </div>
       </div>
 
       <h3>.layout-readable with .full-bleed child</h3>
-      <div class="layout-readable center">
-        <p>Regular readable content...</p>
-        <div class="full-bleed demo-box">Full bleed element breaks out of container!</div>
-        <p>More readable content...</p>
+      <div class="layout-readable center stack" style="background: var(--tint-or-shade)">
+        <div class="demo-box">
+          <p>Regular readable content...</p>
+        </div>
+        <div class="full-bleed demo-box">
+          <p>Full bleed element breaks out of container!</p>
+        </div>
+        <div class="demo-box">
+          <p>More readable content...</p>
+        </div>
+      </div>
+    </section>
+
+      <h3>.layout-holy-grail</h3>
+      <div class="layout-holy-grail" style="background: var(--tint-or-shade)">
+        <div class="demo-box" style="width: 200px">
+          <p>Sidebar</p>
+        </div>
+        <div class="full-bleed demo-box">
+          <p>Content</p>
+        </div>
+        <div class="demo-box" style="width: 200px">
+          <p>Other sidebar</p>
+        </div>
       </div>
     </section>
 

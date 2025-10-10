@@ -75,7 +75,7 @@
     <!-- Layout Card -->
     <h2 class="heading">Layouts</h2>
     <section class="demo-section stack">
-      <h2>.layout-card</h2>
+      <h3>.layout-card</h3>
       <p>Auto-fill responsive card grid</p>
       <div class="layout-card" style="background: var(--tint-or-shade)">
         <div class="demo-box">Card 1</div>
@@ -87,26 +87,32 @@
 
     <!-- Layout Sidebar -->
     <section class="demo-section stack">
-      <h2>.layout-sidebar</h2>
+      <h3>.layout-sidebar</h3>
       <p>Sidebar + main content (250px default)</p>
       <div class="layout-sidebar" style="background: var(--tint-or-shade)">
         <aside class="demo-box">Sidebar</aside>
         <main class="demo-box">Main Content</main>
       </div>
 
-      <h3>.layout-sidebar.narrow</h3>
+
+
+      <h4>.layout-sidebar.narrow</h4>
       <div class="layout-sidebar narrow" style="background: var(--tint-or-shade)">
         <aside class="demo-box">150px Sidebar</aside>
         <main class="demo-box">Main Content</main>
       </div>
 
-      <h3>.layout-sidebar.wide</h3>
+
+
+
+      <h4>.layout-sidebar.wide</h4>
       <div class="layout-sidebar wide" style="background: var(--tint-or-shade)">
         <aside class="demo-box">350px Sidebar</aside>
         <main class="demo-box">Main Content</main>
       </div>
 
-      <h3>.layout-sidebar.invert</h3>
+
+      <h4>.layout-sidebar.invert</h4>
       <div class="layout-sidebar invert" style="background: var(--tint-or-shade)">
         <main class="demo-box">Main Content</main>
         <aside class="demo-box">Sidebar</aside>
@@ -115,14 +121,14 @@
 
     <!-- Layout Split -->
     <section class="demo-section stack">
-      <h2>.layout-split</h2>
+      <h3>.layout-split</h3>
       <p>50/50 two column layout</p>
       <div class="layout-split" style="background: var(--tint-or-shade)">
         <div class="demo-box">Left Column</div>
         <div class="demo-box">Right Column</div>
       </div>
 
-      <h3>.layout-split.no-stack</h3>
+      <h4>.layout-split.no-stack</h4>
       <p>Stays side-by-side on mobile</p>
       <div class="layout-split no-stack" style="background: var(--tint-or-shade)">
         <div class="demo-box">Left</div>
@@ -132,7 +138,7 @@
 
     <!-- Layout Three Col -->
     <section class="demo-section stack">
-      <h2>.layout-three-col</h2>
+      <h3>.layout-three-col</h3>
       <p>Three equal columns</p>
       <div class="layout-three-col" style="background: var(--tint-or-shade)">
         <div class="demo-box">Column 1</div>
@@ -143,7 +149,7 @@
 
     <!-- Layout Readable -->
     <section class="demo-section stack">
-      <h2>.layout-readable</h2>
+      <h3>.layout-readable</h3>
       <p>Max-width for optimal readability (default: start-aligned)</p>
       <div class="layout-readable" style="background: var(--tint-or-shade)">
         <div class="demo-box">
@@ -155,21 +161,21 @@
         </div>
       </div>
 
-      <h3>.layout-readable.center</h3>
+      <h4>.layout-readable.center</h4>
       <div class="layout-readable center" style="background: var(--tint-or-shade)">
         <div class="demo-box">
           <p>Centered readable content with max-width constraint.</p>
         </div>
       </div>
 
-      <h3>.layout-readable.end</h3>
+      <h4>.layout-readable.end</h4>
       <div class="layout-readable end" style="background: var(--tint-or-shade)">
         <div class="demo-box">
           <p>End-aligned readable content with max-width constraint.</p>
         </div>
       </div>
 
-      <h3>.layout-readable with .full-bleed child</h3>
+      <h4>.layout-readable with .full-bleed child</h4>
       <div class="layout-readable center stack" style="background: var(--tint-or-shade)">
         <div class="demo-box">
           <p>Regular readable content...</p>
@@ -199,7 +205,7 @@
 
     <!-- Stack -->
     <section class="demo-section">
-      <h2>.stack</h2>
+      <h3>.stack</h3>
       <p>Vertical flexbox stack with gap</p>
       <div class="stack">
         <div class="demo-box">Item 1</div>
@@ -210,7 +216,7 @@
 
     <!-- Grid Utility -->
     <section class="demo-section">
-      <h2>.grid</h2>
+      <h3>.grid</h3>
       <p>Minimal grid utility (like .flex)</p>
       <div class="grid" style="grid-template-columns: 200px 1fr 200px">
         <div class="demo-box">200px</div>
@@ -219,25 +225,22 @@
       </div>
     </section>
 
-    <!-- Fluid Typography Container -->
-    <section class="demo-section">
-      <h2>.fluid-text-container</h2>
-      <p>Container query based fluid typography (resize to see effect)</p>
-      <div
-        class="fluid-text-container"
-        style="overflow: auto; resize: horizontal; height: auto; border: solid 1px"
-      >
-        <h3>Resize Me!</h3>
-        <p>
-          This text scales based on container width, not viewport width. Drag the bottom-right
-          corner to resize the container and watch the text scale.
-        </p>
+		<section class="demo-section stack">
+      <h2 class="heading">Misc Classes</h2>
+			<div class="stack">
+        <h3>Boxes</h3>
+        <div class="layout-card" style="--min-card-width: 200px">
+          <div class="box-1">.box-1<br />Subtle</div>
+          <div class="box-2">.box-2<br />Semi Gloss</div>
+          <div style="box-shadow: var(--box), var(--shadow-6);">You can make a custom box with CSS variables box-shadow: var(--box), var(--shadow-5);</div>
+        </div>
       </div>
-    </section>
+		</section>
 
     <!-- CSS Variables Reference -->
     <section class="demo-section stack">
-      <h2>CSS Variables Reference</h2>
+      <h2 class="heading">CSS Variables Reference</h2>
+			<p>A big part of Graffiti is the flexible CSS variable system that can be used in your CSS to create consistent and adaptable designs.</p>
 
       <div class="stack">
         <h3>Vertical Spacing</h3>
@@ -282,15 +285,11 @@
         </div>
       </div>
 
-      <div class="stack">
-        <h3>Boxes</h3>
-        <div class="layout-card" style="--min-card-width: 200px">
-          <div class="box-1">.box<br />Subtle</div>
-        </div>
-      </div>
+
 
       <div class="stack">
-        <h3>Color Palette</h3>
+				<h3>Colors</h3>
+				<p>More coming soon...</p>
         <div class="layout-card" style="--min-card-width: 150px">
           <div style="background: var(--yellow); padding: 1rem; border-radius: var(--br-s)">
             --yellow
@@ -320,7 +319,7 @@
       </div>
 
       <div class="stack">
-        <h3>Theming Variables</h3>
+        <h2 class="heading">Theming Variables</h2>
         <div class="layout-split">
           <div class="demo-box" style="background: var(--fg); color: var(--bg)">
             --fg<br />Foreground color

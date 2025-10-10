@@ -35,6 +35,9 @@
   --shadow-6: 0 12px 24px rgb(0 0 0 / 0.1), 0 16px 32px rgb(0 0 0 / 0.16),
     0 24px 48px rgb(0 0 0 / 0.18);
 
+  --box: 0 1px 2px rgb(0 0 0 / 0.04), inset -1px 1px 2px rgb(255 255 255 / 0.1),
+    inset 1px 1px 2px rgb(255 255 255 / 0.1);
+
   /* Default Palette */
   --yellow: #ffd817;
   --orange: #ff9e02;
@@ -443,8 +446,15 @@ label {
   background: var(--tint-or-shade);
   padding: 1rem;
   border-radius: var(--br-s);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), inset -1px 1px 2px rgb(255 255 255 / 0.1),
-    inset 1px 1px 2px rgb(255 255 255 / 0.1);
+  box-shadow: var(--box);
+}
+
+.box-2 {
+  background: var(--tint-or-shade);
+  padding: 1rem;
+  border-radius: var(--br-s);
+  box-shadow: var(--box), var(--shadow-5);
+  background: linear-gradient(180deg, var(--tint-or-shade) 0%, var(--tint-or-shade-harder) 100%);
 }
 
 /* @drop-in/decks Specific Styles */

@@ -7,11 +7,16 @@
   "exports": {
     ".": "./drop-in.css",
     "./drop-in.css": "./drop-in.css",
-    "./raw": "./raw.js"
+    "./raw": "./raw.js",
+    "./decks": "./decks.css",
+    "./decks.css": "./decks.css",
+    "./decks/raw": "./decks-raw.js"
   },
   "files": [
     "drop-in.css",
     "raw.js",
+    "decks.css",
+    "decks-raw.js",
     "build.js"
   ],
   "license": "ISC",

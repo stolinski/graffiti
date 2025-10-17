@@ -2,6 +2,18 @@
 
 > A minimal CSS framework with fluid typography, responsive layouts, and utility classes
 
+## Package Structure
+
+The framework is split into two entry points for optimal bundle size:
+- **Main CSS** (`@drop-in/graffiti`): Core framework with typography, layouts, and utilities
+- **Decks CSS** (`@drop-in/graffiti/decks`): Optional styles for `@drop-in/decks` components (accordion, dialog, drawer, menu, toast)
+
+Import only what you need:
+```js
+import '@drop-in/graffiti'        // Base framework
+import '@drop-in/graffiti/decks'  // Optional decks components
+```
+
 ## CSS Variables
 
 ### Typography & Fluid System
@@ -18,6 +30,7 @@
 - `--vs-base`: 1rem (vertical spacing base)
 - `--vs-m`: 1.5rem (vertical spacing medium)
 - `--vs-l`: 2rem (vertical spacing large)
+- `--vs-xl`: 4rem (vertical spacing extra large)
 
 ### Border Radius
 - `--br-xs`: 2px

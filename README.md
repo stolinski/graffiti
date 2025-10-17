@@ -13,7 +13,11 @@ npm install @drop-in/graffiti
 Then import in your project:
 
 ```js
+// Import base framework (without @drop-in/decks component styles)
 import '@drop-in/graffiti'
+
+// Optionally import decks component styles separately
+import '@drop-in/graffiti/decks'
 ```
 
 ### Copy & Paste
@@ -218,7 +222,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Available variables:**
-- Spacing: `--vs-s`, `--vs-base`, `--vs-m`, `--vs-l`
+- Spacing: `--vs-s`, `--vs-base`, `--vs-m`, `--vs-l`, `--vs-xl`
 - Border radius: `--br-xs`, `--br-s`, `--br-m`, `--br-l`
 - Padding: `--pad-xs`, `--pad-s`, `--pad-m`, `--pad-l`
 - Line heights: `--lh-tight`, `--lh-normal`, `--lh-loose`
@@ -247,6 +251,7 @@ Fluid typography that scales automatically between viewport sizes:
 - **Design Tokens**: Comprehensive spacing, shadows, colors, line heights, and easing functions
 - **Logical Properties**: Full RTL/LTR support throughout
 - **Minimal & Composable**: Small footprint, mix and match classes
+- **Modular Architecture**: Optional separate import for `@drop-in/decks` component styles
 
 ## Browser Support
 

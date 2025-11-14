@@ -229,6 +229,16 @@
     --slate-9: var(--slate);
 
     --fg: light-dark(#000, #fff);
+    --fg-1: oklch(from var(--fg) l c h / 0.1);
+    --fg-2: oklch(from var(--fg) l c h / 0.2);
+    --fg-3: oklch(from var(--fg) l c h / 0.3);
+    --fg-4: oklch(from var(--fg) l c h / 0.4);
+    --fg-5: oklch(from var(--fg) l c h / 0.5);
+    --fg-6: oklch(from var(--fg) l c h / 0.6);
+    --fg-7: oklch(from var(--fg) l c h / 0.75);
+    --fg-8: oklch(from var(--fg) l c h / 0.9);
+    --fg-9: var(--fg);
+
     --bg: light-dark(#fff, #000);
 
     --tint-or-shade: color-mix(in oklab, var(--fg), transparent 95%);
@@ -873,7 +883,7 @@ label {
     );
 }
 
-/* Layout Elements */
+/* UI Elements */
 
 .header {
     width: 100vi;
@@ -908,5 +918,48 @@ label {
     &.sticky {
         position: sticky;
         top: 0;
+    }
+}
+
+.callout {
+    --callout-color: var(--blue-1);
+    --callout-border-color: var(--blue-5);
+    padding: var(--pad-l);
+    border-radius: var(--br-m);
+    border: var(--callout-border-color) solid 1px;
+    background: var(--callout-color);
+    color: var(--fg-8);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--layout-gap, var(--gap, 1rem));
+
+    > * {
+        margin: 0;
+    }
+
+    &.warning {
+        --callout-color: var(--yellow-1);
+        --callout-border-color: var(--yellow-5);
+    }
+
+    &.error {
+        --callout-color: var(--red-1);
+        --callout-border-color: var(--red-5);
+    }
+
+    &.ghost {
+        --callout-color: var(--gray-1);
+        --callout-border-color: var(--gray-5);
+    }
+
+    &.success {
+        --callout-color: var(--green-1);
+        --callout-border-color: var(--green-5);
+    }
+
+    &.hard {
+        border-inline-start: 6px solid var(--callout-border-color);
     }
 }

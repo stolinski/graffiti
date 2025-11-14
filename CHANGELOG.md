@@ -1,5 +1,27 @@
 # @drop-in/graffiti
 
+## 3.1.0
+
+### Minor Changes
+
+- Add new `.callout` component with multiple variants for displaying informational messages, warnings, errors, and success states.
+
+  **New Classes:**
+
+  - `.callout`: Base callout component with blue styling
+  - `.callout.warning`: Yellow warning callout
+  - `.callout.error`: Red error callout
+  - `.callout.success`: Green success callout
+  - `.callout.ghost`: Neutral gray callout
+  - `.callout.hard`: Adds a thick left border accent
+
+  **Features:**
+
+  - Customizable colors via `--callout-color` and `--callout-border-color` CSS variables
+  - Vertical flex layout with configurable gap
+  - Resets margins on child elements for consistent spacing
+  - Uses framework design tokens for padding, border radius, and colors
+
 ## 3.0.1
 
 ### Patch Changes

@@ -174,6 +174,45 @@ Fluid typography that scales automatically between viewport sizes:
 <div class="box-2">Semi-gloss box</div>
 ```
 
+**Callout boxes:**
+```html
+<!-- Default info callout (blue) -->
+<div class="callout">
+  <h3>Information</h3>
+  <p>This is an informational message.</p>
+</div>
+
+<!-- Warning callout (yellow) -->
+<div class="callout warning">
+  <h3>Warning</h3>
+  <p>Please be careful!</p>
+</div>
+
+<!-- Error callout (red) -->
+<div class="callout error">
+  <h3>Error</h3>
+  <p>Something went wrong!</p>
+</div>
+
+<!-- Success callout (green) -->
+<div class="callout success">
+  <h3>Success</h3>
+  <p>Operation completed successfully!</p>
+</div>
+
+<!-- Ghost callout (gray) -->
+<div class="callout ghost">
+  <h3>Note</h3>
+  <p>A neutral message.</p>
+</div>
+
+<!-- Hard variant with thick left border -->
+<div class="callout warning hard">
+  <h3>Important</h3>
+  <p>This has a thick left border accent.</p>
+</div>
+```
+
 **Aspect ratio utilities:**
 ```html
 <div class="aspect-square">1:1</div>

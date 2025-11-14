@@ -307,6 +307,38 @@ Vertical scrolling with CSS scroll-snap (no JavaScript required)
 - `.box-1`: Subtle box with tint background and soft shadow
 - `.box-2`: Semi-gloss box with gradient and stronger shadow
 
+### Callout
+Informational callout boxes with multiple variants for different message types:
+- `.callout`: Base callout with blue styling (default info state)
+- `.callout.warning`: Yellow warning callout
+- `.callout.error`: Red error callout
+- `.callout.success`: Green success callout
+- `.callout.ghost`: Neutral gray callout
+- `.callout.hard`: Adds thick left border accent (can combine with other variants)
+
+**Customization:**
+- `--callout-color`: Background color (default: var(--blue-1))
+- `--callout-border-color`: Border color (default: var(--blue-5))
+- Inherits gap from `--layout-gap` or `--gap` (default: 1rem)
+
+**Features:**
+- Vertical flex layout with gap
+- Resets child element margins
+- Uses framework design tokens
+
+Usage:
+```html
+<div class="callout">
+  <h3>Information</h3>
+  <p>This is an informational message.</p>
+</div>
+
+<div class="callout warning hard">
+  <h3>Warning</h3>
+  <p>Please be careful!</p>
+</div>
+```
+
 ### Button
 - `.button`: Button styling for links and non-button elements
 

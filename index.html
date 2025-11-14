@@ -138,67 +138,6 @@
                 </div>
             </section>
 
-            <!-- Header -->
-            <h2 class="heading">App Components</h2>
-            <section class="demo-section stack">
-                <h3>.header</h3>
-                <p>A classic header</p>
-                <div class="header">
-                    <h6>Your Logo</h6>
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">About</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <h3>.header.border</h3>
-                <p>...with subtle border on bottom</p>
-                <div class="header border">
-                    <h6>Your Logo</h6>
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">About</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <h3>.header.sticky</h3>
-                <p>...with subtle border on bottom</p>
-                <div style="height: 200px">
-                    <div class="header border sticky">
-                        <h6>Your Logo</h6>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a href="#">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#">About</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contact</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </section>
-
             <!-- Layout Card -->
             <h2 class="heading">Layouts</h2>
             <section class="demo-section stack">
@@ -733,6 +672,120 @@
                             />
                         </div>
                     </form>
+                </div>
+            </section>
+
+            <!-- Header -->
+            <h2 class="heading">UI</h2>
+            <section class="demo-section stack">
+                <h3>.header</h3>
+                <p>A classic header</p>
+                <div class="header">
+                    <h6>Your Logo</h6>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <h3>.header.border</h3>
+                <p>...with subtle border on bottom</p>
+                <div class="header border">
+                    <h6>Your Logo</h6>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <h3>.header.sticky</h3>
+                <p>...with subtle border on bottom</p>
+                <div style="height: 200px">
+                    <div class="header border sticky">
+                        <h6>Your Logo</h6>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">About</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <h3>.callout</h3>
+                <p>An informational callout</p>
+                <div class="stack">
+                    <div class="callout">
+                        <p>.callout This is informational.</p>
+                    </div>
+                    <div class="callout warning">
+                        <p>.callout.warning This is an warning.</p>
+                    </div>
+                    <div class="callout error">
+                        <p>.callout.error This is an error.</p>
+                    </div>
+                    <div class="callout success">
+                        <p>.callout.success This is what success looks like</p>
+                    </div>
+
+                    <div class="callout ghost">
+                        <p>.callout.ghost This is an generic note.</p>
+                    </div>
+                    <div class="callout">
+                        <h5>You can put anyhting you want..</h5>
+                        <p>
+                            ...in this, it's just html, it automatically makes
+                            it a "stack"
+                        </p>
+                    </div>
+                    <div class="callout success">
+                        <div class="flex">
+                            <p class="h5">✅</p>
+                            <div class="stack">
+                                <h5>a .flex and a div</h5>
+                                <p>Common UI patterns, just check the soruce</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="callout"
+                        style="
+                            --callout-color: var(--pink-1);
+                            --callout-border-color: var(--pink-5);
+                        "
+                    >
+                        <p>
+                            Custom colors with --callout-color: var(--pink-1);
+                            --callout-border-color: var(--pink-5);
+                        </p>
+                    </div>
+                    <div class="callout hard">
+                        <p>
+                            Add .hard to any of these for a harder left border
+                        </p>
+                    </div>
                 </div>
             </section>
 
@@ -1855,6 +1908,54 @@
                             style="background: var(--tint-or-shade-harder)"
                         >
                             --tint-or-shade-harder<br />10% foreground mix
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack">
+                    <h4>Foreground Scale</h4>
+                    <div class="color light" style="background: var(--fg)">
+                        --fg
+                    </div>
+                    <div class="cluster">
+                        <div class="color" style="background: var(--fg-1)">
+                            --fg-1
+                        </div>
+                        <div class="color" style="background: var(--fg-2)">
+                            --fg-2
+                        </div>
+                        <div class="color" style="background: var(--fg-3)">
+                            --fg-3
+                        </div>
+                        <div class="color" style="background: var(--fg-4)">
+                            --fg-4
+                        </div>
+                        <div class="color" style="background: var(--fg-5)">
+                            --fg-5
+                        </div>
+                        <div
+                            class="color light"
+                            style="background: var(--fg-6)"
+                        >
+                            --fg-6
+                        </div>
+                        <div
+                            class="color light"
+                            style="background: var(--fg-7)"
+                        >
+                            --fg-7
+                        </div>
+                        <div
+                            class="color light"
+                            style="background: var(--fg-8)"
+                        >
+                            --fg-8
+                        </div>
+                        <div
+                            class="color light"
+                            style="background: var(--fg-9)"
+                        >
+                            --fg-9
                         </div>
                     </div>
                 </div>

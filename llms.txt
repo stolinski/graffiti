@@ -73,6 +73,10 @@ Base colors are scale 5. Lower numbers are lighter, higher numbers are darker.
 - `--yellow` (scale 5): oklch(0.88 0.15 95) - Base yellow
 - `--yellow-1` through `--yellow-9`: Full scale from lightest to darkest
 
+#### Amber
+- `--amber` (scale 5): oklch(0.78 0.16 80) - Base amber
+- `--amber-1` through `--amber-9`: Full scale from lightest to darkest
+
 #### Orange
 - `--orange` (scale 5): oklch(0.75 0.18 65) - Base orange
 - `--orange-1` through `--orange-9`: Full scale from lightest to darkest
@@ -85,20 +89,40 @@ Base colors are scale 5. Lower numbers are lighter, higher numbers are darker.
 - `--pink` (scale 5): oklch(0.62 0.25 350) - Base pink
 - `--pink-1` through `--pink-9`: Full scale from lightest to darkest
 
-#### Green
-- `--green` (scale 5): oklch(0.72 0.18 165) - Base green
-- `--green-1` through `--green-9`: Full scale from lightest to darkest
+#### Purple
+- `--purple` (scale 5): oklch(0.65 0.24 310) - Base purple
+- `--purple-1` through `--purple-9`: Full scale from lightest to darkest
 
-#### Teal
-- `--teal` (scale 5): oklch(0.82 0.08 185) - Base teal
-- `--teal-1` through `--teal-9`: Full scale from lightest to darkest
+#### Indigo
+- `--indigo` (scale 5): oklch(0.55 0.25 275) - Base indigo
+- `--indigo-1` through `--indigo-9`: Full scale from lightest to darkest
 
 #### Blue
 - `--blue` (scale 5): oklch(0.5 0.28 270) - Base blue
 - `--blue-1` through `--blue-9`: Full scale from lightest to darkest
 
+#### Teal
+- `--teal` (scale 5): oklch(0.82 0.08 185) - Base teal
+- `--teal-1` through `--teal-9`: Full scale from lightest to darkest
+
+#### Green
+- `--green` (scale 5): oklch(0.72 0.18 165) - Base green
+- `--green-1` through `--green-9`: Full scale from lightest to darkest
+
+#### Lime
+- `--lime` (scale 5): oklch(0.80 0.16 130) - Base lime
+- `--lime-1` through `--lime-9`: Full scale from lightest to darkest
+
+#### Brown
+- `--brown` (scale 5): oklch(0.55 0.12 60) - Base brown
+- `--brown-1` through `--brown-9`: Full scale from lightest to darkest
+
 #### Neutral Gray
 - `--gray-1` through `--gray-9`: Neutral gray scale from lightest to darkest (no base color variable)
+
+#### Slate
+- `--slate` (scale 5): oklch(0.52 0.04 255) - Base slate
+- `--slate-1` through `--slate-9`: Full scale from lightest to darkest
 
 ### Theming (light-dark mode)
 - `--fg`: Foreground color (auto switches: black in light, white in dark)
@@ -208,25 +232,25 @@ Vertical flexbox with gap
 /* Customize with --gap variable */
 ```
 
-### `.layout-cluster`
+### `.cluster`
 Horizontal wrapping flexbox layout, perfect for tags, pills, and breadcrumbs
 ```css
 /* Usage */
-<div class="layout-cluster">
+<div class="cluster">
   <span>Tag 1</span>
   <span>Tag 2</span>
   <span>Tag 3</span>
 </div>
 
 /* Customize gap */
-<div class="layout-cluster" style="--gap: 0.5rem;">
+<div class="cluster" style="--gap: 0.5rem;">
 ```
 
-### `.layout-carousel`
+### `.carousel`
 Horizontal scrolling with CSS scroll-snap (no JavaScript required)
 ```css
 /* Usage */
-<div class="layout-carousel">
+<div class="carousel">
   <div>Slide 1</div>
   <div>Slide 2</div>
   <div>Slide 3</div>
@@ -238,11 +262,11 @@ Horizontal scrolling with CSS scroll-snap (no JavaScript required)
 /* - Smooth scrolling with scroll-snap-align: start */
 ```
 
-### `.layout-reel`
+### `.reel`
 Vertical scrolling with CSS scroll-snap (no JavaScript required)
 ```css
 /* Usage */
-<div class="layout-reel" style="--reel-height: 400px">
+<div class="reel" style="--reel-height: 400px">
   <div>Panel 1</div>
   <div>Panel 2</div>
   <div>Panel 3</div>

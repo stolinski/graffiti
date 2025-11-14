@@ -45,12 +45,18 @@
     /* Color System - OKLCH with 1-9 scales */
     /* Base colors (scale 5) */
     --yellow: oklch(0.88 0.15 95);
+    --amber: oklch(0.78 0.16 80);
     --orange: oklch(0.75 0.18 65);
     --red: oklch(0.62 0.22 35);
     --pink: oklch(0.62 0.25 350);
-    --green: oklch(0.72 0.18 165);
-    --teal: oklch(0.82 0.08 185);
+    --purple: oklch(0.65 0.24 310);
+    --indigo: oklch(0.55 0.25 275);
     --blue: oklch(0.5 0.28 270);
+    --teal: oklch(0.82 0.08 185);
+    --green: oklch(0.72 0.18 165);
+    --lime: oklch(0.8 0.16 130);
+    --highlighter: oklch(0.88 0.22 115);
+    --brown: oklch(0.55 0.12 60);
 
     /* Yellow scale */
     --yellow-1: oklch(from var(--yellow) l c h / 0.1);
@@ -62,6 +68,17 @@
     --yellow-7: oklch(from var(--yellow) l c h / 0.75);
     --yellow-8: oklch(from var(--yellow) l c h / 0.9);
     --yellow-9: var(--yellow);
+
+    /* Amber scale */
+    --amber-1: oklch(from var(--amber) l c h / 0.1);
+    --amber-2: oklch(from var(--amber) l c h / 0.2);
+    --amber-3: oklch(from var(--amber) l c h / 0.3);
+    --amber-4: oklch(from var(--amber) l c h / 0.4);
+    --amber-5: oklch(from var(--amber) l c h / 0.5);
+    --amber-6: oklch(from var(--amber) l c h / 0.6);
+    --amber-7: oklch(from var(--amber) l c h / 0.75);
+    --amber-8: oklch(from var(--amber) l c h / 0.9);
+    --amber-9: var(--amber);
 
     /* Orange scale */
     --orange-1: oklch(from var(--orange) l c h / 0.1);
@@ -96,6 +113,28 @@
     --pink-8: oklch(from var(--pink) l c h / 0.9);
     --pink-9: var(--pink);
 
+    /* Purple scale */
+    --purple-1: oklch(from var(--purple) l c h / 0.1);
+    --purple-2: oklch(from var(--purple) l c h / 0.2);
+    --purple-3: oklch(from var(--purple) l c h / 0.3);
+    --purple-4: oklch(from var(--purple) l c h / 0.4);
+    --purple-5: oklch(from var(--purple) l c h / 0.5);
+    --purple-6: oklch(from var(--purple) l c h / 0.6);
+    --purple-7: oklch(from var(--purple) l c h / 0.75);
+    --purple-8: oklch(from var(--purple) l c h / 0.9);
+    --purple-9: var(--purple);
+
+    /* Indigo scale */
+    --indigo-1: oklch(from var(--indigo) l c h / 0.1);
+    --indigo-2: oklch(from var(--indigo) l c h / 0.2);
+    --indigo-3: oklch(from var(--indigo) l c h / 0.3);
+    --indigo-4: oklch(from var(--indigo) l c h / 0.4);
+    --indigo-5: oklch(from var(--indigo) l c h / 0.5);
+    --indigo-6: oklch(from var(--indigo) l c h / 0.6);
+    --indigo-7: oklch(from var(--indigo) l c h / 0.75);
+    --indigo-8: oklch(from var(--indigo) l c h / 0.9);
+    --indigo-9: var(--indigo);
+
     /* Green scale */
     --green-1: oklch(from var(--green) l c h / 0.1);
     --green-2: oklch(from var(--green) l c h / 0.2);
@@ -106,6 +145,39 @@
     --green-7: oklch(from var(--green) l c h / 0.75);
     --green-8: oklch(from var(--green) l c h / 0.9);
     --green-9: var(--green);
+
+    /* Lime scale */
+    --lime-1: oklch(from var(--lime) l c h / 0.1);
+    --lime-2: oklch(from var(--lime) l c h / 0.2);
+    --lime-3: oklch(from var(--lime) l c h / 0.3);
+    --lime-4: oklch(from var(--lime) l c h / 0.4);
+    --lime-5: oklch(from var(--lime) l c h / 0.5);
+    --lime-6: oklch(from var(--lime) l c h / 0.6);
+    --lime-7: oklch(from var(--lime) l c h / 0.75);
+    --lime-8: oklch(from var(--lime) l c h / 0.9);
+    --lime-9: var(--lime);
+
+    /* Highlighter scale */
+    --highlighter-1: oklch(from var(--highlighter) l c h / 0.1);
+    --highlighter-2: oklch(from var(--highlighter) l c h / 0.2);
+    --highlighter-3: oklch(from var(--highlighter) l c h / 0.3);
+    --highlighter-4: oklch(from var(--highlighter) l c h / 0.4);
+    --highlighter-5: oklch(from var(--highlighter) l c h / 0.5);
+    --highlighter-6: oklch(from var(--highlighter) l c h / 0.6);
+    --highlighter-7: oklch(from var(--highlighter) l c h / 0.75);
+    --highlighter-8: oklch(from var(--highlighter) l c h / 0.9);
+    --highlighter-9: var(--highlighter);
+
+    /* Brown scale */
+    --brown-1: oklch(from var(--brown) l c h / 0.1);
+    --brown-2: oklch(from var(--brown) l c h / 0.2);
+    --brown-3: oklch(from var(--brown) l c h / 0.3);
+    --brown-4: oklch(from var(--brown) l c h / 0.4);
+    --brown-5: oklch(from var(--brown) l c h / 0.5);
+    --brown-6: oklch(from var(--brown) l c h / 0.6);
+    --brown-7: oklch(from var(--brown) l c h / 0.75);
+    --brown-8: oklch(from var(--brown) l c h / 0.9);
+    --brown-9: var(--brown);
 
     /* Teal scale */
     --teal-1: oklch(from var(--teal) l c h / 0.1);
@@ -131,6 +203,7 @@
 
     /* Neutral gray scale */
     --gray: oklch(0.5 0.02 270);
+    --slate: oklch(0.52 0.04 255);
     --gray-1: oklch(from var(--gray) l c h / 0.1);
     --gray-2: oklch(from var(--gray) l c h / 0.2);
     --gray-3: oklch(from var(--gray) l c h / 0.3);
@@ -140,6 +213,17 @@
     --gray-7: oklch(from var(--gray) l c h / 0.75);
     --gray-8: oklch(from var(--gray) l c h / 0.9);
     --gray-9: var(--gray);
+
+    /* Slate scale */
+    --slate-1: oklch(from var(--slate) l c h / 0.1);
+    --slate-2: oklch(from var(--slate) l c h / 0.2);
+    --slate-3: oklch(from var(--slate) l c h / 0.3);
+    --slate-4: oklch(from var(--slate) l c h / 0.4);
+    --slate-5: oklch(from var(--slate) l c h / 0.5);
+    --slate-6: oklch(from var(--slate) l c h / 0.6);
+    --slate-7: oklch(from var(--slate) l c h / 0.75);
+    --slate-8: oklch(from var(--slate) l c h / 0.9);
+    --slate-9: var(--slate);
 
     --fg: light-dark(#000, #fff);
     --bg: light-dark(#fff, #000);
@@ -220,7 +304,7 @@ html {
 html,
 body,
 body > .body-fill {
-    height: 100%;
+    min-height: 100vh;
     margin: 0;
 }
 
@@ -668,7 +752,7 @@ label {
 }
 
 /* Cluster Layout - Horizontal wrapping list with gap */
-.layout-cluster {
+.cluster {
     display: flex;
     flex-wrap: wrap;
     gap: var(--layout-gap, var(--gap, 1rem));
@@ -676,7 +760,7 @@ label {
 }
 
 /* Carousel Layout - Horizontal scroll with scroll snap */
-.layout-carousel {
+.carousel {
     display: flex;
     gap: var(--layout-gap, var(--gap, 1rem));
     overflow-x: auto;
@@ -690,7 +774,7 @@ label {
 }
 
 /* Reel Layout - Vertical scroll with scroll snap */
-.layout-reel {
+.reel {
     display: flex;
     flex-direction: column;
     gap: var(--layout-gap, var(--gap, 1rem));
@@ -731,6 +815,8 @@ label {
     }
 }
 
+/* Boxes */
+
 .box {
     background: var(--tint-or-shade);
     padding: var(--pad-m);
@@ -762,4 +848,42 @@ label {
         var(--tint-or-shade) 0%,
         var(--tint-or-shade-harder) 100%
     );
+}
+
+/* Layout Elements */
+
+.header {
+    width: 100vi;
+    margin-inline: calc(50% - 50vi);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: var(--pad-l) var(--pad-l);
+    justify-content: space-between;
+    > * {
+        margin: 0;
+    }
+    nav {
+        ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: var(--gap, 1rem);
+            list-style: none;
+            li {
+                margin: 0;
+                a {
+                    color: var(--fg);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &.border {
+        border-bottom: solid 1px var(--gray-4);
+    }
+    &.sticky {
+        position: sticky;
+        top: 0;
+    }
 }

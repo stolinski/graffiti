@@ -1,5 +1,31 @@
 # @drop-in/graffiti
 
+## 3.0.0
+
+### Major Changes
+
+- - Adds many new colors (highlighter, indego, slate, brown, amber, lime)
+  - Renames layout-carousel to carousel layout-reel to reel
+  - Adds header component
+
+## 2.0.0
+
+### Major Changes
+
+- Adds new box styles, renames all box classes.
+
+  New classes include:
+
+  - .box
+  - .box-glow
+  - .box-semi-gloss
+  - .box-semi-ghost
+
+
+### Minor Changes
+
+- Adds Header Layout component
+
 ## 1.0.0
 
 ### Major Changes

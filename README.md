@@ -131,7 +131,7 @@ Fluid typography that scales automatically between viewport sizes:
 
 **Cluster (horizontal wrapping):**
 ```html
-<div class="layout-cluster">
+<div class="cluster">
   <span>Tag 1</span>
   <span>Tag 2</span>
   <span>Tag 3</span>
@@ -141,7 +141,7 @@ Fluid typography that scales automatically between viewport sizes:
 
 **Carousel (horizontal scroll-snap):**
 ```html
-<div class="layout-carousel">
+<div class="carousel">
   <div>Slide 1</div>
   <div>Slide 2</div>
   <div>Slide 3</div>
@@ -151,7 +151,7 @@ Fluid typography that scales automatically between viewport sizes:
 
 **Reel (vertical scroll-snap):**
 ```html
-<div class="layout-reel" style="--reel-height: 400px">
+<div class="reel" style="--reel-height: 400px">
   <div>Panel 1</div>
   <div>Panel 2</div>
   <div>Panel 3</div>
@@ -230,13 +230,19 @@ Fluid typography that scales automatically between viewport sizes:
 - Easing: `--ease-smooth`, `--ease-bounce`, `--ease-emphasized`
 - **OKLCH Colors** (1-9 scales, base color = scale 5):
   - Yellow: `--yellow`, `--yellow-1` through `--yellow-9`
+  - Amber: `--amber`, `--amber-1` through `--amber-9`
   - Orange: `--orange`, `--orange-1` through `--orange-9`
   - Red: `--red`, `--red-1` through `--red-9`
   - Pink: `--pink`, `--pink-1` through `--pink-9`
-  - Green: `--green`, `--green-1` through `--green-9`
-  - Teal: `--teal`, `--teal-1` through `--teal-9`
+  - Purple: `--purple`, `--purple-1` through `--purple-9`
+  - Indigo: `--indigo`, `--indigo-1` through `--indigo-9`
   - Blue: `--blue`, `--blue-1` through `--blue-9`
+  - Teal: `--teal`, `--teal-1` through `--teal-9`
+  - Green: `--green`, `--green-1` through `--green-9`
+  - Lime: `--lime`, `--lime-1` through `--lime-9`
+  - Brown: `--brown`, `--brown-1` through `--brown-9`
   - Gray: `--gray-1` through `--gray-9`
+  - Slate: `--slate`, `--slate-1` through `--slate-9`
 - Theme: `--fg`, `--bg`, `--tint-or-shade`, `--tint-or-shade-harder`
 
 ## Features

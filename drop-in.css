@@ -314,6 +314,9 @@
     );
 
     --primary: var(--blue);
+    --error: var(--red);
+    --warning: var(--yellow);
+    --success: var(--green);
 
     color-scheme: light dark;
 }

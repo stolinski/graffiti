@@ -213,6 +213,34 @@ Fluid typography that scales automatically between viewport sizes:
 </div>
 ```
 
+**Table wrapper:**
+```html
+<div class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+        <th>Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+        <td>Data 3</td>
+      </tr>
+      <tr>
+        <td>Data 4</td>
+        <td>Data 5</td>
+        <td>Data 6</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Responsive with horizontal scroll on small screens -->
+```
+
 **Aspect ratio utilities:**
 ```html
 <div class="aspect-square">1:1</div>
@@ -263,6 +291,7 @@ Fluid typography that scales automatically between viewport sizes:
 **Available variables:**
 - Spacing: `--vs-s`, `--vs-base`, `--vs-m`, `--vs-l`, `--vs-xl`
 - Border radius: `--br-xs`, `--br-s`, `--br-m`, `--br-l`
+- Borders: `--border-05`, `--border-1`, `--border-2`
 - Padding: `--pad-xs`, `--pad-s`, `--pad-m`, `--pad-l`
 - Line heights: `--lh-tight`, `--lh-normal`, `--lh-loose`
 - Shadows: `--shadow-1` through `--shadow-6`

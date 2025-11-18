@@ -38,6 +38,11 @@ import '@drop-in/graffiti/decks'  // Optional decks components
 - `--br-m`: 8px
 - `--br-l`: 16px
 
+### Borders
+- `--border-05`: solid 1px var(--fg-05) (subtle border)
+- `--border-1`: solid 1px var(--fg-2) (thin border)
+- `--border-2`: solid 2px var(--fg-2) (thicker border)
+
 ### Padding
 - `--pad-xs`: 2px
 - `--pad-s`: 6px
@@ -411,6 +416,42 @@ Usage:
 
 ### Button
 - `.button`: Button styling for links and non-button elements
+
+### Table
+Responsive table wrapper with clean styling for data tables:
+- `.table`: Wrapper class for tables (adds overflow-x, border, and border-radius)
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- `overflow-x: auto` (horizontal scrolling on small screens)
+- `border: var(--border-2)` (2px solid border)
+- `border-radius: var(--table-border, var(--br-m))` (medium border radius)
+- `table`: 100% width, border-collapse
+- `td, th`: Left-aligned text, padding with `var(--pad-m)` and `var(--vs-base)`
+- `thead`: Bottom border separator
+- `td`: Bottom border on all rows except last
+
+**Customization (only if needed):**
+- `--table-border`: Custom border-radius for the wrapper
+
+Usage:
+```html
+<div class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
 
 ### Aspect Ratio Utilities
 Maintain specific aspect ratios for containers (useful for images, videos, cards):

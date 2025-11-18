@@ -344,7 +344,6 @@
       </div>
     </section>
 
-    <!-- Reel Layout -->
     <section class="demo-section stack">
       <h3>.reel</h3>
       <p>
@@ -353,11 +352,7 @@
       </p>
       <div
         class="reel"
-        style="
-                        background: var(--fg-05);
-                        padding: 1rem;
-                        --reel-height: 400px;
-                    "
+        style="background: var(--fg-05); padding: 1rem; --reel-height: 400px;"
       >
         <div class="box" style="min-height: 200px">Panel 1</div>
         <div class="box" style="min-height: 200px">Panel 2</div>
@@ -367,9 +362,25 @@
     </section>
 
     <section class="demo-section stack">
+      <h3>.swipe</h3>
+      <p></p>
+      <div class="swipe">
+        <button>❌</button>
+        <div style="min-height: 200px">
+          <p>
+            You can swipe me side to side, no JavaScript. (although you do need
+            JS for events)
+          </p>
+        </div>
+        <button>✅</button>
+      </div>
+    </section>
+
+    <section class="demo-section stack">
       <h2 class="heading">Misc Classes</h2>
       <div class="stack">
         <h3>Boxes</h3>
+        x
         <div class="layout-card" style="--min-card-width: 200px">
           <div class="box">.box<br />Simple</div>
           <div class="box-glow">.box-glow<br />Subtle</div>
@@ -741,6 +752,7 @@
           </nav>
         </div>
       </div>
+
       <h3>.callout</h3>
       <p>An informational callout</p>
       <div class="stack">
@@ -775,10 +787,7 @@
         </div>
         <div
           class="callout"
-          style="
-                            --callout-color: var(--pink-1);
-                            --callout-border-color: var(--pink-5);
-                        "
+          style="--callout-color: var(--pink-1); --callout-border-color: var(--pink-5);"
         >
           <p>
             Custom colors with --callout-color: var(--pink-1);

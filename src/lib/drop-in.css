@@ -1007,3 +1007,22 @@ tr:last-child {
     border: none;
   }
 }
+
+.swipe {
+  container-type: inline-size;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  border-block: var(--border-1);
+
+  > div {
+    width: 100cqw;
+    scroll-snap-align: start;
+    padding: var(--pad-l) var(--vs-base);
+  }
+  > button {
+    width: 200px;
+  }
+}

@@ -1,5 +1,7 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import "$lib/drop-in.css";
+  import { swipe_event, scroll_on_load } from "$lib/svelte";
   import ThemeControls from "$lib/ThemeControls.svelte";
   import type { ThemeValues } from "$lib/types";
 
@@ -308,7 +310,10 @@
     <section class="demo-section">
       <h3>.grid</h3>
       <p>Minimal grid utility (like .flex)</p>
-      <div class="grid" style="grid-template-columns: 200px 1fr 200px">
+      <div
+        class="grid"
+        style="grid-template-columns: minmax(auto, 200px) 1fr minmax(auto, 200px)"
+      >
         <div class="box">200px</div>
         <div class="box">Flexible</div>
         <div class="box">200px</div>
@@ -364,15 +369,51 @@
     <section class="demo-section stack">
       <h3>.swipe</h3>
       <p></p>
-      <div class="swipe">
-        <button>❌</button>
+      <div class="swipe" {@attach swipe_event}>
+        <button style="background: var(--red);">❌</button>
         <div style="min-height: 200px">
           <p>
             You can swipe me side to side, no JavaScript. (although you do need
             JS for events)
           </p>
         </div>
-        <button>✅</button>
+        <button style="background: var(--green);">✅</button>
+      </div>
+      <h3>.swipe.stop</h3>
+      <p>Swiper that stays in it's "open" state. NO JS Version</p>
+      <div class="swipe stop">
+        <button style="background: var(--red);">❌</button>
+        <div style="min-height: 100px">
+          <p>
+            You can swipe me side to side, no JavaScript. (although you do need
+            JS for events)
+          </p>
+        </div>
+        <button style="background: var(--green);">✅</button>
+      </div>
+      <h3>.swipe.stop</h3>
+      <p>Swiper that stays in it's "open" state.</p>
+      <div class="swipe stop">
+        <button style="background: var(--red);">❌</button>
+        <div style="min-height: 100px" {@attach scroll_on_load}>
+          <p>
+            You can swipe me side to side, no JavaScript. (although you do need
+            JS for events)
+          </p>
+        </div>
+        <button style="background: var(--green);">✅</button>
+      </div>
+      <h3>.swipe.stop.full-bleed</h3>
+      <p>Swiper that stays in it's "open" state.</p>
+      <div class="swipe stop full-bleed">
+        <button style="background: var(--red);">❌</button>
+        <div style="min-height: 100px" {@attach scroll_on_load}>
+          <p>
+            You can swipe me side to side, no JavaScript. (although you do need
+            JS for events)
+          </p>
+        </div>
+        <button style="background: var(--green);">✅</button>
       </div>
     </section>
 
@@ -380,7 +421,6 @@
       <h2 class="heading">Misc Classes</h2>
       <div class="stack">
         <h3>Boxes</h3>
-        x
         <div class="layout-card" style="--min-card-width: 200px">
           <div class="box">.box<br />Simple</div>
           <div class="box-glow">.box-glow<br />Subtle</div>
@@ -398,12 +438,11 @@
       <div class="stack">
         <h3>.button</h3>
         <p>Button styling for links and non-button elements</p>
-        <div class="flex" style="align-items: center">
+        <div class="cluster" style="align-items: center">
           <button>Regular Button</button>
           <a href="/" class="button">Link as Button</a>
           <button class="mini">Mini Button</button>
           <button class="primary">Primary</button>
-          <!--TODO Icon Buttons -->
         </div>
       </div>
 

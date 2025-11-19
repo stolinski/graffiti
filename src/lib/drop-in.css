@@ -837,6 +837,52 @@ label {
   }
 }
 
+.swipe {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  border-block: var(--border-1);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  > div {
+    width: 100cqw;
+    scroll-snap-align: center;
+    padding: var(--pad-l) var(--vs-base);
+  }
+
+  > button {
+    border-radius: 0;
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 0.5) inset;
+    border: none;
+    width: 200px;
+  }
+  &.stop {
+    > button {
+      &:first-of-type {
+        animation: snap_start_hack 0.001s forwards;
+      }
+      &:last-of-type {
+        scroll-snap-align: end;
+      }
+    }
+  }
+  &.full-bleed {
+    width: 100vi;
+    margin-inline: calc(50% - 50vi);
+  }
+}
+
+/* Thank you Adam Argyle @argyleink for this hack.*/
+/* nerdy.dev */
+@keyframes snap_start_hack {
+  to {
+    scroll-snap-align: start;
+  }
+}
+
 :where(h1, h2, h3, h4, h5, h6) {
   view-transition-name: var(--transition-name);
 }
@@ -1005,24 +1051,5 @@ td {
 tr:last-child {
   td {
     border: none;
-  }
-}
-
-.swipe {
-  container-type: inline-size;
-
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  border-block: var(--border-1);
-
-  > div {
-    width: 100cqw;
-    scroll-snap-align: start;
-    padding: var(--pad-l) var(--vs-base);
-  }
-  > button {
-    width: 200px;
   }
 }

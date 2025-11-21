@@ -1,6 +1,6 @@
 <script lang="ts">
   import "$lib/drop-in.css";
-  import { swipe_event, scroll_on_load } from "$lib/svelte";
+  import { swipe_event } from "$lib/svelte";
   import ThemeControls from "../docs/ThemeControls.svelte";
   import type { ThemeValues } from "$lib/types";
 
@@ -366,65 +366,40 @@
     </section>
 
     <section class="demo-section stack">
-      <h3>.swipe</h3>
-      <p></p>
-      <div class="swipe" {@attach swipe_event}>
-        <button style="background: var(--red);">❌</button>
-        <div style="min-height: 200px">
-          <p>
-            You can swipe me side to side, no JavaScript. (although you do need
-            JS for events)
-          </p>
-        </div>
-        <button style="background: var(--green);">✅</button>
-      </div>
-      <h3>.swipe.stop</h3>
-      <p>Swiper that stays in it's "open" state. NO JS Version</p>
-      <div class="swipe stop">
-        <button style="background: var(--red);">❌</button>
-        <div style="min-height: 100px">
-          <p>
-            You can swipe me side to side, no JavaScript. (although you do need
-            JS for events)
-          </p>
-        </div>
-        <button style="background: var(--green);">✅</button>
-      </div>
-
-      <h3>.swipe.stop.full-bleed</h3>
-      <p>Swiper that stays in it's "open" state.</p>
-      <div class="swipe stop full-bleed">
-        <button style="background: var(--red);">❌</button>
-        <div style="min-height: 100px" {@attach scroll_on_load}>
-          <p>
-            You can swipe me side to side, no JavaScript. (although you do need
-            JS for events)
-          </p>
-        </div>
-        <button style="background: var(--green);">✅</button>
-      </div>
-
-      <p>You can have multiple buttons of various styles too.</p>
-      <div class="swipe stop full-bleed">
-        <div class="split even" style="--gap: 10px; padding: var(--pad-m)">
-          <button style="height: 100%">Hide</button>
-          <button style="height: 100%">Save</button>
-        </div>
-        <div style="min-height: 100px" {@attach scroll_on_load}>
-          <p>
-            You can swipe me side to side, no JavaScript. (although you do need
-            JS for events)
-          </p>
-        </div>
-        <div class="split even" style="--gap: 10px; padding: var(--pad-m)">
-          <button style="height: 100%">Up</button>
-          <button style="height: 100%">Down</button>
-        </div>
+      <h3>.flex</h3>
+      <p>Display flex with 20px gap</p>
+      <div class="flex" style="background: var(--fg-05); padding: 1rem">
+        <div class="box">Flex Item 1</div>
+        <div class="box">Flex Item 2</div>
+        <div class="box">Flex Item 3</div>
       </div>
     </section>
 
     <section class="demo-section stack">
-      <h2 class="heading">Misc Classes</h2>
+      <h3>.split</h3>
+      <p>Flex with space-between and top alignment (used in header)</p>
+      <div class="split" style="background: var(--fg-05); padding: 1rem">
+        <div class="box">Left Side</div>
+        <div class="box">Right Side</div>
+      </div>
+    </section>
+
+    <section class="demo-section stack">
+      <h3>.readable</h3>
+      <p>Max-width 900px container</p>
+      <div class="readable" style="background: var(--fg-05)">
+        <div class="box">
+          <p>
+            This content is constrained to 900px max-width for optimal
+            readability. Unlike .layout-readable, this doesn't include padding.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elements Section -->
+    <h2 class="heading">Elements</h2>
+    <section class="demo-section stack">
       <div class="stack">
         <h3>Boxes</h3>
         <div class="layout-card" style="--min-card-width: 200px">
@@ -453,38 +428,300 @@
       </div>
 
       <div class="stack">
-        <h3>.flex</h3>
-        <p>Display flex with 20px gap</p>
-        <div class="flex" style="background: var(--fg-05); padding: 1rem">
-          <div class="box">Flex Item 1</div>
-          <div class="box">Flex Item 2</div>
-          <div class="box">Flex Item 3</div>
-        </div>
+        <h3>Form Validation States</h3>
+        <p>Built-in styles for error, success, and warning states</p>
+
+        <form class="stack" style="max-width: 500px">
+          <div class="stack" style="--gap: 0.5rem">
+            <label for="email-error">Email (error state)</label>
+            <input
+              type="email"
+              id="email-error"
+              class="error"
+              value="invalid-email"
+            />
+            <small class="error">Please enter a valid email address</small>
+          </div>
+
+          <div class="stack" style="--gap: 0.5rem">
+            <label for="username-success">Username (success state)</label>
+            <input
+              type="text"
+              id="username-success"
+              class="success"
+              value="cool_username"
+            />
+            <small class="success">Username is available!</small>
+          </div>
+
+          <div class="stack" style="--gap: 0.5rem">
+            <label for="password-warning">Password (warning state)</label>
+            <input
+              type="password"
+              id="password-warning"
+              class="warning"
+              value="password123"
+            />
+            <small class="warning"
+              >Password is weak. Consider using a stronger password.</small
+            >
+          </div>
+
+          <div class="stack" style="--gap: 0.5rem">
+            <label for="name-default">Full Name (default state)</label>
+            <input
+              type="text"
+              id="name-default"
+              placeholder="Enter your name"
+            />
+          </div>
+        </form>
       </div>
 
       <div class="stack">
-        <h3>.split</h3>
-        <p>Flex with space-between and top alignment (used in header)</p>
-        <div class="split" style="background: var(--fg-05); padding: 1rem">
-          <div class="box">Left Side</div>
-          <div class="box">Right Side</div>
+        <h3>.table</h3>
+        <p>
+          A wrapping div for overflow scrolling, but also generic tables styles
+          defined by default without the wrapping claas.
+        </p>
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Hi</th>
+                <th>Hello</th>
+                <th>sup</th>
+                <th>✅ Icon or emoji in this</th>
+                <th>Yo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hi</td>
+                <td>Hello</td>
+                <td>sup</td>
+                <td>
+                  Some data in this cell that might be a bit long I don't know.
+                </td>
+                <td>Yo</td>
+              </tr>
+              <tr>
+                <td>Hi</td>
+                <td>Hello</td>
+                <td>sup</td>
+                <td>
+                  Some data in this cell that might be a bit long I don't know.
+                </td>
+                <td>Yo</td>
+              </tr>
+              <tr>
+                <td>Hi</td>
+                <td>Hello</td>
+                <td>sup</td>
+                <td>
+                  Some data in this cell that might be a bit long I don't know.
+                </td>
+                <td>Yo</td>
+              </tr>
+              <tr>
+                <td>Hi</td>
+                <td>Hello</td>
+                <td>sup</td>
+                <td>
+                  Some data in this cell that might be a bit long I don't know.
+                </td>
+                <td>Yo</td>
+              </tr>
+              <tr>
+                <td>Hi</td>
+                <td>Hello</td>
+                <td>sup</td>
+                <td>
+                  Some data in this cell that might be a bit long I don't know.
+                </td>
+                <td>Yo</td>
+              </tr>
+              <tr>
+                <td>Hi</td>
+                <td>Hello</td>
+                <td>sup</td>
+                <td>
+                  Some data in this cell that might be a bit long I don't know.
+                </td>
+                <td>Yo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components Section -->
+    <h2 class="heading">Components</h2>
+    <section class="demo-section stack">
+      <h3>.header</h3>
+      <p>A classic header</p>
+      <div class="header">
+        <h6>Your Logo</h6>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/">About</a>
+            </li>
+            <li>
+              <a href="/">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <h3>.header.border</h3>
+      <p>...with subtle border on bottom</p>
+      <div class="header border">
+        <h6>Your Logo</h6>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/">About</a>
+            </li>
+            <li>
+              <a href="/">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <h3>.header.sticky</h3>
+      <p>...with subtle border on bottom</p>
+      <div style="height: 200px">
+        <div class="header border sticky">
+          <h6>Your Logo</h6>
+          <nav>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/">About</a>
+              </li>
+              <li>
+                <a href="/">Contact</a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
 
+      <h3>.swipe</h3>
+      <p>Interactive swipe component</p>
+      <div class="swipe" {@attach swipe_event(70, () => {})}>
+        <button style="background: var(--red);">❌</button>
+        <div style="min-height: 200px">
+          <p>
+            You can swipe me side to side, no JavaScript. (although you do need
+            JS for events)
+          </p>
+        </div>
+        <button style="background: var(--green);">✅</button>
+      </div>
+      <h3>.swipe.stop</h3>
+      <p>Swiper that stays in it's "open" state. NO JS Version</p>
+      <div class="swipe stop">
+        <button style="background: var(--red);">❌</button>
+        <div style="min-height: 100px">
+          <p>
+            You can swipe me side to side, no JavaScript. (although you do need
+            JS for events)
+          </p>
+        </div>
+        <button style="background: var(--green);">✅</button>
+      </div>
+
+      <h3>.swipe.stop.full-bleed</h3>
+      <p>Swiper that stays in it's "open" state.</p>
+      <div class="swipe stop full-bleed">
+        <button style="background: var(--red);">❌</button>
+        <div style="min-height: 100px">
+          <p>
+            You can swipe me side to side, no JavaScript. (although you do need
+            JS for events)
+          </p>
+        </div>
+        <button style="background: var(--green);">✅</button>
+      </div>
+
+      <p>You can have multiple buttons of various styles too.</p>
+      <div class="swipe stop full-bleed">
+        <div class="split even" style="--gap: 10px; padding: var(--pad-m)">
+          <button style="height: 100%">Hide</button>
+          <button style="height: 100%">Save</button>
+        </div>
+        <div style="min-height: 100px">
+          <p>
+            You can swipe me side to side, no JavaScript. (although you do need
+            JS for events)
+          </p>
+        </div>
+        <div class="split even" style="--gap: 10px; padding: var(--pad-m)">
+          <button style="height: 100%">Up</button>
+          <button style="height: 100%">Down</button>
+        </div>
+      </div>
+
+      <h3>.callout</h3>
+      <p>An informational callout</p>
       <div class="stack">
-        <h3>.readable</h3>
-        <p>Max-width 900px container</p>
-        <div class="readable" style="background: var(--fg-05)">
-          <div class="box">
-            <p>
-              This content is constrained to 900px max-width for optimal
-              readability. Unlike .layout-readable, this doesn't include
-              padding.
-            </p>
+        <div class="callout">
+          <p>.callout This is informational.</p>
+        </div>
+        <div class="callout warning">
+          <p>.callout.warning This is an warning.</p>
+        </div>
+        <div class="callout error">
+          <p>.callout.error This is an error.</p>
+        </div>
+        <div class="callout success">
+          <p>.callout.success This is what success looks like</p>
+        </div>
+
+        <div class="callout ghost">
+          <p>.callout.ghost This is an generic note.</p>
+        </div>
+        <div class="callout">
+          <h5>You can put anyhting you want..</h5>
+          <p>...in this, it's just html, it automatically makes it a "stack"</p>
+        </div>
+        <div class="callout success">
+          <div class="flex">
+            <p class="h5">✅</p>
+            <div class="stack">
+              <h5>a .flex and a div</h5>
+              <p>Common UI patterns, just check the soruce</p>
+            </div>
           </div>
         </div>
+        <div
+          class="callout"
+          style="--callout-color: var(--pink-1); --callout-border-color: var(--pink-5);"
+        >
+          <p>
+            Custom colors with --callout-color: var(--pink-1);
+            --callout-border-color: var(--pink-5);
+          </p>
+        </div>
+        <div class="callout hard">
+          <p>Add .hard to any of these for a harder left border</p>
+        </div>
       </div>
+    </section>
 
+    <!-- Utilities Section -->
+    <h2 class="heading">Utilities</h2>
+    <section class="demo-section stack">
       <div class="stack">
         <h3>.no-list</h3>
         <p>Remove list styling (margin, padding, list-style)</p>
@@ -597,251 +834,6 @@
           Custom: Use <code>aspect-ratio: 2 / 1;</code> or
           <code>aspect-ratio: var(--aspect-ratio);</code>
         </p>
-      </div>
-    </section>
-
-    <!-- Forms Section -->
-    <section class="demo-section stack">
-      <h2 class="heading">Forms</h2>
-
-      <div class="stack">
-        <h3>Form Validation States</h3>
-        <p>Built-in styles for error, success, and warning states</p>
-
-        <form class="stack" style="max-width: 500px">
-          <div class="stack" style="--gap: 0.5rem">
-            <label for="email-error">Email (error state)</label>
-            <input
-              type="email"
-              id="email-error"
-              class="error"
-              value="invalid-email"
-            />
-            <small class="error">Please enter a valid email address</small>
-          </div>
-
-          <div class="stack" style="--gap: 0.5rem">
-            <label for="username-success">Username (success state)</label>
-            <input
-              type="text"
-              id="username-success"
-              class="success"
-              value="cool_username"
-            />
-            <small class="success">Username is available!</small>
-          </div>
-
-          <div class="stack" style="--gap: 0.5rem">
-            <label for="password-warning">Password (warning state)</label>
-            <input
-              type="password"
-              id="password-warning"
-              class="warning"
-              value="password123"
-            />
-            <small class="warning"
-              >Password is weak. Consider using a stronger password.</small
-            >
-          </div>
-
-          <div class="stack" style="--gap: 0.5rem">
-            <label for="name-default">Full Name (default state)</label>
-            <input
-              type="text"
-              id="name-default"
-              placeholder="Enter your name"
-            />
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- Tables Section -->
-    <section class="demo-section stack">
-      <h2 class="heading">Tables</h2>
-
-      <div class="stack">
-        <h3>.table</h3>
-        <p>
-          A wrapping div for overflow scrolling, but also generic tables styles
-          defined by default without the wrapping claas.
-        </p>
-        <div class="table">
-          <table>
-            <thead>
-              <tr>
-                <th>Hi</th>
-                <th>Hello</th>
-                <th>sup</th>
-                <th>✅ Icon or emoji in this</th>
-                <th>Yo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Hi</td>
-                <td>Hello</td>
-                <td>sup</td>
-                <td>
-                  Some data in this cell that might be a bit long I don't know.
-                </td>
-                <td>Yo</td>
-              </tr>
-              <tr>
-                <td>Hi</td>
-                <td>Hello</td>
-                <td>sup</td>
-                <td>
-                  Some data in this cell that might be a bit long I don't know.
-                </td>
-                <td>Yo</td>
-              </tr>
-              <tr>
-                <td>Hi</td>
-                <td>Hello</td>
-                <td>sup</td>
-                <td>
-                  Some data in this cell that might be a bit long I don't know.
-                </td>
-                <td>Yo</td>
-              </tr>
-              <tr>
-                <td>Hi</td>
-                <td>Hello</td>
-                <td>sup</td>
-                <td>
-                  Some data in this cell that might be a bit long I don't know.
-                </td>
-                <td>Yo</td>
-              </tr>
-              <tr>
-                <td>Hi</td>
-                <td>Hello</td>
-                <td>sup</td>
-                <td>
-                  Some data in this cell that might be a bit long I don't know.
-                </td>
-                <td>Yo</td>
-              </tr>
-              <tr>
-                <td>Hi</td>
-                <td>Hello</td>
-                <td>sup</td>
-                <td>
-                  Some data in this cell that might be a bit long I don't know.
-                </td>
-                <td>Yo</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Header -->
-    <h2 class="heading">UI</h2>
-    <section class="demo-section stack">
-      <h3>.header</h3>
-      <p>A classic header</p>
-      <div class="header">
-        <h6>Your Logo</h6>
-        <nav>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/">About</a>
-            </li>
-            <li>
-              <a href="/">Contact</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <h3>.header.border</h3>
-      <p>...with subtle border on bottom</p>
-      <div class="header border">
-        <h6>Your Logo</h6>
-        <nav>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/">About</a>
-            </li>
-            <li>
-              <a href="/">Contact</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <h3>.header.sticky</h3>
-      <p>...with subtle border on bottom</p>
-      <div style="height: 200px">
-        <div class="header border sticky">
-          <h6>Your Logo</h6>
-          <nav>
-            <ul>
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/">About</a>
-              </li>
-              <li>
-                <a href="/">Contact</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-
-      <h3>.callout</h3>
-      <p>An informational callout</p>
-      <div class="stack">
-        <div class="callout">
-          <p>.callout This is informational.</p>
-        </div>
-        <div class="callout warning">
-          <p>.callout.warning This is an warning.</p>
-        </div>
-        <div class="callout error">
-          <p>.callout.error This is an error.</p>
-        </div>
-        <div class="callout success">
-          <p>.callout.success This is what success looks like</p>
-        </div>
-
-        <div class="callout ghost">
-          <p>.callout.ghost This is an generic note.</p>
-        </div>
-        <div class="callout">
-          <h5>You can put anyhting you want..</h5>
-          <p>...in this, it's just html, it automatically makes it a "stack"</p>
-        </div>
-        <div class="callout success">
-          <div class="flex">
-            <p class="h5">✅</p>
-            <div class="stack">
-              <h5>a .flex and a div</h5>
-              <p>Common UI patterns, just check the soruce</p>
-            </div>
-          </div>
-        </div>
-        <div
-          class="callout"
-          style="--callout-color: var(--pink-1); --callout-border-color: var(--pink-5);"
-        >
-          <p>
-            Custom colors with --callout-color: var(--pink-1);
-            --callout-border-color: var(--pink-5);
-          </p>
-        </div>
-        <div class="callout hard">
-          <p>Add .hard to any of these for a harder left border</p>
-        </div>
       </div>
     </section>
 

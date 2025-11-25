@@ -1,6 +1,6 @@
 <script lang="ts">
   import "$lib/drop-in.css";
-  import { swipe_event } from "$lib/svelte";
+  import { swipe_event, scroll_on_load } from "$lib/svelte";
   import ThemeControls from "../docs/ThemeControls.svelte";
   import type { ThemeValues } from "$lib/types";
 
@@ -629,13 +629,13 @@
         <button style="background: var(--green);">✅</button>
       </div>
       <h3>.swipe.stop</h3>
-      <p>Swiper that stays in it's "open" state. NO JS Version</p>
+      <p>Swiper that stays in it's "open" state.</p>
       <div class="swipe stop">
         <button style="background: var(--red);">❌</button>
-        <div style="min-height: 100px">
+        <div {@attach scroll_on_load} style="min-height: 100px">
           <p>
-            You can swipe me side to side, no JavaScript. (although you do need
-            JS for events)
+            You can swipe me side to side, minor JavaScript needed for Safari.
+            (although you do need JS for events)
           </p>
         </div>
         <button style="background: var(--green);">✅</button>
@@ -645,7 +645,7 @@
       <p>Swiper that stays in it's "open" state.</p>
       <div class="swipe stop full-bleed">
         <button style="background: var(--red);">❌</button>
-        <div style="min-height: 100px">
+        <div style="min-height: 100px" {@attach scroll_on_load}>
           <p>
             You can swipe me side to side, no JavaScript. (although you do need
             JS for events)
@@ -660,7 +660,7 @@
           <button style="height: 100%">Hide</button>
           <button style="height: 100%">Save</button>
         </div>
-        <div style="min-height: 100px">
+        <div style="min-height: 100px" {@attach scroll_on_load}>
           <p>
             You can swipe me side to side, no JavaScript. (although you do need
             JS for events)

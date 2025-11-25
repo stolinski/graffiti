@@ -25,3 +25,18 @@ export const swipe_event: Attachment = (
     };
   };
 };
+
+export const scroll_on_load: Attachment = (element) => {
+  const parent = element.parentElement as HTMLElement | null;
+  if (!parent) return () => {};
+
+  // Ensure we can safely access offsetLeft
+  if (!(element instanceof HTMLElement)) return () => {};
+
+  // run after layout
+  requestAnimationFrame(() => {
+    parent.scrollLeft = element.offsetLeft;
+  });
+
+  return () => {};
+};

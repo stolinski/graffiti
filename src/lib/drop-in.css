@@ -554,7 +554,7 @@ button,
   padding: var(--pad-s) var(--pad-xl);
   text-decoration: none;
   box-shadow: var(--input-shadow);
-  color: oklch(from var(--button-color) var(--l) 0 h);
+  color: oklch(from var(--button-color) var(--l) 0 h / 1);
   &:hover {
     background: var(--fg-05);
   }
@@ -1120,6 +1120,7 @@ tr:last-child {
 }
 
 /*Forms*/
+
 input,
 select,
 textarea {
@@ -1135,6 +1136,56 @@ textarea {
   padding-inline: 10px;
 }
 
+/*
+ * AUTO-COLOR: Automatic contrast text color for any background
+ *
+ * This class automatically chooses black or white text based on the background
+ * color's perceived lightness, even for transparent/semi-transparent colors.
+ *
+ * HOW IT WORKS:
+ *
+ * 1. EFFECTIVE LIGHTNESS CALCULATION
+ *    For transparent colors, the visual lightness depends on what's behind them.
+ *    We calculate "effective lightness" by simulating alpha blending:
+ *
+ *    Light mode (white bg): effective_l = l * alpha + (1 - alpha)
+ *      - Transparent color blends toward white (lightness 1)
+ *      - Example: 50% opacity, l=0.5 → 0.5 * 0.5 + 0.5 = 0.75
+ *
+ *    Dark mode (black bg): effective_l = l * alpha
+ *      - Transparent color blends toward black (lightness 0)
+ *      - Example: 50% opacity, l=0.5 → 0.5 * 0.5 = 0.25
+ *
+ * 2. THE BINARY SWITCH (clamp trick)
+ *    We need to output EITHER dark text OR light text - no in-between.
+ *    The formula: clamp(dark, calc((effective_l / threshold - 1) * -infinity), light)
+ *
+ *    - If effective_l > threshold: (positive - 1) * -infinity = -infinity → clamp returns dark (0)
+ *    - If effective_l < threshold: (negative - 1) * -infinity = +infinity → clamp returns light (1)
+ *
+ *    The -infinity multiplier creates extreme values that hit clamp bounds,
+ *    effectively making this a binary if/else in pure CSS.
+ *
+ * 3. LIGHT-DARK() FUNCTION
+ *    Wraps both calculations so light mode uses the white-bg formula
+ *    and dark mode uses the black-bg formula automatically.
+ *
+ * 4. RELATIVE COLOR SYNTAX
+ *    `oklch(from var(--bg-color) ...)` extracts l, c, h, alpha from --bg-color
+ *    We use `l` (lightness) and `alpha` in our calculation, output new color.
+ *
+ * USAGE:
+ *   <div class="auto-color" style="--bg-color: var(--teal-5)">Text</div>
+ *
+ * CUSTOMIZATION:
+ *   --threshold: 0.6      (lightness cutoff, 0-1)
+ *   --light-text-l: 1     (lightness for light text, usually white)
+ *   --dark-text-l: 0      (lightness for dark text, usually black)
+ *
+ * VARIANT: .chroma
+ *   Adds 80% opacity to text, letting background color bleed through
+ *   for a subtle tinted text effect.
+ */
 .auto-color {
   --threshold: 0.6;
   --light-text-l: 1;
@@ -1145,7 +1196,7 @@ textarea {
       from var(--bg-color)
         clamp(
           var(--dark-text-l),
-          calc(((l * alpha + 1 - alpha) / var(--threshold) - 1) * -99999),
+          calc(((l * alpha + 1 - alpha) / var(--threshold) - 1) * -infinity),
           var(--light-text-l)
         )
         0 0 / 1
@@ -1154,7 +1205,7 @@ textarea {
       from var(--bg-color)
         clamp(
           var(--dark-text-l),
-          calc(((l * alpha) / var(--threshold) - 1) * -99999),
+          calc(((l * alpha) / var(--threshold) - 1) * -infinity),
           var(--light-text-l)
         )
         0 0 / 1
@@ -1167,7 +1218,7 @@ textarea {
         from var(--bg-color)
           clamp(
             var(--dark-text-l),
-            calc(((l * alpha + 1 - alpha) / var(--threshold) - 1) * -99999),
+            calc(((l * alpha + 1 - alpha) / var(--threshold) - 1) * -infinity),
             var(--light-text-l)
           )
           0 0 / 0.8
@@ -1176,7 +1227,7 @@ textarea {
         from var(--bg-color)
           clamp(
             var(--dark-text-l),
-            calc(((l * alpha) / var(--threshold) - 1) * -99999),
+            calc(((l * alpha) / var(--threshold) - 1) * -infinity),
             var(--light-text-l)
           )
           0 0 / 0.8

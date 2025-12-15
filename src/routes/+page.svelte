@@ -3,6 +3,12 @@
   import { swipe_event, scroll_on_load } from "$lib/svelte";
   import ThemeControls from "../docs/ThemeControls.svelte";
   import CodeExample from "../docs/CodeExample.svelte";
+  import Buttons from "../docs/demos/Buttons.svelte";
+  import buttonsCode from "../docs/demos/Buttons.svelte?raw";
+  import Callout from "../docs/demos/Callout.svelte";
+  import calloutCode from "../docs/demos/Callout.svelte?raw";
+  import Carousel from "../docs/demos/Carousel.svelte";
+  import carouselCode from "../docs/demos/Carousel.svelte?raw";
   import Details from "../docs/demos/Details.svelte";
   import detailsCode from "../docs/demos/Details.svelte?raw";
   import Reel from "../docs/demos/Reel.svelte";
@@ -520,13 +526,9 @@
     <section class="demo-section stack">
       <h3>.carousel</h3>
       <p>Horizontal scroll with CSS scroll-snap (no JavaScript required)</p>
-      <div class="carousel" style="background: var(--fg-05); padding: 1rem">
-        <div class="box" style="min-width: 250px; height: 200px">Slide 1</div>
-        <div class="box" style="min-width: 250px; height: 200px">Slide 2</div>
-        <div class="box" style="min-width: 250px; height: 200px">Slide 3</div>
-        <div class="box" style="min-width: 250px; height: 200px">Slide 4</div>
-        <div class="box" style="min-width: 250px; height: 200px">Slide 5</div>
-      </div>
+      <CodeExample code={carouselCode} title="Carousel">
+        <Carousel />
+      </CodeExample>
     </section>
 
     <section class="demo-section stack">
@@ -595,16 +597,9 @@
       <div class="stack">
         <h3>.button</h3>
         <p>Button styling for links and non-button elements</p>
-        <div class="cluster" style="align-items: center">
-          <button>Regular Button</button>
-          <a href="/" class="button">Link as Button</a>
-          <button class="primary">Primary</button>
-          <button class="warning">Warning</button>
-          <button class="error">Error</button>
-          <button class="success">Success</button>
-          <button class="ghost">Ghost</button>
-          <button class="mini">Mini Button</button>
-        </div>
+        <CodeExample code={buttonsCode} title="Button Variants">
+          <Buttons />
+        </CodeExample>
       </div>
 
       <div class="stack">
@@ -687,49 +682,9 @@
       <div class="stack">
         <h3>.callout</h3>
         <p>An informational callout</p>
-        <div class="stack">
-          <div class="callout">
-            <p>.callout This is informational.</p>
-          </div>
-          <div class="callout warning">
-            <p>.callout.warning This is an warning.</p>
-          </div>
-          <div class="callout error">
-            <p>.callout.error This is an error.</p>
-          </div>
-          <div class="callout success">
-            <p>.callout.success This is what success looks like</p>
-          </div>
-
-          <div class="callout ghost">
-            <p>.callout.ghost This is an generic note.</p>
-          </div>
-          <div class="callout">
-            <h5>You can put anyhting you want..</h5>
-            <p>...in this, it's just html, it automatically makes it a "stack"</p>
-          </div>
-          <div class="callout success">
-            <div class="flex">
-              <p class="h5">✅</p>
-              <div class="stack">
-                <h5>a .flex and a div</h5>
-                <p>Common UI patterns, just check the soruce</p>
-              </div>
-            </div>
-          </div>
-          <div
-            class="callout"
-            style="--callout-color: var(--pink-1); --callout-border-color: var(--pink-5);"
-          >
-            <p>
-              Custom colors with --callout-color: var(--pink-1);
-              --callout-border-color: var(--pink-5);
-            </p>
-          </div>
-          <div class="callout hard">
-            <p>Add .hard to any of these for a harder left border</p>
-          </div>
-        </div>
+        <CodeExample code={calloutCode} title="Callout Variants">
+          <Callout />
+        </CodeExample>
       </div>
     </section>
 

@@ -2,6 +2,11 @@
   import "$lib/drop-in.css";
   import { swipe_event, scroll_on_load } from "$lib/svelte";
   import ThemeControls from "../docs/ThemeControls.svelte";
+  import CodeExample from "../docs/CodeExample.svelte";
+  import Details from "../docs/demos/Details.svelte";
+  import detailsCode from "../docs/demos/Details.svelte?raw";
+  import Reel from "../docs/demos/Reel.svelte";
+  import reelCode from "../docs/demos/Reel.svelte?raw";
   import type { ThemeValues, FontSettings } from "$lib/types";
 
   let theme_values: ThemeValues = $state({
@@ -530,15 +535,9 @@
         Vertical scroll with CSS scroll-snap (customizable height with
         --reel-height)
       </p>
-      <div
-        class="reel"
-        style="background: var(--fg-05); padding: 1rem; --reel-height: 400px;"
-      >
-        <div class="box" style="min-height: 200px">Panel 1</div>
-        <div class="box" style="min-height: 200px">Panel 2</div>
-        <div class="box" style="min-height: 200px">Panel 3</div>
-        <div class="box" style="min-height: 200px">Panel 4</div>
-      </div>
+      <CodeExample code={reelCode} title="Reel Layout">
+        <Reel />
+      </CodeExample>
     </section>
 
     <section class="demo-section stack">
@@ -793,6 +792,15 @@
     <!-- UI-Components Section -->
     <h2 class="heading">UI-Components</h2>
     <p>Composed components built from multiple elements.</p>
+    
+    <section class="demo-section stack">
+      <h3>Accordion</h3>
+      <p>Native HTML accordion using details/summary with smooth animations via @starting-style and allow-discrete.</p>
+      <CodeExample code={detailsCode} title="Accordion Variants">
+        <Details />
+      </CodeExample>
+    </section>
+
     <section class="demo-section stack">
       <h3>.swipe</h3>
       <p>Interactive swipe component</p>
@@ -857,32 +865,43 @@
     <section class="demo-section stack">
       <div class="stack">
         <h3>.header</h3>
-        <p>Full-width header with navigation. Supports .border and .sticky modifiers.</p>
-        <div class="stack">
-          <header class="header border">
-            <h4 style="margin: 0;">Logo</h4>
-            <nav>
-              <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </nav>
-          </header>
-          <p class="fs-xs">With .border modifier</p>
+        <p>Full-width header with navigation</p>
+        <header class="header">
+          <h6>Your Logo</h6>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/">About</a></li>
+              <li><a href="/">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
 
-          <header class="header" style="background: var(--fg-05);">
-            <h4 style="margin: 0;">Brand</h4>
-            <nav>
-              <ul style="--gap: 2rem;">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-              </ul>
-            </nav>
-            <button>Sign Up</button>
-          </header>
-          <p class="fs-xs">With custom background and button</p>
-        </div>
+        <h3>.header.border</h3>
+        <p>Header with subtle border on bottom</p>
+        <header class="header border">
+          <h6>Your Logo</h6>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/">About</a></li>
+              <li><a href="/">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <h3>.header.sticky</h3>
+        <p>Header that sticks to the top when scrolling</p>
+        <header class="header border sticky">
+          <span>Sticky Header</span>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/">About</a></li>
+              <li><a href="/">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
       </div>
     </section>
 

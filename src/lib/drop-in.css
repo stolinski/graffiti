@@ -597,6 +597,19 @@ button,
     border: var(--fg) solid 2px;
     color: var(--fg);
   }
+  &.minimal {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: var(--fg-7);
+    &:hover {
+      background: transparent;
+      color: var(--fg);
+    }
+    &:active {
+      background: transparent;
+    }
+  }
 }
 
 a {
@@ -1234,4 +1247,134 @@ textarea {
       )
     );
   }
+}
+
+/* Disclosure Elements (details/summary) */
+
+details {
+  margin-block: var(--vs-base);
+}
+
+summary {
+  cursor: pointer;
+  padding: var(--pad-s) var(--pad-m);
+  color: var(--fg-7);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--pad-s);
+  user-select: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::before {
+    content: "›";
+    rotate: 0deg;
+    transition: rotate 0.2s var(--ease-smooth);
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    color: var(--fg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 2px;
+  }
+}
+
+details[open] > summary::before {
+  rotate: 90deg;
+}
+
+/* Content animation using @starting-style and allow-discrete */
+details::details-content {
+  opacity: 1;
+  block-size: auto;
+  overflow: clip;
+  transition:
+    opacity 0.3s var(--ease-smooth),
+    block-size 0.3s var(--ease-smooth),
+    content-visibility 0.3s var(--ease-smooth) allow-discrete;
+}
+
+details:not([open])::details-content {
+  opacity: 0;
+  block-size: 0;
+}
+
+@starting-style {
+  details[open]::details-content {
+    opacity: 0;
+    block-size: 0;
+  }
+}
+
+/* Details content padding and margin reset */
+details > :not(summary) {
+  padding: var(--pad-s) var(--pad-m);
+  margin: 0;
+}
+
+/* Right-aligned summary variant (e.g., "Code" toggle) */
+details.right > summary,
+details > summary.right {
+  justify-content: flex-end;
+
+  &::before {
+    display: none;
+  }
+
+  &::after {
+    content: "›";
+    rotate: 0deg;
+    transition: rotate 0.2s var(--ease-smooth);
+    flex-shrink: 0;
+  }
+}
+
+details.right[open] > summary::after,
+details[open] > summary.right::after {
+  rotate: 90deg;
+}
+
+/* Bordered container variant */
+details.bordered {
+  border: var(--border-1);
+  border-radius: var(--br-m);
+  overflow: hidden;
+
+  > summary {
+    border-bottom: var(--border-1);
+  }
+
+  &:not([open]) > summary {
+    border-bottom-color: transparent;
+  }
+
+  > :not(summary) {
+    padding-inline: var(--pad-m);
+  }
+}
+
+/* Minimal variant - just the toggle, no extra styling */
+details.minimal > summary {
+  padding: 0;
+
+  &::before {
+    display: none;
+  }
+
+  &::after {
+    content: "+";
+    font-weight: 600;
+    margin-inline-start: var(--pad-s);
+  }
+}
+
+details.minimal[open] > summary::after {
+  content: "−";
 }

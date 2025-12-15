@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.4.0
+
+### Minor Changes
+
+- 3449db5: Added details/summary accordion component with smooth open/close animations using @starting-style and allow-discrete. Includes variants: `.bordered` (container with border), `.right` (right-aligned trigger), and `.minimal` (+/− toggle). Also added `button.minimal` for text-only buttons.
+
 ## 4.3.0
 
 ### Minor Changes

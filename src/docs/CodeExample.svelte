@@ -1,6 +1,6 @@
 <!--
 	@component CodeExample
-	
+
 	Documentation code example component for displaying live previews with syntax-highlighted source code.
 	DRY approach: import demo component once, get both rendered preview and raw source.
 
@@ -57,7 +57,7 @@
 
   // Determine effective language (auto-detect if not specified)
   let effectiveLanguage = $derived<Language>(
-    language ?? (hasSvelteSyntax(code) ? "svelte" : "html")
+    language ?? (hasSvelteSyntax(code) ? "svelte" : "html"),
   );
 
   // Map language to highlight.js language module
@@ -82,7 +82,7 @@
 		.hljs-doctag,
 		.hljs-name,
 		.hljs-strong {
-			color: var(--purple);
+			color: var(--yellow);
 			font-weight: 600;
 		}
 		.hljs-string,
@@ -90,13 +90,17 @@
 		.hljs-title.class_.inherited__,
 		.hljs-template-variable,
 		.hljs-variable,
-		.hljs-quote,
 		.hljs-template-tag {
-			color: var(--green);
+			color: var(--pink);
 		}
+
+		.hljs-quote {
+			color: var(--fg-9);
+		}
+
 		.hljs-comment,
 		.hljs-deletion {
-			color: var(--fg-5);
+			color: var(--fg-3);
 			font-style: italic;
 		}
 		.hljs-number,
@@ -104,15 +108,16 @@
 		.hljs-literal,
 		.hljs-bullet,
 		.hljs-link {
-			color: var(--orange);
+			color: var(--yellow);
 		}
 		.hljs-meta,
 		.hljs-tag {
-			color: var(--blue);
+			color: var(--fg-5);
 		}
+
 		.hljs-attr,
 		.hljs-attribute {
-			color: var(--amber);
+			color: var(--yellow);
 		}
 		.hljs-built_in,
 		.hljs-builtin-name {

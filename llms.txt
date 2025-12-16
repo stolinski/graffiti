@@ -471,6 +471,40 @@ Usage:
 </div>
 ```
 
+### Breadcrumbs
+Simple breadcrumb navigation with customizable separators:
+- `.breadcrumbs`: Navigation component for showing hierarchy trail
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- Flexbox layout with wrapping
+- Slash (/) separators between items via `::before` pseudo-elements
+- Links styled with muted color (`--fg-5`) that brightens on hover (`--fg-7`)
+- Current page indicator via `[aria-current="page"]` on the `<li>`
+- Proper focus-visible states for accessibility
+
+**Customization (only if needed):**
+- `--separator`: Custom separator character (default: "/")
+
+Usage:
+```html
+<!-- Default slash separator -->
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ul class="no-list">
+    <li><a href="/">Home</a></li>
+    <li><a href="/products">Products</a></li>
+    <li aria-current="page">Current Page</li>
+  </ul>
+</nav>
+
+<!-- Custom separator -->
+<nav class="breadcrumbs" style="--separator: '›'" aria-label="Breadcrumb">
+  <ul class="no-list">
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">About</li>
+  </ul>
+</nav>
+```
+
 ### Aspect Ratio Utilities
 Maintain specific aspect ratios for containers (useful for images, videos, cards):
 - `.aspect-square`: 1:1 aspect ratio

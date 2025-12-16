@@ -151,7 +151,17 @@ This will:
 git add -A && git commit -m "Version X.X.X: [brief description]"
 ```
 
-### 8. Close the Issue
+### 8. Update LLM Documentation
+
+Update `llms.txt` to document any new components, classes, or CSS variables added. This file is used by LLMs to understand the framework.
+
+```bash
+# Add documentation for new component to llms.txt
+# Then commit:
+git add llms.txt && git commit -m "Update llms.txt with [component] documentation"
+```
+
+### 9. Close the Issue
 
 Only close the issue when ALL of these are complete:
 
@@ -163,6 +173,7 @@ Only close the issue when ALL of these are complete:
 - [ ] Implementation committed
 - [ ] Changeset created AND applied (`pnpm changeset version`)
 - [ ] Version bump committed
+- [ ] llms.txt updated (for new components/features)
 
 ```bash
 bd close <issue-id> --reason "Implemented [component], added demo, created changeset" --json
@@ -232,7 +243,9 @@ User: Implement graffiti-xyz (add toggle switch component)
 10. Create changeset file
 11. pnpm changeset version → bump version
 12. git add -A && git commit -m "Version X.X.X: toggle switch"
-13. bd close graffiti-xyz --reason "Implemented toggle, added demo, released vX.X.X"
+13. Update llms.txt with new component documentation
+14. git add llms.txt && git commit -m "Update llms.txt with toggle documentation"
+15. bd close graffiti-xyz --reason "Implemented toggle, added demo, released vX.X.X"
 ```
 
 ## Important Rules
@@ -242,5 +255,6 @@ User: Implement graffiti-xyz (add toggle switch component)
 3. **Commit implementation first** before touching changesets
 4. **Changeset + version bump is the FINAL step** - only after everything works
 5. **Never close issues without applying changeset** (`pnpm changeset version`)
-6. **Use the right subagent** - don't write CSS yourself, delegate to css agent
-7. **Keep docs clean** - no unnecessary wrappers or containers in demos
+6. **Always update llms.txt** for new components/features before closing
+7. **Use the right subagent** - don't write CSS yourself, delegate to css agent
+8. **Keep docs clean** - no unnecessary wrappers or containers in demos

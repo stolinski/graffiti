@@ -13,6 +13,8 @@
   import detailsCode from "../docs/demos/Details.svelte?raw";
   import Reel from "../docs/demos/Reel.svelte";
   import reelCode from "../docs/demos/Reel.svelte?raw";
+  import Toggle from "../docs/demos/Toggle.svelte";
+  import toggleCode from "../docs/demos/Toggle.svelte?raw";
   import type { ThemeValues, FontSettings } from "$lib/types";
 
   let theme_values: ThemeValues = $state({
@@ -692,6 +694,14 @@
     <h2 class="heading">Forms</h2>
     <p>Form inputs and validation states.</p>
     <section class="demo-section stack">
+      <div class="stack">
+        <h3>Toggle Switch</h3>
+        <p>Accessible toggle/switch input using native checkbox semantics</p>
+        <CodeExample code={toggleCode} title="Toggle Variants">
+          <Toggle />
+        </CodeExample>
+      </div>
+
       <div class="stack">
         <h3>Form Validation States</h3>
         <p>Built-in styles for error, success, and warning states</p>

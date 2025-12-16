@@ -149,7 +149,7 @@
     </div>
   {/if}
 
-  <details class="right" open>
+  <details class="right">
     <summary>Code</summary>
     <div class="code-content">
       {#if effectiveLanguage === "svelte"}

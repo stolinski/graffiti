@@ -1423,6 +1423,119 @@ details.minimal[open] > summary::after {
   }
 }
 
+/* Dropdown Menu */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  anchor-name: --dropdown;
+}
+
+.dropdown-menu[popover] {
+  position: absolute;
+  position-anchor: --dropdown;
+  inset: unset;
+  position-area: block-end span-inline-end;
+  margin: 0;
+  margin-block-start: var(--pad-xs);
+  padding: 0;
+
+  /* Styling */
+  min-width: 12rem;
+  background: var(--bg);
+  border: var(--border-1);
+  border-radius: var(--br-m);
+  box-shadow: var(--shadow-4);
+  overflow: hidden;
+
+  /* Animation */
+  opacity: 1;
+  scale: 1;
+  transform-origin: top left;
+  transition:
+    opacity 0.15s var(--ease-smooth),
+    scale 0.15s var(--ease-smooth),
+    display 0.15s var(--ease-smooth) allow-discrete;
+
+  /* Menu items - links and buttons */
+  a,
+  button {
+    display: block;
+    width: 100%;
+    padding: var(--pad-s) var(--pad-m);
+    color: var(--fg-7);
+    text-decoration: none;
+    text-align: start;
+    cursor: pointer;
+    transition: background-color 0.1s var(--ease-smooth);
+    margin: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    box-shadow: none;
+    border-radius: 0;
+
+    &:hover {
+      background: var(--fg-05);
+      color: var(--fg);
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--fg);
+      outline-offset: -2px;
+    }
+
+    &:active {
+      background: var(--fg-1);
+    }
+
+    &[aria-disabled="true"],
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  /* Dividers */
+  hr {
+    height: 0;
+    margin: var(--pad-xs) 0;
+    border: none;
+    border-top: var(--border-1);
+  }
+}
+
+.dropdown-menu[popover]:not(:popover-open) {
+  opacity: 0;
+  scale: 0.95;
+}
+
+@starting-style {
+  .dropdown-menu[popover]:popover-open {
+    opacity: 0;
+    scale: 0.95;
+  }
+}
+
+/* End-aligned variant */
+.dropdown.end {
+  anchor-name: --dropdown-end;
+}
+
+.dropdown.end .dropdown-menu[popover] {
+  position-anchor: --dropdown-end;
+  position-area: block-end span-inline-start;
+  transform-origin: top right;
+}
+
+.dropdown-header {
+  padding: var(--pad-s) var(--pad-m);
+  color: var(--fg-5);
+  --fl: -1;
+}
+
 /* Toggle Switch */
 
 input[type="checkbox"].toggle {

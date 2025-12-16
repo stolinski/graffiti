@@ -17,6 +17,8 @@
   import toggleCode from "../docs/demos/Toggle.svelte?raw";
   import Breadcrumbs from "../docs/demos/Breadcrumbs.svelte";
   import breadcrumbsCode from "../docs/demos/Breadcrumbs.svelte?raw";
+  import Dropdown from "../docs/demos/Dropdown.svelte";
+  import dropdownCode from "../docs/demos/Dropdown.svelte?raw";
   import type { ThemeValues, FontSettings } from "$lib/types";
 
   let theme_values: ThemeValues = $state({
@@ -773,6 +775,14 @@
       <p>Simple breadcrumb navigation with slash separators. Uses semantic HTML with proper ARIA attributes for accessibility.</p>
       <CodeExample code={breadcrumbsCode} title="Breadcrumbs">
         <Breadcrumbs />
+      </CodeExample>
+    </section>
+
+    <section class="demo-section stack">
+      <h3>Dropdown Menu</h3>
+      <p>Native dropdown menu using HTML popover API and CSS anchor positioning. No JavaScript required for open/close.</p>
+      <CodeExample code={dropdownCode} title="Dropdown Menu">
+        <Dropdown />
       </CodeExample>
     </section>
 

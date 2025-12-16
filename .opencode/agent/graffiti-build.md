@@ -98,9 +98,11 @@ For any NEW CSS component added to `drop-in.css`:
 </CodeExample>
 ```
 
-### 6. Create Changeset
+### 6. Create and Apply Changeset
 
-**Before closing any issue** that adds/modifies components, create a changeset:
+**Before closing any issue** that adds/modifies components:
+
+#### 6a. Create a changeset
 
 ```bash
 pnpm changeset
@@ -110,7 +112,7 @@ Or create manually in `.changeset/` with a random name like `happy-dogs-dance.md
 
 ```markdown
 ---
-"graffiti": patch
+"@drop-in/graffiti": patch
 ---
 
 Added [component name] - [brief description of what it does]
@@ -122,6 +124,24 @@ Use:
 - `minor` for new features/components
 - `major` for breaking changes
 
+#### 6b. Apply the changeset to bump version
+
+```bash
+pnpm changeset version
+```
+
+This will:
+
+- Bump the version in `package.json`
+- Update `CHANGELOG.md`
+- Delete the consumed changeset files
+
+#### 6c. Commit the version bump
+
+```bash
+git add -A && git commit -m "Version X.X.X: [brief description]"
+```
+
 ### 7. Verify and Close
 
 Only close the issue when ALL of these are complete:
@@ -130,7 +150,8 @@ Only close the issue when ALL of these are complete:
 - [ ] Demo created in `src/docs/demos/` (for new components)
 - [ ] CodeExample added to docs (for new components)
 - [ ] Visually tested with chrome-devtools
-- [ ] Changeset created
+- [ ] Changeset created AND applied (`pnpm changeset version`)
+- [ ] Version bump committed
 - [ ] Build passes (`pnpm build`)
 
 ```bash
@@ -198,13 +219,17 @@ User: Implement graffiti-xyz (add toggle switch component)
 7. chrome-devtools_take_screenshot → verify visually
 8. Create changeset: "Added toggle switch component"
 9. pnpm build → verify no errors
-10. bd close graffiti-xyz --reason "Implemented toggle, added demo, created changeset"
+10. git add & commit implementation
+11. pnpm changeset version → bump version
+12. git add -A && git commit -m "Version X.X.X: toggle switch"
+13. bd close graffiti-xyz --reason "Implemented toggle, added demo, released vX.X.X"
 ```
 
 ## Important Rules
 
 1. **Never close issues without a changeset** for new components/features
-2. **Always visually verify** with chrome-devtools before closing
-3. **Always create demos** for new CSS components
-4. **Use the right subagent** - don't write CSS yourself, delegate to css agent
-5. **Keep docs clean** - no unnecessary wrappers or containers in demos
+2. **Always apply changesets** with `pnpm changeset version` before closing
+3. **Always visually verify** with chrome-devtools before closing
+4. **Always create demos** for new CSS components
+5. **Use the right subagent** - don't write CSS yourself, delegate to css agent
+6. **Keep docs clean** - no unnecessary wrappers or containers in demos

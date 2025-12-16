@@ -1382,6 +1382,8 @@ details.minimal[open] > summary::after {
 /* Breadcrumbs */
 
 .breadcrumbs {
+  --separator: "/";
+
   & > ul {
     display: flex;
     flex-wrap: wrap;
@@ -1395,7 +1397,7 @@ details.minimal[open] > summary::after {
     gap: var(--pad-s);
 
     &:not(:first-child)::before {
-      content: "/";
+      content: var(--separator);
       color: var(--fg-4);
     }
   }

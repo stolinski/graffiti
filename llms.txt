@@ -44,10 +44,13 @@ import '@drop-in/graffiti/decks'  // Optional decks components
 - `--border-2`: solid 2px var(--fg-2) (thicker border)
 
 ### Padding
-- `--pad-xs`: 2px
-- `--pad-s`: 6px
-- `--pad-m`: 12px
-- `--pad-l`: 25px
+- `--pad-xs`: 0.25rem
+- `--pad-s`: 0.5rem
+- `--pad-m`: 0.75rem
+- `--pad-l`: 1rem
+- `--pad-xl`: 1.5rem
+- `--pad-xxl`: 2rem
+- `--pad-xxxl`: 4rem
 
 ### Shadows
 Layered, adaptive shadows (deeper in dark mode):
@@ -70,68 +73,78 @@ Modern `linear()` based easing functions:
 - `--ease-bounce`: Bouncy spring-like motion
 - `--ease-emphasized`: Emphasized material design easing
 
+### Semantic Colors
+- `--primary`: var(--blue) - Primary action color
+- `--error`: var(--red) - Error/danger color
+- `--warning`: var(--yellow) - Warning color
+- `--success`: var(--green) - Success color
+
+### Input Styling
+- `--input-shadow`: Complex shadow for form inputs (inset highlights + depth)
+
 ### Colors (OKLCH)
 Perceptually uniform OKLCH color space with automatic 1-9 scales generated via relative color syntax.
-Base colors are scale 5. Lower numbers are lighter, higher numbers are darker.
+Scale 9 is the base color at full opacity. Lower numbers are more transparent (10% to 90% opacity).
 
 #### Yellow
-- `--yellow` (scale 5): oklch(0.88 0.15 95) - Base yellow
-- `--yellow-1` through `--yellow-9`: Full scale from lightest to darkest
+- `--yellow` (scale 9): oklch(0.88 0.15 95) - Base yellow
+- `--yellow-1` through `--yellow-9`: Full scale from most transparent to full opacity
 
 #### Amber
-- `--amber` (scale 5): oklch(0.78 0.16 80) - Base amber
-- `--amber-1` through `--amber-9`: Full scale from lightest to darkest
+- `--amber` (scale 9): oklch(0.78 0.16 80) - Base amber
+- `--amber-1` through `--amber-9`: Full scale from most transparent to full opacity
 
 #### Orange
-- `--orange` (scale 5): oklch(0.75 0.18 65) - Base orange
-- `--orange-1` through `--orange-9`: Full scale from lightest to darkest
+- `--orange` (scale 9): oklch(0.75 0.18 65) - Base orange
+- `--orange-1` through `--orange-9`: Full scale from most transparent to full opacity
 
 #### Red
-- `--red` (scale 5): oklch(0.62 0.22 35) - Base red
-- `--red-1` through `--red-9`: Full scale from lightest to darkest
+- `--red` (scale 9): oklch(0.62 0.22 35) - Base red
+- `--red-1` through `--red-9`: Full scale from most transparent to full opacity
 
 #### Pink
-- `--pink` (scale 5): oklch(0.62 0.25 350) - Base pink
-- `--pink-1` through `--pink-9`: Full scale from lightest to darkest
+- `--pink` (scale 9): oklch(0.62 0.25 350) - Base pink
+- `--pink-1` through `--pink-9`: Full scale from most transparent to full opacity
 
 #### Purple
-- `--purple` (scale 5): oklch(0.65 0.24 310) - Base purple
-- `--purple-1` through `--purple-9`: Full scale from lightest to darkest
+- `--purple` (scale 9): oklch(0.65 0.24 310) - Base purple
+- `--purple-1` through `--purple-9`: Full scale from most transparent to full opacity
 
 #### Indigo
-- `--indigo` (scale 5): oklch(0.55 0.25 275) - Base indigo
-- `--indigo-1` through `--indigo-9`: Full scale from lightest to darkest
+- `--indigo` (scale 9): oklch(0.55 0.25 275) - Base indigo
+- `--indigo-1` through `--indigo-9`: Full scale from most transparent to full opacity
 
 #### Blue
-- `--blue` (scale 5): oklch(0.5 0.28 270) - Base blue
-- `--blue-1` through `--blue-9`: Full scale from lightest to darkest
+- `--blue` (scale 9): oklch(0.5 0.28 270) - Base blue
+- `--blue-1` through `--blue-9`: Full scale from most transparent to full opacity
 
 #### Teal
-- `--teal` (scale 5): oklch(0.82 0.08 185) - Base teal
-- `--teal-1` through `--teal-9`: Full scale from lightest to darkest
+- `--teal` (scale 9): oklch(0.82 0.08 185) - Base teal
+- `--teal-1` through `--teal-9`: Full scale from most transparent to full opacity
 
 #### Green
-- `--green` (scale 5): oklch(0.72 0.18 165) - Base green
-- `--green-1` through `--green-9`: Full scale from lightest to darkest
+- `--green` (scale 9): oklch(0.72 0.18 165) - Base green
+- `--green-1` through `--green-9`: Full scale from most transparent to full opacity
 
 #### Lime
-- `--lime` (scale 5): oklch(0.80 0.16 130) - Base lime
-- `--lime-1` through `--lime-9`: Full scale from lightest to darkest
+- `--lime` (scale 9): oklch(0.80 0.16 130) - Base lime
+- `--lime-1` through `--lime-9`: Full scale from most transparent to full opacity
 
 #### Highlighter
-- `--highlighter` (scale 5): oklch(0.88 0.22 115) - Base highlighter (bright tennis ball green)
-- `--highlighter-1` through `--highlighter-9`: Full scale from lightest to darkest
+- `--highlighter` (scale 9): oklch(0.88 0.22 115) - Base highlighter (bright tennis ball green)
+- `--highlighter-1` through `--highlighter-9`: Full scale from most transparent to full opacity
 
 #### Brown
-- `--brown` (scale 5): oklch(0.55 0.12 60) - Base brown
-- `--brown-1` through `--brown-9`: Full scale from lightest to darkest
+- `--brown` (scale 9): oklch(0.55 0.12 60) - Base brown
+- `--brown-1` through `--brown-9`: Full scale from most transparent to full opacity
 
 #### Neutral Gray
-- `--gray-1` through `--gray-9`: Neutral gray scale from lightest to darkest (no base color variable)
+- `--gray` (scale 9): oklch(0.5 0.02 270) - Base gray
+- `--gray-1` through `--gray-9`: Full scale from most transparent to full opacity
 
 #### Slate
-- `--slate` (scale 5): oklch(0.52 0.04 255) - Base slate
-- `--slate-1` through `--slate-9`: Full scale from lightest to darkest
+- `--slate` (scale 9): oklch(0.52 0.04 255) - Base slate
+- `--slate-1` through `--slate-9`: Full scale from most transparent to full opacity
 
 #### White (Static)
 - `--white`: oklch(1 0 0) - Pure white
@@ -392,8 +405,10 @@ Vertical scrolling with CSS scroll-snap (no JavaScript required)
 - `.circle`: Circular element (default --size: 40px)
 
 ### Box Styles
-- `.box-1`: Subtle box with tint background and soft shadow
-- `.box-2`: Semi-gloss box with gradient and stronger shadow
+- `.box`: Basic box with tint background, padding, border radius, and border
+- `.box-ghost`: Transparent background with border (outline style)
+- `.box-glow`: Box with subtle inset glow shadow
+- `.box-semi-gloss`: Gradient background with stronger shadow (premium feel)
 
 ### Callout
 Informational callout boxes with multiple variants for different message types:
@@ -433,7 +448,28 @@ Usage:
 ```
 
 ### Button
-- `.button`: Button styling for links and non-button elements
+Styled buttons and button-like elements with multiple variants:
+- `button` or `.button`: Base button styling
+
+**Variants:**
+- `.primary`: Blue primary action button
+- `.success`: Green success button
+- `.warning`: Yellow warning button  
+- `.error`: Red error/danger button
+- `.ghost`: Transparent with border outline
+- `.minimal`: No background or border, just text
+- `.mini`: Smaller padding for compact buttons
+
+**Customization:**
+- `--button-color`: Override base button background color
+
+Usage:
+```html
+<button>Default</button>
+<button class="primary">Primary Action</button>
+<button class="ghost">Ghost Button</button>
+<a href="#" class="button minimal">Link as Button</a>
+```
 
 ### Table
 Responsive table wrapper with clean styling for data tables:
@@ -505,6 +541,89 @@ Usage:
 </nav>
 ```
 
+### Header
+Full-width site header with navigation support:
+- `.header`: Base header layout (full-width, flex, space-between)
+
+**Variants:**
+- `.header.border`: Adds bottom border
+- `.header.sticky`: Sticks to top when scrolling
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- Full viewport width with negative margin trick
+- Flexbox layout with space-between
+- All direct children have margin reset to 0
+- Nav ul styled as horizontal flex list
+
+Usage:
+```html
+<header class="header border sticky">
+  <h1>Logo</h1>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+</header>
+```
+
+### Details/Accordion
+Native HTML disclosure element with smooth animations:
+- `details` and `summary`: Base accordion styling with animated open/close
+
+**Variants:**
+- `details.bordered`: Bordered container with rounded corners
+- `details.right` or `summary.right`: Arrow indicator on right side
+- `details.minimal`: Minimal style with +/− toggle
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- Smooth height animation using `@starting-style` and `allow-discrete`
+- Custom `›` arrow indicator that rotates on open
+- Proper focus-visible states
+- Content padding and margin reset
+
+Usage:
+```html
+<details>
+  <summary>Click to expand</summary>
+  <p>Hidden content here</p>
+</details>
+
+<details class="bordered">
+  <summary>Bordered variant</summary>
+  <p>Content with border container</p>
+</details>
+
+<details class="minimal">
+  <summary>FAQ Question</summary>
+  <p>Answer with +/− toggle</p>
+</details>
+```
+
+### Swipe
+Horizontal swipe-to-reveal component using CSS scroll-snap:
+- `.swipe`: Base swipe container with left and right action areas
+
+**Variants:**
+- `.swipe.stop`: Stays in "open" position after swipe
+- `.swipe.full-bleed`: Extends to full viewport width
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- CSS scroll-snap for smooth snapping
+- Container query for center content width
+- Hidden scrollbar
+- Three-column grid (action | content | action)
+
+Usage:
+```html
+<div class="swipe stop">
+  <button>Delete</button>
+  <div>Swipeable content</div>
+  <button>Archive</button>
+</div>
+```
+
 ### Aspect Ratio Utilities
 Maintain specific aspect ratios for containers (useful for images, videos, cards):
 - `.aspect-square`: 1:1 aspect ratio
@@ -529,6 +648,57 @@ Usage:
 
 <input class="warning" />
 <small class="warning">Warning message</small>
+```
+
+### Toggle Switch
+Accessible toggle/switch input using native checkbox:
+- `input[type="checkbox"].toggle`: Toggle switch styling
+
+**Variants:**
+- `.toggle.compact`: Smaller toggle size
+
+**Customization:**
+- `--toggle-color`: Color when checked (default: var(--primary))
+- `--toggle-width`: Toggle track width
+- `--toggle-height`: Toggle track height
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- Smooth transition animations
+- Proper focus-visible outline
+- Disabled state styling
+- Knob slides on check/uncheck
+
+Usage:
+```html
+<input type="checkbox" class="toggle" />
+<input type="checkbox" class="toggle" checked />
+<input type="checkbox" class="toggle compact" />
+
+<label>
+  <input type="checkbox" class="toggle" />
+  Enable notifications
+</label>
+```
+
+### Auto-Color
+Automatically sets text color (light or dark) based on background luminosity:
+- `.auto-color`: Applies automatic contrast text color
+
+**Variants:**
+- `.auto-color.chroma`: Adds 80% opacity for subtle tinted text effect
+
+**Customization:**
+- `--bg-color`: The background color to analyze (required)
+- `--threshold`: Lightness cutoff for switching (default: 0.6)
+
+Usage:
+```html
+<div class="auto-color" style="--bg-color: var(--blue-5)">
+  Text automatically becomes white
+</div>
+<div class="auto-color" style="--bg-color: var(--yellow-3)">
+  Text automatically becomes black
+</div>
 ```
 
 ## How It Works
@@ -566,22 +736,24 @@ Graffiti uses the OKLCH color space for perceptually uniform colors:
 - Predictable lightness adjustments
 
 **Automatic Color Scales**
-Each color has a 1-9 scale generated using relative color syntax:
+Each color has a 1-9 scale generated using opacity-based relative color syntax:
 ```css
-/* Base color (scale 5) */
+/* Base color (scale 9 = full opacity) */
 --yellow: oklch(0.88 0.15 95);
 
-/* Lighter shades (1-4) */
---yellow-1: oklch(from var(--yellow) calc(l + 0.10) calc(c * 0.3) h);
---yellow-2: oklch(from var(--yellow) calc(l + 0.06) calc(c * 0.5) h);
-/* ... */
-
-/* Darker shades (6-9) */
---yellow-6: oklch(from var(--yellow) calc(l - 0.08) calc(c * 1.1) h);
---yellow-9: oklch(from var(--yellow) calc(l - 0.32) calc(c * 0.9) h);
+/* Opacity-based scale */
+--yellow-1: oklch(from var(--yellow) l c h / 0.1);  /* 10% opacity */
+--yellow-2: oklch(from var(--yellow) l c h / 0.2);  /* 20% opacity */
+--yellow-3: oklch(from var(--yellow) l c h / 0.3);  /* 30% opacity */
+--yellow-4: oklch(from var(--yellow) l c h / 0.4);  /* 40% opacity */
+--yellow-5: oklch(from var(--yellow) l c h / 0.5);  /* 50% opacity */
+--yellow-6: oklch(from var(--yellow) l c h / 0.6);  /* 60% opacity */
+--yellow-7: oklch(from var(--yellow) l c h / 0.75); /* 75% opacity */
+--yellow-8: oklch(from var(--yellow) l c h / 0.9);  /* 90% opacity */
+--yellow-9: var(--yellow);                          /* 100% opacity (base) */
 ```
 
-Scale 5 is always the base color. Lower numbers are lighter, higher are darker.
+Scale 9 is always the base color at full opacity. Lower numbers are more transparent.
 
 ### Theming
 Uses `light-dark()` function for automatic color scheme switching:

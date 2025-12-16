@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.4.2
+
+### Patch Changes
+
+- Added --separator CSS variable to breadcrumbs component for customizable separators (default: "/")
+
 ## 4.4.1
 
 ### Patch Changes

@@ -1434,7 +1434,7 @@ input[type="checkbox"].toggle {
   position: relative;
   width: var(--toggle-width);
   height: var(--toggle-height);
-  border-radius: 50%;
+  border-radius: var(--toggle-height);
   background: var(--fg-2);
   cursor: pointer;
   margin: 0;

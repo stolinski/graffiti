@@ -59,7 +59,26 @@ Use the `docs` subagent via the Task tool:
 Task(subagent_type="docs", prompt="...")
 ```
 
-### 4. Visual Testing with Chrome DevTools
+### 4. Create Demo for New Components
+
+For any NEW CSS component added to `drop-in.css`:
+
+1. Create a demo file in `src/docs/demos/` named after the component (e.g., `Toggle.svelte`)
+2. Add a CodeExample to `src/routes/+page.svelte` in the appropriate section
+3. Follow the DRY pattern:
+
+```svelte
+<script>
+  import ComponentName from "../docs/demos/ComponentName.svelte";
+  import componentCode from "../docs/demos/ComponentName.svelte?raw";
+</script>
+
+<CodeExample code={componentCode} title="Component Name">
+  <ComponentName />
+</CodeExample>
+```
+
+### 5. Visual Testing with Chrome DevTools
 
 After implementation, **always** verify visually:
 
@@ -79,30 +98,20 @@ chrome-devtools_take_screenshot()
 
 4. Test interactive states (hover, focus, open/closed) by clicking elements
 
-### 5. Create Demo for New Components
+### 6. Build and Commit Implementation
 
-For any NEW CSS component added to `drop-in.css`:
+Once visually verified:
 
-1. Create a demo file in `src/docs/demos/` named after the component (e.g., `Toggle.svelte`)
-2. Add a CodeExample to `src/routes/+page.svelte` in the appropriate section
-3. Follow the DRY pattern:
-
-```svelte
-<script>
-  import ComponentName from "../docs/demos/ComponentName.svelte";
-  import componentCode from "../docs/demos/ComponentName.svelte?raw";
-</script>
-
-<CodeExample code={componentCode} title="Component Name">
-  <ComponentName />
-</CodeExample>
+```bash
+pnpm build
+git add -A && git commit -m "Add [component name]"
 ```
 
-### 6. Create and Apply Changeset
+### 7. Release (FINAL STEP)
 
-**Before closing any issue** that adds/modifies components:
+**Only after everything is working and committed**, create and apply the changeset:
 
-#### 6a. Create a changeset
+#### 7a. Create a changeset
 
 ```bash
 pnpm changeset
@@ -124,7 +133,7 @@ Use:
 - `minor` for new features/components
 - `major` for breaking changes
 
-#### 6b. Apply the changeset to bump version
+#### 7b. Apply the changeset to bump version
 
 ```bash
 pnpm changeset version
@@ -136,13 +145,13 @@ This will:
 - Update `CHANGELOG.md`
 - Delete the consumed changeset files
 
-#### 6c. Commit the version bump
+#### 7c. Commit the version bump
 
 ```bash
 git add -A && git commit -m "Version X.X.X: [brief description]"
 ```
 
-### 7. Verify and Close
+### 8. Close the Issue
 
 Only close the issue when ALL of these are complete:
 
@@ -150,9 +159,10 @@ Only close the issue when ALL of these are complete:
 - [ ] Demo created in `src/docs/demos/` (for new components)
 - [ ] CodeExample added to docs (for new components)
 - [ ] Visually tested with chrome-devtools
+- [ ] Build passes (`pnpm build`)
+- [ ] Implementation committed
 - [ ] Changeset created AND applied (`pnpm changeset version`)
 - [ ] Version bump committed
-- [ ] Build passes (`pnpm build`)
 
 ```bash
 bd close <issue-id> --reason "Implemented [component], added demo, created changeset" --json
@@ -216,10 +226,10 @@ User: Implement graffiti-xyz (add toggle switch component)
 4. Task(docs) → create src/docs/demos/Toggle.svelte
 5. Task(docs) → add CodeExample to +page.svelte
 6. chrome-devtools_navigate_page → http://localhost:5173
-7. chrome-devtools_take_screenshot → verify visually
-8. Create changeset: "Added toggle switch component"
-9. pnpm build → verify no errors
-10. git add & commit implementation
+7. chrome-devtools_take_screenshot → verify visually (light & dark)
+8. pnpm build → verify no errors
+9. git add -A && git commit -m "Add toggle switch component"
+10. Create changeset file
 11. pnpm changeset version → bump version
 12. git add -A && git commit -m "Version X.X.X: toggle switch"
 13. bd close graffiti-xyz --reason "Implemented toggle, added demo, released vX.X.X"
@@ -227,9 +237,10 @@ User: Implement graffiti-xyz (add toggle switch component)
 
 ## Important Rules
 
-1. **Never close issues without a changeset** for new components/features
-2. **Always apply changesets** with `pnpm changeset version` before closing
-3. **Always visually verify** with chrome-devtools before closing
-4. **Always create demos** for new CSS components
-5. **Use the right subagent** - don't write CSS yourself, delegate to css agent
-6. **Keep docs clean** - no unnecessary wrappers or containers in demos
+1. **Always visually verify** with chrome-devtools before anything else
+2. **Always create demos** for new CSS components
+3. **Commit implementation first** before touching changesets
+4. **Changeset + version bump is the FINAL step** - only after everything works
+5. **Never close issues without applying changeset** (`pnpm changeset version`)
+6. **Use the right subagent** - don't write CSS yourself, delegate to css agent
+7. **Keep docs clean** - no unnecessary wrappers or containers in demos

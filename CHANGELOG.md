@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.7.0
+
+### Minor Changes
+
+- c315536: Added `.layout-sidebar.fill` modifier for full-height sidebars and `.split.vertical` for vertical space-between layouts. Also added `@property --layout-gap` to prevent gap values from cascading to nested layout elements.
+
 ## 4.6.0
 
 ### Minor Changes

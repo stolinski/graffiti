@@ -1621,6 +1621,15 @@ details.minimal[open] > summary::after {
     --avatar-size: 5rem;
     --fl: 2;
   }
+
+  /* Button reset for clickable avatars (dropdown triggers, etc.) */
+  &:is(button) {
+    border: none;
+    box-shadow: none;
+    background: var(--fg-1);
+    padding: 0;
+    cursor: pointer;
+  }
 }
 
 /* Toggle Switch */

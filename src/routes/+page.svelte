@@ -23,6 +23,8 @@
   import avatarCode from "../docs/demos/Avatar.svelte?raw";
   import AppShell from "../docs/demos/AppShell.svelte";
   import appShellCode from "../docs/demos/AppShell.svelte?raw";
+  import UserMenu from "../docs/demos/UserMenu.svelte";
+  import userMenuCode from "../docs/demos/UserMenu.svelte?raw";
   import type { ThemeValues, FontSettings } from "$lib/types";
 
   let theme_values: ThemeValues = $state({
@@ -873,6 +875,14 @@
     <h2 class="heading">Blocks</h2>
     <p>Complete UI patterns combining multiple elements and components.</p>
     <section class="demo-section stack">
+      <div class="stack">
+        <h3>User Menu</h3>
+        <p>User account dropdown combining avatar trigger with dropdown menu. Works with both image and initials avatars.</p>
+        <CodeExample code={userMenuCode} title="User Menu">
+          <UserMenu />
+        </CodeExample>
+      </div>
+
       <div class="stack">
         <h3>.header</h3>
         <p>Full-width header with navigation</p>

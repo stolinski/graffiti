@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.7.1
+
+### Patch Changes
+
+- Added user menu block - a composed pattern combining avatar trigger with dropdown menu for user account navigation. Works with both image and initials avatars. Also added button reset styles for clickable avatars.
+
 ## 4.7.0
 
 ### Minor Changes

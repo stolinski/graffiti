@@ -21,6 +21,8 @@
   import dropdownCode from "../docs/demos/Dropdown.svelte?raw";
   import Avatar from "../docs/demos/Avatar.svelte";
   import avatarCode from "../docs/demos/Avatar.svelte?raw";
+  import AppShell from "../docs/demos/AppShell.svelte";
+  import appShellCode from "../docs/demos/AppShell.svelte?raw";
   import type { ThemeValues, FontSettings } from "$lib/types";
 
   let theme_values: ThemeValues = $state({
@@ -401,6 +403,12 @@
         <main class="box">Main Content</main>
         <aside class="box">Sidebar</aside>
       </div>
+
+      <h4>.layout-sidebar.fill</h4>
+      <p>Full-height sticky sidebar for app shells. Combine with <code>.split.vertical</code> for sidebar internal layout.</p>
+      <CodeExample code={appShellCode} title="App Shell Layout">
+        <AppShell />
+      </CodeExample>
     </section>
 
     <!-- Layout Split -->
@@ -566,6 +574,13 @@
       <div class="split" style="background: var(--fg-05); padding: 1rem">
         <div class="box">Left Side</div>
         <div class="box">Right Side</div>
+      </div>
+
+      <h4>.split.vertical</h4>
+      <p>Vertical split - pushes first and last children to opposite ends</p>
+      <div class="split vertical" style="background: var(--fg-05); padding: 1rem; height: 200px;">
+        <div class="box">Top</div>
+        <div class="box">Bottom</div>
       </div>
     </section>
 

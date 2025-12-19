@@ -1,3 +1,10 @@
+/* Non-inheriting custom properties */
+@property --layout-gap {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1rem;
+}
+
 /* Typeography */
 :root {
   --font-sans:
@@ -683,6 +690,10 @@ label {
   &.even {
     flex: 1 1 auto;
   }
+  &.vertical {
+    flex-direction: column;
+    height: 100%;
+  }
 }
 
 .visually-hidden {
@@ -781,6 +792,22 @@ label {
   grid-template-columns: 1fr 350px;
 }
 
+.layout-sidebar.fill {
+  align-items: stretch;
+
+  > :first-child {
+    overflow-y: auto;
+  }
+}
+
+.layout-sidebar.fill.invert > :first-child {
+  overflow-y: visible;
+}
+
+.layout-sidebar.fill.invert > :last-child {
+  overflow-y: auto;
+}
+
 @media (width < 768px) {
   .layout-sidebar,
   .layout-sidebar.narrow,
@@ -789,6 +816,13 @@ label {
   .layout-sidebar.invert.narrow,
   .layout-sidebar.invert.wide {
     grid-template-columns: 1fr;
+  }
+
+  .layout-sidebar.fill > :first-child,
+  .layout-sidebar.fill.invert > :last-child {
+    position: static;
+    height: auto;
+    overflow-y: visible;
   }
 }
 

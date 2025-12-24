@@ -8,7 +8,7 @@
 </script>
 
 <main>
-  <header class="header" style="margin-inline: 0; width: 100%;">
+  <header class="header" style="width: 100%;">
     <div>
       <h1 class="fs-xxl heading" style="margin-top: 0; line-height: 1;">
         Graffiti

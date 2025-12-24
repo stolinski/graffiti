@@ -4,4 +4,6 @@
   import source from "../../../CHANGELOG.md?raw";
 </script>
 
-<SvelteMarkdown {source} />
+<div class="stack">
+  <SvelteMarkdown {source} />
+</div>

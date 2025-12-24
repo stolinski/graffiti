@@ -47,8 +47,8 @@
 
   <h4>&.invert</h4>
   <div class="layout-sidebar invert" style="background: var(--fg-05)">
-    <main class="box">Main Content</main>
     <aside class="box">Sidebar</aside>
+    <main class="box">Main Content</main>
   </div>
 
   <h4>&.fill</h4>

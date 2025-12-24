@@ -10,14 +10,14 @@
     fg_light: "#121212",
     fg_dark: "#ffffff",
     bg_light: "#ffffff",
-    bg_dark: "#121212",
+    bg_dark: "#050505",
   });
 
   let font_settings: FontSettings = $state({
     min_ratio: 6 / 5,
     max_ratio: 4 / 3,
-    min_font_size: 18,
-    max_font_size: 20,
+    min_font_size: 16,
+    max_font_size: 18,
     min_viewport: 320,
     max_viewport: 1500,
   });
@@ -132,8 +132,4 @@
       {@render children()}
     </section>
   </div>
-  <footer class="layout">
-    The website footer. I always hate doing footers for some reason. Just ignore
-    this.
-  </footer>
 </div>

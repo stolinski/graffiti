@@ -18,7 +18,7 @@
 <h1>UI Blocks</h1>
 <p>Common UI patterns done simply, without 100 classes.</p>
 
-<section class="demo-section stack">
+<section class=" stack">
   <h3>Accordion</h3>
   <p>
     Native HTML accordion using details/summary with smooth animations via
@@ -29,7 +29,7 @@
   </CodeExample>
 </section>
 
-<section class="demo-section stack">
+<section class=" stack">
   <h3>Breadcrumbs</h3>
   <p>
     Simple breadcrumb navigation with slash separators. Uses semantic HTML with
@@ -40,7 +40,7 @@
   </CodeExample>
 </section>
 
-<section class="demo-section stack">
+<section class=" stack">
   <h3>Dropdown Menu</h3>
   <p>
     Native dropdown menu using HTML popover API and CSS anchor positioning. No
@@ -51,7 +51,7 @@
   </CodeExample>
 </section>
 
-<section class="demo-section stack">
+<section class=" stack">
   <h3>Sidebar Navigation</h3>
   <p>
     Vertical navigation for app sidebars with collapsible sections. Uses native
@@ -67,7 +67,7 @@
   <AppShell />
 </CodeExample>
 
-<div class="stack">
+<section class="stack">
   <h3>.header</h3>
   <p>Full-width header with navigation</p>
   <header class="header">
@@ -81,7 +81,7 @@
     </nav>
   </header>
 
-  <h3>.header.border</h3>
+  <h4>&.border</h4>
   <p>Header with subtle border on bottom</p>
   <header class="header border">
     <h6>Your Logo</h6>
@@ -94,7 +94,7 @@
     </nav>
   </header>
 
-  <h3>.header.sticky</h3>
+  <h4>&.sticky</h4>
   <p>Header that sticks to the top when scrolling</p>
   <header class="header border sticky">
     <span>Sticky Header</span>
@@ -106,12 +106,12 @@
       </ul>
     </nav>
   </header>
-</div>
+</section>
 
-<section class="demo-section stack">
+<section class="stack">
   <h3>.swipe</h3>
   <p>Interactive swipe component</p>
-  <div class="swipe" {@attach swipe_event(70, () => {})}>
+  <div class="swipe">
     <button style="background: var(--red);">❌</button>
     <div style="min-height: 200px">
       <p>
@@ -121,43 +121,24 @@
     </div>
     <button style="background: var(--green);">✅</button>
   </div>
-  <h3>.swipe.stop</h3>
+  <h4>&.stop</h4>
   <p>Swiper that stays in it's "open" state.</p>
   <div class="swipe stop">
     <button style="background: var(--red);">❌</button>
     <div {@attach scroll_on_load} style="min-height: 100px">
-      <p>
-        You can swipe me side to side, minor JavaScript needed for Safari.
-        (although you do need JS for events)
-      </p>
-    </div>
-    <button style="background: var(--green);">✅</button>
-  </div>
-
-  <h3>.swipe.stop.full-bleed</h3>
-  <p>Swiper that stays in it's "open" state.</p>
-  <div class="swipe stop full-bleed">
-    <button style="background: var(--red);">❌</button>
-    <div style="min-height: 100px" {@attach scroll_on_load}>
-      <p>
-        You can swipe me side to side, no JavaScript. (although you do need JS
-        for events)
-      </p>
+      <p>You can swipe me side to side, minor JavaScript needed for Safari</p>
     </div>
     <button style="background: var(--green);">✅</button>
   </div>
 
   <p>You can have multiple buttons of various styles too.</p>
-  <div class="swipe stop full-bleed">
+  <div class="swipe stop">
     <div class="split even" style="--gap: 10px; padding: var(--pad-m)">
       <button style="height: 100%">Hide</button>
       <button style="height: 100%">Save</button>
     </div>
     <div style="min-height: 100px" {@attach scroll_on_load}>
-      <p>
-        You can swipe me side to side, no JavaScript. (although you do need JS
-        for events)
-      </p>
+      <p>You can swipe me side to side, minor JavaScript needed for Safari</p>
     </div>
     <div class="split even" style="--gap: 10px; padding: var(--pad-m)">
       <button style="height: 100%">Up</button>

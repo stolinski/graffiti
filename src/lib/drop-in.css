@@ -314,8 +314,8 @@
   --bg-9: var(--bg);
 
   /* Fluid Type */
-  --font-size-min: 18;
-  --font-size-max: 20;
+  --font-size-min: 16;
+  --font-size-max: 18;
   --font-ratio-min: 1.2;
   --font-ratio-max: 1.33;
   --font-width-min: 320;
@@ -800,6 +800,17 @@ label {
 
 .layout-sidebar.invert {
   grid-template-columns: 1fr 250px;
+
+  /* Place first child (sidebar) in second column, second child (main) in first column */
+  > :first-child {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  > :nth-child(2) {
+    grid-column: 1;
+    grid-row: 1;
+  }
 }
 
 .layout-sidebar.invert.narrow {
@@ -813,35 +824,15 @@ label {
 .layout-sidebar.fill {
   align-items: stretch;
 
+  /* Sidebar is always :first-child in DOM, even for .invert (CSS grid handles visual placement) */
   > :first-child {
     overflow-y: auto;
   }
 }
 
-.layout-sidebar.fill.invert > :first-child {
-  overflow-y: visible;
-}
-
-.layout-sidebar.fill.invert > :last-child {
-  overflow-y: auto;
-}
-
 /* Fixed sidebar - stays pinned while main content scrolls */
+/* Sidebar is always :first-child in DOM, even for .invert (CSS grid handles visual placement) */
 .layout-sidebar.fixed > :first-child {
-  position: sticky;
-  top: 0;
-  align-self: start;
-  max-height: 100dvh;
-  overflow-y: auto;
-}
-
-.layout-sidebar.fixed.invert > :first-child {
-  position: static;
-  max-height: none;
-  overflow-y: visible;
-}
-
-.layout-sidebar.fixed.invert > :last-child {
   position: sticky;
   top: 0;
   align-self: start;
@@ -859,10 +850,16 @@ label {
     grid-template-columns: 1fr;
   }
 
+  /* Reset grid placement for invert on mobile so items stack in DOM order */
+  .layout-sidebar.invert > :first-child,
+  .layout-sidebar.invert > :nth-child(2) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  /* Reset fill/fixed sidebar styles on mobile - sidebar is always :first-child */
   .layout-sidebar.fill > :first-child,
-  .layout-sidebar.fill.invert > :last-child,
-  .layout-sidebar.fixed > :first-child,
-  .layout-sidebar.fixed.invert > :last-child {
+  .layout-sidebar.fixed > :first-child {
     position: static;
     height: auto;
     max-height: none;
@@ -1025,10 +1022,6 @@ label {
       }
     }
   }
-  &.full-bleed {
-    width: 100vi;
-    margin-inline: calc(50% - 50vi);
-  }
 }
 
 /* Thank you Adam Argyle @argyleink for this hack.*/
@@ -1096,12 +1089,10 @@ label {
 /* UI Elements */
 
 .header {
-  width: 100vi;
-  margin-inline: calc(50% - 50vi);
   display: flex;
   gap: 20px;
   align-items: center;
-  padding: var(--pad-l) var(--pad-l);
+  padding: var(--pad-l);
   justify-content: space-between;
   > * {
     margin: 0;

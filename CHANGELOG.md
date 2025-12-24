@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.8.1
+
+### Patch Changes
+
+- Updated callout styles and added br-xl border radius utility
+
 ## 4.8.0
 
 ### Minor Changes

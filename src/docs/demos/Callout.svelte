@@ -5,8 +5,11 @@
   </div>
 
   <!-- Warning variant -->
-  <div class="callout warning">
-    <p>Warning callout for important notices that need attention.</p>
+  <div class="callout warning fill">
+    <p>
+      .fill to fill bg color. Warning callout for important notices that need
+      attention.
+    </p>
   </div>
 
   <!-- Error variant -->
@@ -20,13 +23,16 @@
   </div>
 
   <!-- Ghost variant -->
-  <div class="callout ghost">
+  <div class="callout ghost split">
     <p>Ghost callout for subtle, neutral messages.</p>
+    <button class="mini">With Button</button>
   </div>
 
   <!-- Hard modifier (stronger left border) -->
   <div class="callout hard">
-    <p>Add <code>.hard</code> to any variant for a stronger left border accent.</p>
+    <p>
+      Add <code>.hard</code> to any variant for a stronger left border accent.
+    </p>
   </div>
 
   <div class="callout warning hard">
@@ -34,8 +40,8 @@
   </div>
 
   <!-- Multi-element callout -->
-  <div class="callout success">
+  <div class="callout success stack">
     <h5>Callouts support multiple elements</h5>
-    <p>They automatically stack children with consistent spacing.</p>
+    <p>Use .stack fo children with consistent spacing.</p>
   </div>
 </div>

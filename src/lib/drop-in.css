@@ -14,20 +14,20 @@
   --min-vw: 360;
   --max-vw: 800;
 
-  --line-height: calc(2px + 2ex + 2px);
-
   /* Vertical Spacing */
   --vs-s: 0.5rem;
   --vs-base: 1rem;
   --vs-m: 1.5rem;
   --vs-l: 2rem;
   --vs-xl: 4rem;
+  --vs-xxl: 6rem;
 
   /* Border Radius */
   --br-xs: 2px;
   --br-s: 4px;
   --br-m: 8px;
   --br-l: 16px;
+  --br-xl: 24px;
 
   /* Padding */
   --pad-xs: 0.25rem;
@@ -37,6 +37,14 @@
   --pad-xl: 1.5rem;
   --pad-xxl: 2rem;
   --pad-xxxl: 4rem;
+
+  /* Line Height */
+  --lh-xs: 1;
+  --lh-s: 1.2;
+  --lh: 1.5;
+  --lh-m: var(--lh);
+  --lh-l: 1.8;
+  --lh-xl: 2;
 
   /* Shadows - Layered, adaptive shadows with light/dark mode support */
   --shadow-1: 0 1px 2px rgb(0 0 0 / 0.04);
@@ -306,17 +314,12 @@
   --bg-9: var(--bg);
 
   /* Fluid Type */
-  --font-size-min: 14;
-  --font-size-max: 18;
+  --font-size-min: 18;
+  --font-size-max: 20;
   --font-ratio-min: 1.2;
   --font-ratio-max: 1.33;
   --font-width-min: 320;
   --font-width-max: 1500;
-
-  /* Line Height Tokens */
-  --lh-tight: 1.2;
-  --lh-normal: 1.5;
-  --lh-loose: 1.8;
 
   /* Border Tokens */
   --border-05: solid 1px var(--fg-05);
@@ -417,7 +420,7 @@ footer {
 
 body {
   font-family: var(--font-sans);
-  line-height: var(--lh-normal);
+  line-height: var(--lh);
   margin: 0;
   min-height: 100vh;
   color: var(--fg);
@@ -476,6 +479,7 @@ td {
   );
   font-size: var(--fluid-type);
   margin-block: 0 var(--vs-base);
+  line-height: var(--lh);
 }
 
 /* This makes containers, with container queries use a cqi unit instead of vi */
@@ -519,6 +523,7 @@ textarea,
 button,
 select {
   --fl: 0;
+  line-height: var(--lh);
 }
 .fs-xs {
   --fl: -1;
@@ -529,7 +534,8 @@ select {
 .fs-s {
   --fl: 1;
 }
-.fs-m {
+.fs-m,
+.pull-quote {
   --fl: 2;
 }
 .fs-l {
@@ -567,7 +573,7 @@ button,
   justify-content: center;
   gap: var(--gap, 1rem);
   align-items: center;
-  line-height: var(--lh-normal);
+  line-height: var(--lh);
   border: var(--border-05);
   border-radius: var(--br-s);
   padding: var(--pad-s) var(--pad-xl);
@@ -820,6 +826,29 @@ label {
   overflow-y: auto;
 }
 
+/* Fixed sidebar - stays pinned while main content scrolls */
+.layout-sidebar.fixed > :first-child {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  max-height: 100dvh;
+  overflow-y: auto;
+}
+
+.layout-sidebar.fixed.invert > :first-child {
+  position: static;
+  max-height: none;
+  overflow-y: visible;
+}
+
+.layout-sidebar.fixed.invert > :last-child {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  max-height: 100dvh;
+  overflow-y: auto;
+}
+
 @media (width < 768px) {
   .layout-sidebar,
   .layout-sidebar.narrow,
@@ -831,9 +860,12 @@ label {
   }
 
   .layout-sidebar.fill > :first-child,
-  .layout-sidebar.fill.invert > :last-child {
+  .layout-sidebar.fill.invert > :last-child,
+  .layout-sidebar.fixed > :first-child,
+  .layout-sidebar.fixed.invert > :last-child {
     position: static;
     height: auto;
+    max-height: none;
     overflow-y: visible;
   }
 }
@@ -1042,24 +1074,21 @@ label {
   border: var(--border-1);
 }
 
-.box-ghost {
+.box.ghost {
   background: transparent;
-  padding: var(--pad-m);
-  border-radius: var(--br-s);
-  border: var(--border-1);
 }
 
-.box-glow {
-  background: var(--fg-05);
-  padding: var(--pad-m);
-  border-radius: var(--br-s);
+.box.invisible {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.box.glow {
   box-shadow: var(--box);
 }
 
-.box-semi-gloss {
-  background: var(--fg-05);
-  padding: var(--pad-m);
-  border-radius: var(--br-s);
+.box.semi-gloss {
   box-shadow: var(--box), var(--shadow-5);
   background: linear-gradient(180deg, var(--fg-05) 0%, var(--fg-1) 100%);
 }
@@ -1108,18 +1137,18 @@ label {
   --callout-color: var(--blue-1);
   --callout-border-color: var(--blue-5);
   padding: var(--pad-l);
-  border-radius: var(--br-m);
-  border: var(--callout-border-color) solid 1px;
-  background: var(--callout-color);
+  border-radius: var(--br-xl);
+  corner-shape: squircle;
+  border: var(--callout-border-color) solid 2px;
   color: var(--fg-8);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   gap: var(--layout-gap, var(--gap, 1rem));
 
   > * {
     margin: 0;
+  }
+
+  &.fill {
+    background: var(--callout-color);
   }
 
   &.warning {
@@ -1143,7 +1172,7 @@ label {
   }
 
   &.hard {
-    border-inline-start: 6px solid var(--callout-border-color);
+    border-inline-start: 10px solid var(--callout-border-color);
   }
 }
 
@@ -1512,7 +1541,7 @@ details.minimal[open] > summary::after {
   }
 
   /* Active state for links */
-  > a.active,
+  > [aria-current="page"],
   > details > summary.active {
     background: var(--fg-05);
     color: var(--fg);
@@ -1825,4 +1854,8 @@ input[type="checkbox"].toggle {
     --toggle-width: 2em;
     --toggle-height: 1.125em;
   }
+}
+
+::selection {
+  background: var(--primary);
 }

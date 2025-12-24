@@ -37,6 +37,8 @@ import '@drop-in/graffiti/decks'  // Optional decks components
 - `--br-s`: 4px
 - `--br-m`: 8px
 - `--br-l`: 16px
+- `--br-xl`: 24px
+- `--br-xxl`: 32px
 
 ### Borders
 - `--border-05`: solid 1px var(--fg-05) (subtle border)
@@ -63,9 +65,12 @@ Layered, adaptive shadows (deeper in dark mode):
 - `--box`: Inset highlights with subtle shadow
 
 ### Line Heights
-- `--lh-tight`: 1.2 (tight line height for headings/display text)
-- `--lh-normal`: 1.5 (default for body text)
-- `--lh-loose`: 1.8 (extra space for large body text)
+- `--lh-xs`: 1 (extra tight, single line height)
+- `--lh-s`: 1.2 (tight line height for headings/display text)
+- `--lh`: 1.5 (default for body text)
+- `--lh-m`: var(--lh) (alias for default)
+- `--lh-l`: 1.8 (extra space for large body text)
+- `--lh-xl`: 2 (very loose, double line height)
 
 ### Easing Functions
 Modern `linear()` based easing functions:
@@ -191,6 +196,7 @@ Contrasting tints that automatically adapt to light/dark mode. Useful for layere
 - `.fs-xl`: Extra large (--fl: 4)
 - `.fs-xxl`: Double extra large (--fl: 5)
 - `.fs-xxxl`: Triple extra large (--fl: 6)
+- `.pull-quote`: Styled pull quote text (--fl: 2)
 
 ### Heading Classes
 - `.h1` through `.h6`: Apply heading styles to non-heading elements
@@ -427,9 +433,10 @@ Vertical scrolling with CSS scroll-snap (no JavaScript required)
 
 ### Box Styles
 - `.box`: Basic box with tint background, padding, border radius, and border
-- `.box-ghost`: Transparent background with border (outline style)
-- `.box-glow`: Box with subtle inset glow shadow
-- `.box-semi-gloss`: Gradient background with stronger shadow (premium feel)
+- `.box.ghost`: Transparent background with border (outline style)
+- `.box.glow`: Box with subtle inset glow shadow
+- `.box.semi-gloss`: Gradient background with stronger shadow (premium feel)
+- `.box.invisible`: Transparent background with no border or shadow
 
 ### Avatar
 Circular avatar for user images or initials:

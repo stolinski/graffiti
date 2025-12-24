@@ -167,6 +167,8 @@
     border-radius: var(--br-m);
     overflow: hidden;
     margin-block: var(--vs-m);
+    width: 100%;
+    contain: inline-size;
   }
 
   .example-header {
@@ -183,6 +185,7 @@
   .preview-container {
     position: relative;
     min-height: 100px;
+    max-width: 100%;
     resize: horizontal;
     overflow: auto;
     border-bottom: var(--border-1);
@@ -197,6 +200,7 @@
     padding: var(--pad-l);
     background: var(--bg);
     min-height: 100px;
+    overflow: hidden;
   }
 
   .resize-handle {

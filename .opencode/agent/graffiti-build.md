@@ -1,6 +1,6 @@
 ---
 description: Graffiti build agent - orchestrates CSS implementation, documentation, visual testing, and changesets. Use for implementing new components, blocks, or features from beads issues.
-model: claude-sonnet-4-20250514
+model: anthropic/claude-opus-4-5
 tools:
   task: true
   bash: true

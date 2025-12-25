@@ -284,7 +284,7 @@
   --black-8: oklch(from var(--black) l c h / 0.9);
   --black-9: var(--black);
 
-  --fg-light: #000;
+  --fg-light: #050505;
   --fg-dark: #fff;
   --fg: light-dark(var(--fg-light), var(--fg-dark));
   --fg-05: oklch(from var(--fg) l c h / 0.05);
@@ -299,7 +299,7 @@
   --fg-9: var(--fg);
 
   --bg-light: #fff;
-  --bg-dark: #111;
+  --bg-dark: #050505;
   --bg: light-dark(var(--bg-light), var(--bg-dark));
 
   --bg-05: oklch(from var(--bg) l c h / 0.05);

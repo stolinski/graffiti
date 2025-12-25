@@ -15,6 +15,9 @@ const config = {
     alias: {
       $docs: "src/docs",
     },
+    version: {
+      name: process.env.npm_package_version,
+    },
   },
 };
 

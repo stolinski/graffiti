@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { version } from "$app/environment";
   import { page } from "$app/state";
   import "$lib/drop-in.css";
   import type { FontSettings, ThemeValues } from "$lib/types";
@@ -7,7 +8,7 @@
   const { children } = $props();
 
   let theme_values: ThemeValues = $state({
-    fg_light: "#121212",
+    fg_light: "#050505",
     fg_dark: "#ffffff",
     bg_light: "#ffffff",
     bg_dark: "#050505",
@@ -122,7 +123,7 @@
         >
       </nav>
       <div class="stack" style="padding: var(--pad-s) var(--pad-m);">
-        <small>v4.8.0</small>
+        <small>v{version}</small>
       </div>
     </aside>
     <section

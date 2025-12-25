@@ -3,10 +3,11 @@
 
 <section class="stack">
   <h1>CSS Utilities</h1>
+  <p class="pull-quote">These utility classes actually have utility.</p>
   <p>
-    These utility classes actually have utility. We aren't replicating CSS with
-    classnames, but providing real functionality to be combined or used
-    individually.
+    We aren't replicating CSS with classnames, but providing real functionality
+    to be combined or used individually. If you want a common layout or pattern
+    or even automatic color contrast, we've got you.
   </p>
 </section>
 

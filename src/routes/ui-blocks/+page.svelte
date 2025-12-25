@@ -15,9 +15,17 @@
   import { scroll_on_load, swipe_event } from "$lib/svelte";
 </script>
 
-<h1>UI Blocks</h1>
-<p>Common UI patterns done simply, without 100 classes.</p>
-
+<div class="stack readable">
+  <h1>UI Blocks</h1>
+  <p class="pull-quote">Common UI patterns done simply, without 100 classes.</p>
+  <p>
+    These are common, UI patterns that can be accomplished easily with a couple
+    of classes or a combination of other Graffiti elements. Many other UI
+    libraries make you bring in a react component with endless props options and
+    clutter. Cut that out with real, practical html and css that you can connect
+    to your framework of choice. Clientside or otherwise.
+  </p>
+</div>
 <section class=" stack">
   <h3>Accordion</h3>
   <p>

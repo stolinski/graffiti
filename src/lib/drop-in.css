@@ -580,7 +580,6 @@ button,
   padding: var(--pad-s) var(--pad-xl);
   text-decoration: none;
   box-shadow: var(--input-shadow);
-  color: oklch(from var(--button-color) var(--l) 0 h / 1);
   &:hover {
     background: var(--fg-05);
   }
@@ -841,6 +840,10 @@ label {
   overflow-y: auto;
 }
 
+.layout-sidebar.layout-readable {
+  --max-width: 1400px;
+}
+
 @media (width < 768px) {
   .layout-sidebar,
   .layout-sidebar.narrow,
@@ -911,6 +914,7 @@ label {
   width: 100%;
   max-width: var(--layout-max-width, var(--max-width, 1200px));
   padding-inline: var(--layout-padding, var(--padding, 2rem));
+  margin: 0 auto;
 }
 
 .layout-readable.center {
@@ -1122,6 +1126,11 @@ label {
     top: 0;
     z-index: 10;
     background: var(--bg);
+  }
+  &.readable {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-inline: var(--layout-padding, var(--padding, 2rem));
   }
 }
 
@@ -1845,6 +1854,43 @@ input[type="checkbox"].toggle {
   &.compact {
     --toggle-width: 2em;
     --toggle-height: 1.125em;
+  }
+}
+
+/* Input Group - Connected input + button */
+.input-group {
+  display: flex;
+  align-items: stretch;
+
+  /* Input takes available space */
+  > input {
+    flex: 1;
+    min-width: 0;
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+    margin: 0;
+  }
+
+  > button,
+  > .button {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+    margin: 0;
+    flex-shrink: 0;
+
+    &:active {
+      translate: none;
+    }
+  }
+
+  /* Focus states - ensure outline is visible above siblings */
+  > input:focus-visible {
+    z-index: 1;
+  }
+
+  > button:focus-visible,
+  > .button:focus-visible {
+    z-index: 1;
   }
 }
 

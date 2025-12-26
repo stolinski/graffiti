@@ -232,7 +232,7 @@
       ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
       "Liberation Mono", monospace;
     --fl: -1;
-    line-height: var(--lh-loose);
+    line-height: var(--lh-l);
   }
 
   .code-content :global(pre) {

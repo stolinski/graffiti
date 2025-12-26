@@ -8,6 +8,8 @@
   import detailsCode from "$docs/demos/Details.svelte?raw";
   import Dropdown from "$docs/demos/Dropdown.svelte";
   import dropdownCode from "$docs/demos/Dropdown.svelte?raw";
+  import InputGroup from "$docs/demos/InputGroup.svelte";
+  import inputGroupCode from "$docs/demos/InputGroup.svelte?raw";
   import SidebarNav from "$docs/demos/SidebarNav.svelte";
   import sidebarNavCode from "$docs/demos/SidebarNav.svelte?raw";
   import UserMenu from "$docs/demos/UserMenu.svelte";
@@ -56,6 +58,17 @@
   </p>
   <CodeExample code={dropdownCode} title="Dropdown Menu">
     <Dropdown />
+  </CodeExample>
+</section>
+
+<section class=" stack">
+  <h3>Input Group</h3>
+  <p>
+    Input field with connected button - commonly used for copy-to-clipboard, search,
+    or form submission patterns. Works with all button variants.
+  </p>
+  <CodeExample code={inputGroupCode} title="Input Group">
+    <InputGroup />
   </CodeExample>
 </section>
 

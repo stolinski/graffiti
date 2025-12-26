@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.10.0
+
+### Minor Changes
+
+- Added input-group component for connected input + button patterns, commonly used for copy-to-clipboard, search, and form submission UIs
+
 ## 4.9.0
 
 ### Minor Changes

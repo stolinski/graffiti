@@ -796,6 +796,18 @@ Usage:
 </label>
 ```
 
+### Input Group
+Connected input + button as a single visual unit. Use for copy-to-clipboard, search bars, URL sharing, command snippets, or any input that needs an action button attached.
+
+```html
+<div class="input-group">
+  <input type="text" value="https://example.com" readonly>
+  <button>Copy</button>
+</div>
+```
+
+The input stretches to fill space, button stays sized to content. Add any button variant class to the button (`.primary`, `.mini`, etc).
+
 ### Auto-Color
 Automatically sets text color (light or dark) based on background luminosity:
 - `.auto-color`: Applies automatic contrast text color

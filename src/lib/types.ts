@@ -3,6 +3,7 @@ export type ThemeValues = {
   fg_dark: string;
   bg_light: string;
   bg_dark: string;
+  primary: string;
 };
 
 export type FontSettings = {

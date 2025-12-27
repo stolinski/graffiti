@@ -389,6 +389,7 @@
 
 html {
   box-sizing: border-box;
+  scroll-padding-top: 60px;
 }
 
 html,
@@ -1606,6 +1607,12 @@ details.minimal[open] > summary::after {
         color: var(--fg);
       }
     }
+  }
+
+  /* Sub-item modifier for top-level links (same style as nested details links) */
+  > a.sub {
+    padding-inline-start: calc(var(--pad-m) + var(--sidebar-nav-indent));
+    color: var(--fg-5);
   }
 }
 

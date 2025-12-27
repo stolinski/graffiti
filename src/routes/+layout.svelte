@@ -175,24 +175,42 @@
           aria-current={page.url.pathname.startsWith("/base") ? "page" : null}
           href="/base">Base</a
         >
+        {#if page.url.pathname.startsWith("/base")}
+          <a href="/base#typography" class="sub">Typography</a>
+          <a href="/base#variables" class="sub">Variables & Tokens</a>
+          <a href="/base#colors" class="sub">Colors</a>
+          <a href="/base#forms" class="sub">Forms</a>
+        {/if}
         <a
           aria-current={page.url.pathname.startsWith("/utilities")
             ? "page"
             : null}
           href="/utilities">Utilities</a
         >
+        {#if page.url.pathname.startsWith("/utilities")}
+          <a href="/utilities#layouts" class="sub">Layouts</a>
+          <a href="/utilities#organization" class="sub">Organization</a>
+          <a href="/utilities#handy" class="sub">Handy Stuff</a>
+          <a href="/utilities#font-sizing" class="sub">Font Sizing</a>
+        {/if}
         <a
           aria-current={page.url.pathname.startsWith("/elements")
             ? "page"
             : null}
           href="/elements">Elements</a
         >
+        {#if page.url.pathname.startsWith("/elements")}
+          <a href="/elements#forms" class="sub">Forms</a>
+        {/if}
         <a
           aria-current={page.url.pathname.startsWith("/ui-blocks")
             ? "page"
             : null}
           href="/ui-blocks">UI Blocks</a
         >
+        {#if page.url.pathname.startsWith("/ui-blocks")}
+          <a href="/ui-blocks#forms" class="sub">Forms</a>
+        {/if}
         <a
           aria-current={page.url.pathname.startsWith("/changelog")
             ? "page"

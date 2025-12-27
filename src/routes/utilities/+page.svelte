@@ -13,7 +13,7 @@
 
 <!-- Layout Card -->
 
-<h2 class="heading">Layouts</h2>
+<h2 class="heading" id="layouts">Layouts</h2>
 <section class="stack">
   <h3>.layout-card</h3>
   <p>Auto-fill responsive card grid</p>
@@ -131,7 +131,7 @@
   </div> -->
 </section>
 
-<h2 class="heading">Organization</h2>
+<h2 class="heading" id="organization">Organization</h2>
 <p>Group and cluster your stuff in common ways.</p>
 <section>
   <h3>.stack</h3>
@@ -201,7 +201,7 @@
   </div>
 </section>
 
-<h2 class="heading">Handy Stuff</h2>
+<h2 class="heading" id="handy">Handy Stuff</h2>
 
 <section class="stack">
   <h3>.readable</h3>
@@ -347,7 +347,7 @@
     </div>
   </div>
 </section>
-<h2 class="heading">Font Sizing</h2>
+<h2 class="heading" id="font-sizing">Font Sizing</h2>
 <section class="stack">
   <div class="stack">
     <h3>.h1 - .h6</h3>

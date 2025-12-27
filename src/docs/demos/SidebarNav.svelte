@@ -67,6 +67,9 @@
     </svg>
     Views
   </a>
+  <a href="#all-issues" class="sub">All Issues</a>
+  <a href="#my-issues" class="sub">My Issues</a>
+  <a href="#backlog" class="sub">Backlog</a>
 
   <a href="#settings">
     <svg viewBox="0 0 20 20" fill="currentColor">

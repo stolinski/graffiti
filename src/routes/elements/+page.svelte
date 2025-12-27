@@ -12,6 +12,8 @@
   import Callout from "$docs/demos/Callout.svelte";
   import Toggle from "$docs/demos/Toggle.svelte";
   import toggleCode from "$docs/demos/Toggle.svelte?raw";
+  import InputGroup from "$docs/demos/InputGroup.svelte";
+  import inputGroupCode from "$docs/demos/InputGroup.svelte?raw";
 </script>
 
 <section class="stack readable">
@@ -172,61 +174,32 @@
   </CodeExample>
 </section>
 
-<h2 class="heading">Forms</h2>
+<h2 class="heading" id="forms">Forms</h2>
+
+<section class="stack readable">
+  <p>
+    Form elements with minimal classes. For default input styling see <a href="/base#forms">Base → Forms</a>.
+    For complete form patterns see <a href="/ui-blocks#forms">UI Blocks → Forms</a>.
+  </p>
+</section>
 
 <section class="stack">
-  <div class="stack">
-    <h3>Toggle Switch</h3>
-    <p>Accessible toggle/switch input using native checkbox semantics</p>
-    <CodeExample code={toggleCode} title="Toggle Variants">
-      <Toggle />
-    </CodeExample>
-  </div>
-
-  <div class="stack">
-    <h3>Form Validation States</h3>
-    <p>Built-in styles for error, success, and warning states</p>
-
-    <form class="stack" style="max-width: 500px">
-      <div class="stack" style="--gap: 0.5rem">
-        <label for="email-error">Email (error state)</label>
-        <input
-          type="email"
-          id="email-error"
-          class="error"
-          value="invalid-email"
-        />
-        <small class="error">Please enter a valid email address</small>
-      </div>
-
-      <div class="stack" style="--gap: 0.5rem">
-        <label for="username-success">Username (success state)</label>
-        <input
-          type="text"
-          id="username-success"
-          class="success"
-          value="cool_username"
-        />
-        <small class="success">Username is available!</small>
-      </div>
-
-      <div class="stack" style="--gap: 0.5rem">
-        <label for="password-warning">Password (warning state)</label>
-        <input
-          type="password"
-          id="password-warning"
-          class="warning"
-          value="password123"
-        />
-        <small class="warning"
-          >Password is weak. Consider using a stronger password.</small
-        >
-      </div>
-
-      <div class="stack" style="--gap: 0.5rem">
-        <label for="name-default">Full Name (default state)</label>
-        <input type="text" id="name-default" placeholder="Enter your name" />
-      </div>
-    </form>
-  </div>
+  <h3>Toggle Switch</h3>
+  <p>Accessible toggle/switch input using native checkbox semantics</p>
+  <CodeExample code={toggleCode} title="Toggle Variants">
+    <Toggle />
+  </CodeExample>
 </section>
+
+<section class="stack">
+  <h3>Input Group</h3>
+  <p>
+    Input field with connected button - commonly used for copy-to-clipboard, search,
+    or form submission patterns. Works with all button variants.
+  </p>
+  <CodeExample code={inputGroupCode} title="Input Group">
+    <InputGroup />
+  </CodeExample>
+</section>
+
+

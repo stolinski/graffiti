@@ -58,7 +58,7 @@
     dark mode out of the box.
   </p>
 </section>
-<h2 class="heading">Typography Defaults</h2>
+<h2 class="heading" id="typography">Typography</h2>
 <section class="stack">
   <h1>H1 - Large Heading</h1>
   <h2>H2 - Med Heading</h2>
@@ -73,7 +73,7 @@
     nisi ut aliquip ex ea commodo consequat.
   </p>
 </section>
-<h2 class="heading">Variables & Tokens</h2>
+<h2 class="heading" id="variables">Variables & Tokens</h2>
 <section class="stack">
   <h3>Vertical Spacing</h3>
   <div class="layout-card" style="--min-card-width: 150px">
@@ -185,8 +185,8 @@
   </div>
 </section>
 
+<h2 class="heading" id="colors">Colors</h2>
 <section class="stack">
-  <h3>Colors</h3>
   <p>
     OKLCH color system with automatic 1-9 scales generated from base colors
     (scale 5) using relative color syntax
@@ -255,4 +255,92 @@
       </div>
     </div>
   {/each}
+</section>
+
+<h2 class="heading" id="forms">Forms</h2>
+<section class="stack readable">
+  <p>
+    Default styling for form inputs - no classes required. For form elements
+    like toggles and input groups see <a href="/elements#forms"
+      >Elements → Forms</a
+    >. For complete form patterns see
+    <a href="/ui-blocks#forms">UI Blocks → Forms</a>.
+  </p>
+</section>
+
+<section class="stack">
+  <h3>Text Inputs</h3>
+  <p>Native input, textarea, and select elements are styled automatically.</p>
+  <div class="stack" style="max-width: 400px">
+    <div class="stack" style="--gap: 0.5rem">
+      <label for="demo-text">Text Input</label>
+      <input type="text" id="demo-text" placeholder="Enter text..." />
+    </div>
+    <div class="stack" style="--gap: 0.5rem">
+      <label for="demo-email">Email Input</label>
+      <input type="email" id="demo-email" placeholder="you@example.com" />
+    </div>
+    <div class="stack" style="--gap: 0.5rem">
+      <label for="demo-password">Password Input</label>
+      <input type="password" id="demo-password" placeholder="••••••••" />
+    </div>
+    <div class="stack" style="--gap: 0.5rem">
+      <label for="demo-textarea">Textarea</label>
+      <textarea id="demo-textarea" rows="3" placeholder="Enter longer text..."
+      ></textarea>
+    </div>
+    <div class="stack" style="--gap: 0.5rem">
+      <label for="demo-select">Select</label>
+      <select id="demo-select">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section class="stack">
+  <h3>Validation States</h3>
+  <p>
+    Add <code>.error</code>, <code>.success</code>, or <code>.warning</code> classes
+    to inputs for validation feedback.
+  </p>
+
+  <div class="stack" style="max-width: 400px">
+    <div class="stack" style="--gap: 0.5rem">
+      <label for="email-error">Email (error state)</label>
+      <input
+        type="email"
+        id="email-error"
+        class="error"
+        value="invalid-email"
+      />
+      <small class="error">Please enter a valid email address</small>
+    </div>
+
+    <div class="stack" style="--gap: 0.5rem">
+      <label for="username-success">Username (success state)</label>
+      <input
+        type="text"
+        id="username-success"
+        class="success"
+        value="cool_username"
+      />
+      <small class="success">Username is available!</small>
+    </div>
+
+    <div class="stack" style="--gap: 0.5rem">
+      <label for="password-warning">Password (warning state)</label>
+      <input
+        type="password"
+        id="password-warning"
+        class="warning"
+        value="password123"
+      />
+      <small class="warning"
+        >Password is weak. Consider using a stronger password.</small
+      >
+    </div>
+  </div>
 </section>

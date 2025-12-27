@@ -8,8 +8,6 @@
   import detailsCode from "$docs/demos/Details.svelte?raw";
   import Dropdown from "$docs/demos/Dropdown.svelte";
   import dropdownCode from "$docs/demos/Dropdown.svelte?raw";
-  import InputGroup from "$docs/demos/InputGroup.svelte";
-  import inputGroupCode from "$docs/demos/InputGroup.svelte?raw";
   import SidebarNav from "$docs/demos/SidebarNav.svelte";
   import sidebarNavCode from "$docs/demos/SidebarNav.svelte?raw";
   import UserMenu from "$docs/demos/UserMenu.svelte";
@@ -62,22 +60,12 @@
 </section>
 
 <section class=" stack">
-  <h3>Input Group</h3>
-  <p>
-    Input field with connected button - commonly used for copy-to-clipboard, search,
-    or form submission patterns. Works with all button variants.
-  </p>
-  <CodeExample code={inputGroupCode} title="Input Group">
-    <InputGroup />
-  </CodeExample>
-</section>
-
-<section class=" stack">
   <h3>Sidebar Navigation</h3>
   <p>
     Vertical navigation for app sidebars with collapsible sections. Uses native
-    details/summary for expand/collapse. Add <code>.active</code> class to show current
-    page.
+    details/summary for expand/collapse. Add <code>.active</code> class to show
+    current page. Use <code>.sub</code> class for indented sub-items without a collapsible
+    wrapper.
   </p>
   <CodeExample code={sidebarNavCode} title="Sidebar Navigation">
     <SidebarNav />
@@ -178,3 +166,14 @@
     <UserMenu />
   </CodeExample>
 </div>
+
+<h2 class="heading" id="forms">Forms</h2>
+<section class="stack">
+  <p>
+    Complete form patterns and compositions. For default input styling see <a
+      href="/base#forms">Base → Forms</a
+    >. For individual form elements see
+    <a href="/elements#forms">Elements → Forms</a>.
+  </p>
+  <p>Coming soon: Login form, signup form, and other complete form patterns.</p>
+</section>

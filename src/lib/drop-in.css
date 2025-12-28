@@ -1243,6 +1243,19 @@ select {
   padding-inline-end: calc(var(--pad-m) + 1.5em);
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  height: auto;
+  inline-size: 1em;
+  block-size: 1em;
+  margin: 0;
+  margin-inline-end: var(--vs-s);
+  vertical-align: middle;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
 /*
  * AUTO-COLOR: Automatic contrast text color for any background
  *

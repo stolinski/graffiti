@@ -271,30 +271,78 @@
   </p>
 </section>
 
-<section class="stack">
+<section>
   <h3>Text Inputs</h3>
   <p>Native input, textarea, and select elements are styled automatically.</p>
-  <div style="max-width: 400px;">
-    <label for="demo-text">Text Input</label>
-    <input type="text" id="demo-text" placeholder="Enter text..." />
+  <label for="demo-text">Text Input</label>
+  <input type="text" id="demo-text" placeholder="Enter text..." />
 
-    <label for="demo-email">Email Input</label>
-    <input type="email" id="demo-email" placeholder="you@example.com" />
+  <label for="demo-email">Email Input</label>
+  <input type="email" id="demo-email" placeholder="you@example.com" />
 
-    <label for="demo-password">Password Input</label>
-    <input type="password" id="demo-password" placeholder="••••••••" />
+  <label for="demo-password">Password Input</label>
+  <input type="password" id="demo-password" placeholder="••••••••" />
 
-    <label for="demo-textarea">Textarea</label>
-    <textarea id="demo-textarea" rows="3" placeholder="Enter longer text..."
-    ></textarea>
+  <label for="demo-number">Number Input</label>
+  <input type="number" id="demo-number" placeholder="0" min="0" max="100" />
 
-    <label for="demo-select">Select</label>
-    <select id="demo-select">
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
-    </select>
-  </div>
+  <label for="demo-textarea">Textarea</label>
+  <textarea id="demo-textarea" rows="3" placeholder="Enter longer text..."
+  ></textarea>
+
+  <label for="demo-select">Select</label>
+  <select id="demo-select">
+    <option>Option 1</option>
+    <option>Option 2</option>
+    <option>Option 3</option>
+  </select>
+</section>
+
+<section>
+  <h3>Checkboxes & Radios</h3>
+  <p>Native checkbox and radio inputs with automatic styling.</p>
+  <label><input type="checkbox" /> Remember me</label>
+  <label><input type="checkbox" checked /> Subscribe to newsletter</label>
+  <label><input type="checkbox" disabled /> Disabled option</label>
+
+  <label><input type="radio" name="plan" checked /> Free plan</label>
+  <label><input type="radio" name="plan" /> Pro plan</label>
+  <label><input type="radio" name="plan" /> Enterprise plan</label>
+  <label><input type="radio" name="plan" disabled /> Coming soon</label>
+</section>
+
+<section>
+  <h3>Date & Time</h3>
+  <p>Native date and time pickers with browser-provided UI.</p>
+  <label for="demo-date">Date</label>
+  <input type="date" id="demo-date" />
+
+  <label for="demo-time">Time</label>
+  <input type="time" id="demo-time" />
+
+  <label for="demo-datetime">Date & Time</label>
+  <input type="datetime-local" id="demo-datetime" />
+</section>
+
+<section>
+  <h3>Range</h3>
+  <p>Native range slider input.</p>
+  <label for="demo-range">Volume</label>
+  <input type="range" id="demo-range" min="0" max="100" value="50" />
+</section>
+
+<section>
+  <h3>File</h3>
+  <p>
+    Native file upload input. For a styled dropzone, see <a
+      href="/elements#file-dropzone">Elements → File Dropzone</a
+    >.
+  </p>
+  <label for="demo-file">Upload File</label>
+  <input type="file" id="demo-file" />
+
+  <label for="demo-file-multiple">Upload Multiple Files</label>
+  <input type="file" id="demo-file-multiple" multiple />
 </section>
 
 <section class="stack">
@@ -303,30 +351,27 @@
     Add <code>.error</code>, <code>.success</code>, or <code>.warning</code> classes
     to inputs for validation feedback.
   </p>
+  <label for="email-error">Email (error state)</label>
+  <input type="email" id="email-error" class="error" value="invalid-email" />
+  <small class="error">Please enter a valid email address</small>
 
-  <div style="max-width: 400px">
-    <label for="email-error">Email (error state)</label>
-    <input type="email" id="email-error" class="error" value="invalid-email" />
-    <small class="error">Please enter a valid email address</small>
+  <label for="username-success">Username (success state)</label>
+  <input
+    type="text"
+    id="username-success"
+    class="success"
+    value="cool_username"
+  />
+  <small class="success">Username is available!</small>
 
-    <label for="username-success">Username (success state)</label>
-    <input
-      type="text"
-      id="username-success"
-      class="success"
-      value="cool_username"
-    />
-    <small class="success">Username is available!</small>
-
-    <label for="password-warning">Password (warning state)</label>
-    <input
-      type="password"
-      id="password-warning"
-      class="warning"
-      value="password123"
-    />
-    <small class="warning"
-      >Password is weak. Consider using a stronger password.</small
-    >
-  </div>
+  <label for="password-warning">Password (warning state)</label>
+  <input
+    type="password"
+    id="password-warning"
+    class="warning"
+    value="password123"
+  />
+  <small class="warning"
+    >Password is weak. Consider using a stronger password.</small
+  >
 </section>

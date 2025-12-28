@@ -14,6 +14,8 @@
   import toggleCode from "$docs/demos/Toggle.svelte?raw";
   import InputGroup from "$docs/demos/InputGroup.svelte";
   import inputGroupCode from "$docs/demos/InputGroup.svelte?raw";
+  import Search from "$docs/demos/Search.svelte";
+  import searchCode from "$docs/demos/Search.svelte?raw";
 </script>
 
 <section class="stack readable">
@@ -199,6 +201,16 @@
   </p>
   <CodeExample code={inputGroupCode} title="Input Group">
     <InputGroup />
+  </CodeExample>
+</section>
+
+<section class="stack">
+  <h3>Search Input</h3>
+  <p>
+    Search input with icon. Get icons from <a href="https://phosphoricons.com/" target="_blank" rel="noopener">Phosphor Icons</a>.
+  </p>
+  <CodeExample code={searchCode} title="Search Input">
+    <Search />
   </CodeExample>
 </section>
 

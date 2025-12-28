@@ -808,6 +808,89 @@ Connected input + button as a single visual unit. Use for copy-to-clipboard, sea
 
 The input stretches to fill space, button stays sized to content. Add any button variant class to the button (`.primary`, `.mini`, etc).
 
+### Search Input
+Search input with icon positioned inside:
+- `.search`: Wrapper for search input with icon
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- `position: relative` on wrapper
+- SVG icon absolutely positioned, vertically centered
+- Input has left padding to accommodate icon
+
+Usage:
+```html
+<div class="search">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M232.49,215.51,185,168a92.12,92.12,0,1,0-17,17l47.53,47.54a12,12,0,0,0,17-17ZM44,112a68,68,0,1,1,68,68A68.07,68.07,0,0,1,44,112Z"></path></svg>
+  <input type="search" placeholder="Search..." />
+</div>
+```
+
+Get icons from [Phosphor Icons](https://phosphoricons.com/).
+
+## Forms
+
+### Base Form Inputs
+All form inputs are styled automatically without classes:
+
+```html
+<!-- Text inputs -->
+<label for="name">Name</label>
+<input type="text" id="name" placeholder="Enter name..." />
+
+<label for="email">Email</label>
+<input type="email" id="email" placeholder="you@example.com" />
+
+<label for="password">Password</label>
+<input type="password" id="password" />
+
+<label for="number">Number</label>
+<input type="number" id="number" min="0" max="100" />
+
+<!-- Textarea -->
+<label for="message">Message</label>
+<textarea id="message" rows="3"></textarea>
+
+<!-- Select -->
+<label for="country">Country</label>
+<select id="country">
+  <option>United States</option>
+  <option>Canada</option>
+</select>
+
+<!-- Checkboxes -->
+<label><input type="checkbox" /> Remember me</label>
+<label><input type="checkbox" checked /> Subscribe</label>
+
+<!-- Radio buttons -->
+<label><input type="radio" name="plan" checked /> Free</label>
+<label><input type="radio" name="plan" /> Pro</label>
+
+<!-- Date/Time -->
+<label for="date">Date</label>
+<input type="date" id="date" />
+
+<label for="time">Time</label>
+<input type="time" id="time" />
+
+<label for="datetime">Date & Time</label>
+<input type="datetime-local" id="datetime" />
+
+<!-- Range slider -->
+<label for="volume">Volume</label>
+<input type="range" id="volume" min="0" max="100" />
+
+<!-- File upload -->
+<label for="file">Upload</label>
+<input type="file" id="file" />
+```
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- Inputs have consistent padding, border, border-radius
+- Labels have appropriate margin-bottom
+- Checkboxes/radios are inline with proper spacing
+- All inputs use `accent-color: var(--accent)` for checked states
+- `:has(+ small)` rule reduces margin when validation message follows
+
 ### Auto-Color
 Automatically sets text color (light or dark) based on background luminosity:
 - `.auto-color`: Applies automatic contrast text color

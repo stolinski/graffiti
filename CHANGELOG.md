@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.11.0
+
+### Minor Changes
+
+- Form improvements: fixed text input and toggle styles, added base styles for checkbox and radio inputs, added .search element with icon positioning, expanded Base docs with number, date/time, range, and file inputs
+
 ## 4.10.0
 
 ### Minor Changes

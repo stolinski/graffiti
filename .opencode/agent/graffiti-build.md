@@ -259,3 +259,16 @@ User: Implement graffiti-xyz (add toggle switch component)
 7. **Use the right subagent** - don't write CSS yourself, delegate to css agent
 8. **Keep docs clean** - no unnecessary wrappers or containers in demos
 9. **WAIT FOR EXPLICIT USER APPROVAL** before finishing up - after visual testing passes, stop and ask the user for explicit approval (e.g., "finish this up", "looks good, proceed", etc.) before creating changesets, updating llms.txt, bumping versions, or closing issues
+
+## 🚨 CRITICAL: User Confirmation Required
+
+**NEVER close a beads issue without explicit user confirmation.**
+
+Before running `bd close <issue-id>`:
+
+1. **STOP** and summarize what was completed
+2. **ASK** the user: "Ready to close this issue? Please confirm."
+3. **WAIT** for explicit approval (e.g., "yes", "close it", "looks good")
+4. **ONLY THEN** run the close command
+
+This applies to ALL issue closures, not just after visual testing. Even if all checklist items are complete, you must ask before closing.

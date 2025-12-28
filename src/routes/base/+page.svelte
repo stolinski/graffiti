@@ -77,6 +77,9 @@
 <section class="stack">
   <h3>Vertical Spacing</h3>
   <div class="layout-card" style="--min-card-width: 150px">
+    <div class="box" style="padding: var(--vs-xs) var(--vs-xs)">
+      --vs-xs: 0.25rem
+    </div>
     <div class="box" style="padding: var(--vs-s) var(--vs-s)">
       --vs-s: 0.5rem
     </div>
@@ -271,32 +274,26 @@
 <section class="stack">
   <h3>Text Inputs</h3>
   <p>Native input, textarea, and select elements are styled automatically.</p>
-  <div class="stack" style="max-width: 400px">
-    <div class="stack" style="--gap: 0.5rem">
-      <label for="demo-text">Text Input</label>
-      <input type="text" id="demo-text" placeholder="Enter text..." />
-    </div>
-    <div class="stack" style="--gap: 0.5rem">
-      <label for="demo-email">Email Input</label>
-      <input type="email" id="demo-email" placeholder="you@example.com" />
-    </div>
-    <div class="stack" style="--gap: 0.5rem">
-      <label for="demo-password">Password Input</label>
-      <input type="password" id="demo-password" placeholder="••••••••" />
-    </div>
-    <div class="stack" style="--gap: 0.5rem">
-      <label for="demo-textarea">Textarea</label>
-      <textarea id="demo-textarea" rows="3" placeholder="Enter longer text..."
-      ></textarea>
-    </div>
-    <div class="stack" style="--gap: 0.5rem">
-      <label for="demo-select">Select</label>
-      <select id="demo-select">
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-      </select>
-    </div>
+  <div style="max-width: 400px;">
+    <label for="demo-text">Text Input</label>
+    <input type="text" id="demo-text" placeholder="Enter text..." />
+
+    <label for="demo-email">Email Input</label>
+    <input type="email" id="demo-email" placeholder="you@example.com" />
+
+    <label for="demo-password">Password Input</label>
+    <input type="password" id="demo-password" placeholder="••••••••" />
+
+    <label for="demo-textarea">Textarea</label>
+    <textarea id="demo-textarea" rows="3" placeholder="Enter longer text..."
+    ></textarea>
+
+    <label for="demo-select">Select</label>
+    <select id="demo-select">
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
   </div>
 </section>
 
@@ -307,40 +304,29 @@
     to inputs for validation feedback.
   </p>
 
-  <div class="stack" style="max-width: 400px">
-    <div class="stack" style="--gap: 0.5rem">
-      <label for="email-error">Email (error state)</label>
-      <input
-        type="email"
-        id="email-error"
-        class="error"
-        value="invalid-email"
-      />
-      <small class="error">Please enter a valid email address</small>
-    </div>
+  <div style="max-width: 400px">
+    <label for="email-error">Email (error state)</label>
+    <input type="email" id="email-error" class="error" value="invalid-email" />
+    <small class="error">Please enter a valid email address</small>
 
-    <div class="stack" style="--gap: 0.5rem">
-      <label for="username-success">Username (success state)</label>
-      <input
-        type="text"
-        id="username-success"
-        class="success"
-        value="cool_username"
-      />
-      <small class="success">Username is available!</small>
-    </div>
+    <label for="username-success">Username (success state)</label>
+    <input
+      type="text"
+      id="username-success"
+      class="success"
+      value="cool_username"
+    />
+    <small class="success">Username is available!</small>
 
-    <div class="stack" style="--gap: 0.5rem">
-      <label for="password-warning">Password (warning state)</label>
-      <input
-        type="password"
-        id="password-warning"
-        class="warning"
-        value="password123"
-      />
-      <small class="warning"
-        >Password is weak. Consider using a stronger password.</small
-      >
-    </div>
+    <label for="password-warning">Password (warning state)</label>
+    <input
+      type="password"
+      id="password-warning"
+      class="warning"
+      value="password123"
+    />
+    <small class="warning"
+      >Password is weak. Consider using a stronger password.</small
+    >
   </div>
 </section>

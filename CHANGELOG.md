@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.11.1
+
+### Patch Changes
+
+- Added file dropzone component - drag-and-drop file upload zone with dashed border styling, hover/dragover states, and click-to-upload fallback using native file input
+
 ## 4.11.0
 
 ### Minor Changes

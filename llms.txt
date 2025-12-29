@@ -827,6 +827,41 @@ Usage:
 
 Get icons from [Phosphor Icons](https://phosphoricons.com/).
 
+### File Dropzone
+Drag-and-drop file upload zone with click-to-upload fallback:
+- `.dropzone`: Styled drop area wrapping a native file input
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- Dashed border styling (`2px dashed var(--fg-2)`)
+- Centered flex layout for icon and text
+- Hidden file input (covers entire area, click anywhere to upload)
+- Hover state with darker border and subtle background
+- `.dragover` class for drag state (accent color border)
+- SVG icon and text styling with smooth transitions
+
+**Customization:**
+- `--dropzone-padding`: Padding inside dropzone (default: var(--pad-xxl))
+- `--dropzone-border-radius`: Border radius (default: var(--br-m))
+
+Usage:
+```html
+<!-- Basic dropzone -->
+<label class="dropzone">
+  <input type="file" />
+  <svg><!-- upload icon --></svg>
+  <span>Drop files here or click to upload</span>
+</label>
+
+<!-- Multiple files -->
+<label class="dropzone">
+  <input type="file" multiple />
+  <svg><!-- upload icon --></svg>
+  <span>Drop multiple files here or click to upload</span>
+</label>
+```
+
+Add `.dragover` class via JavaScript when files are dragged over for visual feedback.
+
 ## Forms
 
 ### Base Form Inputs

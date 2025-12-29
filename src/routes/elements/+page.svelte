@@ -16,6 +16,8 @@
   import inputGroupCode from "$docs/demos/InputGroup.svelte?raw";
   import Search from "$docs/demos/Search.svelte";
   import searchCode from "$docs/demos/Search.svelte?raw";
+  import Dropzone from "$docs/demos/Dropzone.svelte";
+  import dropzoneCode from "$docs/demos/Dropzone.svelte?raw";
 </script>
 
 <section class="stack readable">
@@ -214,4 +216,12 @@
   </CodeExample>
 </section>
 
-
+<section class="stack">
+  <h3 id="file-dropzone">File Dropzone</h3>
+  <p>
+    Drag-and-drop file upload zone. Wraps a native file input for click-to-upload fallback.
+  </p>
+  <CodeExample code={dropzoneCode} title="File Dropzone">
+    <Dropzone />
+  </CodeExample>
+</section>

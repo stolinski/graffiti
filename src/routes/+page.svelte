@@ -33,7 +33,7 @@
     <p>
       <a
         href="https://raw.githubusercontent.com/stolinski/graffiti/refs/heads/main/llms.txt"
-        >Give you LLM our docs</a
+        >Give your LLM our docs</a
       >
     </p>
   </section>

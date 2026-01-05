@@ -1,0 +1,58 @@
+# Boxes
+
+Container styles for cards and content blocks.
+
+## Variants
+
+```html
+<div class="box">Default box with tint background.</div>
+<div class="box glow">Glow box with subtle inset shadow.</div>
+<div class="box semi-gloss">Semi-gloss with gradient and stronger shadow.</div>
+<div class="box ghost">Ghost box - transparent with border only.</div>
+<div class="box invisible">Invisible box - no background, border, or shadow.</div>
+```
+
+## With Content
+
+```html
+<div class="box">
+  <div class="stack">
+    <h3>Card Title</h3>
+    <p>Card description text goes here.</p>
+    <button class="primary">Action</button>
+  </div>
+</div>
+```
+
+## Custom Shadow
+
+Combine box styles with shadow variables:
+
+```html
+<div class="box" style="box-shadow: var(--box), var(--shadow-5);">
+  Box with custom deeper shadow.
+</div>
+```
+
+## In Card Grid
+
+```html
+<div class="layout-card">
+  <div class="box">Card 1</div>
+  <div class="box">Card 2</div>
+  <div class="box">Card 3</div>
+</div>
+```
+
+## Styling Details
+
+- `.box` - Tint background, padding, border-radius, border
+- `.box.glow` - Inset glow shadow effect
+- `.box.semi-gloss` - Gradient background, premium feel
+- `.box.ghost` - Transparent, border outline only
+- `.box.invisible` - No visual styling, just structure
+
+## See Also
+
+- [Layouts](layouts.txt) - Grid layouts for cards
+- [Callouts](callouts.txt) - Message boxes

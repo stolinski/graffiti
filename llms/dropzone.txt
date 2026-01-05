@@ -1,0 +1,79 @@
+# File Dropzone
+
+Drag-and-drop file upload zone with click-to-upload fallback.
+
+## Basic Example
+
+```html
+<label class="dropzone">
+  <input type="file">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+    <path d="M212,136v64a12,12,0,0,1-12,12H56a12,12,0,0,1-12-12V136a12,12,0,0,1,24,0v52H188V136a12,12,0,0,1,24,0ZM96.49,88.49,116,69v83a12,12,0,0,0,24,0V69l19.51,19.52a12,12,0,1,0,17-17l-40-40a12,12,0,0,0-17,0l-40,40a12,12,0,1,0,17,17Z"></path>
+  </svg>
+  <span>Drop files here or click to upload</span>
+</label>
+```
+
+## Multiple Files
+
+```html
+<label class="dropzone">
+  <input type="file" multiple>
+  <svg><!-- upload icon --></svg>
+  <span>Drop multiple files here or click to upload</span>
+</label>
+```
+
+## Accept Specific Types
+
+```html
+<label class="dropzone">
+  <input type="file" accept="image/*">
+  <svg><!-- upload icon --></svg>
+  <span>Drop images here or click to upload</span>
+</label>
+```
+
+## Drag State
+
+Add `.dragover` class via JavaScript when files are dragged over:
+
+```javascript
+const dropzone = document.querySelector('.dropzone');
+
+dropzone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropzone.classList.add('dragover');
+});
+
+dropzone.addEventListener('dragleave', () => {
+  dropzone.classList.remove('dragover');
+});
+
+dropzone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropzone.classList.remove('dragover');
+  // Handle files: e.dataTransfer.files
+});
+```
+
+## Icon Source
+
+Get icons from [Phosphor Icons](https://phosphoricons.com/). The upload icon shown above is the "UploadSimple" icon.
+
+## CSS Variables
+
+- `--dropzone-padding` - Padding inside (default: `var(--pad-xxl)`)
+- `--dropzone-border-radius` - Border radius (default: `var(--br-m)`)
+
+## Styling Details
+
+- Dashed border (`2px dashed var(--fg-2)`)
+- Centered flex layout for icon and text
+- File input is hidden but covers entire area
+- Click anywhere to trigger file picker
+- `.dragover` state shows accent color border
+
+## See Also
+
+- [Forms](forms.txt) - All form inputs

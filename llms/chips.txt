@@ -1,0 +1,82 @@
+# Chips
+
+Interactive pill-shaped elements for filters, categories, and selections. Use for multi-select interfaces, tag filters, or skill selectors.
+
+## Basic Example
+
+```html
+<div class="cluster">
+  <button class="chip">JavaScript</button>
+  <button class="chip">TypeScript</button>
+  <button class="chip selected">React</button>
+  <button class="chip">Vue</button>
+</div>
+```
+
+## Selected State
+
+Use `.selected` class or `aria-pressed` attribute:
+
+```html
+<button class="chip selected">Selected</button>
+<button class="chip" aria-pressed="true">Also Selected</button>
+<button class="chip" aria-pressed="false">Not Selected</button>
+```
+
+## With Icons
+
+```html
+<button class="chip">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><!-- icon --></svg>
+  Front-End
+</button>
+```
+
+Icons are automatically sized to `1em`.
+
+## Mini Variant
+
+Smaller chips for compact spaces:
+
+```html
+<button class="chip mini">Small</button>
+```
+
+## Disabled State
+
+```html
+<button class="chip" disabled>Disabled</button>
+<button class="chip" aria-disabled="true">Also Disabled</button>
+```
+
+## Filter Selection Pattern
+
+```html
+<fieldset>
+  <legend>Select your skills:</legend>
+  <div class="cluster">
+    <button class="chip" aria-pressed="false">Front-End</button>
+    <button class="chip" aria-pressed="true">Back-End</button>
+    <button class="chip" aria-pressed="false">DevOps</button>
+    <button class="chip" aria-pressed="true">Design</button>
+  </div>
+</fieldset>
+```
+
+## Styling Details
+
+- Pill shape with `border-radius: var(--br-xxl)`
+- Border: `var(--border-1)`
+- Selected state: primary color background
+- Hover/focus/active states included
+- Fluid typography at `--fl: -1` (smaller text)
+
+## Chips vs Tags
+
+- **Chips** are interactive (clickable, selectable)
+- **Tags** are for display (category labels, metadata)
+
+## See Also
+
+- [Tags](tags.txt) - Non-interactive category labels
+- [Buttons](buttons.txt) - Standard buttons

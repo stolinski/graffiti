@@ -1,0 +1,41 @@
+# Login Form
+
+A complete login form using Graffiti's base form styles. No custom CSS needed.
+
+## Example
+
+```html
+<form class="stack" style="max-width: 400px;">
+  <h2>Login Form</h2>
+  
+  <label for="email">Email</label>
+  <input type="email" id="email" placeholder="you@example.com" required />
+  
+  <label for="password">Password</label>
+  <input type="password" id="password" placeholder="Enter your password" required />
+  
+  <div class="split">
+    <label><input type="checkbox" /> Remember me</label>
+    <a href="#forgot">Forgot password?</a>
+  </div>
+  
+  <button type="submit" class="primary">Sign In</button>
+  
+  <p style="text-align: center;">
+    Don't have an account? <a href="#signup">Sign up</a>
+  </p>
+</form>
+```
+
+## Key Classes Used
+
+- `.stack` - Vertical layout with consistent spacing
+- `.split` - Flexbox with space-between (checkbox left, link right)
+- `.primary` - Primary action button style
+
+## Notes
+
+- Form inputs are styled automatically (no classes needed on inputs)
+- Labels automatically get proper spacing
+- Use `.error`, `.success`, `.warning` classes on inputs for validation states
+- Add `<small class="error">Message</small>` after inputs for validation messages

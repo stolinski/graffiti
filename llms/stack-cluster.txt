@@ -1,0 +1,130 @@
+# Stack & Cluster
+
+Flexbox utilities for vertical and horizontal layouts.
+
+## Stack (Vertical)
+
+Vertical flexbox with consistent gap:
+
+```html
+<div class="stack">
+  <h2>Title</h2>
+  <p>First paragraph</p>
+  <p>Second paragraph</p>
+</div>
+```
+
+Custom gap:
+
+```html
+<div class="stack" style="--gap: 2rem;">
+```
+
+## Cluster (Horizontal)
+
+Horizontal wrapping flexbox:
+
+```html
+<div class="cluster">
+  <span class="tag">Tag 1</span>
+  <span class="tag">Tag 2</span>
+  <span class="tag">Tag 3</span>
+</div>
+```
+
+Custom gap:
+
+```html
+<div class="cluster" style="--gap: 0.5rem;">
+```
+
+## Split
+
+Flexbox with space-between:
+
+```html
+<div class="split">
+  <span>Left content</span>
+  <span>Right content</span>
+</div>
+```
+
+### Vertical Split
+
+For sidebars with content at top and bottom:
+
+```html
+<aside class="split vertical">
+  <nav>Navigation at top</nav>
+  <div>Footer at bottom</div>
+</aside>
+```
+
+## Common Patterns
+
+### Form with Stack
+
+```html
+<form class="stack">
+  <label>Email</label>
+  <input type="email">
+  <label>Password</label>
+  <input type="password">
+  <button class="primary">Submit</button>
+</form>
+```
+
+### Button Group with Cluster
+
+```html
+<div class="cluster" style="justify-content: flex-end;">
+  <button>Cancel</button>
+  <button class="primary">Save</button>
+</div>
+```
+
+### Tags with Cluster
+
+```html
+<div class="cluster" style="--gap: 0.5rem;">
+  <span class="tag">CSS</span>
+  <span class="tag">HTML</span>
+  <span class="tag">JS</span>
+</div>
+```
+
+### Card Content with Stack
+
+```html
+<div class="box">
+  <div class="stack">
+    <h3>Card Title</h3>
+    <p>Card description text.</p>
+    <button class="primary">Action</button>
+  </div>
+</div>
+```
+
+## Default Properties
+
+**Stack:**
+- `display: flex`
+- `flex-direction: column`
+- `gap: 1rem`
+- Resets child margins to 0
+
+**Cluster:**
+- `display: flex`
+- `flex-wrap: wrap`
+- `gap: 1rem`
+- `align-items: center`
+
+**Split:**
+- `display: flex`
+- `justify-content: space-between`
+- `align-items: start`
+- `gap: 20px`
+
+## See Also
+
+- [Layouts](layouts.txt) - Grid-based page layouts

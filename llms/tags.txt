@@ -1,0 +1,80 @@
+# Tags
+
+Subtle category labels with customizable colors. Use for metadata, categories, or status indicators.
+
+## Basic Example
+
+```html
+<span class="tag">Default</span>
+<span class="tag" style="--tag-color: var(--green)">Success</span>
+<span class="tag" style="--tag-color: var(--red)">Error</span>
+<span class="tag" style="--tag-color: var(--purple)">New</span>
+```
+
+## Custom Colors
+
+Set `--tag-color` to any color:
+
+```html
+<span class="tag" style="--tag-color: var(--blue)">Technology</span>
+<span class="tag" style="--tag-color: var(--orange)">Design</span>
+<span class="tag" style="--tag-color: var(--teal)">Marketing</span>
+```
+
+Available colors: `--red`, `--orange`, `--yellow`, `--green`, `--teal`, `--blue`, `--indigo`, `--purple`, `--pink`, `--gray`, `--slate`
+
+## With Icons
+
+```html
+<span class="tag" style="--tag-color: var(--green)">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><!-- checkmark --></svg>
+  Complete
+</span>
+```
+
+Icons are automatically sized to `1em`.
+
+## Interactive Tags (Links)
+
+When used as `<a>` or `<button>`, tags get hover/focus states:
+
+```html
+<a href="/topics/css" class="tag" style="--tag-color: var(--blue)">CSS</a>
+<a href="/topics/html" class="tag" style="--tag-color: var(--orange)">HTML</a>
+```
+
+## Muted Variant
+
+Use `.muted` for neutral text color (better contrast on some backgrounds):
+
+```html
+<span class="tag muted" style="--tag-color: var(--orange)">Muted</span>
+```
+
+## In a List
+
+```html
+<div class="cluster" style="--gap: 0.5rem;">
+  <span class="tag" style="--tag-color: var(--blue)">JavaScript</span>
+  <span class="tag" style="--tag-color: var(--blue)">TypeScript</span>
+  <span class="tag" style="--tag-color: var(--green)">Node.js</span>
+</div>
+```
+
+## Styling Details
+
+- Soft background (12% opacity of tag color)
+- Text color auto-adjusts for light/dark themes
+- Subtle border (20% opacity of tag color)
+- Fluid typography at `--fl: -1` (smaller text)
+- Pill shape with `border-radius: var(--br-xxl)`
+
+## Tags vs Chips
+
+- **Tags** are for display (category labels, metadata)
+- **Chips** are interactive (clickable, selectable)
+
+## See Also
+
+- [Chips](chips.txt) - Interactive filter/selection elements
+- [Callouts](callouts.txt) - Info/warning/error boxes

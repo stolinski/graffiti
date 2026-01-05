@@ -1,0 +1,69 @@
+# Carousel
+
+Horizontal scrolling with CSS scroll-snap. No JavaScript required.
+
+## Basic Example
+
+```html
+<div class="carousel">
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+  <div>Slide 4</div>
+  <div>Slide 5</div>
+</div>
+```
+
+## With Cards
+
+```html
+<div class="carousel">
+  <div class="box" style="min-width: 300px;">
+    <h3>Card 1</h3>
+    <p>Card content here.</p>
+  </div>
+  <div class="box" style="min-width: 300px;">
+    <h3>Card 2</h3>
+    <p>Card content here.</p>
+  </div>
+  <div class="box" style="min-width: 300px;">
+    <h3>Card 3</h3>
+    <p>Card content here.</p>
+  </div>
+</div>
+```
+
+## With Images
+
+```html
+<div class="carousel">
+  <img src="image1.jpg" alt="Image 1" style="min-width: 80%;">
+  <img src="image2.jpg" alt="Image 2" style="min-width: 80%;">
+  <img src="image3.jpg" alt="Image 3" style="min-width: 80%;">
+</div>
+```
+
+## Styling Details
+
+- `display: flex` with horizontal overflow
+- `scroll-snap-type: x mandatory` for snapping
+- Children have `scroll-snap-align: start`
+- Thin scrollbar (`scrollbar-width: thin`)
+- Default gap of 1rem
+
+## Custom Gap
+
+```html
+<div class="carousel" style="--gap: 2rem;">
+```
+
+## How It Works
+
+- Drag, swipe, or scroll horizontally
+- Items snap to start position
+- Works with mouse, touch, trackpad, and keyboard
+- No JavaScript needed for basic functionality
+
+## See Also
+
+- [Reel](reel.txt) - Vertical scroll-snap

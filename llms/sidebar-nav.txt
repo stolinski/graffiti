@@ -1,0 +1,105 @@
+# Sidebar Navigation
+
+Vertical navigation for app sidebars with collapsible sections. Uses native `<details>`/`<summary>` for expand/collapse.
+
+## Example
+
+```html
+<nav class="sidebar-nav">
+  <a href="/inbox">Inbox</a>
+  <a href="/issues" aria-current="page">Issues</a>
+  
+  <details open>
+    <summary>Cycles</summary>
+    <a href="/current">Current</a>
+    <a href="/upcoming">Upcoming</a>
+    <a href="/past">Past</a>
+  </details>
+  
+  <details>
+    <summary>Projects</summary>
+    <a href="/web">Web App</a>
+    <a href="/mobile">Mobile</a>
+  </details>
+  
+  <a href="/views">Views</a>
+  <a href="/settings">Settings</a>
+</nav>
+```
+
+## Active State
+
+Mark the current page with `aria-current="page"`:
+
+```html
+<a href="/issues" aria-current="page">Issues</a>
+```
+
+Or use `.active` class on nested links:
+
+```html
+<details open>
+  <summary>Cycles</summary>
+  <a href="/current" class="active">Current</a>
+</details>
+```
+
+## Sub-Items Without Collapsible Wrapper
+
+Use `.sub` class for indented top-level links:
+
+```html
+<nav class="sidebar-nav">
+  <a href="/all">All Issues</a>
+  <a href="/my-issues" class="sub">My Issues</a>
+  <a href="/backlog" class="sub">Backlog</a>
+</nav>
+```
+
+## With Icons
+
+```html
+<nav class="sidebar-nav">
+  <a href="/inbox">
+    <svg><!-- inbox icon --></svg>
+    Inbox
+  </a>
+  <a href="/issues">
+    <svg><!-- issues icon --></svg>
+    Issues
+  </a>
+</nav>
+```
+
+Icons are automatically sized to `20px` (customizable via `--sidebar-nav-icon-size`).
+
+## CSS Variables
+
+- `--sidebar-nav-icon-size` - Icon size (default: 20px)
+- `--sidebar-nav-indent` - Indentation for nested items (default: 1.5rem)
+
+## App Shell Pattern
+
+Combine with `.layout-sidebar.fill` for a full app shell:
+
+```html
+<div class="layout-sidebar fill" style="--layout-gap: 0; height: 100vh;">
+  <aside class="split vertical" style="padding: var(--pad-m); background: var(--fg-05);">
+    <nav class="sidebar-nav">
+      <!-- navigation links -->
+    </nav>
+    <div>
+      <span>v1.0.0</span>
+      <button>Upgrade</button>
+    </div>
+  </aside>
+  <main style="overflow-y: auto; padding: var(--pad-l);">
+    <!-- main content -->
+  </main>
+</div>
+```
+
+## See Also
+
+- [Layouts](layouts.txt) - Page layout options
+- [Dropdown](dropdown.txt) - Popover-based menus

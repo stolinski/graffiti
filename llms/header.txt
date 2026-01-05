@@ -1,0 +1,59 @@
+# Header
+
+Full-width site header with navigation.
+
+## Basic Example
+
+```html
+<header class="header">
+  <h1>Your Logo</h1>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+```
+
+## With Border
+
+```html
+<header class="header border">
+  <h1>Your Logo</h1>
+  <nav><!-- nav links --></nav>
+</header>
+```
+
+## Sticky Header
+
+Sticks to top when scrolling:
+
+```html
+<header class="header sticky">
+  <h1>Your Logo</h1>
+  <nav><!-- nav links --></nav>
+</header>
+```
+
+## Combined Variants
+
+```html
+<header class="header border sticky">
+  <h1>Your Logo</h1>
+  <nav><!-- nav links --></nav>
+</header>
+```
+
+## Styling Details
+
+- Full viewport width
+- Flexbox with space-between
+- Nav `<ul>` styled as horizontal flex list
+- All direct children have margin reset
+
+## See Also
+
+- [Breadcrumbs](breadcrumbs.txt) - Hierarchy navigation
+- [Sidebar navigation](sidebar-nav.txt) - Vertical app navigation

@@ -1,0 +1,105 @@
+# Accordion
+
+Native HTML disclosure element with smooth animations using `<details>` and `<summary>`.
+
+## Basic Example
+
+```html
+<details>
+  <summary>Click to expand</summary>
+  <p>Hidden content revealed when expanded.</p>
+</details>
+```
+
+## Multiple Items
+
+```html
+<details>
+  <summary>Getting Started</summary>
+  <p>Installation and setup instructions.</p>
+</details>
+
+<details>
+  <summary>Configuration</summary>
+  <p>How to configure the application.</p>
+</details>
+
+<details>
+  <summary>FAQ</summary>
+  <p>Frequently asked questions.</p>
+</details>
+```
+
+## Open by Default
+
+```html
+<details open>
+  <summary>Already Expanded</summary>
+  <p>This section starts open.</p>
+</details>
+```
+
+## Bordered Variant
+
+```html
+<details class="bordered">
+  <summary>Bordered Accordion</summary>
+  <p>Content with border container.</p>
+</details>
+```
+
+## Arrow on Right
+
+```html
+<details class="right">
+  <summary>Arrow on Right</summary>
+  <p>Indicator moves to the right side.</p>
+</details>
+```
+
+Or just on the summary:
+
+```html
+<details>
+  <summary class="right">Arrow on Right</summary>
+  <p>Content here.</p>
+</details>
+```
+
+## Minimal (+/−) Variant
+
+```html
+<details class="minimal">
+  <summary>FAQ Question</summary>
+  <p>Answer using +/− toggle style.</p>
+</details>
+```
+
+## Styling Details
+
+- Smooth height animation using `@starting-style` and `allow-discrete`
+- Custom `›` arrow indicator that rotates on open
+- Proper focus-visible states
+- No JavaScript required
+
+## Exclusive Accordion (One Open at a Time)
+
+Use the `name` attribute to group accordions:
+
+```html
+<details name="faq">
+  <summary>Question 1</summary>
+  <p>Answer 1</p>
+</details>
+
+<details name="faq">
+  <summary>Question 2</summary>
+  <p>Answer 2</p>
+</details>
+```
+
+Only one in the group can be open at a time.
+
+## See Also
+
+- [Sidebar navigation](sidebar-nav.txt) - Uses details for collapsible sections

@@ -1,0 +1,57 @@
+# User Menu
+
+User account dropdown combining avatar trigger with dropdown menu. Works with both image and initials avatars.
+
+## Example with Image
+
+```html
+<div class="dropdown end">
+  <button popovertarget="user-menu" class="avatar">
+    <img src="/avatar.jpg" alt="Jane Doe">
+  </button>
+  <div id="user-menu" popover class="dropdown-menu">
+    <div class="dropdown-header">Jane Doe</div>
+    <a href="/profile">Profile</a>
+    <a href="/settings">Settings</a>
+    <hr>
+    <button>Sign Out</button>
+  </div>
+</div>
+```
+
+## Example with Initials
+
+```html
+<div class="dropdown end">
+  <button popovertarget="user-menu" class="avatar">JD</button>
+  <div id="user-menu" popover class="dropdown-menu">
+    <div class="dropdown-header">Jane Doe</div>
+    <a href="/profile">Profile</a>
+    <a href="/settings">Settings</a>
+    <hr>
+    <button>Sign Out</button>
+  </div>
+</div>
+```
+
+## Key Classes
+
+- `.dropdown.end` - Aligns menu to right edge of avatar
+- `.avatar` - Circular avatar styling on the button
+- `.dropdown-menu` - Menu styling
+- `.dropdown-header` - User name display in menu
+
+## Avatar Sizes
+
+```html
+<button popovertarget="menu" class="avatar xs">JD</button>  <!-- 1.5rem -->
+<button popovertarget="menu" class="avatar s">JD</button>   <!-- 2rem -->
+<button popovertarget="menu" class="avatar">JD</button>     <!-- 2.5rem (default) -->
+<button popovertarget="menu" class="avatar l">JD</button>   <!-- 3.5rem -->
+<button popovertarget="menu" class="avatar xl">JD</button>  <!-- 5rem -->
+```
+
+## See Also
+
+- [Dropdown](dropdown.txt) - Full dropdown documentation
+- [Avatar](avatar.txt) - Avatar styling details

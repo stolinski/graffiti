@@ -1,0 +1,68 @@
+# Avatar
+
+Circular avatar for user images or initials.
+
+## With Image
+
+```html
+<span class="avatar">
+  <img src="user.jpg" alt="Jane Doe">
+</span>
+```
+
+## With Initials
+
+```html
+<span class="avatar">JD</span>
+<span class="avatar">AB</span>
+```
+
+## Sizes
+
+```html
+<span class="avatar xs">XS</span>   <!-- 1.5rem -->
+<span class="avatar s">S</span>     <!-- 2rem -->
+<span class="avatar">M</span>       <!-- 2.5rem (default) -->
+<span class="avatar l">L</span>     <!-- 3.5rem -->
+<span class="avatar xl">XL</span>   <!-- 5rem -->
+```
+
+## With Border
+
+```html
+<span class="avatar bordered">
+  <img src="user.jpg" alt="User">
+</span>
+```
+
+## Avatar Group
+
+Stack avatars with negative margin:
+
+```html
+<div class="cluster" style="--gap: -0.5rem;">
+  <span class="avatar bordered"><img src="user1.jpg" alt=""></span>
+  <span class="avatar bordered"><img src="user2.jpg" alt=""></span>
+  <span class="avatar bordered"><img src="user3.jpg" alt=""></span>
+  <span class="avatar bordered">+5</span>
+</div>
+```
+
+## As Button (for Menus)
+
+```html
+<button class="avatar" popovertarget="user-menu">
+  <img src="user.jpg" alt="Jane Doe">
+</button>
+```
+
+## Styling Details
+
+- Circular shape (`border-radius: 50%`)
+- Images use `object-fit: cover`
+- Initials have subtle background (`--fg-1`)
+- Text scales with avatar size
+
+## See Also
+
+- [User menu](user-menu.txt) - Avatar + dropdown

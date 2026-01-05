@@ -1,0 +1,160 @@
+# CSS Variables
+
+All customizable CSS custom properties in Graffiti.
+
+## Colors (OKLCH)
+
+All colors use OKLCH color space with automatic 1-9 opacity scales.
+
+### Semantic Colors
+```css
+--primary: var(--blue)
+--error: var(--red)
+--warning: var(--yellow)
+--success: var(--green)
+```
+
+### Color Palette
+```css
+--yellow    /* oklch(0.88 0.15 95) */
+--amber     /* oklch(0.78 0.16 80) */
+--orange    /* oklch(0.75 0.18 65) */
+--red       /* oklch(0.62 0.22 35) */
+--pink      /* oklch(0.62 0.25 350) */
+--purple    /* oklch(0.65 0.24 310) */
+--indigo    /* oklch(0.55 0.25 275) */
+--blue      /* oklch(0.5 0.28 270) */
+--teal      /* oklch(0.82 0.08 185) */
+--green     /* oklch(0.72 0.18 165) */
+--lime      /* oklch(0.80 0.16 130) */
+--highlighter /* oklch(0.88 0.22 115) */
+--brown     /* oklch(0.55 0.12 60) */
+--gray      /* oklch(0.5 0.02 270) */
+--slate     /* oklch(0.52 0.04 255) */
+--white     /* oklch(1 0 0) - static, doesn't change with theme */
+--black     /* oklch(0 0 0) - static, doesn't change with theme */
+```
+
+### Color Scales
+Each color has a 1-9 scale based on opacity:
+```css
+--blue-1  /* 10% opacity */
+--blue-2  /* 20% opacity */
+--blue-3  /* 30% opacity */
+--blue-4  /* 40% opacity */
+--blue-5  /* 50% opacity */
+--blue-6  /* 60% opacity */
+--blue-7  /* 75% opacity */
+--blue-8  /* 90% opacity */
+--blue-9  /* 100% opacity (same as --blue) */
+```
+
+### Foreground/Background (Auto Theme)
+```css
+--fg      /* black in light mode, white in dark mode */
+--bg      /* white in light mode, black in dark mode */
+--fg-05   /* 5% foreground opacity */
+--fg-1 through --fg-9  /* foreground scale */
+--bg-05   /* 5% background opacity */
+--bg-1 through --bg-9  /* background scale */
+```
+
+## Spacing
+
+### Padding
+```css
+--pad-xs: 0.25rem
+--pad-s: 0.5rem
+--pad-m: 0.75rem
+--pad-l: 1rem
+--pad-xl: 1.5rem
+--pad-xxl: 2rem
+--pad-xxxl: 4rem
+```
+
+### Vertical Spacing
+```css
+--vs-s: 0.5rem
+--vs-base: 1rem
+--vs-m: 1.5rem
+--vs-l: 2rem
+--vs-xl: 4rem
+```
+
+### Gap (for layouts)
+```css
+--gap: 1rem           /* default gap, inheritable */
+--layout-gap: 2rem    /* layout-specific, non-inheriting */
+```
+
+## Border Radius
+```css
+--br-xs: 2px
+--br-s: 4px
+--br-m: 8px
+--br-l: 16px
+--br-xl: 24px
+--br-xxl: 32px
+```
+
+## Borders
+```css
+--border-05: solid 1px var(--fg-05)  /* subtle */
+--border-1: solid 1px var(--fg-2)    /* thin */
+--border-2: solid 2px var(--fg-2)    /* thick */
+```
+
+## Shadows
+```css
+--shadow-1  /* subtle */
+--shadow-2  /* light lift */
+--shadow-3  /* moderate */
+--shadow-4  /* strong */
+--shadow-5  /* dramatic */
+--shadow-6  /* maximum */
+--box       /* inset highlights + subtle shadow */
+```
+
+## Line Heights
+```css
+--lh-xs: 1      /* single line */
+--lh-s: 1.2     /* tight, for headings */
+--lh: 1.5       /* default body text */
+--lh-m: 1.5     /* alias for default */
+--lh-l: 1.8     /* loose */
+--lh-xl: 2      /* double */
+```
+
+## Typography
+```css
+--font-sans: /* system font stack */
+--font-size-min: 14px
+--font-size-max: 18px
+--font-ratio-min: 1.2
+--font-ratio-max: 1.33
+--fl: 0  /* fluid level: -1 to 6 */
+```
+
+## Easing
+```css
+--ease-smooth      /* smooth acceleration */
+--ease-bounce      /* spring-like */
+--ease-emphasized  /* material design */
+```
+
+## Layout Variables
+```css
+--min-card-width: 290px        /* for .layout-card */
+--max-width: 1200px            /* for .layout-readable */
+--padding: 2rem                /* for .layout-readable */
+--reel-height: 80vh            /* for .reel */
+```
+
+## Component Variables
+```css
+--toggle-color: var(--primary)
+--tag-color: var(--primary)
+--button-color: /* button background */
+--callout-color: /* callout background */
+--separator: "/"               /* for .breadcrumbs */
+```

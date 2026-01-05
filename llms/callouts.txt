@@ -1,0 +1,75 @@
+# Callouts
+
+Informational boxes for tips, warnings, errors, and success messages.
+
+## Variants
+
+```html
+<div class="callout">Default callout for general information.</div>
+<div class="callout warning">Warning callout for important notices.</div>
+<div class="callout error">Error callout for critical issues.</div>
+<div class="callout success">Success callout for confirmations.</div>
+<div class="callout ghost">Ghost callout for subtle messages.</div>
+```
+
+## With Title
+
+```html
+<div class="callout warning">
+  <h4>Warning</h4>
+  <p>This action cannot be undone.</p>
+</div>
+```
+
+## With Button
+
+```html
+<div class="callout">
+  <p>Your trial expires in 3 days.</p>
+  <button>Upgrade Now</button>
+</div>
+```
+
+## Hard Variant
+
+Add `.hard` for a thick left border accent:
+
+```html
+<div class="callout hard">Info with accent border.</div>
+<div class="callout warning hard">Warning with accent border.</div>
+<div class="callout error hard">Error with accent border.</div>
+```
+
+## Fill Variant
+
+Add `.fill` for filled background:
+
+```html
+<div class="callout fill">Filled info callout.</div>
+<div class="callout warning fill">Filled warning callout.</div>
+```
+
+## Multiple Elements
+
+Use `.stack` for consistent spacing inside:
+
+```html
+<div class="callout">
+  <div class="stack">
+    <h4>Multiple Elements</h4>
+    <p>First paragraph of content.</p>
+    <p>Second paragraph of content.</p>
+    <button>Action</button>
+  </div>
+</div>
+```
+
+## CSS Variables
+
+- `--callout-color` - Background color
+- `--callout-border-color` - Border color
+
+## See Also
+
+- [Tags](tags.txt) - Inline category labels
+- [Buttons](buttons.txt) - Action buttons

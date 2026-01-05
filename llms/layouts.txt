@@ -1,0 +1,122 @@
+# Layouts
+
+CSS Grid-based page layouts. All layouts are responsive by default.
+
+## Sidebar Layout
+
+```html
+<div class="layout-sidebar">
+  <aside>Sidebar (250px)</aside>
+  <main>Main content</main>
+</div>
+```
+
+**Variants:**
+- `.layout-sidebar` - 250px sidebar (default)
+- `.layout-sidebar.narrow` - 150px sidebar
+- `.layout-sidebar.wide` - 350px sidebar
+- `.layout-sidebar.invert` - Sidebar on right
+- `.layout-sidebar.fill` - Full-height sidebar (for app shells)
+
+## App Shell with Sidebar
+
+```html
+<div class="layout-sidebar fill" style="--layout-gap: 0; height: 100vh;">
+  <aside class="split vertical">
+    <nav class="sidebar-nav"><!-- nav links --></nav>
+    <div><!-- footer/promo --></div>
+  </aside>
+  <main style="overflow-y: auto;">
+    <!-- scrollable content -->
+  </main>
+</div>
+```
+
+## Card Grid
+
+Auto-fill responsive grid:
+
+```html
+<div class="layout-card">
+  <div class="box">Card 1</div>
+  <div class="box">Card 2</div>
+  <div class="box">Card 3</div>
+</div>
+```
+
+Customize minimum card width:
+
+```html
+<div class="layout-card" style="--min-card-width: 200px;">
+```
+
+## Split (50/50)
+
+```html
+<div class="layout-split">
+  <div>Left half</div>
+  <div>Right half</div>
+</div>
+```
+
+Add `.no-stack` to prevent stacking on mobile.
+
+## Three Column
+
+```html
+<div class="layout-three-col">
+  <div>Column 1</div>
+  <div>Column 2</div>
+  <div>Column 3</div>
+</div>
+```
+
+Responsive: 3 cols → 2 cols → 1 col.
+
+## Holy Grail
+
+Sidebar + content + sidebar:
+
+```html
+<div class="layout-holy-grail">
+  <aside style="width: 200px">Left</aside>
+  <main>Content</main>
+  <aside style="width: 200px">Right</aside>
+</div>
+```
+
+## Readable Width
+
+Max-width container for optimal reading:
+
+```html
+<div class="layout-readable">
+  <p>Content constrained to readable width</p>
+</div>
+```
+
+**Variants:**
+- `.layout-readable` - Start-aligned
+- `.layout-readable.center` - Centered
+- `.layout-readable.end` - End-aligned
+
+**Full bleed child:**
+```html
+<div class="layout-readable">
+  <p>Normal content</p>
+  <img class="full-bleed" src="wide-image.jpg">
+  <p>Back to readable width</p>
+</div>
+```
+
+## CSS Variables
+
+- `--gap` or `--layout-gap` - Gap between grid items
+- `--min-card-width` - Minimum card width for `.layout-card`
+- `--max-width` - Max width for `.layout-readable`
+- `--padding` - Inline padding for `.layout-readable`
+
+## See Also
+
+- [Stack & cluster](stack-cluster.txt) - Flexbox layouts
+- [Sidebar navigation](sidebar-nav.txt) - Nav component for sidebars

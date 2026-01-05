@@ -1,0 +1,60 @@
+# Breadcrumbs
+
+Simple breadcrumb navigation with customizable separators.
+
+## Basic Example
+
+```html
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ul class="no-list">
+    <li><a href="/">Home</a></li>
+    <li><a href="/products">Products</a></li>
+    <li><a href="/products/electronics">Electronics</a></li>
+    <li aria-current="page">Wireless Headphones</li>
+  </ul>
+</nav>
+```
+
+## Custom Separator
+
+Default separator is `/`. Change with `--separator`:
+
+```html
+<nav class="breadcrumbs" style="--separator: '›'" aria-label="Breadcrumb">
+  <ul class="no-list">
+    <li><a href="/">Home</a></li>
+    <li><a href="/docs">Docs</a></li>
+    <li aria-current="page">Getting Started</li>
+  </ul>
+</nav>
+```
+
+Other separator ideas: `›`, `→`, `»`, `|`, `·`
+
+## Current Page
+
+Mark the current page with `aria-current="page"` on the `<li>`:
+
+```html
+<li aria-current="page">Current Page</li>
+```
+
+This removes the link styling and shows it as plain text.
+
+## Styling Details
+
+- Flexbox layout with wrapping
+- Separators via `::before` pseudo-elements
+- Links are muted (`--fg-5`) and brighten on hover (`--fg-7`)
+- Proper focus-visible states
+
+## Accessibility
+
+- Use `aria-label="Breadcrumb"` on the `<nav>`
+- Use `aria-current="page"` on the current page `<li>`
+- Use semantic `<nav>`, `<ul>`, `<li>` structure
+
+## See Also
+
+- [Header](header.txt) - Site header
+- [Sidebar navigation](sidebar-nav.txt) - App navigation

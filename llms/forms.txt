@@ -1,0 +1,120 @@
+# Forms
+
+All form inputs are styled automatically. No classes needed on inputs.
+
+## Text Inputs
+
+```html
+<label for="name">Name</label>
+<input type="text" id="name" placeholder="Enter name...">
+
+<label for="email">Email</label>
+<input type="email" id="email" placeholder="you@example.com">
+
+<label for="password">Password</label>
+<input type="password" id="password">
+```
+
+## Textarea
+
+```html
+<label for="message">Message</label>
+<textarea id="message" rows="3" placeholder="Your message..."></textarea>
+```
+
+## Select
+
+```html
+<label for="country">Country</label>
+<select id="country">
+  <option>United States</option>
+  <option>Canada</option>
+  <option>United Kingdom</option>
+</select>
+```
+
+## Checkboxes & Radios
+
+```html
+<!-- Checkboxes -->
+<label><input type="checkbox"> Remember me</label>
+<label><input type="checkbox" checked> Subscribe to newsletter</label>
+
+<!-- Radio buttons -->
+<label><input type="radio" name="plan" checked> Free</label>
+<label><input type="radio" name="plan"> Pro</label>
+<label><input type="radio" name="plan"> Enterprise</label>
+```
+
+## Date & Time
+
+```html
+<label for="date">Date</label>
+<input type="date" id="date">
+
+<label for="time">Time</label>
+<input type="time" id="time">
+
+<label for="datetime">Date & Time</label>
+<input type="datetime-local" id="datetime">
+```
+
+## Other Types
+
+```html
+<label for="number">Number</label>
+<input type="number" id="number" min="0" max="100">
+
+<label for="range">Range</label>
+<input type="range" id="range" min="0" max="100">
+
+<label for="color">Color</label>
+<input type="color" id="color">
+
+<label for="file">File</label>
+<input type="file" id="file">
+```
+
+## Validation States
+
+Add `.error`, `.success`, or `.warning` to inputs:
+
+```html
+<input type="email" class="error">
+<small class="error">Please enter a valid email</small>
+
+<input type="text" class="success">
+<small class="success">Username is available</small>
+
+<input type="password" class="warning">
+<small class="warning">Password is weak</small>
+```
+
+## Form Layout with Stack
+
+```html
+<form class="stack">
+  <label for="email">Email</label>
+  <input type="email" id="email">
+  
+  <label for="password">Password</label>
+  <input type="password" id="password">
+  
+  <button type="submit" class="primary">Submit</button>
+</form>
+```
+
+## Disabled Inputs
+
+```html
+<input type="text" disabled value="Can't edit this">
+<select disabled><option>Can't change</option></select>
+```
+
+## See Also
+
+- [Login form](login-form.txt) - Complete login pattern
+- [Toggle switch](toggle.txt) - On/off toggle
+- [Search input](search.txt) - Search with icon
+- [Input group](input-group.txt) - Input + button
+- [Dropzone](dropzone.txt) - File upload area

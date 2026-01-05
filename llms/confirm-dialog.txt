@@ -1,0 +1,63 @@
+# Confirm Dialog
+
+A confirmation dialog pattern using native `<dialog>` with title, message, and action buttons.
+
+## Example
+
+```html
+<button commandfor="confirm-dialog" command="show-modal">Delete Item</button>
+
+<dialog id="confirm-dialog">
+  <button class="close" commandfor="confirm-dialog" command="close">×</button>
+  <div class="stack">
+    <p class="h4">Confirm Action</p>
+    <p>Are you sure you want to proceed? This cannot be undone.</p>
+    <div class="cluster" style="justify-content: flex-end;">
+      <button commandfor="confirm-dialog" command="close">Cancel</button>
+      <button class="primary" commandfor="confirm-dialog" command="close">Confirm</button>
+    </div>
+  </div>
+</dialog>
+```
+
+## Key Classes Used
+
+- `.close` - Circular close button (positioned top-right automatically)
+- `.stack` - Vertical layout for dialog content
+- `.cluster` - Horizontal layout for action buttons
+- `.h4` - Heading style without using an actual heading element
+- `.primary` - Primary action button
+
+## How It Works
+
+- Uses HTML invokers (`commandfor`/`command`) - no JavaScript for open/close
+- `.stack` provides consistent vertical spacing between title, message, and buttons
+- `.cluster` with `justify-content: flex-end` aligns buttons to the right
+- Both Cancel and Confirm close the dialog; add your own JS for the confirm action
+
+## Variations
+
+### Destructive Action
+```html
+<button class="error" commandfor="confirm-dialog" command="close">Delete</button>
+```
+
+### With Form
+```html
+<dialog id="confirm-dialog">
+  <form method="dialog">
+    <div class="stack">
+      <p class="h4">Save Changes?</p>
+      <p>You have unsaved changes.</p>
+      <div class="cluster" style="justify-content: flex-end;">
+        <button value="cancel">Discard</button>
+        <button class="primary" value="confirm">Save</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+```
+
+## See Also
+
+- [Dialog](dialog.txt) - Basic dialog usage

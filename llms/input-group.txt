@@ -1,0 +1,52 @@
+# Input Group
+
+Input field with connected button. Use for copy-to-clipboard, search with button, URL sharing, or any input that needs an action.
+
+## Basic Example
+
+```html
+<div class="input-group">
+  <input type="text" value="https://example.com/share/abc123" readonly>
+  <button>Copy</button>
+</div>
+```
+
+## Search with Button
+
+```html
+<div class="input-group">
+  <input type="search" placeholder="Search documentation...">
+  <button class="primary">Search</button>
+</div>
+```
+
+## Code/Coupon Input
+
+```html
+<div class="input-group">
+  <input type="text" placeholder="Enter code...">
+  <button class="success">Apply</button>
+</div>
+```
+
+## Mini Button Variant
+
+```html
+<div class="input-group">
+  <input type="text" value="some-value">
+  <button class="mini">Copy</button>
+</div>
+```
+
+## Styling Details
+
+- Input stretches to fill available space
+- Button stays sized to content
+- Connected with no gap, shared border-radius
+- Works with all button variants (`.primary`, `.ghost`, etc.)
+
+## See Also
+
+- [Forms](forms.txt) - All form inputs
+- [Buttons](buttons.txt) - Button variants
+- [Search](search.txt) - Search with icon

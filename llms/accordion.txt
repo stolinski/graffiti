@@ -102,4 +102,4 @@ Only one in the group can be open at a time.
 
 ## See Also
 
-- [Sidebar navigation](sidebar-nav.txt) - Uses details for collapsible sections
+- [Sidebar navigation](https://graffiti-ui.com/llms/sidebar-nav.txt) - Uses details for collapsible sections

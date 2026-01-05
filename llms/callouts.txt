@@ -71,5 +71,5 @@ Use `.stack` for consistent spacing inside:
 
 ## See Also
 
-- [Tags](tags.txt) - Inline category labels
-- [Buttons](buttons.txt) - Action buttons
+- [Tags](https://graffiti-ui.com/llms/tags.txt) - Inline category labels
+- [Buttons](https://graffiti-ui.com/llms/buttons.txt) - Action buttons

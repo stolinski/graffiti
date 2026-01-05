@@ -47,6 +47,6 @@ Input field with connected button. Use for copy-to-clipboard, search with button
 
 ## See Also
 
-- [Forms](forms.txt) - All form inputs
-- [Buttons](buttons.txt) - Button variants
-- [Search](search.txt) - Search with icon
+- [Forms](https://graffiti-ui.com/llms/forms.txt) - All form inputs
+- [Buttons](https://graffiti-ui.com/llms/buttons.txt) - Button variants
+- [Search](https://graffiti-ui.com/llms/search.txt) - Search with icon

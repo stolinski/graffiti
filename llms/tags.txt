@@ -76,5 +76,5 @@ Use `.muted` for neutral text color (better contrast on some backgrounds):
 
 ## See Also
 
-- [Chips](chips.txt) - Interactive filter/selection elements
-- [Callouts](callouts.txt) - Info/warning/error boxes
+- [Chips](https://graffiti-ui.com/llms/chips.txt) - Interactive filter/selection elements
+- [Callouts](https://graffiti-ui.com/llms/callouts.txt) - Info/warning/error boxes

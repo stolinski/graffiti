@@ -56,5 +56,5 @@ This removes the link styling and shows it as plain text.
 
 ## See Also
 
-- [Header](header.txt) - Site header
-- [Sidebar navigation](sidebar-nav.txt) - App navigation
+- [Header](https://graffiti-ui.com/llms/header.txt) - Site header
+- [Sidebar navigation](https://graffiti-ui.com/llms/sidebar-nav.txt) - App navigation

@@ -54,5 +54,5 @@ Combine box styles with shadow variables:
 
 ## See Also
 
-- [Layouts](layouts.txt) - Grid layouts for cards
-- [Callouts](callouts.txt) - Message boxes
+- [Layouts](https://graffiti-ui.com/llms/layouts.txt) - Grid layouts for cards
+- [Callouts](https://graffiti-ui.com/llms/callouts.txt) - Message boxes

@@ -113,8 +113,8 @@ Add `.error`, `.success`, or `.warning` to inputs:
 
 ## See Also
 
-- [Login form](login-form.txt) - Complete login pattern
-- [Toggle switch](toggle.txt) - On/off toggle
-- [Search input](search.txt) - Search with icon
-- [Input group](input-group.txt) - Input + button
-- [Dropzone](dropzone.txt) - File upload area
+- [Login form](https://graffiti-ui.com/llms/login-form.txt) - Complete login pattern
+- [Toggle switch](https://graffiti-ui.com/llms/toggle.txt) - On/off toggle
+- [Search input](https://graffiti-ui.com/llms/search.txt) - Search with icon
+- [Input group](https://graffiti-ui.com/llms/input-group.txt) - Input + button
+- [Dropzone](https://graffiti-ui.com/llms/dropzone.txt) - File upload area

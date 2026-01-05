@@ -93,4 +93,4 @@ Also available as `.fluid-text-container`.
 
 ## See Also
 
-- [Variables](variables.txt) - All CSS variables
+- [Variables](https://graffiti-ui.com/llms/variables.txt) - All CSS variables

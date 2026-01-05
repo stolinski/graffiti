@@ -55,5 +55,5 @@ Sticks to top when scrolling:
 
 ## See Also
 
-- [Breadcrumbs](breadcrumbs.txt) - Hierarchy navigation
-- [Sidebar navigation](sidebar-nav.txt) - Vertical app navigation
+- [Breadcrumbs](https://graffiti-ui.com/llms/breadcrumbs.txt) - Hierarchy navigation
+- [Sidebar navigation](https://graffiti-ui.com/llms/sidebar-nav.txt) - Vertical app navigation

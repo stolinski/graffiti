@@ -66,4 +66,4 @@ Horizontal scrolling with CSS scroll-snap. No JavaScript required.
 
 ## See Also
 
-- [Reel](reel.txt) - Vertical scroll-snap
+- [Reel](https://graffiti-ui.com/llms/reel.txt) - Vertical scroll-snap

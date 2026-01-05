@@ -118,5 +118,5 @@ Max-width container for optimal reading:
 
 ## See Also
 
-- [Stack & cluster](stack-cluster.txt) - Flexbox layouts
-- [Sidebar navigation](sidebar-nav.txt) - Nav component for sidebars
+- [Stack & cluster](https://graffiti-ui.com/llms/stack-cluster.txt) - Flexbox layouts
+- [Sidebar navigation](https://graffiti-ui.com/llms/sidebar-nav.txt) - Nav component for sidebars

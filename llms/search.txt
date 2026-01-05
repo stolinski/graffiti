@@ -43,5 +43,5 @@ Get icons from [Phosphor Icons](https://phosphoricons.com/). The magnifying glas
 
 ## See Also
 
-- [Forms](forms.txt) - All form inputs
-- [Input group](input-group.txt) - Input + button combo
+- [Forms](https://graffiti-ui.com/llms/forms.txt) - All form inputs
+- [Input group](https://graffiti-ui.com/llms/input-group.txt) - Input + button combo

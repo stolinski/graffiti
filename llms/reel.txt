@@ -52,4 +52,4 @@ Vertical scrolling with CSS scroll-snap. Like carousel but vertical.
 
 ## See Also
 
-- [Carousel](carousel.txt) - Horizontal scroll-snap
+- [Carousel](https://graffiti-ui.com/llms/carousel.txt) - Horizontal scroll-snap

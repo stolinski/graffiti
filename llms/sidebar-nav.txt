@@ -101,5 +101,5 @@ Combine with `.layout-sidebar.fill` for a full app shell:
 
 ## See Also
 
-- [Layouts](layouts.txt) - Page layout options
-- [Dropdown](dropdown.txt) - Popover-based menus
+- [Layouts](https://graffiti-ui.com/llms/layouts.txt) - Page layout options
+- [Dropdown](https://graffiti-ui.com/llms/dropdown.txt) - Popover-based menus

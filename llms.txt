@@ -29,44 +29,44 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 ## What are you building?
 
 ### Navigation
-- [Sidebar navigation](llms/sidebar-nav.txt) - Collapsible app sidebar with sections
-- [Dropdown menu](llms/dropdown.txt) - Popover-based menu (no JS)
-- [Header/navbar](llms/header.txt) - Site header with nav links
-- [Breadcrumbs](llms/breadcrumbs.txt) - Hierarchy trail navigation
-- [User menu](llms/user-menu.txt) - Avatar + dropdown for user actions
+- [Sidebar navigation](https://graffiti-ui.com/llms/sidebar-nav.txt) - Collapsible app sidebar with sections
+- [Dropdown menu](https://graffiti-ui.com/llms/dropdown.txt) - Popover-based menu (no JS)
+- [Header/navbar](https://graffiti-ui.com/llms/header.txt) - Site header with nav links
+- [Breadcrumbs](https://graffiti-ui.com/llms/breadcrumbs.txt) - Hierarchy trail navigation
+- [User menu](https://graffiti-ui.com/llms/user-menu.txt) - Avatar + dropdown for user actions
 
 ### Dialogs & Overlays
-- [Dialog](llms/dialog.txt) - Native modal dialog with animations
-- [Confirm dialog](llms/confirm-dialog.txt) - Action confirmation pattern
+- [Dialog](https://graffiti-ui.com/llms/dialog.txt) - Native modal dialog with animations
+- [Confirm dialog](https://graffiti-ui.com/llms/confirm-dialog.txt) - Action confirmation pattern
 
 ### Layouts
-- [Page layouts](llms/layouts.txt) - Sidebar, grid, split, holy-grail, readable
-- [Stack & cluster](llms/stack-cluster.txt) - Vertical and horizontal flow
+- [Page layouts](https://graffiti-ui.com/llms/layouts.txt) - Sidebar, grid, split, holy-grail, readable
+- [Stack & cluster](https://graffiti-ui.com/llms/stack-cluster.txt) - Vertical and horizontal flow
 
 ### Elements
-- [Buttons](llms/buttons.txt) - Button variants and styles
-- [Chips](llms/chips.txt) - Interactive filter/selection pills
-- [Tags](llms/tags.txt) - Category and metadata labels
-- [Callouts](llms/callouts.txt) - Info, warning, error, success boxes
-- [Avatar](llms/avatar.txt) - User images and initials
-- [Boxes](llms/boxes.txt) - Container styles (glow, ghost, semi-gloss)
+- [Buttons](https://graffiti-ui.com/llms/buttons.txt) - Button variants and styles
+- [Chips](https://graffiti-ui.com/llms/chips.txt) - Interactive filter/selection pills
+- [Tags](https://graffiti-ui.com/llms/tags.txt) - Category and metadata labels
+- [Callouts](https://graffiti-ui.com/llms/callouts.txt) - Info, warning, error, success boxes
+- [Avatar](https://graffiti-ui.com/llms/avatar.txt) - User images and initials
+- [Boxes](https://graffiti-ui.com/llms/boxes.txt) - Container styles (glow, ghost, semi-gloss)
 
 ### Components
-- [Accordion](llms/accordion.txt) - Collapsible sections with details/summary
-- [Carousel](llms/carousel.txt) - Horizontal scroll with snap
-- [Reel](llms/reel.txt) - Vertical scroll with snap
-- [Tables](llms/tables.txt) - Data table styling
-- [Swipe](llms/swipe.txt) - Swipe-to-reveal actions
+- [Accordion](https://graffiti-ui.com/llms/accordion.txt) - Collapsible sections with details/summary
+- [Carousel](https://graffiti-ui.com/llms/carousel.txt) - Horizontal scroll with snap
+- [Reel](https://graffiti-ui.com/llms/reel.txt) - Vertical scroll with snap
+- [Tables](https://graffiti-ui.com/llms/tables.txt) - Data table styling
+- [Swipe](https://graffiti-ui.com/llms/swipe.txt) - Swipe-to-reveal actions
 
 ### Forms
-- [Form basics](llms/forms.txt) - Inputs, selects, checkboxes, radios
-- [Login form](llms/login-form.txt) - Complete login pattern
-- [Toggle switch](llms/toggle.txt) - On/off switch input
-- [Search input](llms/search.txt) - Search with icon
-- [Input group](llms/input-group.txt) - Input + button combo
-- [File dropzone](llms/dropzone.txt) - Drag and drop upload
+- [Form basics](https://graffiti-ui.com/llms/forms.txt) - Inputs, selects, checkboxes, radios
+- [Login form](https://graffiti-ui.com/llms/login-form.txt) - Complete login pattern
+- [Toggle switch](https://graffiti-ui.com/llms/toggle.txt) - On/off switch input
+- [Search input](https://graffiti-ui.com/llms/search.txt) - Search with icon
+- [Input group](https://graffiti-ui.com/llms/input-group.txt) - Input + button combo
+- [File dropzone](https://graffiti-ui.com/llms/dropzone.txt) - Drag and drop upload
 
 ### Reference
-- [CSS variables](llms/variables.txt) - Colors, spacing, shadows, typography
-- [Utility classes](llms/utilities.txt) - Display, spacing, visibility helpers
-- [Typography](llms/typography.txt) - Fluid type system and font sizes
+- [CSS variables](https://graffiti-ui.com/llms/variables.txt) - Colors, spacing, shadows, typography
+- [Utility classes](https://graffiti-ui.com/llms/utilities.txt) - Display, spacing, visibility helpers
+- [Typography](https://graffiti-ui.com/llms/typography.txt) - Fluid type system and font sizes

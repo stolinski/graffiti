@@ -66,4 +66,4 @@ Basic table styling also works without the wrapper, but you lose the responsive 
 
 ## See Also
 
-- [Layouts](layouts.txt) - Page layouts
+- [Layouts](https://graffiti-ui.com/llms/layouts.txt) - Page layouts

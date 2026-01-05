@@ -61,4 +61,4 @@ The toggle uses a native checkbox, so it:
 
 ## See Also
 
-- [Forms](forms.txt) - All form inputs
+- [Forms](https://graffiti-ui.com/llms/forms.txt) - All form inputs

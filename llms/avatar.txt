@@ -65,4 +65,4 @@ Stack avatars with negative margin:
 
 ## See Also
 
-- [User menu](user-menu.txt) - Avatar + dropdown
+- [User menu](https://graffiti-ui.com/llms/user-menu.txt) - Avatar + dropdown

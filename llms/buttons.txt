@@ -73,5 +73,5 @@ Right-align with `justify-content`:
 
 ## See Also
 
-- [Input group](input-group.txt) - Input + button combos
-- [Dialog](dialog.txt) - Action buttons in dialogs
+- [Input group](https://graffiti-ui.com/llms/input-group.txt) - Input + button combos
+- [Dialog](https://graffiti-ui.com/llms/dialog.txt) - Action buttons in dialogs

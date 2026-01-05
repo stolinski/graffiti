@@ -78,5 +78,5 @@ Smaller chips for compact spaces:
 
 ## See Also
 
-- [Tags](tags.txt) - Non-interactive category labels
-- [Buttons](buttons.txt) - Standard buttons
+- [Tags](https://graffiti-ui.com/llms/tags.txt) - Non-interactive category labels
+- [Buttons](https://graffiti-ui.com/llms/buttons.txt) - Standard buttons

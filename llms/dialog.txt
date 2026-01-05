@@ -37,4 +37,4 @@ The `.close` class creates a circular red button. When inside a `<dialog>`, it's
 
 ## See Also
 
-- [Confirm dialog](confirm-dialog.txt) - Dialog with action buttons
+- [Confirm dialog](https://graffiti-ui.com/llms/confirm-dialog.txt) - Dialog with action buttons

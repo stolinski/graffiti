@@ -75,4 +75,4 @@ swipe.addEventListener('scroll', () => {
 
 ## See Also
 
-- [Carousel](carousel.txt) - Horizontal scroll
+- [Carousel](https://graffiti-ui.com/llms/carousel.txt) - Horizontal scroll

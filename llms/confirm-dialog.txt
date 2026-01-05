@@ -60,4 +60,4 @@ A confirmation dialog pattern using native `<dialog>` with title, message, and a
 
 ## See Also
 
-- [Dialog](dialog.txt) - Basic dialog usage
+- [Dialog](https://graffiti-ui.com/llms/dialog.txt) - Basic dialog usage

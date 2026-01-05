@@ -127,4 +127,4 @@ For sidebars with content at top and bottom:
 
 ## See Also
 
-- [Layouts](layouts.txt) - Grid-based page layouts
+- [Layouts](https://graffiti-ui.com/llms/layouts.txt) - Grid-based page layouts

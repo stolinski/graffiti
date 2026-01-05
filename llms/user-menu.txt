@@ -53,5 +53,5 @@ User account dropdown combining avatar trigger with dropdown menu. Works with bo
 
 ## See Also
 
-- [Dropdown](dropdown.txt) - Full dropdown documentation
-- [Avatar](avatar.txt) - Avatar styling details
+- [Dropdown](https://graffiti-ui.com/llms/dropdown.txt) - Full dropdown documentation
+- [Avatar](https://graffiti-ui.com/llms/avatar.txt) - Avatar styling details

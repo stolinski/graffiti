@@ -75,5 +75,5 @@ Links and buttons inside `.dropdown-menu` are automatically styled:
 
 ## See Also
 
-- [User menu](user-menu.txt) - Avatar + dropdown pattern
-- [Sidebar navigation](sidebar-nav.txt) - Vertical nav with collapsible sections
+- [User menu](https://graffiti-ui.com/llms/user-menu.txt) - Avatar + dropdown pattern
+- [Sidebar navigation](https://graffiti-ui.com/llms/sidebar-nav.txt) - Vertical nav with collapsible sections

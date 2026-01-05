@@ -18,7 +18,7 @@ Helper classes for common styling needs.
 <div class="cluster">Horizontal wrapping flex</div>
 ```
 
-See [Stack & Cluster](stack-cluster.txt) for details.
+See [Stack & Cluster](https://graffiti-ui.com/llms/stack-cluster.txt) for details.
 
 ## Readable Width
 
@@ -120,5 +120,5 @@ Break out of `.layout-readable` container:
 
 ## See Also
 
-- [Variables](variables.txt) - CSS custom properties
-- [Typography](typography.txt) - Font sizing
+- [Variables](https://graffiti-ui.com/llms/variables.txt) - CSS custom properties
+- [Typography](https://graffiti-ui.com/llms/typography.txt) - Font sizing

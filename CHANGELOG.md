@@ -1,5 +1,16 @@
 # @drop-in/graffiti
 
+## 4.12.0
+
+### Minor Changes
+
+- 96af2b7: Added native `<dialog>` element styling with open/close animations, and a reusable `.close` button class. Demos use HTML invokers (`commandfor`/`command`) - no JavaScript required.
+
+### Patch Changes
+
+- 96af2b7: Added tags component - subtle category labels with customizable colors via `--tag-color`. Supports text, icons, emoji, and works as static labels or interactive links/buttons. Use `.muted` for neutral text color when you need guaranteed contrast.
+- 96af2b7: Added chips component - small interactive tag/label elements for filters, categories, and selections. Supports icons, selected state (via `.selected` class or `aria-pressed`), disabled state, and a compact `.mini` variant.
+
 ## 4.11.1
 
 ### Patch Changes

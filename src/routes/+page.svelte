@@ -32,7 +32,7 @@
     </p>
     <p>
       <a
-        href="https://raw.githubusercontent.com/stolinski/graffiti/refs/heads/main/llms.txt"
+        href="https://graffiti-ui.com/llms.txt"
         >Give you LLM our docs</a
       >
     </p>

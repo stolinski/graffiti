@@ -862,6 +862,150 @@ Usage:
 
 Add `.dragover` class via JavaScript when files are dragged over for visual feedback.
 
+### Sidebar Navigation
+Vertical navigation for app sidebars with collapsible sections:
+- `.sidebar-nav`: Container for sidebar navigation links
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- Flexbox column layout
+- Top-level links and summaries have consistent padding, hover states
+- Collapsible sections use native `<details>`/`<summary>`
+- Chevron indicator (›) rotates on open
+- Active state via `[aria-current="page"]` or `.active` class
+- Nested links automatically indented
+
+**Customization:**
+- `--sidebar-nav-icon-size`: Icon size (default: 20px)
+- `--sidebar-nav-indent`: Indentation for nested items (default: 1.5rem)
+
+Usage:
+```html
+<nav class="sidebar-nav">
+  <a href="/inbox">Inbox</a>
+  <a href="/issues" aria-current="page">Issues</a>
+  <details open>
+    <summary>Cycles</summary>
+    <a href="/current">Current</a>
+    <a href="/upcoming">Upcoming</a>
+    <a href="/past">Past</a>
+  </details>
+  <details>
+    <summary>Projects</summary>
+    <a href="/web">Web App</a>
+    <a href="/mobile">Mobile</a>
+  </details>
+  <a href="/settings">Settings</a>
+  <!-- Use .sub for indented top-level links without a collapsible wrapper -->
+  <a href="/backlog" class="sub">Backlog</a>
+</nav>
+```
+
+### Dialog
+Native HTML `<dialog>` element with open/close animations:
+- `dialog`: Base dialog styling (no class needed)
+- `.close`: Circular close button (red background, positioned top-right when inside dialog)
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- `max-width: 40ch`, centered with padding
+- Smooth scale/opacity animations on open/close
+- Dark backdrop overlay
+- `.close` button absolutely positioned when inside dialog
+
+**Usage with HTML Invokers (no JavaScript):**
+```html
+<button commandfor="my-dialog" command="show-modal">Open Dialog</button>
+
+<dialog id="my-dialog">
+  <button class="close" commandfor="my-dialog" command="close">×</button>
+  <h2>Dialog Title</h2>
+  <p>Dialog content here.</p>
+  <div class="cluster" style="justify-content: flex-end;">
+    <button commandfor="my-dialog" command="close">Cancel</button>
+    <button class="primary" commandfor="my-dialog" command="close">Confirm</button>
+  </div>
+</dialog>
+```
+
+**Note:** Uses HTML invokers (`commandfor`/`command`) - no JavaScript required. The `.close` button can be used anywhere (not just in dialogs) as a generic close/dismiss button.
+
+### Chip
+Interactive tag elements for filters, categories, and selections:
+- `.chip`: Base chip styling (pill-shaped, bordered)
+
+**Variants:**
+- `.chip.selected` or `[aria-pressed="true"]`: Selected state (primary color fill)
+- `.chip.mini`: Compact size variant
+- `.chip:disabled` or `[aria-disabled="true"]`: Disabled state
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- Inline-flex with centered alignment
+- Pill shape (`border-radius: var(--br-xxl)`)
+- Hover, focus, and active states
+- Icon support (SVGs sized to 1em)
+- Fluid typography (--fl: -1)
+
+Usage:
+```html
+<!-- Basic chips -->
+<button class="chip">JavaScript</button>
+<button class="chip selected">TypeScript</button>
+<button class="chip" disabled>Disabled</button>
+
+<!-- With icons -->
+<button class="chip">
+  <svg><!-- icon --></svg>
+  React
+</button>
+
+<!-- Mini variant -->
+<button class="chip mini">Small</button>
+
+<!-- Using aria-pressed for accessibility -->
+<button class="chip" aria-pressed="true">Selected</button>
+<button class="chip" aria-pressed="false">Not Selected</button>
+```
+
+### Tag
+Subtle category labels with customizable colors:
+- `.tag`: Base tag styling (soft background, colored text)
+
+**Variants:**
+- `.tag.muted`: Neutral text color (use when you need guaranteed contrast)
+
+**Customization:**
+- `--tag-color`: Tag color (default: var(--primary))
+
+**DEFAULT PROPERTIES (already included, do not add):**
+- Inline-flex with centered alignment
+- Soft background (12% opacity of tag color)
+- Text color automatically adjusts for light/dark mode
+- Subtle border (20% opacity of tag color)
+- Icon support (SVGs sized to 1em)
+- Fluid typography (--fl: -1)
+
+**Interactive tags:** When used as `<a>` or `<button>`, gets hover/focus/active states automatically.
+
+Usage:
+```html
+<!-- Basic tags -->
+<span class="tag">Default</span>
+<span class="tag" style="--tag-color: var(--green)">Success</span>
+<span class="tag" style="--tag-color: var(--red)">Error</span>
+<span class="tag" style="--tag-color: var(--purple)">New</span>
+
+<!-- With icons -->
+<span class="tag">
+  <svg><!-- icon --></svg>
+  Category
+</span>
+
+<!-- Interactive tag (link) -->
+<a href="/topics/css" class="tag" style="--tag-color: var(--blue)">CSS</a>
+
+<!-- Muted variant for neutral text -->
+<span class="tag muted" style="--tag-color: var(--orange)">Muted</span>
+```
+
 ## Forms
 
 ### Base Form Inputs

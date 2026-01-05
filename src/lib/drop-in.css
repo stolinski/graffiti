@@ -639,13 +639,26 @@ button,
   }
 }
 
-a {
+.close {
+  --size: 2rem;
+
+  width: var(--size);
+  height: var(--size);
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  color: var(--white);
+  background: var(--red);
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: var(--shadow-1);
+
   &:hover {
-    opacity: 0.8;
+    background: oklch(from var(--red) calc(l + 0.1) c h);
   }
-  &:active {
-    opacity: 0.6;
-  }
+}
+
+a {
   &:focus-visible {
     outline: 2px solid var(--fg);
     outline-offset: 2px;
@@ -2018,4 +2031,191 @@ input[type="checkbox"].toggle {
 
 ::selection {
   background: var(--primary);
+}
+
+/* Dialog */
+
+dialog {
+  max-width: 40ch;
+  width: calc(100% - var(--pad-xxl) * 2);
+  padding: var(--pad-xl);
+  corner-shape: squircle;
+  border: none;
+  border-radius: var(--br-xxl);
+  box-shadow: var(--shadow-5);
+  background: var(--bg);
+  color: var(--fg);
+  overflow: visible;
+
+  opacity: 1;
+  scale: 1;
+  transition:
+    opacity 0.2s var(--ease-smooth),
+    scale 0.2s var(--ease-smooth),
+    overlay 0.2s var(--ease-smooth) allow-discrete,
+    display 0.2s var(--ease-smooth) allow-discrete;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  > :last-child {
+    margin-block-end: 0;
+  }
+}
+
+dialog:not([open]) {
+  opacity: 0;
+  scale: 0.95;
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    scale: 0.95;
+  }
+}
+
+dialog > .close {
+  position: absolute;
+  inset-block-start: -14px;
+  inset-inline-end: var(--pad-m);
+}
+
+/* Chip */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pad-xs);
+  padding: var(--pad-xs) var(--pad-m);
+  border: var(--border-1);
+  border-radius: var(--br-xxl);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 0.15s var(--ease-smooth),
+    border-color 0.15s var(--ease-smooth);
+  --fl: -1;
+  margin: 0;
+
+  /* Reset button styles when used on button element */
+  &:is(button) {
+    background: transparent;
+    box-shadow: none;
+    font: inherit;
+  }
+
+  /* Icon sizing */
+  > svg {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+  }
+
+  /* Hover state */
+  &:hover {
+    background: var(--fg-05);
+  }
+
+  /* Focus state */
+  &:focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 2px;
+  }
+
+  /* Active/pressed state */
+  &:active {
+    background: var(--fg-1);
+  }
+
+  /* Selected state - via aria-pressed or .selected class */
+  &[aria-pressed="true"],
+  &.selected {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+
+    &:hover {
+      background: oklch(from var(--primary) calc(l - 0.05) c h);
+      border-color: oklch(from var(--primary) calc(l - 0.05) c h);
+    }
+
+    &:active {
+      background: oklch(from var(--primary) calc(l - 0.1) c h);
+      border-color: oklch(from var(--primary) calc(l - 0.1) c h);
+    }
+  }
+
+  /* Disabled state */
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Mini variant - even more compact */
+  &.mini {
+    padding: 2px var(--pad-s);
+    gap: 2px;
+  }
+}
+
+/* Tag - Subtle category/metadata labels */
+
+.tag {
+  --tag-color: var(--primary);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pad-xs);
+  padding: 2px var(--pad-s);
+  border-radius: var(--br-xxl);
+  background: oklch(from var(--tag-color) l c h / 0.12);
+  color: var(--tag-color);
+  border: 1px solid oklch(from var(--tag-color) l c h / 0.2);
+  --fl: -1;
+
+  /* Icon sizing */
+  > svg {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+  }
+
+  /* When used as interactive element */
+  &:is(a, button) {
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+      background-color 0.15s var(--ease-smooth),
+      border-color 0.15s var(--ease-smooth);
+
+    &:hover {
+      background: oklch(from var(--tag-color) l c h / 0.2);
+      border-color: oklch(from var(--tag-color) l c h / 0.3);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--tag-color);
+      outline-offset: 2px;
+    }
+
+    &:active {
+      background: oklch(from var(--tag-color) l c h / 0.25);
+    }
+  }
+
+  /* Reset button styles when used on button element */
+  &:is(button) {
+    background: oklch(from var(--tag-color) l c h / 0.12);
+    box-shadow: none;
+    font: inherit;
+    margin: 0;
+  }
+
+  /* Muted variant - colored background, neutral text for better readability */
+  &.muted {
+    color: var(--fg);
+  }
 }

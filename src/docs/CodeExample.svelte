@@ -94,6 +94,7 @@
 		.hljs {
 			background: transparent !important;
 			padding: 0 !important;
+			color: var(--white);
 		}
 		.hljs-keyword,
 		.hljs-selector-tag,
@@ -115,12 +116,12 @@
 		}
 
 		.hljs-quote {
-			color: var(--fg-9);
+			color: var(--white-9);
 		}
 
 		.hljs-comment,
 		.hljs-deletion {
-			color: var(--fg-3);
+			color: var(--white-3);
 			font-style: italic;
 		}
 		.hljs-number,
@@ -132,7 +133,7 @@
 		}
 		.hljs-meta,
 		.hljs-tag {
-			color: var(--fg-5);
+			color: var(--white-5);
 		}
 
 		.hljs-attr,
@@ -286,6 +287,7 @@
 
   .code-content {
     position: relative;
+    background: var(--black);
     padding: var(--pad-l);
     overflow-x: auto;
     font-family:
@@ -310,5 +312,6 @@
     top: var(--pad-s);
     right: var(--pad-s);
     z-index: 1;
+    color: var(--white);
   }
 </style>

@@ -18,6 +18,12 @@
   import searchCode from "$docs/demos/Search.svelte?raw";
   import Dropzone from "$docs/demos/Dropzone.svelte";
   import dropzoneCode from "$docs/demos/Dropzone.svelte?raw";
+  import Dialog from "$docs/demos/Dialog.svelte";
+  import dialogCode from "$docs/demos/Dialog.svelte?raw";
+  import Chips from "$docs/demos/Chips.svelte";
+  import chipsCode from "$docs/demos/Chips.svelte?raw";
+  import Tags from "$docs/demos/Tags.svelte";
+  import tagsCode from "$docs/demos/Tags.svelte?raw";
 </script>
 
 <section class="stack readable">
@@ -92,6 +98,26 @@
   <p>Button styling for links and non-button elements</p>
   <CodeExample code={buttonsCode} title="Button Variants">
     <Buttons />
+  </CodeExample>
+</section>
+<section class="stack">
+  <h3>.chip</h3>
+  <p>
+    Selectable pill/tag elements for filters, categories, or multi-select options.
+    Use <code>aria-pressed</code> for accessible toggle state.
+  </p>
+  <CodeExample code={chipsCode} title="Chip Selector">
+    <Chips />
+  </CodeExample>
+</section>
+<section class="stack">
+  <h3>.tag</h3>
+  <p>
+    Subtle category labels with customizable colors. Set <code>--tag-color</code> to any color variable.
+    Works as static labels or interactive links/buttons. Add <code>.muted</code> for neutral text with better contrast.
+  </p>
+  <CodeExample code={tagsCode} title="Tags">
+    <Tags />
   </CodeExample>
 </section>
 <section class="stack">
@@ -175,6 +201,17 @@
   <p>An informational callout</p>
   <CodeExample code={calloutCode} title="Callout Variants">
     <Callout />
+  </CodeExample>
+</section>
+
+<section class="stack">
+  <h3 id="dialog">dialog</h3>
+  <p>
+    Native HTML dialog element with animations. Use <code>.close</code> for the close button.
+    See <a href="/ui-blocks#confirm-dialog">UI Blocks → Confirm Dialog</a> for a complete example.
+  </p>
+  <CodeExample code={dialogCode} title="Dialog">
+    <Dialog />
   </CodeExample>
 </section>
 

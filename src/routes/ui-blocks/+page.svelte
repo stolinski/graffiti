@@ -14,6 +14,8 @@
   import userMenuCode from "$docs/demos/UserMenu.svelte?raw";
   import LoginForm from "$docs/demos/LoginForm.svelte";
   import loginFormCode from "$docs/demos/LoginForm.svelte?raw";
+  import ConfirmDialog from "$docs/demos/ConfirmDialog.svelte";
+  import confirmDialogCode from "$docs/demos/ConfirmDialog.svelte?raw";
   import { scroll_on_load, swipe_event } from "$lib/svelte";
 </script>
 
@@ -168,6 +170,17 @@
     <UserMenu />
   </CodeExample>
 </div>
+
+<section class="stack">
+  <h3 id="confirm-dialog">Confirm Dialog</h3>
+  <p>
+    Confirmation dialog pattern using native dialog element with close button,
+    title, message, and action buttons.
+  </p>
+  <CodeExample code={confirmDialogCode} title="Confirm Dialog">
+    <ConfirmDialog />
+  </CodeExample>
+</section>
 
 <h2 class="heading" id="forms">Forms</h2>
 <section class="stack readable">

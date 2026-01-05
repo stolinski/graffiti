@@ -248,9 +248,12 @@ Is this both?
 
 ### Demo Quality (delegated to docs agent)
 
-- Svelte 5 only (runes, snippets)
+- **NO SVELTE CODE** - Demos must be static HTML only, no Svelte syntax
+- **NO JavaScript** - No `<script>`, no `$state`, no `onclick`, no interactivity
+- **NO Svelte features** - No `{#if}`, `{#each}`, `{#snippet}`, `{@render}`, etc.
+- Show different states using CSS classes and attributes (e.g., `aria-pressed="true"`, `open`, `.selected`)
 - Uses only existing Graffiti CSS classes
-- Clean, semantic HTML
+- Clean, semantic, **framework-agnostic** HTML
 - Accessible
 
 ### Visual Quality (your responsibility)

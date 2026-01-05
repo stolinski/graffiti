@@ -2172,7 +2172,10 @@ dialog > .close {
   padding: 2px var(--pad-s);
   border-radius: var(--br-xxl);
   background: oklch(from var(--tag-color) l c h / 0.12);
-  color: var(--tag-color);
+  color: light-dark(
+    oklch(from var(--tag-color) calc(l - 0.15) c h),
+    oklch(from var(--tag-color) calc(l + 0.15) c h)
+  );
   border: 1px solid oklch(from var(--tag-color) l c h / 0.2);
   --fl: -1;
 

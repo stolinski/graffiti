@@ -713,6 +713,13 @@ label {
 .grid {
   display: grid;
   gap: var(--gap, 1rem);
+
+  &.auto {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--grid-min, 150px), 1fr)
+    );
+  }
 }
 
 .split {
@@ -726,6 +733,13 @@ label {
   &.vertical {
     flex-direction: column;
     height: 100%;
+  }
+}
+
+/* Container query for .split - stacks when in narrow container */
+@container (max-width: 500px) {
+  .split {
+    flex-direction: column;
   }
 }
 
@@ -859,6 +873,33 @@ label {
   --max-width: 1400px;
 }
 
+/* Container query version - responds to parent container size */
+@container (max-width: 768px) {
+  .layout-sidebar,
+  .layout-sidebar.narrow,
+  .layout-sidebar.wide,
+  .layout-sidebar.invert,
+  .layout-sidebar.invert.narrow,
+  .layout-sidebar.invert.wide {
+    grid-template-columns: 1fr;
+  }
+
+  .layout-sidebar.invert > :first-child,
+  .layout-sidebar.invert > :nth-child(2) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .layout-sidebar.fill > :first-child,
+  .layout-sidebar.fixed > :first-child {
+    position: static;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+/* Media query fallback - for when not inside a container */
 @media (width < 768px) {
   .layout-sidebar,
   .layout-sidebar.narrow,
@@ -1744,6 +1785,25 @@ details.minimal[open] > summary::after {
   }
 }
 
+/* Footer */
+
+.footer {
+  container-type: inline-size;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  /* Ensure nav columns have bottom margin when grid wraps */
+  .grid > nav {
+    margin-bottom: var(--vs-m);
+  }
+}
+
 /* Dropdown Menu */
 
 .dropdown {
@@ -2220,5 +2280,125 @@ dialog > .close {
   /* Muted variant - colored background, neutral text for better readability */
   &.muted {
     color: var(--fg);
+  }
+}
+
+/* List Navigation - Clickable navigation rows with icon, content, and chevron */
+
+.list-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--pad-m);
+  padding: var(--pad-m) var(--pad-l);
+  color: var(--fg);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.1s var(--ease-smooth);
+  margin: 0;
+
+  /* Reset button styles when used on button element */
+  &:is(button) {
+    width: 100%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    font: inherit;
+    text-align: start;
+  }
+
+  /* Icon/thumbnail area */
+  > .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--fg-5);
+
+    > svg {
+      width: 1.25em;
+      height: 1.25em;
+    }
+
+    > img {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--br-s);
+      object-fit: cover;
+    }
+  }
+
+  /* Content area - title and optional description */
+  > .content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    > .title {
+      color: var(--fg);
+      margin: 0;
+    }
+
+    > .description {
+      color: var(--fg-5);
+      --fl: -1;
+      margin: 0;
+    }
+  }
+
+  /* Chevron accessory */
+  > .chevron {
+    flex-shrink: 0;
+    color: var(--fg-3);
+    transition: translate 0.15s var(--ease-smooth);
+  }
+
+  /* Hover state */
+  &:hover {
+    background: var(--fg-05);
+
+    > .icon {
+      color: var(--fg-6);
+    }
+
+    > .chevron {
+      color: var(--fg-5);
+      translate: 2px 0;
+    }
+  }
+
+  /* Focus state */
+  &:focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: -2px;
+  }
+
+  /* Active/pressed state */
+  &:active {
+    background: var(--fg-1);
+  }
+
+  /* Disabled state */
+  &:is([aria-disabled="true"], :disabled, .disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+/* Bordered variant - dividers between items */
+.list-nav.bordered {
+  .list-nav-item {
+    border-bottom: var(--border-1);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }

@@ -16,6 +16,8 @@
   import loginFormCode from "$docs/demos/LoginForm.svelte?raw";
   import ConfirmDialog from "$docs/demos/ConfirmDialog.svelte";
   import confirmDialogCode from "$docs/demos/ConfirmDialog.svelte?raw";
+  import Footer from "$docs/demos/Footer.svelte";
+  import footerCode from "$docs/demos/Footer.svelte?raw";
   import { scroll_on_load, swipe_event } from "$lib/svelte";
 </script>
 
@@ -179,6 +181,17 @@
   </p>
   <CodeExample code={confirmDialogCode} title="Confirm Dialog">
     <ConfirmDialog />
+  </CodeExample>
+</section>
+
+<section class="stack">
+  <h3 id="footer">Footer</h3>
+  <p>
+    Full-featured site footer with social links, navigation columns, and legal links.
+    Uses existing layout and utility classes.
+  </p>
+  <CodeExample code={footerCode} title="Footer">
+    <Footer />
   </CodeExample>
 </section>
 

@@ -32,8 +32,10 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 - [Sidebar navigation](https://graffiti-ui.com/llms/sidebar-nav.txt) - Collapsible app sidebar with sections
 - [Dropdown menu](https://graffiti-ui.com/llms/dropdown.txt) - Popover-based menu (no JS)
 - [Header/navbar](https://graffiti-ui.com/llms/header.txt) - Site header with nav links
+- [Footer](https://graffiti-ui.com/llms/footer.txt) - Site footer with nav columns and legal links
 - [Breadcrumbs](https://graffiti-ui.com/llms/breadcrumbs.txt) - Hierarchy trail navigation
 - [User menu](https://graffiti-ui.com/llms/user-menu.txt) - Avatar + dropdown for user actions
+- [List navigation](https://graffiti-ui.com/llms/list-nav.txt) - Settings/menu rows with icons and chevrons
 
 ### Dialogs & Overlays
 - [Dialog](https://graffiti-ui.com/llms/dialog.txt) - Native modal dialog with animations

@@ -1,0 +1,116 @@
+# Footer Component
+
+Site footer with navigation columns, copyright, and legal links. Uses container queries for responsive behavior.
+
+## Required Classes
+
+- `.footer` - Container with `container-type: inline-size`, removes link underlines (shows on hover)
+- `.grid.auto` - Responsive auto-fit grid for nav columns
+
+## Basic Structure
+
+```html
+<footer class="footer box stack">
+  <!-- Nav columns -->
+  <div class="grid auto" style="--grid-min: 120px;">
+    <nav class="stack">
+      <strong>Documentation</strong>
+      <a href="/getting-started">Getting Started</a>
+      <a href="/components">Components</a>
+      <a href="/utilities">Utilities</a>
+    </nav>
+    <nav class="stack">
+      <strong>Resources</strong>
+      <a href="/changelog">Changelog</a>
+      <a href="https://github.com/example">GitHub</a>
+    </nav>
+    <nav class="stack">
+      <strong>Company</strong>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+
+  <hr />
+
+  <!-- Bottom bar -->
+  <div class="split">
+    <small>Company Name &copy; 2024</small>
+    <nav class="cluster">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </nav>
+  </div>
+</footer>
+```
+
+## With Social Links
+
+```html
+<footer class="footer box stack">
+  <div class="layout-sidebar wide">
+    <!-- Left: Social section -->
+    <div class="stack">
+      <h2 class="h3">Stay in touch</h2>
+      <div class="cluster">
+        <a href="#" aria-label="Twitter">
+          <svg><!-- icon --></svg>
+        </a>
+        <a href="#" aria-label="GitHub">
+          <svg><!-- icon --></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Nav columns -->
+    <div class="grid auto" style="--grid-min: 120px;">
+      <nav class="stack">
+        <strong>Product</strong>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+      </nav>
+      <!-- more columns... -->
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="split">
+    <div class="cluster">
+      <strong>Brand</strong>
+      <span>All rights reserved</span>
+    </div>
+    <nav class="cluster">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </nav>
+  </div>
+</footer>
+```
+
+## Key Features
+
+1. **Container queries** - `.footer` sets `container-type: inline-size` so child layouts respond to footer width, not viewport
+2. **No underlines** - Links have no text-decoration by default, underline appears on hover
+3. **Responsive grid** - `.grid.auto` uses `auto-fit` with `--grid-min` variable for responsive columns
+4. **Layout stacking** - `.layout-sidebar` and `.split` automatically stack in narrow containers
+
+## CSS Variables
+
+- `--grid-min` - Minimum column width for `.grid.auto` (default: 150px, recommended: 120px for footer)
+
+## Responsive Behavior
+
+The footer uses container queries, not media queries:
+- When footer container is narrow, `.layout-sidebar` stacks vertically
+- `.grid.auto` columns wrap based on `--grid-min`
+- `.split` stacks when container is < 500px
+
+## Utility Classes Used
+
+- `.box` - Adds padding and border
+- `.stack` - Vertical spacing between children
+- `.cluster` - Horizontal wrapping layout
+- `.split` - Space-between horizontal layout
+- `.layout-sidebar` - Two-column layout (stacks in narrow containers)
+- `.grid.auto` - Auto-fit responsive grid

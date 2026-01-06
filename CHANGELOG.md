@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.12.1
+
+### Patch Changes
+
+- Added footer component with `.footer` class and `.grid.auto` utility for responsive auto-fit grids
+
 ## 4.12.0
 
 ### Minor Changes

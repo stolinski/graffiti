@@ -229,4 +229,31 @@
       {@render children()}
     </section>
   </div>
+
+  <footer class="footer layout-readable stack" style="--max-width: 1400px; margin-top: var(--vs-xl); padding-block: var(--pad-xl);">
+    <div class="grid auto" style="--grid-min: 140px;">
+      <nav class="stack">
+        <strong>Documentation</strong>
+        <a href="/">Get Started</a>
+        <a href="/base">Base</a>
+        <a href="/utilities">Utilities</a>
+        <a href="/elements">Elements</a>
+        <a href="/ui-blocks">UI Blocks</a>
+      </nav>
+      <nav class="stack">
+        <strong>Resources</strong>
+        <a href="/changelog">Changelog</a>
+        <a href="https://github.com/stolinski/graffiti">GitHub</a>
+        <a href="https://graffiti-ui.com/llms.txt">LLM Docs</a>
+      </nav>
+      <nav class="stack">
+        <strong>More</strong>
+        <a href="https://syntax.fm">Syntax Podcast</a>
+        <a href="https://youtube.com/@syntaxfm">Syntax on YouTube</a>
+        <a href="https://youtube.com/@stolinski">Scott on YouTube</a>
+      </nav>
+    </div>
+    <hr />
+    <small><a href="https://github.com/stolinski/graffiti/blob/main/LICENSE">MIT License</a></small>
+  </footer>
 </div>

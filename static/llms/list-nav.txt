@@ -1,6 +1,6 @@
 # List Navigation Component
 
-Navigation list with clickable rows. Each row has an icon/thumbnail (left), title + optional description (center), and optional chevron accessory (right).
+Navigation list with clickable rows for settings pages, menus, and navigation indexes. Each item is a card with squircle shape and subtle shadow.
 
 ## Use Cases
 - Settings pages
@@ -13,63 +13,69 @@ Navigation list with clickable rows. Each row has an icon/thumbnail (left), titl
 
 ```html
 <nav class="list-nav">
-  <a href="/settings/profile" class="list-nav-item">
-    <span class="icon">
-      <svg>...</svg>
-    </span>
-    <span class="content">
-      <span class="title">Profile</span>
-      <span class="description">Manage your account settings</span>
-    </span>
-    <span class="chevron">›</span>
+  <a href="/profile">
+    <svg>...</svg>
+    Profile
+    <small>Manage your account settings</small>
+  </a>
+  
+  <a href="/notifications">
+    <svg>...</svg>
+    Notifications
+    <small>Configure alerts and updates</small>
   </a>
 </nav>
 ```
 
 ## Classes
 
-- `.list-nav` - Container (can be `<nav>`, `<ul>`, or `<div>`)
-- `.list-nav-item` - Each clickable row (works as `<a>`, `<button>`, or `<li>`)
-- `.list-nav.bordered` - Adds dividers between items
+- `.list-nav` - Container for navigation items
+- `.list-nav.bordered` - Adds border dividers between items
 
 ## Item Structure
 
-Each `.list-nav-item` has three optional parts:
+Items are direct `<a>` or `<button>` children of `.list-nav`. No additional classes needed.
 
-1. **`.icon`** - Left side icon or thumbnail
-   - SVGs are sized to 1.25em
-   - Images are sized to 2.5rem with border-radius
+Each item can contain:
+1. **`<svg>`** - Icon on the left (sized to 1.25em)
+2. **Text** - Title text
+3. **`<small>`** - Optional description (muted, smaller text)
 
-2. **`.content`** - Center area (flex: 1)
-   - `.title` - Main text
-   - `.description` - Secondary text (smaller, muted)
+## Styling
 
-3. **`.chevron`** - Right side accessory
-   - Typically `›` character
-   - Animates on hover
-   - Can be omitted if not needed
+Each item automatically gets:
+- **Squircle shape** - Rounded corners with `corner-shape: squircle`
+- **Subtle shadow** - `var(--shadow-1)` for elevated card appearance
+- **Background** - Uses `var(--bg)` for proper theming
+- **Gap** - `var(--pad-m)` spacing between items
 
 ## Examples
 
 ### Settings Menu
 ```html
 <nav class="list-nav">
-  <a href="/profile" class="list-nav-item">
-    <span class="icon"><svg>...</svg></span>
-    <span class="content">
-      <span class="title">Profile</span>
-      <span class="description">Manage your account</span>
-    </span>
-    <span class="chevron">›</span>
+  <a href="#profile">
+    <svg viewBox="0 0 20 20" fill="currentColor">
+      <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 1114 0H3z" />
+    </svg>
+    Profile
+    <small>Manage your account settings</small>
   </a>
-  
-  <a href="/notifications" class="list-nav-item">
-    <span class="icon"><svg>...</svg></span>
-    <span class="content">
-      <span class="title">Notifications</span>
-      <span class="description">Configure alerts</span>
-    </span>
-    <span class="chevron">›</span>
+
+  <a href="#notifications">
+    <svg viewBox="0 0 20 20" fill="currentColor">
+      <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+    </svg>
+    Notifications
+    <small>Configure alerts and updates</small>
+  </a>
+
+  <a href="#security">
+    <svg viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+    </svg>
+    Security
+    <small>Password and two-factor authentication</small>
   </a>
 </nav>
 ```
@@ -77,20 +83,17 @@ Each `.list-nav-item` has three optional parts:
 ### Bordered Variant
 ```html
 <nav class="list-nav bordered">
-  <a href="/dashboard" class="list-nav-item">
-    <span class="icon"><svg>...</svg></span>
-    <span class="content">
-      <span class="title">Dashboard</span>
-    </span>
-    <span class="chevron">›</span>
+  <a href="#dashboard">
+    <svg>...</svg>
+    Dashboard
   </a>
-  
-  <a href="/analytics" class="list-nav-item">
-    <span class="icon"><svg>...</svg></span>
-    <span class="content">
-      <span class="title">Analytics</span>
-    </span>
-    <span class="chevron">›</span>
+  <a href="#analytics">
+    <svg>...</svg>
+    Analytics
+  </a>
+  <a href="#reports">
+    <svg>...</svg>
+    Reports
   </a>
 </nav>
 ```
@@ -98,53 +101,39 @@ Each `.list-nav-item` has three optional parts:
 ### With Button Elements
 ```html
 <nav class="list-nav">
-  <button class="list-nav-item" onclick="openModal()">
-    <span class="icon"><svg>...</svg></span>
-    <span class="content">
-      <span class="title">Open Settings</span>
-    </span>
-    <span class="chevron">›</span>
+  <button onclick="openSettings()">
+    <svg>...</svg>
+    Open Settings
+    <small>Configure your preferences</small>
   </button>
 </nav>
 ```
 
 ### Disabled State
 ```html
-<button class="list-nav-item" disabled>
-  <span class="icon"><svg>...</svg></span>
-  <span class="content">
-    <span class="title">Coming Soon</span>
-    <span class="description">This feature is not available yet</span>
-  </span>
-  <span class="chevron">›</span>
-</button>
-```
-
-### Without Chevron
-```html
-<a href="/help" class="list-nav-item">
-  <span class="icon"><svg>...</svg></span>
-  <span class="content">
-    <span class="title">Help Center</span>
-    <span class="description">Get support</span>
-  </span>
-</a>
+<nav class="list-nav">
+  <button disabled>
+    <svg>...</svg>
+    Advanced Settings
+    <small>Coming soon</small>
+  </button>
+</nav>
 ```
 
 ### Title Only (No Description)
 ```html
-<a href="/dashboard" class="list-nav-item">
-  <span class="icon"><svg>...</svg></span>
-  <span class="content">
-    <span class="title">Dashboard</span>
-  </span>
-  <span class="chevron">›</span>
-</a>
+<nav class="list-nav">
+  <a href="#dashboard">
+    <svg>...</svg>
+    Dashboard
+  </a>
+</nav>
 ```
 
 ## States
 
-- **Hover**: Subtle background highlight, icon brightens, chevron slides right
+- **Default**: Card with squircle shape and subtle shadow
+- **Hover**: Background highlight, icon brightens
 - **Focus**: 2px solid outline (inset)
 - **Active**: Slightly darker background
 - **Disabled**: 50% opacity, no pointer events
@@ -153,15 +142,16 @@ Each `.list-nav-item` has three optional parts:
 
 | Feature | List Nav | Sidebar Nav |
 |---------|----------|-------------|
-| Layout | Icon + Content + Chevron | Icon + Text |
-| Description | Supported | Not supported |
+| Item style | Individual cards with shadow | Flat items in a list |
+| Description | Supported via `<small>` | Not supported |
 | Use case | Standalone navigation rows | Sticky sidebar menus |
 | Nesting | Not supported | Supports details/summary |
-| Visual weight | Higher (more padding) | Lower (compact) |
+| Visual weight | Higher (cards with shadow) | Lower (compact) |
 
 ## Accessibility
 
-- Use semantic elements (`<nav>`, `<a>`, `<button>`)
+- Use semantic `<nav>` container
+- Use `<a>` for navigation links, `<button>` for actions
 - Disabled buttons use `disabled` attribute
-- Links use `aria-disabled="true"` when needed
+- Links can use `aria-disabled="true"` when needed
 - Focus states are clearly visible

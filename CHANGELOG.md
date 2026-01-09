@@ -1,5 +1,13 @@
 # @drop-in/graffiti
 
+## 4.12.2
+
+### Patch Changes
+
+- Updated list-nav items to have individual squircle shape and shadow styling for a card-like appearance
+- Removed margin-block from fluid type system. Typography elements no longer include default vertical margins, giving consumers full control over spacing.
+- Refined shadow system for softer, more subtle appearance. Removed `--input-shadow` variable - buttons now use `--shadow-1` for consistency. Updated `--shadow-1` and `--shadow-2` with layered shadows that provide gentle lift without being heavy.
+
 ## 4.12.1
 
 ### Patch Changes

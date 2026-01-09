@@ -83,6 +83,13 @@ Before implementing any component, use Context7 to research modern CSS approache
 4. **Consider states** - hover, focus, disabled, active, open/closed
 5. **Consider themes** - Does it work in both light and dark?
 
+## Responsive Design
+
+- **Always use container queries over media queries** - Components should respond to their container, not the viewport
+- Use `container-type: inline-size` on parent elements
+- Use `@container` rules for responsive adjustments
+- Use `cqi` units when appropriate
+
 ## Quality Checklist
 
 Before finishing any CSS:
@@ -95,3 +102,4 @@ Before finishing any CSS:
 - [ ] Accessible (focus states, contrast)?
 - [ ] Minimal specificity?
 - [ ] No duplicate properties?
+- [ ] Using container queries instead of media queries?

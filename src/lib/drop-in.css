@@ -49,19 +49,14 @@
   --lh-xl: 2;
 
   /* Shadows - Layered, adaptive shadows with light/dark mode support */
-  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.04);
-  --shadow-2: 0 1px 3px rgb(0 0 0 / 0.06);
+  --shadow-1: 0 0 1px 0.5px rgb(0 0 0 / 0.05), 0 2px 2px rgb(0 0 0 / 0.1);
+  --shadow-2: 0 1px 1px 2px rgb(0 0 0 / 0.03), 0 4px 4px rgb(0 0 0 / 0.1);
   --shadow-3: 0 2px 4px rgb(0 0 0 / 0.05), 0 4px 8px rgb(0 0 0 / 0.1);
   --shadow-4: 0 4px 8px rgb(0 0 0 / 0.06), 0 8px 16px rgb(0 0 0 / 0.12);
   --shadow-5: 0 8px 16px rgb(0 0 0 / 0.08), 0 12px 24px rgb(0 0 0 / 0.14);
   --shadow-6:
     0 12px 24px rgb(0 0 0 / 0.1), 0 16px 32px rgb(0 0 0 / 0.16),
     0 24px 48px rgb(0 0 0 / 0.18);
-
-  --input-shadow:
-    inset 0 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.09),
-    0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 1px 1.5px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 0 0 transparent;
 
   --box:
     0 1px 2px rgb(0 0 0 / 0.04), inset -1px 1px 2px rgb(255 255 255 / 0.1),
@@ -264,6 +259,7 @@
 
   /* White - Static color (does not change with light/dark mode) */
   --white: oklch(1 0 0);
+  --white-05: oklch(from var(--white) l c h / 0.05);
   --white-1: oklch(from var(--white) l c h / 0.1);
   --white-2: oklch(from var(--white) l c h / 0.2);
   --white-3: oklch(from var(--white) l c h / 0.3);
@@ -276,6 +272,7 @@
 
   /* Black - Static color (does not change with light/dark mode) */
   --black: oklch(0 0 0);
+  --black-05: oklch(from var(--black) l c h / 0.05);
   --black-1: oklch(from var(--black) l c h / 0.1);
   --black-2: oklch(from var(--black) l c h / 0.2);
   --black-3: oklch(from var(--black) l c h / 0.3);
@@ -481,7 +478,6 @@ td {
     (var(--fluid-max) / 16) * 1rem
   );
   font-size: var(--fluid-type);
-  margin-block: 0 var(--vs-base);
   line-height: var(--lh);
 }
 
@@ -571,7 +567,7 @@ button,
   cursor: pointer;
   background: var(--button-color);
   color: var(--fg);
-  font-weight: 700;
+  font-weight: 600;
   display: inline-flex;
   justify-content: center;
   gap: var(--gap, 1rem);
@@ -581,12 +577,12 @@ button,
   border-radius: var(--br-s);
   padding: var(--pad-s) var(--pad-xl);
   text-decoration: none;
-  box-shadow: var(--input-shadow);
+  box-shadow: var(--shadow-1);
   &:hover {
-    background: var(--fg-05);
+    background: oklch(from var(--button-color) calc(l + 0.05) c h);
   }
   &:active {
-    background: var(--fg-1);
+    background: oklch(from var(--button-color) calc(l + 0.1) c h);
   }
   &:disabled {
     opacity: 0.5;
@@ -604,28 +600,34 @@ button,
     translate: 0 1px;
   }
   &.primary {
-    background: var(--primary);
+    --button-color: var(--primary);
     color: var(--white);
   }
   &.error {
-    background: var(--error);
+    --button-color: var(--error);
     color: var(--white);
   }
   &.warning {
-    background: var(--warning);
+    --button-color: var(--warning);
     color: var(--black);
   }
   &.success {
-    background: var(--success);
+    --button-color: var(--success);
     color: var(--white);
   }
   &.ghost {
-    background: transparent;
+    --button-color: transparent;
     border: var(--fg) solid 2px;
     color: var(--fg);
+    &:hover {
+      background: var(--fg-05);
+    }
+    &:active {
+      background: var(--fg-1);
+    }
   }
   &.minimal {
-    background: transparent;
+    --button-color: transparent;
     border: none;
     box-shadow: none;
     color: var(--fg-7);
@@ -2283,122 +2285,83 @@ dialog > .close {
   }
 }
 
-/* List Navigation - Clickable navigation rows with icon, content, and chevron */
+/* List Navigation - Clickable navigation rows */
 
 .list-nav {
   display: flex;
   flex-direction: column;
-}
-
-.list-nav-item {
-  display: flex;
-  align-items: center;
   gap: var(--pad-m);
-  padding: var(--pad-m) var(--pad-l);
-  color: var(--fg);
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.1s var(--ease-smooth);
-  margin: 0;
 
-  /* Reset button styles when used on button element */
-  &:is(button) {
-    width: 100%;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    font: inherit;
-    text-align: start;
-  }
-
-  /* Icon/thumbnail area */
-  > .icon {
-    display: flex;
+  > a,
+  > button {
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    color: var(--fg-5);
+    gap: var(--pad-m);
+    padding: var(--pad-l) var(--pad-l);
+    color: var(--fg);
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0;
+    background: var(--bg);
+    border-radius: var(--br-xxl);
+    corner-shape: squircle;
+    box-shadow: var(--shadow-2);
+    transition: box-shadow 0.1s var(--ease-smooth);
 
+    /* Reset button styles */
+    &:is(button) {
+      width: 100%;
+      border: none;
+      font: inherit;
+      text-align: start;
+    }
+
+    /* Icon */
     > svg {
       width: 1.25em;
       height: 1.25em;
+      color: var(--fg-5);
     }
 
-    > img {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: var(--br-s);
-      object-fit: cover;
-    }
-  }
-
-  /* Content area - title and optional description */
-  > .content {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-
-    > .title {
-      color: var(--fg);
-      margin: 0;
-    }
-
-    > .description {
+    /* Description below title */
+    > small {
+      grid-column: 2;
       color: var(--fg-5);
       --fl: -1;
-      margin: 0;
-    }
-  }
-
-  /* Chevron accessory */
-  > .chevron {
-    flex-shrink: 0;
-    color: var(--fg-3);
-    transition: translate 0.15s var(--ease-smooth);
-  }
-
-  /* Hover state */
-  &:hover {
-    background: var(--fg-05);
-
-    > .icon {
-      color: var(--fg-6);
     }
 
-    > .chevron {
-      color: var(--fg-5);
-      translate: 2px 0;
+    /* Hover state */
+    &:hover {
+      background: var(--fg-05);
+
+      > svg {
+        color: var(--fg-6);
+      }
+    }
+
+    /* Focus state */
+    &:focus-visible {
+      outline: 2px solid var(--fg);
+      outline-offset: -2px;
+    }
+
+    /* Active/pressed state */
+    &:active {
+      background: var(--fg-1);
+    }
+
+    /* Disabled state */
+    &:is([aria-disabled="true"], :disabled, .disabled) {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
     }
   }
-
-  /* Focus state */
-  &:focus-visible {
-    outline: 2px solid var(--fg);
-    outline-offset: -2px;
-  }
-
-  /* Active/pressed state */
-  &:active {
-    background: var(--fg-1);
-  }
-
-  /* Disabled state */
-  &:is([aria-disabled="true"], :disabled, .disabled) {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
-/* Bordered variant - dividers between items */
-.list-nav.bordered {
-  .list-nav-item {
-    border-bottom: var(--border-1);
-
-    &:last-child {
-      border-bottom: none;
+  @media (prefers-color-scheme: dark) {
+    & > a,
+    & > button {
+      border: var(--border-1);
     }
   }
 }

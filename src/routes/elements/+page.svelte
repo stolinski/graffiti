@@ -24,6 +24,8 @@
   import chipsCode from "$docs/demos/Chips.svelte?raw";
   import Tags from "$docs/demos/Tags.svelte";
   import tagsCode from "$docs/demos/Tags.svelte?raw";
+  import ListNav from "$docs/demos/ListNav.svelte";
+  import listNavCode from "$docs/demos/ListNav.svelte?raw";
 </script>
 
 <section class="stack readable">
@@ -212,6 +214,17 @@
   </p>
   <CodeExample code={dialogCode} title="Dialog">
     <Dialog />
+  </CodeExample>
+</section>
+
+<section class="stack">
+  <h3 id="list-nav">.list-nav</h3>
+  <p>
+    Navigation list with clickable rows for settings pages, menus, and navigation indexes.
+    Supports icons, descriptions, chevrons, and a bordered variant.
+  </p>
+  <CodeExample code={listNavCode} title="List Navigation">
+    <ListNav />
   </CodeExample>
 </section>
 

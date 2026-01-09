@@ -1,0 +1,167 @@
+# List Navigation Component
+
+Navigation list with clickable rows. Each row has an icon/thumbnail (left), title + optional description (center), and optional chevron accessory (right).
+
+## Use Cases
+- Settings pages
+- Mobile app menus
+- Feature indexes
+- Dashboard navigation
+- Account/profile menus
+
+## Basic Structure
+
+```html
+<nav class="list-nav">
+  <a href="/settings/profile" class="list-nav-item">
+    <span class="icon">
+      <svg>...</svg>
+    </span>
+    <span class="content">
+      <span class="title">Profile</span>
+      <span class="description">Manage your account settings</span>
+    </span>
+    <span class="chevron">›</span>
+  </a>
+</nav>
+```
+
+## Classes
+
+- `.list-nav` - Container (can be `<nav>`, `<ul>`, or `<div>`)
+- `.list-nav-item` - Each clickable row (works as `<a>`, `<button>`, or `<li>`)
+- `.list-nav.bordered` - Adds dividers between items
+
+## Item Structure
+
+Each `.list-nav-item` has three optional parts:
+
+1. **`.icon`** - Left side icon or thumbnail
+   - SVGs are sized to 1.25em
+   - Images are sized to 2.5rem with border-radius
+
+2. **`.content`** - Center area (flex: 1)
+   - `.title` - Main text
+   - `.description` - Secondary text (smaller, muted)
+
+3. **`.chevron`** - Right side accessory
+   - Typically `›` character
+   - Animates on hover
+   - Can be omitted if not needed
+
+## Examples
+
+### Settings Menu
+```html
+<nav class="list-nav">
+  <a href="/profile" class="list-nav-item">
+    <span class="icon"><svg>...</svg></span>
+    <span class="content">
+      <span class="title">Profile</span>
+      <span class="description">Manage your account</span>
+    </span>
+    <span class="chevron">›</span>
+  </a>
+  
+  <a href="/notifications" class="list-nav-item">
+    <span class="icon"><svg>...</svg></span>
+    <span class="content">
+      <span class="title">Notifications</span>
+      <span class="description">Configure alerts</span>
+    </span>
+    <span class="chevron">›</span>
+  </a>
+</nav>
+```
+
+### Bordered Variant
+```html
+<nav class="list-nav bordered">
+  <a href="/dashboard" class="list-nav-item">
+    <span class="icon"><svg>...</svg></span>
+    <span class="content">
+      <span class="title">Dashboard</span>
+    </span>
+    <span class="chevron">›</span>
+  </a>
+  
+  <a href="/analytics" class="list-nav-item">
+    <span class="icon"><svg>...</svg></span>
+    <span class="content">
+      <span class="title">Analytics</span>
+    </span>
+    <span class="chevron">›</span>
+  </a>
+</nav>
+```
+
+### With Button Elements
+```html
+<nav class="list-nav">
+  <button class="list-nav-item" onclick="openModal()">
+    <span class="icon"><svg>...</svg></span>
+    <span class="content">
+      <span class="title">Open Settings</span>
+    </span>
+    <span class="chevron">›</span>
+  </button>
+</nav>
+```
+
+### Disabled State
+```html
+<button class="list-nav-item" disabled>
+  <span class="icon"><svg>...</svg></span>
+  <span class="content">
+    <span class="title">Coming Soon</span>
+    <span class="description">This feature is not available yet</span>
+  </span>
+  <span class="chevron">›</span>
+</button>
+```
+
+### Without Chevron
+```html
+<a href="/help" class="list-nav-item">
+  <span class="icon"><svg>...</svg></span>
+  <span class="content">
+    <span class="title">Help Center</span>
+    <span class="description">Get support</span>
+  </span>
+</a>
+```
+
+### Title Only (No Description)
+```html
+<a href="/dashboard" class="list-nav-item">
+  <span class="icon"><svg>...</svg></span>
+  <span class="content">
+    <span class="title">Dashboard</span>
+  </span>
+  <span class="chevron">›</span>
+</a>
+```
+
+## States
+
+- **Hover**: Subtle background highlight, icon brightens, chevron slides right
+- **Focus**: 2px solid outline (inset)
+- **Active**: Slightly darker background
+- **Disabled**: 50% opacity, no pointer events
+
+## Differences from Sidebar Nav
+
+| Feature | List Nav | Sidebar Nav |
+|---------|----------|-------------|
+| Layout | Icon + Content + Chevron | Icon + Text |
+| Description | Supported | Not supported |
+| Use case | Standalone navigation rows | Sticky sidebar menus |
+| Nesting | Not supported | Supports details/summary |
+| Visual weight | Higher (more padding) | Lower (compact) |
+
+## Accessibility
+
+- Use semantic elements (`<nav>`, `<a>`, `<button>`)
+- Disabled buttons use `disabled` attribute
+- Links use `aria-disabled="true"` when needed
+- Focus states are clearly visible

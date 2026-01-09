@@ -69,6 +69,15 @@ Page components in `src/routes/` CAN use Svelte 5 features when needed for the d
 - `on:event` directive syntax - Use `onevent={handler}` instead
 - `<slot>` - Use snippets and `{@render children()}` instead
 
+## Icons
+
+Always use icons from [Phosphor Icons](https://phosphoricons.com/).
+
+- Save icons as `.svg` files in `static/icons/`
+- Reference them in HTML with `<img src="/icons/icon-name.svg" alt="">`
+- Use descriptive filenames: `arrow-right.svg`, `check.svg`, `menu.svg`
+- Don't inline SVG code in demos - keeps the HTML clean and avoids bloat
+
 ## HTML Rules
 
 ### Only Use Existing Graffiti CSS

@@ -24,7 +24,7 @@
     "package": "svelte-kit sync && svelte-package"
   },
   "type": "module",
-  "version": "4.12.1",
+  "version": "4.12.2",
   "publishConfig": {
     "access": "public",
     "directory": "."

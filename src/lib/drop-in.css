@@ -5,7 +5,7 @@
   initial-value: 1rem;
 }
 
-/* Typeography */
+/* Typography */
 :root {
   --font-sans:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
@@ -144,7 +144,7 @@
   --purple-8: oklch(from var(--purple) l c h / 0.9);
   --purple-9: var(--purple);
 
-  /* Purple scale */
+  /* Deep Purple scale */
   --purple-deep: #1b1525;
   --purple-deep-1: oklch(from var(--purple-deep) l c h / 0.1);
   --purple-deep-2: oklch(from var(--purple-deep) l c h / 0.2);
@@ -235,7 +235,6 @@
 
   /* Neutral gray scale */
   --gray: oklch(0.5 0.02 270);
-  --slate: oklch(0.52 0.04 255);
   --gray-1: oklch(from var(--gray) l c h / 0.1);
   --gray-2: oklch(from var(--gray) l c h / 0.2);
   --gray-3: oklch(from var(--gray) l c h / 0.3);
@@ -247,6 +246,7 @@
   --gray-9: var(--gray);
 
   /* Slate scale */
+  --slate: oklch(0.52 0.04 255);
   --slate-1: oklch(from var(--slate) l c h / 0.1);
   --slate-2: oklch(from var(--slate) l c h / 0.2);
   --slate-3: oklch(from var(--slate) l c h / 0.3);
@@ -283,6 +283,7 @@
   --black-8: oklch(from var(--black) l c h / 0.9);
   --black-9: var(--black);
 
+  /* Foreground scale */
   --fg-light: #050505;
   --fg-dark: #fff;
   --fg: light-dark(var(--fg-light), var(--fg-dark));
@@ -297,10 +298,10 @@
   --fg-8: oklch(from var(--fg) l c h / 0.9);
   --fg-9: var(--fg);
 
+  /* Background scale */
   --bg-light: #fff;
   --bg-dark: #050505;
   --bg: light-dark(var(--bg-light), var(--bg-dark));
-
   --bg-05: oklch(from var(--bg) l c h / 0.05);
   --bg-1: oklch(from var(--bg) l c h / 0.1);
   --bg-2: oklch(from var(--bg) l c h / 0.2);

@@ -1,0 +1,16 @@
+{
+  "id": "slauvwb4",
+  "parent_id": "jb7j8107",
+  "description": "Add login form block",
+  "context": "Beads description:\nComplete login form block - a composition of form elements (inputs, labels, button, forgot password link, etc.) that work together as a ready-to-use login pattern. Should integrate with Graffiti's form styles and theming system.\n\nBeads metadata:\n- beads_id: graffiti-xoh.4\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-26T14:29:07.09235-07:00\n- updated_at: 2025-12-28T10:14:37.416812-07:00\n- closed_at: 2025-12-28T10:14:37.416812-07:00\n- dependencies: parent-child: graffiti-xoh",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-xoh.4\n- beads_closed_at: 2025-12-28T10:14:37.416812-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:54:16.316Z",
+  "updated_at": "2026-01-25T02:57:07.689Z",
+  "completed_at": "2026-01-25T02:57:07.689Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "xw9k5c0j",
+  "parent_id": null,
+  "description": "Add stacked avatars component",
+  "context": "Beads description:\nStacked/overlapping avatar component based on Temani Afif's technique (codepen.io/t_afif/pen/mdoyOqb). Static version without hover animation. Uses CSS mask with radial-gradient for circular cutouts, flexbox for layout, and CSS custom properties for sizing (--s for size, --o for overlap amount).\n\nReference: https://css-tricks.com/responsive-list-of-avatars-using-modern-css-part-1/\n\nBeads metadata:\n- beads_id: graffiti-oyz\n- beads_status: open\n- beads_type: feature\n- beads_priority: 2\n- labels: ui-component\n- assignee: none\n- notes: none\n- created_at: 2025-12-10T20:48:01.073214-07:00\n- updated_at: 2025-12-15T15:35:50.227343-07:00\n- closed_at: none\n- dependencies: none",
+  "priority": 1,
+  "completed": false,
+  "result": null,
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:59.037Z",
+  "updated_at": "2026-01-25T02:53:59.037Z",
+  "completed_at": null,
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

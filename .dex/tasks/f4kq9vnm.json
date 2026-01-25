@@ -1,0 +1,16 @@
+{
+  "id": "f4kq9vnm",
+  "parent_id": null,
+  "description": "Add font chooser to Theme This Page",
+  "context": "Beads description:\nAdd a font selection option to the 'Theme This Page' controls. Allow users to preview different font stacks (system fonts, popular web fonts, monospace, serif, etc.) to see how Graffiti components look with different typography. Should update --font-sans or similar CSS variable to apply the selected font across the page.\n\nBeads metadata:\n- beads_id: graffiti-zfu\n- beads_status: open\n- beads_type: feature\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-24T11:21:42.943268-07:00\n- updated_at: 2025-12-24T11:21:42.943268-07:00\n- closed_at: none\n- dependencies: none",
+  "priority": 1,
+  "completed": false,
+  "result": null,
+  "metadata": null,
+  "created_at": "2026-01-25T02:54:26.452Z",
+  "updated_at": "2026-01-25T02:54:26.452Z",
+  "completed_at": null,
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

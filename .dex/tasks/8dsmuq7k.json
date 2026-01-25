@@ -1,0 +1,16 @@
+{
+  "id": "8dsmuq7k",
+  "parent_id": null,
+  "description": "Add dialog component using native dialog element",
+  "context": "Beads description:\nNative modal/dialog using HTML <dialog> element. No JavaScript required for basic show/hide - uses CSS and native dialog behaviors. Should support backdrop styling, open/close animations with @starting-style and allow-discrete, light/dark themes, and integrate with Graffiti's existing .di-dialog styles.\n\nBeads metadata:\n- beads_id: graffiti-8lp\n- beads_status: open\n- beads_type: feature\n- beads_priority: 2\n- labels: ui-component\n- assignee: none\n- notes: none\n- created_at: 2025-12-10T21:42:40.080741-07:00\n- updated_at: 2025-12-10T21:42:40.080741-07:00\n- closed_at: none\n- dependencies: none",
+  "priority": 1,
+  "completed": false,
+  "result": null,
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:12.892Z",
+  "updated_at": "2026-01-25T02:53:12.892Z",
+  "completed_at": null,
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "j594bjkj",
+  "parent_id": null,
+  "description": "Refactor .box modifiers to use cleaner class syntax",
+  "context": "Beads description:\nRefactor .box modifier classes to use cleaner compound class syntax instead of hyphenated names:\n\n- Change .box-ghost to .box.ghost\n- Add .box.invisible for a box with no shadows or border\n\nThis makes the modifier pattern more consistent and readable.\n\nBeads metadata:\n- beads_id: graffiti-r1u\n- beads_status: closed\n- beads_type: task\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-22T10:09:30.967958-07:00\n- updated_at: 2025-12-22T10:12:59.178277-07:00\n- closed_at: 2025-12-22T10:12:59.178277-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-r1u\n- beads_closed_at: 2025-12-22T10:12:59.178277-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:54:05.170Z",
+  "updated_at": "2026-01-25T02:56:30.837Z",
+  "completed_at": "2026-01-25T02:56:30.837Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

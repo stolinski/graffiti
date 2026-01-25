@@ -1,0 +1,16 @@
+{
+  "id": "y84dvqkd",
+  "parent_id": null,
+  "description": "Add user menu component",
+  "context": "Beads description:\nUser menu component combining avatar as trigger for dropdown menu. A common UI pattern for user account navigation. Should compose existing .avatar and .dropdown components together. Features: avatar as clickable trigger button, dropdown menu with user info header, menu items for profile/settings/logout, works with both image avatars and initials. This is a 'block' - a composed pattern using existing elements.\n\nBeads metadata:\n- beads_id: graffiti-7pu\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-18T12:13:14.487055-07:00\n- updated_at: 2025-12-19T11:40:51.003157-07:00\n- closed_at: 2025-12-19T11:40:51.003157-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-7pu\n- beads_closed_at: 2025-12-19T11:40:51.003157-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:08.770Z",
+  "updated_at": "2026-01-25T02:54:38.072Z",
+  "completed_at": "2026-01-25T02:54:38.072Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

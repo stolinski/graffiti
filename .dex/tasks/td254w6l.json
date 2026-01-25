@@ -1,0 +1,16 @@
+{
+  "id": "td254w6l",
+  "parent_id": null,
+  "description": "Add CSS export to Theme This Page",
+  "context": "Beads description:\nAdd an 'Export CSS' or 'Copy Theme' button to the Theme This Page controls. When clicked, generates and copies to clipboard the CSS custom properties representing the current theme configuration (colors, fonts, spacing, etc.). Output should be valid CSS that users can paste into their own stylesheets to replicate the previewed theme.\n\nBeads metadata:\n- beads_id: graffiti-40x\n- beads_status: open\n- beads_type: feature\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-24T11:51:20.195132-07:00\n- updated_at: 2025-12-24T11:51:20.195132-07:00\n- closed_at: none\n- dependencies: none",
+  "priority": 1,
+  "completed": false,
+  "result": null,
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:07.041Z",
+  "updated_at": "2026-01-25T02:53:07.041Z",
+  "completed_at": null,
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

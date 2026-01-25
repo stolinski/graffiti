@@ -93,16 +93,16 @@ If you need a CSS utility or component that doesn't exist in Graffiti:
 
 1. **Do NOT write inline styles as a workaround**
 2. **Do NOT create new CSS classes**
-3. **Create a beads task** for the missing utility:
+3. **Create a Dex task** for the missing utility:
 
 ```bash
-bd create "Add [utility/component name]" -t feature -p 2 --json
+npx -y @zeeg/dex create -d "Add [utility/component name]" --context "Missing utility in Graffiti"
 ```
 
 Then note in your code with a comment:
 
 ```svelte
-<!-- TODO: Needs .gap-* utility - see beads task graffiti-xxx -->
+<!-- TODO: Needs .gap-* utility - see Dex task -->
 ```
 
 ### Semantic HTML
@@ -134,6 +134,6 @@ Before finishing any code:
 - [ ] Using `onevent` not `on:event`?
 - [ ] Only using existing Graffiti CSS classes?
 - [ ] No inline styles (except CSS variable overrides)?
-- [ ] Created beads tasks for missing utilities?
+- [ ] Created Dex tasks for missing utilities?
 - [ ] Semantic, accessible HTML?
 - [ ] Validated with Svelte MCP?

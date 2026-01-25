@@ -1,0 +1,16 @@
+{
+  "id": "c9odi7xg",
+  "parent_id": null,
+  "description": "Re-categorize docs into base, element, forms, ui-components, blocks",
+  "context": "Beads description:\nReorganize documentation categories to match the component taxonomy.\n\nFINAL CATEGORIES:\n\n1) BASE - tokens + default element styles (no classes, just foundation)\n   - CSS custom property tokens (spacing, colors, shadows, borders, line-heights, easing)\n   - Default HTML element styles (h1-h6 elements, body, links, img, etc.)\n\n2) LAYOUT - structural patterns\n   - .layout-card, .layout-sidebar, .layout-split, .layout-three-col\n   - .layout-readable, .layout-holy-grail, .full-bleed\n   - .stack, .cluster, .carousel, .reel, .flex, .grid, .split, .readable\n\n3) ELEMENT - standalone building blocks\n   - .box (+ .box-ghost, .box-glow, .box-semi-gloss)\n   - button/.button (+ .mini, .primary, .error, .warning, .success, .ghost)\n   - table/.table\n   - .callout (+ .warning, .error, .ghost, .success, .hard)\n   - .circle\n\n4) FORMS - form inputs and validation\n   - input, select, textarea base styles\n   - label\n   - Validation states (.error, .success, .warning)\n\n5) UI-COMPONENTS - composed components\n   - .swipe (+ .stop, .full-bleed)\n\n6) BLOCKS - full patterns\n   - .header (+ .border, .sticky)\n\n7) UTILITIES - modifier/helper classes\n   - .auto-color (+ .chroma)\n   - .fc (fluid container)\n   - .h1-.h6 (heading styles on non-headings)\n   - .fs-* (font size utilities)\n   - .visually-hidden, .no-list, .row, .aspect-*\n\nBeads metadata:\n- beads_id: graffiti-jpn\n- beads_status: closed\n- beads_type: task\n- beads_priority: 2\n- labels: docs\n- assignee: none\n- notes: none\n- created_at: 2025-12-10T21:55:23.307554-07:00\n- updated_at: 2025-12-10T23:12:06.065904-07:00\n- closed_at: 2025-12-10T23:12:06.065904-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-jpn\n- beads_closed_at: 2025-12-10T23:12:06.065904-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:36.341Z",
+  "updated_at": "2026-01-25T02:56:19.958Z",
+  "completed_at": "2026-01-25T02:56:19.958Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

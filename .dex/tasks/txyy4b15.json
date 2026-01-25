@@ -1,0 +1,16 @@
+{
+  "id": "txyy4b15",
+  "parent_id": null,
+  "description": "Add tooltip element using popover and anchor positioning",
+  "context": "Beads description:\nNative tooltip using HTML popover attribute and CSS anchor positioning. No JavaScript required - pure HTML/CSS implementation. Should support positioning (top, bottom, left, right), light/dark themes, and integrate with Graffiti's theming system. Uses modern CSS: anchor-name, position-anchor, and popover API.\n\nBeads metadata:\n- beads_id: graffiti-azq\n- beads_status: in_progress\n- beads_type: feature\n- beads_priority: 2\n- labels: element\n- assignee: none\n- notes: none\n- created_at: 2025-12-10T21:35:34.258164-07:00\n- updated_at: 2026-01-18T10:34:10.782432-07:00\n- closed_at: none\n- dependencies: none",
+  "priority": 1,
+  "completed": false,
+  "result": null,
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:24.265Z",
+  "updated_at": "2026-01-25T02:53:24.265Z",
+  "completed_at": null,
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

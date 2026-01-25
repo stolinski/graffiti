@@ -1,0 +1,16 @@
+{
+  "id": "kktzh4yn",
+  "parent_id": null,
+  "description": "Add default checkbox and radio input styles",
+  "context": "Beads description:\nDefault styles for native checkbox and radio inputs - no classes required. Should include: nice spacing between input and label, proper alignment, consistent sizing, focus states, checked states, and disabled states. Works out of the box with standard HTML markup. Integrates with Graffiti's theming system for light/dark modes.\n\nBeads metadata:\n- beads_id: graffiti-ypq\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 2\n- labels: forms\n- assignee: none\n- notes: none\n- created_at: 2025-12-10T21:50:17.567498-07:00\n- updated_at: 2025-12-26T14:29:12.419478-07:00\n- closed_at: 2025-12-26T14:29:12.419478-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-ypq\n- beads_closed_at: 2025-12-26T14:29:12.419478-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:54:23.637Z",
+  "updated_at": "2026-01-25T02:57:03.949Z",
+  "completed_at": "2026-01-25T02:57:03.949Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

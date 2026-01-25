@@ -1,0 +1,16 @@
+{
+  "id": "h58yeo6r",
+  "parent_id": null,
+  "description": "Add panel component",
+  "context": "Beads description:\nBasic panel/drawer container component. Minimal 'empty' style - a slide-in panel structure without specific content. Provides the base container styling that can hold any content. Should support multiple origin directions via modifier classes (.left, .right, .top, .bottom). Should support light/dark themes and integrate with Graffiti's existing .di-drawer styles. Reference: Tailwind UI 'Empty' drawer pattern.\n\nBeads metadata:\n- beads_id: graffiti-ouj\n- beads_status: open\n- beads_type: feature\n- beads_priority: 2\n- labels: ui-component\n- assignee: none\n- notes: none\n- created_at: 2025-12-10T21:16:47.842147-07:00\n- updated_at: 2025-12-10T21:47:35.54672-07:00\n- closed_at: none\n- dependencies: none",
+  "priority": 1,
+  "completed": false,
+  "result": null,
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:56.510Z",
+  "updated_at": "2026-01-25T02:53:56.510Z",
+  "completed_at": null,
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

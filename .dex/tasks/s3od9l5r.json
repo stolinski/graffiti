@@ -1,0 +1,16 @@
+{
+  "id": "s3od9l5r",
+  "parent_id": null,
+  "description": "Search input element",
+  "context": "Beads description:\nCreate a styled search input element with clear button, search icon, and proper styling. Should be an Element class, not base styling.\n\nBeads metadata:\n- beads_id: graffiti-efc\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-27T22:04:16.041553-07:00\n- updated_at: 2025-12-27T22:51:13.45984-07:00\n- closed_at: 2025-12-27T22:51:13.45984-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-efc\n- beads_closed_at: 2025-12-27T22:51:13.45984-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:32.874Z",
+  "updated_at": "2026-01-25T02:56:17.934Z",
+  "completed_at": "2026-01-25T02:56:17.934Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

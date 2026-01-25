@@ -1,0 +1,16 @@
+{
+  "id": "z0j7ngqm",
+  "parent_id": null,
+  "description": "Add footer UI block",
+  "context": "Beads description:\nWebsite footer component for page layouts. Should include common footer patterns like: multi-column layout with links/sections, copyright text, social links area, and newsletter signup slot. Should integrate with Graffiti's layout system (.layout-readable, etc.) and support light/dark themes.\n\nBeads metadata:\n- beads_id: graffiti-rgi\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 3\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-24T08:49:06.375834-07:00\n- updated_at: 2026-01-05T19:48:33.291221-07:00\n- closed_at: 2026-01-05T19:48:33.291221-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-rgi\n- beads_closed_at: 2026-01-05T19:48:33.291221-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:54:06.284Z",
+  "updated_at": "2026-01-25T02:56:32.006Z",
+  "completed_at": "2026-01-25T02:56:32.006Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

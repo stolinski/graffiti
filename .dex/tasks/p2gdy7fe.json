@@ -1,0 +1,16 @@
+{
+  "id": "p2gdy7fe",
+  "parent_id": null,
+  "description": "Add breadcrumbs component",
+  "context": "Beads description:\nSimple breadcrumb navigation with slash (/) separators. Minimal design showing navigation hierarchy trail. Should support light/dark themes, current page indicator (non-linked), and work with Graffiti's theming system. Reference: Tailwind UI 'Simple with slashes' breadcrumbs pattern.\n\nBeads metadata:\n- beads_id: graffiti-lwq\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 2\n- labels: ui-component\n- assignee: none\n- notes: none\n- created_at: 2025-12-10T21:15:41.596659-07:00\n- updated_at: 2025-12-16T14:46:43.557452-07:00\n- closed_at: 2025-12-16T14:46:43.557452-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-lwq\n- beads_closed_at: 2025-12-16T14:46:43.557452-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:49.899Z",
+  "updated_at": "2026-01-25T02:56:24.113Z",
+  "completed_at": "2026-01-25T02:56:24.113Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

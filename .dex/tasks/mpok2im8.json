@@ -1,0 +1,16 @@
+{
+  "id": "mpok2im8",
+  "parent_id": null,
+  "description": "Add accordion component using details element",
+  "context": "Beads description:\nNative HTML accordion using <details>/<summary> elements with smooth open/close animations. Uses modern CSS: @starting-style for entry animations and transition-behavior: allow-discrete for animating display property. No JavaScript required. Should support light/dark themes and integrate with Graffiti's theming system. Reference: MDN details element with CSS discrete transitions.\n\nBeads metadata:\n- beads_id: graffiti-2gf\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 2\n- labels: ui-component\n- assignee: none\n- notes: none\n- created_at: 2025-12-10T21:33:31.330657-07:00\n- updated_at: 2025-12-15T14:40:02.387015-07:00\n- closed_at: 2025-12-15T14:40:02.387015-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-2gf\n- beads_closed_at: 2025-12-15T14:40:02.387015-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:02.656Z",
+  "updated_at": "2026-01-25T02:54:33.457Z",
+  "completed_at": "2026-01-25T02:54:33.457Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

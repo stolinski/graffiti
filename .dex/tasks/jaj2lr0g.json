@@ -1,0 +1,16 @@
+{
+  "id": "jaj2lr0g",
+  "parent_id": null,
+  "description": "Add chip/pill component for selectable tags",
+  "context": "Beads description:\n## Summary\nAdd a chip/pill component for displaying selectable tags, categories, or filter options. Similar to Material Design chips or filter pills.\n\n## Requirements\n- Pill/rounded shape styling\n- Support for icon + text (icon optional)\n- Selected vs unselected states (selected = filled/primary color, unselected = ghost/outline)\n- Works well inside `.cluster` layout for horizontal wrapping groups\n- Light and dark theme support\n\n## Visual Reference\nRounded rectangular elements with:\n- Icons on the left (optional)\n- Text label\n- Clear selected state (blue fill + border) vs unselected (gray outline)\n\n## Implementation Notes\n- Use `.chip` as the base class\n- Consider `.chip.selected` or using `aria-pressed=\"true\"` for selected state\n- Demo should use icons from https://phosphoricons.com/\n- Demo should show a category/skill selector similar to the reference image (Technology categories like Front-End Development, Back-End Development, etc.)\n\nBeads metadata:\n- beads_id: graffiti-mhy\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2026-01-04T21:28:37.185796-07:00\n- updated_at: 2026-01-05T13:32:59.268718-07:00\n- closed_at: 2026-01-05T13:32:59.268718-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-mhy\n- beads_closed_at: 2026-01-05T13:32:59.268718-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:53.140Z",
+  "updated_at": "2026-01-25T02:56:25.215Z",
+  "completed_at": "2026-01-25T02:56:25.215Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

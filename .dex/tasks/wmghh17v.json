@@ -1,0 +1,16 @@
+{
+  "id": "wmghh17v",
+  "parent_id": null,
+  "description": "Add tags component",
+  "context": "Beads description:\nAdd a .tag component for category labels. Softer/less intense styling than the reference image. API: default --tag-color with optional override for customization. Use cases: category labels, topic tags, metadata badges.\n\nBeads metadata:\n- beads_id: graffiti-jty\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 1\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2026-01-05T12:01:46.144597-07:00\n- updated_at: 2026-01-05T13:32:59.88854-07:00\n- closed_at: 2026-01-05T13:32:59.88854-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-jty\n- beads_closed_at: 2026-01-05T13:32:59.88854-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:38.896Z",
+  "updated_at": "2026-01-25T02:56:21.040Z",
+  "completed_at": "2026-01-25T02:56:21.040Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "t5p94lfs",
+  "parent_id": null,
+  "description": "Fix viewport-based layout issues",
+  "context": "Beads description:\nSeveral Graffiti components use viewport-based units (vw, vh) which cause issues when nested inside constrained containers like sidebar layouts.\n\n**Problematic components:**\n- .header - uses viewport-based sizing\n- .full-bleed - breaks out to viewport width\n- .swipe.full-bleed - same issue\n\n**The problem:**\nWhen these components are used inside a sidebar layout or any constrained container, they overflow or push the container because they reference the viewport, not their container.\n\n**Potential solutions to explore:**\n1. Container queries - make layouts auto-set container-type on main content areas\n2. Documentation changes - show these components in appropriate contexts, warn about viewport limitations\n3. Modifiers - add .contained variants that use container-relative units\n4. Rethink the components - maybe full-bleed shouldn't use vw at all\n\n**Related:**\n- Fluid typography system also uses vw but has .fc class for container-based sizing\n- May need to audit all vw/vh usage in drop-in.css\n\nThis epic should result in either:\n- Fixed components that work in nested contexts\n- Clear documentation about when/where to use these components\n- Or both\n\nBeads metadata:\n- beads_id: graffiti-8tj\n- beads_status: closed\n- beads_type: epic\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-22T09:32:38.449835-07:00\n- updated_at: 2025-12-26T14:27:32.089039-07:00\n- closed_at: 2025-12-26T14:27:32.089039-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-8tj\n- beads_closed_at: 2025-12-26T14:27:32.089039-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:19.269Z",
+  "updated_at": "2026-01-25T02:54:41.064Z",
+  "completed_at": "2026-01-25T02:54:41.064Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

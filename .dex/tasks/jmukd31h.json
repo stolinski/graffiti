@@ -1,0 +1,16 @@
+{
+  "id": "jmukd31h",
+  "parent_id": null,
+  "description": "Deep dive on forms and inputs - review styling, accessibility, and light mode text input issues",
+  "context": "Beads description:\nComprehensive review of form elements and input styling in Graffiti:\n\nAreas to investigate:\n- Light mode text input visibility/contrast issues\n- Input, textarea, select styling consistency\n- Form validation states (error, success, warning)\n- Focus states and accessibility\n- Input variants and sizes\n- Form layouts and spacing\n- Label styling and positioning\n- Placeholder text styling\n- Disabled states\n\nFound during input-group implementation - light mode inputs may need attention.\n\nBeads metadata:\n- beads_id: graffiti-l15\n- beads_status: closed\n- beads_type: task\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-25T19:37:18.385489-07:00\n- updated_at: 2025-12-26T14:29:12.417983-07:00\n- closed_at: 2025-12-26T14:29:12.417983-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-l15\n- beads_closed_at: 2025-12-26T14:29:12.417983-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:43.488Z",
+  "updated_at": "2026-01-25T02:56:22.048Z",
+  "completed_at": "2026-01-25T02:56:22.048Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

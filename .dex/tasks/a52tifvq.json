@@ -1,0 +1,16 @@
+{
+  "id": "a52tifvq",
+  "parent_id": null,
+  "description": "Add pagination component",
+  "context": "Beads description:\nCard footer style pagination with page number buttons. Includes previous/next navigation controls and individual page number buttons. Should support light/dark themes via Graffiti's theming system, disabled states for prev/next at boundaries, and current page indicator. Reference: Tailwind UI 'Card footer with page buttons' pattern.\n\nBeads metadata:\n- beads_id: graffiti-ojz\n- beads_status: open\n- beads_type: feature\n- beads_priority: 2\n- labels: ui-component\n- assignee: none\n- notes: none\n- created_at: 2025-12-10T21:10:51.245367-07:00\n- updated_at: 2025-12-10T21:10:51.245367-07:00\n- closed_at: none\n- dependencies: none",
+  "priority": 1,
+  "completed": false,
+  "result": null,
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:54.781Z",
+  "updated_at": "2026-01-25T02:53:54.781Z",
+  "completed_at": null,
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

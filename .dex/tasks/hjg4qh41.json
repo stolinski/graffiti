@@ -1,0 +1,16 @@
+{
+  "id": "hjg4qh41",
+  "parent_id": null,
+  "description": "Add sticky full-height app shell sidebar layout modifier",
+  "context": "Beads description:\nAdd a modifier for app shell layouts where the sidebar is sticky and full viewport height, while the main content scrolls independently.\n\n**Use case:**\nDashboard/app layouts where the sidebar navigation stays fixed while users scroll through content.\n\n**Potential API:**\n- .layout-sidebar.sticky - sidebar sticks to viewport\n- .layout-sidebar.app-shell - full app shell behavior\n\n**Considerations:**\n- Should work with .sidebar-nav component\n- Need to handle mobile/responsive behavior\n- May relate to graffiti-8tj (viewport layout issues)\n\nBeads metadata:\n- beads_id: graffiti-qdv\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-22T09:35:43.211146-07:00\n- updated_at: 2025-12-22T10:08:09.124918-07:00\n- closed_at: 2025-12-22T10:08:09.124918-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-qdv\n- beads_closed_at: 2025-12-22T10:08:09.124918-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:54:03.930Z",
+  "updated_at": "2026-01-25T02:56:28.991Z",
+  "completed_at": "2026-01-25T02:56:28.991Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "9o8dw7lg",
+  "parent_id": null,
+  "description": "Automatic demo registration based on folder and filename convention",
+  "context": "Beads description:\nDemos should be auto-registered based on folder structure and filename conventions. Structure: docs/<route>/##-<name>.svelte where ## is the display order index and <name> becomes the section title. For example, docs/elements/01-Carousel.svelte would appear first on /elements route with title 'Carousel'. The route page would dynamically load all demos from its corresponding docs folder, ordered by the numeric prefix, eliminating manual imports and CodeExample registration.\n\nBeads metadata:\n- beads_id: graffiti-q7l\n- beads_status: open\n- beads_type: feature\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-24T11:05:39.062002-07:00\n- updated_at: 2025-12-24T11:05:39.062002-07:00\n- closed_at: none\n- dependencies: none",
+  "priority": 1,
+  "completed": false,
+  "result": null,
+  "metadata": null,
+  "created_at": "2026-01-25T02:54:02.667Z",
+  "updated_at": "2026-01-25T02:54:02.667Z",
+  "completed_at": null,
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

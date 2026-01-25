@@ -1,0 +1,16 @@
+{
+  "id": "ntaa4w00",
+  "parent_id": null,
+  "description": "Add .layout-sidebar.fill modifier for full-height sticky sidebars",
+  "context": "Beads description:\n(no description)\n\nBeads metadata:\n- beads_id: graffiti-l6q\n- beads_status: closed\n- beads_type: feature\n- beads_priority: 2\n- labels: none\n- assignee: none\n- notes: none\n- created_at: 2025-12-19T09:47:08.907378-07:00\n- updated_at: 2025-12-19T10:42:02.103487-07:00\n- closed_at: 2025-12-19T10:42:02.103487-07:00\n- dependencies: none",
+  "priority": 1,
+  "completed": true,
+  "result": "Migrated from Beads (status: closed).\n- beads_id: graffiti-l6q\n- beads_closed_at: 2025-12-19T10:42:02.103487-07:00\nVerification: source issue was marked closed in Beads; metadata preserved in Dex context.",
+  "metadata": null,
+  "created_at": "2026-01-25T02:53:48.423Z",
+  "updated_at": "2026-01-25T02:56:23.069Z",
+  "completed_at": "2026-01-25T02:56:23.069Z",
+  "blockedBy": [],
+  "blocks": [],
+  "children": []
+}

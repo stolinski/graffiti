@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.4
+
+### Patch Changes
+
+- Replace hardcoded gap: 20px with var(--gap, 1rem) in .flex, .split, and .header for token consistency
+
 ## 4.14.3
 
 ### Patch Changes

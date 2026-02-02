@@ -708,7 +708,7 @@ label {
 
 .flex {
   display: flex;
-  gap: 20px;
+  gap: var(--gap, 1rem);
 }
 
 .grid {
@@ -725,7 +725,7 @@ label {
 
 .split {
   display: flex;
-  gap: 20px;
+  gap: var(--gap, 1rem);
   align-items: start;
   justify-content: space-between;
   &.even {
@@ -1153,7 +1153,7 @@ label {
 
 .header {
   display: flex;
-  gap: 20px;
+  gap: var(--gap, 1rem);
   align-items: center;
   padding: var(--pad-l);
   justify-content: space-between;

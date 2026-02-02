@@ -28,6 +28,8 @@
   import listNavCode from "$docs/demos/ListNav.svelte?raw";
   import Tooltip from "$docs/demos/Tooltip.svelte";
   import tooltipCode from "$docs/demos/Tooltip.svelte?raw";
+  import Tabs from "$docs/demos/Tabs.svelte";
+  import tabsCode from "$docs/demos/Tabs.svelte?raw";
 </script>
 
 <section class="stack readable">
@@ -132,6 +134,17 @@
   </p>
   <CodeExample code={tooltipCode} title="Tooltip">
     <Tooltip />
+  </CodeExample>
+</section>
+<section class="stack">
+  <h3 id="tabs">.tabs</h3>
+  <p>
+    Pure CSS tabs using details/summary with CSS Grid and Subgrid. No JavaScript required.
+    Set <code>--tab-count</code> to match your number of tabs (default: 3).
+    Use <code>--n</code> on each details element to position its tab.
+  </p>
+  <CodeExample code={tabsCode} title="Tabs">
+    <Tabs />
   </CodeExample>
 </section>
 <section class="stack">

@@ -56,6 +56,7 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 
 ### Components
 - [Accordion](https://graffiti-ui.com/llms/accordion.txt) - Collapsible sections with details/summary
+- [Tabs](https://graffiti-ui.com/llms/tabs.txt) - Pure CSS tabs with details/summary and subgrid
 - [Carousel](https://graffiti-ui.com/llms/carousel.txt) - Horizontal scroll with snap
 - [Reel](https://graffiti-ui.com/llms/reel.txt) - Vertical scroll with snap
 - [Tables](https://graffiti-ui.com/llms/tables.txt) - Data table styling

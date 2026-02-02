@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.0
+
+### Minor Changes
+
+- Added Tabs component - pure CSS tabs using details/summary with CSS Grid and Subgrid. Features three variants: default (underline), boxed (card-style), and pill (rounded). No JavaScript required.
+
 ## 4.13.0
 
 ### Minor Changes

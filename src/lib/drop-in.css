@@ -2416,3 +2416,155 @@ dialog > .close {
     }
   }
 }
+
+/* Tabs - Pure CSS tabs using details/summary with grid and subgrid */
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(var(--tab-count, 3), minmax(100px, 1fr));
+  grid-template-rows: auto 1fr;
+  column-gap: var(--gap, 1rem);
+
+  /* Each details element spans the full grid */
+  > details {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 2;
+    margin: 0;
+
+    /* Summary acts as the tab button */
+    > summary {
+      grid-row: 1;
+      grid-column: var(--n) / span 1;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--pad-s) var(--pad-m);
+      color: var(--fg-5);
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      user-select: none;
+      transition:
+        color 0.15s var(--ease-smooth),
+        border-color 0.15s var(--ease-smooth);
+
+      /* Remove default chevron */
+      &::before {
+        display: none;
+      }
+
+      &:hover {
+        color: var(--fg-7);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--fg);
+        outline-offset: -2px;
+      }
+    }
+
+    /* Active tab styling */
+    &[open] > summary {
+      color: var(--fg);
+      font-weight: 600;
+      border-bottom-color: var(--primary);
+    }
+
+    /* Tab panel content */
+    &::details-content {
+      grid-row: 2;
+      grid-column: 1 / -1;
+      padding: var(--pad-l);
+
+      /* Override default details animation for tabs */
+      opacity: 1;
+      block-size: auto;
+      overflow: visible;
+      transition:
+        opacity 0.2s var(--ease-smooth),
+        display 0.2s var(--ease-smooth) allow-discrete;
+    }
+
+    /* Hidden tab panels */
+    &:not([open])::details-content {
+      display: none;
+      opacity: 0;
+    }
+
+    /* Content inside panel - reset margins */
+    > :not(summary) {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  @starting-style {
+    > details[open]::details-content {
+      opacity: 0;
+    }
+  }
+
+  /* Boxed variant - card-style tabs that connect to panel */
+  &.boxed {
+    > details {
+      > summary {
+        border: var(--border-1);
+        border-bottom: none;
+        border-radius: var(--br-m) var(--br-m) 0 0;
+        background: var(--fg-05);
+        margin-inline-end: -1px;
+        position: relative;
+      }
+
+      /* Active tab connects to panel */
+      &[open] > summary {
+        background: var(--bg);
+        z-index: 2;
+
+        /* Create bottom "bridge" to panel */
+        &::after {
+          content: "";
+          position: absolute;
+          inset-inline: 0;
+          inset-block-end: -1px;
+          height: 2px;
+          background: var(--bg);
+        }
+      }
+
+      /* Panel styling */
+      &::details-content {
+        padding: var(--pad-l);
+        border: var(--border-1);
+        border-radius: 0 0 var(--br-m) var(--br-m);
+        margin-block-start: -1px;
+      }
+    }
+  }
+
+  /* Pill variant - rounded pill-style tabs */
+  &.pill {
+    gap: var(--pad-s);
+    column-gap: var(--pad-s);
+
+    > details > summary {
+      border-radius: var(--br-xxl);
+      border: var(--border-1);
+      border-bottom-width: 1px;
+      margin-block-end: var(--pad-s);
+
+      &:hover {
+        background: var(--fg-05);
+      }
+    }
+
+    > details[open] > summary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+    }
+  }
+}

@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.9
+
+### Patch Changes
+
+- Add .focus-ring and .focus-ring-inset utility classes for consistent focus styling
+
 ## 4.14.8
 
 ### Patch Changes

@@ -798,6 +798,17 @@ label {
   aspect-ratio: var(--aspect, 1 / 1);
 }
 
+/* Focus Ring - Consistent focus styling utility */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.focus-ring-inset:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: -2px;
+}
+
 /* END UTILITIES */
 
 /* LAYOUTS */

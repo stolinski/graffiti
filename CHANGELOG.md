@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.5
+
+### Patch Changes
+
+- Add label element to fluid type system so --fl variable works on labels
+
 ## 4.14.4
 
 ### Patch Changes

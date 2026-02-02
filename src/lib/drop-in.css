@@ -443,7 +443,8 @@ select,
 button,
 a,
 th,
-td {
+td,
+label {
   /* Fluid Typography System
    *
    * This system creates responsive font sizes that scale smoothly between viewport sizes.

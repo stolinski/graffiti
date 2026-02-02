@@ -144,7 +144,7 @@
   --purple-8: oklch(from var(--purple) l c h / 0.9);
   --purple-9: var(--purple);
 
-  /* Purple scale */
+  /* Purple deep scale */
   --purple-deep: #1b1525;
   --purple-deep-1: oklch(from var(--purple-deep) l c h / 0.1);
   --purple-deep-2: oklch(from var(--purple-deep) l c h / 0.2);

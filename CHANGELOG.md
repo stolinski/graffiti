@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.2
+
+### Patch Changes
+
+- Fix duplicate comment: Purple scale → Purple deep scale
+
 ## 4.14.1
 
 ### Patch Changes

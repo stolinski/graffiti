@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.13
+
+### Patch Changes
+
+- Add semantic color scales: --primary-1 through -9, --error-1 through -9, --warning-1 through -9, --success-1 through -9
+
 ## 4.14.12
 
 ### Patch Changes

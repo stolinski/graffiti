@@ -379,6 +379,50 @@
   --warning: var(--yellow);
   --success: var(--green);
 
+  /* Primary scale */
+  --primary-1: oklch(from var(--primary) l c h / 0.1);
+  --primary-2: oklch(from var(--primary) l c h / 0.2);
+  --primary-3: oklch(from var(--primary) l c h / 0.3);
+  --primary-4: oklch(from var(--primary) l c h / 0.4);
+  --primary-5: oklch(from var(--primary) l c h / 0.5);
+  --primary-6: oklch(from var(--primary) l c h / 0.6);
+  --primary-7: oklch(from var(--primary) l c h / 0.75);
+  --primary-8: oklch(from var(--primary) l c h / 0.9);
+  --primary-9: var(--primary);
+
+  /* Error scale */
+  --error-1: oklch(from var(--error) l c h / 0.1);
+  --error-2: oklch(from var(--error) l c h / 0.2);
+  --error-3: oklch(from var(--error) l c h / 0.3);
+  --error-4: oklch(from var(--error) l c h / 0.4);
+  --error-5: oklch(from var(--error) l c h / 0.5);
+  --error-6: oklch(from var(--error) l c h / 0.6);
+  --error-7: oklch(from var(--error) l c h / 0.75);
+  --error-8: oklch(from var(--error) l c h / 0.9);
+  --error-9: var(--error);
+
+  /* Warning scale */
+  --warning-1: oklch(from var(--warning) l c h / 0.1);
+  --warning-2: oklch(from var(--warning) l c h / 0.2);
+  --warning-3: oklch(from var(--warning) l c h / 0.3);
+  --warning-4: oklch(from var(--warning) l c h / 0.4);
+  --warning-5: oklch(from var(--warning) l c h / 0.5);
+  --warning-6: oklch(from var(--warning) l c h / 0.6);
+  --warning-7: oklch(from var(--warning) l c h / 0.75);
+  --warning-8: oklch(from var(--warning) l c h / 0.9);
+  --warning-9: var(--warning);
+
+  /* Success scale */
+  --success-1: oklch(from var(--success) l c h / 0.1);
+  --success-2: oklch(from var(--success) l c h / 0.2);
+  --success-3: oklch(from var(--success) l c h / 0.3);
+  --success-4: oklch(from var(--success) l c h / 0.4);
+  --success-5: oklch(from var(--success) l c h / 0.5);
+  --success-6: oklch(from var(--success) l c h / 0.6);
+  --success-7: oklch(from var(--success) l c h / 0.75);
+  --success-8: oklch(from var(--success) l c h / 0.9);
+  --success-9: var(--success);
+
   --l: clamp(0, (l / var(--l-threshold, 0.623) - 1) * -infinity, 1);
 
   color-scheme: light dark;

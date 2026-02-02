@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.11
+
+### Patch Changes
+
+- Add print styles: clean typography, link URLs, page break control, and .no-print utility
+
 ## 4.14.10
 
 ### Patch Changes

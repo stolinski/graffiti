@@ -2620,3 +2620,64 @@ dialog > .close {
     scroll-behavior: auto !important;
   }
 }
+
+/* Print Styles */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  p,
+  blockquote,
+  ul,
+  ol,
+  dl,
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}

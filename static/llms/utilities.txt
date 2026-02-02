@@ -5,9 +5,9 @@ Helper classes for common styling needs.
 ## Display & Layout
 
 ```html
-<div class="flex">Flexbox with 20px gap</div>
-<div class="grid">Grid with 1rem gap</div>
-<div class="split">Space-between flex</div>
+<div class="flex">Flexbox with gap (--gap, default 1rem)</div>
+<div class="grid">Grid with gap (--gap, default 1rem)</div>
+<div class="split">Space-between flex with gap</div>
 <div class="split vertical">Vertical split (top/bottom)</div>
 ```
 
@@ -44,6 +44,7 @@ See [Stack & Cluster](https://graffiti-ui.com/llms/stack-cluster.txt) for detail
 
 ```html
 <span class="visually-hidden">Hidden visually, accessible to screen readers</span>
+<div class="no-print">Hidden when printing</div>
 ```
 
 ## Shape
@@ -116,6 +117,27 @@ Break out of `.layout-readable` container:
   <img class="full-bleed" src="wide.jpg">
   <p>Back to normal width</p>
 </div>
+```
+
+## Focus Ring
+
+Consistent focus styling for interactive elements:
+
+```html
+<button class="focus-ring">Outline offset 2px on focus</button>
+<button class="focus-ring-inset">Outline offset -2px (inset) on focus</button>
+```
+
+## Transitions
+
+Apply smooth transitions using the easing tokens:
+
+```html
+<div class="transition">All properties, 0.2s, ease-smooth</div>
+<div class="transition-fast">All properties, 0.1s, ease-smooth</div>
+<div class="transition-slow">All properties, 0.4s, ease-smooth</div>
+<div class="transition-bounce">All properties, 0.3s, ease-bounce</div>
+<div class="transition-none">Disable transitions</div>
 ```
 
 ## See Also

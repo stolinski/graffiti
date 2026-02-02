@@ -14,6 +14,14 @@ All colors use OKLCH color space with automatic 1-9 opacity scales.
 --success: var(--green)
 ```
 
+Each semantic color also has a 1-9 opacity scale:
+```css
+--primary-1 through --primary-9
+--error-1 through --error-9
+--warning-1 through --warning-9
+--success-1 through --success-9
+```
+
 ### Color Palette
 ```css
 --yellow    /* oklch(0.88 0.15 95) */
@@ -74,11 +82,14 @@ Each color has a 1-9 scale based on opacity:
 
 ### Vertical Spacing
 ```css
+--vs-xs: 0.25rem
 --vs-s: 0.5rem
 --vs-base: 1rem
 --vs-m: 1.5rem
 --vs-l: 2rem
 --vs-xl: 4rem
+--vs-xxl: 6rem
+--vs-xxxl: 8rem
 ```
 
 ### Gap (for layouts)
@@ -120,7 +131,6 @@ Each color has a 1-9 scale based on opacity:
 --lh-xs: 1      /* single line */
 --lh-s: 1.2     /* tight, for headings */
 --lh: 1.5       /* default body text */
---lh-m: 1.5     /* alias for default */
 --lh-l: 1.8     /* loose */
 --lh-xl: 2      /* double */
 ```
@@ -158,3 +168,22 @@ Each color has a 1-9 scale based on opacity:
 --callout-color: /* callout background */
 --separator: "/"               /* for .breadcrumbs */
 ```
+
+## CSS Layers
+
+Graffiti uses CSS cascade layers for predictable specificity:
+```css
+@layer utilities, layouts, components;
+```
+
+Priority (lowest to highest):
+1. utilities
+2. layouts  
+3. components
+4. Unlayered styles (base, media queries)
+
+## Accessibility
+
+- `prefers-reduced-motion` - Animations/transitions disabled for users who prefer reduced motion
+- `prefers-color-scheme` - Automatic light/dark mode via `light-dark()`
+- Print styles included with `.no-print` utility

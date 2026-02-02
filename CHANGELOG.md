@@ -1,5 +1,16 @@
 # @drop-in/graffiti
 
+## 4.15.1
+
+### Patch Changes
+
+- Update llms.txt documentation with new utilities and variables:
+  - Add .focus-ring, .transition-\*, .no-print utilities
+  - Add semantic color scales (--primary-_, --error-_, etc.)
+  - Add complete vertical spacing scale
+  - Add CSS @layer and accessibility info
+  - Remove obsolete --lh-m reference
+
 ## 4.15.0
 
 ### Minor Changes

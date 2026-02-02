@@ -12,8 +12,8 @@
 /* Typography */
 :root {
   --font-sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
 
   --min-vw: 360;
   --max-vw: 800;
@@ -59,8 +59,7 @@
   --shadow-4: 0 4px 8px rgb(0 0 0 / 0.06), 0 8px 16px rgb(0 0 0 / 0.12);
   --shadow-5: 0 8px 16px rgb(0 0 0 / 0.08), 0 12px 24px rgb(0 0 0 / 0.14);
   --shadow-6:
-    0 12px 24px rgb(0 0 0 / 0.1), 0 16px 32px rgb(0 0 0 / 0.16),
-    0 24px 48px rgb(0 0 0 / 0.18);
+    0 12px 24px rgb(0 0 0 / 0.1), 0 16px 32px rgb(0 0 0 / 0.16), 0 24px 48px rgb(0 0 0 / 0.18);
 
   --box:
     0 1px 2px rgb(0 0 0 / 0.04), inset -1px 1px 2px rgb(255 255 255 / 0.1),
@@ -509,15 +508,10 @@ label {
    * - --fluid-preferred: Slope of linear interpolation
    * - --fluid-type: clamp(min, min + slope * viewport, max)
    */
-  --fluid-min: calc(
-    var(--font-size-min) * pow(var(--font-ratio-min), var(--fl, 0))
-  );
-  --fluid-max: calc(
-    var(--font-size-max) * pow(var(--font-ratio-max), var(--fl, 0))
-  );
+  --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--fl, 0)));
+  --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--fl, 0)));
   --fluid-preferred: calc(
-    (var(--fluid-max) - var(--fluid-min)) /
-      (var(--font-width-max) - var(--font-width-min))
+    (var(--fluid-max) - var(--fluid-min)) / (var(--font-width-max) - var(--font-width-min))
   );
   --fluid-type: clamp(
     (var(--fluid-min) / 16) * 1rem,
@@ -766,10 +760,7 @@ label {
     gap: var(--gap, 1rem);
 
     &.auto {
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(var(--grid-min, 150px), 1fr)
-      );
+      grid-template-columns: repeat(auto-fit, minmax(var(--grid-min, 150px), 1fr));
     }
   }
 
@@ -1203,17 +1194,14 @@ label {
     --shadow-1: 0 1px 2px rgb(0 0 0 / 0.5), 0 2px 4px rgb(0 0 0 / 0.3);
     --shadow-2: 0 2px 4px rgb(0 0 0 / 0.6), 0 4px 8px rgb(0 0 0 / 0.4);
     --shadow-3:
-      0 4px 8px rgb(0 0 0 / 0.65), 0 8px 16px rgb(0 0 0 / 0.45),
-      0 2px 4px rgb(0 0 0 / 0.3);
+      0 4px 8px rgb(0 0 0 / 0.65), 0 8px 16px rgb(0 0 0 / 0.45), 0 2px 4px rgb(0 0 0 / 0.3);
     --shadow-4:
-      0 6px 12px rgb(0 0 0 / 0.7), 0 12px 24px rgb(0 0 0 / 0.5),
-      0 3px 6px rgb(0 0 0 / 0.35);
+      0 6px 12px rgb(0 0 0 / 0.7), 0 12px 24px rgb(0 0 0 / 0.5), 0 3px 6px rgb(0 0 0 / 0.35);
     --shadow-5:
-      0 10px 20px rgb(0 0 0 / 0.75), 0 16px 32px rgb(0 0 0 / 0.55),
-      0 4px 8px rgb(0 0 0 / 0.4);
+      0 10px 20px rgb(0 0 0 / 0.75), 0 16px 32px rgb(0 0 0 / 0.55), 0 4px 8px rgb(0 0 0 / 0.4);
     --shadow-6:
-      0 16px 32px rgb(0 0 0 / 0.8), 0 24px 48px rgb(0 0 0 / 0.6),
-      0 32px 64px rgb(0 0 0 / 0.5), 0 6px 12px rgb(0 0 0 / 0.45);
+      0 16px 32px rgb(0 0 0 / 0.8), 0 24px 48px rgb(0 0 0 / 0.6), 0 32px 64px rgb(0 0 0 / 0.5),
+      0 6px 12px rgb(0 0 0 / 0.45);
   }
 }
 
@@ -1577,9 +1565,7 @@ label {
           from var(--bg-color)
             clamp(
               var(--dark-text-l),
-              calc(
-                ((l * alpha + 1 - alpha) / var(--threshold) - 1) * -infinity
-              ),
+              calc(((l * alpha + 1 - alpha) / var(--threshold) - 1) * -infinity),
               var(--light-text-l)
             )
             0 0 / 0.8
@@ -2179,8 +2165,7 @@ label {
 
       &::before {
         translate: calc(
-            var(--toggle-width) - var(--toggle-knob-size) -
-              var(--toggle-knob-offset) * 2
+            var(--toggle-width) - var(--toggle-knob-size) - var(--toggle-knob-offset) * 2
           )
           0;
       }

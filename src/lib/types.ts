@@ -13,4 +13,5 @@ export type FontSettings = {
   max_font_size: number;
   min_viewport: number;
   max_viewport: number;
+  font_family: string;
 };

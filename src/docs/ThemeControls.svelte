@@ -8,6 +8,18 @@
   }: { theme_values: ThemeValues; font_settings: FontSettings } = $props();
 
   let theming = $state(false);
+
+  const fontOptions = [
+    { name: "System UI", value: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" },
+    { name: "Helvetica", value: "Helvetica Neue, Helvetica, Arial, sans-serif" },
+    { name: "Arial", value: "Arial, Helvetica, sans-serif" },
+    { name: "Georgia", value: "Georgia, 'Times New Roman', serif" },
+    { name: "Times", value: "'Times New Roman', Times, serif" },
+    { name: "Verdana", value: "Verdana, Geneva, sans-serif" },
+    { name: "Tahoma", value: "Tahoma, Geneva, sans-serif" },
+    { name: "Trebuchet", value: "'Trebuchet MS', sans-serif" },
+    { name: "Monospace", value: "'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace" },
+  ];
 </script>
 
 <div class="theme-controls">
@@ -27,6 +39,12 @@
       <div class="controls">
         <div>
           <h2 class="h6">Global</h2>
+          <label for="font-family">Font Family</label>
+          <select name="font-family" id="font-family" bind:value={font_settings.font_family}>
+            {#each fontOptions as font (font.value)}
+              <option value={font.value}>{font.name}</option>
+            {/each}
+          </select>
           <label for="min-scale">Min Size Scale</label>
           <select name="min-scale" id="min-scale" bind:value={font_settings.min_ratio}>
             <option value={16 / 15}>Minor 2nd 16/15</option>

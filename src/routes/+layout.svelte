@@ -23,6 +23,7 @@
     max_font_size: 18,
     min_viewport: 320,
     max_viewport: 1500,
+    font_family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif",
   });
 
   $effect(() => {
@@ -65,6 +66,7 @@
   style:--font-ratio-max={font_settings.max_ratio}
   style:--font-width-min={font_settings.min_viewport}
   style:--font-width-max={font_settings.max_viewport}
+  style:--font-sans={font_settings.font_family}
 >
   <style>
     .demo-section {

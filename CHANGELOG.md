@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.8
+
+### Patch Changes
+
+- Add prefers-reduced-motion support for accessibility - disables animations/transitions for users who prefer reduced motion
+
 ## 4.14.7
 
 ### Patch Changes

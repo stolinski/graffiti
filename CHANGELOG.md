@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.15.2
+
+### Patch Changes
+
+- aba9d82: Fix CSS cascade layers - wrap base styles in @layer base so utilities can properly override element defaults (fixes .circle not working on buttons)
+
 ## 4.15.1
 
 ### Patch Changes

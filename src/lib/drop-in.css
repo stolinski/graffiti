@@ -809,6 +809,27 @@ label {
   outline-offset: -2px;
 }
 
+/* Transition Utilities - Use the easing tokens */
+.transition {
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.transition-fast {
+  transition: all 0.1s var(--ease-smooth);
+}
+
+.transition-slow {
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.transition-bounce {
+  transition: all 0.3s var(--ease-bounce);
+}
+
+.transition-none {
+  transition: none;
+}
+
 /* END UTILITIES */
 
 /* LAYOUTS */

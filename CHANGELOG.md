@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.10
+
+### Patch Changes
+
+- Add transition utility classes: .transition, .transition-fast, .transition-slow, .transition-bounce, .transition-none
+
 ## 4.14.9
 
 ### Patch Changes

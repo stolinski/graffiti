@@ -42,6 +42,6 @@
   <!-- Multi-element callout -->
   <div class="callout success stack">
     <h5>Callouts support multiple elements</h5>
-    <p>Use .stack fo children with consistent spacing.</p>
+    <p>Use .stack for children with consistent spacing.</p>
   </div>
 </div>

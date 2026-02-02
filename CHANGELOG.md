@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.14
+
+### Patch Changes
+
+- Add --vs-xxxl: 8rem to vertical spacing scale for very large spacing needs
+
 ## 4.14.13
 
 ### Patch Changes

@@ -1153,6 +1153,8 @@ label {
   }
 }
 
+/* COMPONENTS */
+
 /* Boxes */
 
 .box {
@@ -2608,6 +2610,10 @@ dialog > .close {
     }
   }
 }
+
+/* END COMPONENTS */
+
+/* ACCESSIBILITY & PRINT */
 
 /* Reduced Motion - Respect user preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {

@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.12
+
+### Patch Changes
+
+- Add section markers: COMPONENTS, END COMPONENTS, ACCESSIBILITY & PRINT for better file navigation
+
 ## 4.14.11
 
 ### Patch Changes

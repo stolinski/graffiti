@@ -1,5 +1,18 @@
 # @drop-in/graffiti
 
+## 4.15.0
+
+### Minor Changes
+
+- Add CSS @layer for cascade organization: utilities, layouts, components
+
+  Layers are ordered from lowest to highest priority:
+  - utilities (lowest)
+  - layouts
+  - components (highest among layers)
+
+  Base styles and media queries are unlayered for maximum override capability.
+
 ## 4.14.15
 
 ### Patch Changes

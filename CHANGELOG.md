@@ -1,5 +1,16 @@
 # @drop-in/graffiti
 
+## 4.13.0
+
+### Minor Changes
+
+- Add tooltip component using CSS anchor positioning
+  - Uses modern `anchor-scope` and `position-area` for clean positioning
+  - No JavaScript required - pure CSS with `:hover`/`:focus-within`
+  - Supports top (default), bottom, left, right positions
+  - Clean API: just wrap trigger + `.tooltip-content` in `.tooltip`
+  - Background inherits from theme (`--bg`), includes border and shadow
+
 ## 4.12.2
 
 ### Patch Changes

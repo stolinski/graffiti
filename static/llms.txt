@@ -52,6 +52,7 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 - [Callouts](https://graffiti-ui.com/llms/callouts.txt) - Info, warning, error, success boxes
 - [Avatar](https://graffiti-ui.com/llms/avatar.txt) - User images and initials
 - [Boxes](https://graffiti-ui.com/llms/boxes.txt) - Container styles (glow, ghost, semi-gloss)
+- [Tooltip](https://graffiti-ui.com/llms/tooltip.txt) - Hover tooltips with CSS anchor positioning
 
 ### Components
 - [Accordion](https://graffiti-ui.com/llms/accordion.txt) - Collapsible sections with details/summary

@@ -26,6 +26,8 @@
   import tagsCode from "$docs/demos/Tags.svelte?raw";
   import ListNav from "$docs/demos/ListNav.svelte";
   import listNavCode from "$docs/demos/ListNav.svelte?raw";
+  import Tooltip from "$docs/demos/Tooltip.svelte";
+  import tooltipCode from "$docs/demos/Tooltip.svelte?raw";
 </script>
 
 <section class="stack readable">
@@ -120,6 +122,16 @@
   </p>
   <CodeExample code={tagsCode} title="Tags">
     <Tags />
+  </CodeExample>
+</section>
+<section class="stack">
+  <h3 id="tooltip">.tooltip</h3>
+  <p>
+    Native tooltip using HTML popover API and CSS anchor positioning. No JavaScript required.
+    Uses <code>popover="hint"</code> for hover-triggered display. Supports top (default), bottom, left, and right positions.
+  </p>
+  <CodeExample code={tooltipCode} title="Tooltip">
+    <Tooltip />
   </CodeExample>
 </section>
 <section class="stack">

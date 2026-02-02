@@ -1,0 +1,91 @@
+# Tooltip
+
+Hover tooltips using CSS anchor positioning. No JavaScript required.
+
+## Basic Usage
+
+```html
+<span class="tooltip">
+  <button>Hover me</button>
+  <span class="tooltip-content">Tooltip text</span>
+</span>
+```
+
+## Position Variants
+
+Default is top. Add position class for other directions:
+
+```html
+<!-- Top (default) -->
+<span class="tooltip">
+  <button>Top</button>
+  <span class="tooltip-content">Above the element</span>
+</span>
+
+<!-- Bottom -->
+<span class="tooltip bottom">
+  <button>Bottom</button>
+  <span class="tooltip-content">Below the element</span>
+</span>
+
+<!-- Left -->
+<span class="tooltip left">
+  <button>Left</button>
+  <span class="tooltip-content">Left side</span>
+</span>
+
+<!-- Right -->
+<span class="tooltip right">
+  <button>Right</button>
+  <span class="tooltip-content">Right side</span>
+</span>
+```
+
+## On Any Element
+
+Works with any trigger element:
+
+```html
+<span class="tooltip">
+  <a href="/help">Help</a>
+  <span class="tooltip-content">Get assistance</span>
+</span>
+
+<span class="tooltip">
+  <span class="avatar">JD</span>
+  <span class="tooltip-content">Jane Doe</span>
+</span>
+
+<span class="tooltip">
+  <span>Hover this text</span>
+  <span class="tooltip-content">More info here</span>
+</span>
+```
+
+## Styling Details
+
+- Uses CSS anchor positioning (`anchor-scope`, `position-anchor`, `position-area`)
+- Background: `var(--bg)`
+- Border: `var(--border-1)`
+- Shadow: `var(--shadow-3)`
+- Max width: 30ch (wraps longer text)
+- Shows on `:hover` and `:focus-within`
+- Smooth opacity transition
+
+## Structure
+
+```
+.tooltip          - Container, defines the anchor
+  [trigger]       - Any element (button, link, span, etc.)
+  .tooltip-content - The tooltip text/content
+```
+
+## Accessibility
+
+- Triggers work with focus (`:focus-within`) for keyboard users
+- Use buttons or links as triggers when possible
+- Tooltip content is always in DOM (just hidden via opacity)
+
+## See Also
+
+- [Dropdown menu](https://graffiti-ui.com/llms/dropdown.txt) - Click-triggered popover menus

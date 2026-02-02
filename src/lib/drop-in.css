@@ -648,12 +648,11 @@ button,
   height: var(--size);
   padding: 0;
   border: none;
-  box-shadow: none;
+  box-shadow: var(--shadow-1);
   color: var(--white);
   background: var(--red);
   cursor: pointer;
   border-radius: 50%;
-  box-shadow: var(--shadow-1);
 
   &:hover {
     background: oklch(from var(--red) calc(l + 0.1) c h);
@@ -1197,7 +1196,6 @@ label {
   --callout-border-color: var(--blue-5);
   padding: var(--pad-l);
   border-radius: var(--br-xl);
-  corner-shape: squircle;
   border: var(--callout-border-color) solid 2px;
   color: var(--fg-8);
   gap: var(--layout-gap, var(--gap, 1rem));
@@ -1914,6 +1912,60 @@ details.minimal[open] > summary::after {
   --fl: -1;
 }
 
+/* Tooltip - uses CSS anchor positioning */
+
+.tooltip {
+  anchor-scope: --tooltip;
+  anchor-name: --tooltip;
+  display: inline-block;
+}
+
+.tooltip-content {
+  position: absolute;
+  position-anchor: --tooltip;
+  inset: unset;
+  position-area: block-start center;
+  margin-block-end: var(--vs-xs);
+
+  padding: var(--pad-xs) var(--pad-s);
+  width: max-content;
+  max-width: 30ch;
+  background: var(--bg);
+  border: var(--border-1);
+  border-radius: var(--br-s);
+  box-shadow: var(--shadow-3);
+  --fl: -1;
+  pointer-events: none;
+  text-align: center;
+
+  opacity: 0;
+  transition: opacity 0.15s var(--ease-smooth);
+}
+
+.tooltip:hover .tooltip-content,
+.tooltip:focus-within .tooltip-content {
+  opacity: 1;
+}
+
+/* Position variants */
+.tooltip.bottom .tooltip-content {
+  position-area: block-end center;
+  margin-block-end: 0;
+  margin-block-start: var(--vs-xs);
+}
+
+.tooltip.left .tooltip-content {
+  position-area: inline-start center;
+  margin-block-end: 0;
+  margin-inline-end: var(--vs-xs);
+}
+
+.tooltip.right .tooltip-content {
+  position-area: inline-end center;
+  margin-block-end: 0;
+  margin-inline-start: var(--vs-xs);
+}
+
 /* Avatar */
 
 .avatar {
@@ -2101,7 +2153,6 @@ dialog {
   max-width: 40ch;
   width: calc(100% - var(--pad-xxl) * 2);
   padding: var(--pad-xl);
-  corner-shape: squircle;
   border: none;
   border-radius: var(--br-xxl);
   box-shadow: var(--shadow-5);
@@ -2305,7 +2356,7 @@ dialog > .close {
     margin: 0;
     background: var(--bg);
     border-radius: var(--br-xxl);
-    corner-shape: squircle;
+
     box-shadow: var(--shadow-2);
     transition: box-shadow 0.1s var(--ease-smooth);
 

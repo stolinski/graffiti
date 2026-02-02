@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.15
+
+### Patch Changes
+
+- Standardize CSS variable fallback patterns: fix .callout to use component pattern, add documentation for gap variable conventions
+
 ## 4.14.14
 
 ### Patch Changes

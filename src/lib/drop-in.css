@@ -878,6 +878,17 @@ label {
 /* END UTILITIES */
 
 /* LAYOUTS */
+/*
+ * Gap Variable Pattern:
+ * - Grid layouts (layout-card, layout-sidebar, etc.): var(--layout-gap, var(--gap, 2rem))
+ * - Flex layouts (stack, cluster, carousel, reel): var(--layout-gap, var(--gap, 1rem))
+ * - Components: var(--gap, 1rem)
+ *
+ * This allows:
+ * 1. Global control via --gap
+ * 2. Layout-specific override via --layout-gap
+ * 3. Sensible defaults (2rem for page grids, 1rem for component layouts)
+ */
 
 /* Card Grid Layout - Auto-fill responsive card grid */
 .layout-card {
@@ -1278,7 +1289,7 @@ label {
   border-radius: var(--br-xl);
   border: var(--callout-border-color) solid 2px;
   color: var(--fg-8);
-  gap: var(--layout-gap, var(--gap, 1rem));
+  gap: var(--gap, 1rem);
 
   > * {
     margin: 0;

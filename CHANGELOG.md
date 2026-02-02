@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.3
+
+### Patch Changes
+
+- Add text-wrap: balance to headings for more visually pleasing line breaks
+
 ## 4.14.2
 
 ### Patch Changes

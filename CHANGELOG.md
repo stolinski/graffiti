@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.6
+
+### Patch Changes
+
+- Remove redundant --lh-m variable (was just an alias for --lh, never used)
+
 ## 4.14.5
 
 ### Patch Changes

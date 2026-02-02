@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.1
+
+### Patch Changes
+
+- Fix typo in CSS comment: Typeography → Typography
+
 ## 4.14.0
 
 ### Minor Changes

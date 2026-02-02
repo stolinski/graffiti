@@ -1805,6 +1805,13 @@ details.minimal[open] > summary::after {
   }
 }
 
+/* Footer responds to its own container size */
+@container (max-width: 600px) {
+  .footer .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Dropdown Menu */
 
 .dropdown {

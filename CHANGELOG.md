@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.14.7
+
+### Patch Changes
+
+- Add container query to .footer so grid stacks at narrow widths (uses existing container-type)
+
 ## 4.14.6
 
 ### Patch Changes

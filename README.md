@@ -24,7 +24,7 @@ import '@drop-in/graffiti/decks'
 
 Download the CSS file directly:
 ```
-https://raw.githubusercontent.com/stolinski/graffiti/refs/heads/main/drop-in.css
+https://raw.githubusercontent.com/stolinski/graffiti/refs/heads/main/src/lib/drop-in.css
 ```
 
 ### CLI Tool

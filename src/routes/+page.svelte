@@ -33,7 +33,7 @@
     <p>
       <a
         href="https://graffiti-ui.com/llms.txt"
-        >Give you LLM our docs</a
+        >Give your LLM our docs</a
       >
     </p>
   </section>

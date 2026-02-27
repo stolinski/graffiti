@@ -2384,22 +2384,48 @@
     }
   }
 
-  /* Tag - Subtle category/metadata labels */
+  /* Tag - Rounded status/metadata pills */
 
   .tag {
     --tag-color: var(--primary);
+    --tag-bg-top: light-dark(
+      oklch(from var(--tag-color) 0.965 calc(c * 0.07) h / 1),
+      oklch(from var(--tag-color) calc(l - 0.24) calc(c * 0.16) h / 0.52)
+    );
+    --tag-bg-bottom: light-dark(
+      oklch(from var(--tag-color) 0.93 calc(c * 0.11) h / 1),
+      oklch(from var(--tag-color) calc(l - 0.2) calc(c * 0.19) h / 0.6)
+    );
+    --tag-border: light-dark(
+      oklch(from var(--tag-color) 0.8 calc(c * 0.25) h / 0.55),
+      oklch(from var(--tag-color) calc(l + 0.14) calc(c * 0.64) h / 0.62)
+    );
+    --tag-shadow: light-dark(
+      oklch(from var(--tag-color) calc(l - 0.2) calc(c * 0.16) h / 0.04),
+      oklch(from var(--tag-color) calc(l - 0.38) calc(c * 0.16) h / 0.22)
+    );
+    --tag-text: light-dark(
+      oklch(from var(--tag-color) calc(l - 0.1) calc(c * 0.65) h),
+      oklch(from var(--tag-color) 0.9 calc(c * 0.42) h)
+    );
 
     display: inline-flex;
     align-items: center;
-    gap: var(--pad-xs);
-    padding: 2px var(--pad-s);
-    border-radius: var(--br-xxl);
-    background: oklch(from var(--tag-color) l c h / 0.12);
-    color: light-dark(
-      oklch(from var(--tag-color) calc(l - 0.15) c h),
-      oklch(from var(--tag-color) calc(l + 0.15) c h)
+    gap: 0.45em;
+    padding: calc(var(--pad-xs) + 1px) var(--pad-l);
+    border-radius: 999px;
+    border: 1px solid var(--tag-border);
+    background: linear-gradient(
+      180deg,
+      var(--tag-bg-top) 0%,
+      var(--tag-bg-bottom) 100%
     );
-    border: 1px solid oklch(from var(--tag-color) l c h / 0.2);
+    color: var(--tag-text);
+    box-shadow:
+      inset 0 1px 0 light-dark(transparent, var(--white-1)),
+      0 1px 2px var(--tag-shadow);
+    font-weight: 500;
+    line-height: var(--lh-s);
     --fl: -1;
 
     /* Icon sizing */
@@ -2407,6 +2433,7 @@
       width: 1em;
       height: 1em;
       flex-shrink: 0;
+      stroke-width: 2;
     }
 
     /* When used as interactive element */
@@ -2414,35 +2441,81 @@
       cursor: pointer;
       text-decoration: none;
       transition:
-        background-color 0.15s var(--ease-smooth),
-        border-color 0.15s var(--ease-smooth);
+        background 0.2s var(--ease-smooth),
+        border-color 0.2s var(--ease-smooth),
+        color 0.2s var(--ease-smooth),
+        box-shadow 0.2s var(--ease-smooth),
+        translate 0.2s var(--ease-smooth);
 
       &:hover {
-        background: oklch(from var(--tag-color) l c h / 0.2);
-        border-color: oklch(from var(--tag-color) l c h / 0.3);
+        border-color: light-dark(
+          oklch(from var(--tag-color) 0.77 calc(c * 0.3) h / 0.62),
+          oklch(from var(--tag-color) calc(l + 0.15) calc(c * 0.68) h / 0.72)
+        );
+        background: linear-gradient(
+          180deg,
+          light-dark(
+              oklch(from var(--tag-color) 0.97 calc(c * 0.08) h / 1),
+              oklch(
+                from var(--tag-color) calc(l - 0.22) calc(c * 0.19) h / 0.58
+              )
+            )
+            0%,
+          light-dark(
+              oklch(from var(--tag-color) 0.92 calc(c * 0.13) h / 1),
+              oklch(
+                from var(--tag-color) calc(l - 0.16) calc(c * 0.22) h / 0.66
+              )
+            )
+            100%
+        );
+        box-shadow:
+          inset 0 1px 0 light-dark(transparent, var(--white-2)),
+          0 2px 6px var(--tag-shadow);
+        translate: 0 -1px;
       }
 
       &:focus-visible {
-        outline: 2px solid var(--tag-color);
-        outline-offset: 2px;
+        --focus-ring-color: var(--tag-color);
+        outline: var(--focus-ring);
+        outline-offset: var(--focus-ring-offset);
       }
 
       &:active {
-        background: oklch(from var(--tag-color) l c h / 0.25);
+        background: linear-gradient(
+          180deg,
+          light-dark(
+              oklch(from var(--tag-color) 0.955 calc(c * 0.08) h / 1),
+              oklch(
+                from var(--tag-color) calc(l - 0.24) calc(c * 0.19) h / 0.58
+              )
+            )
+            0%,
+          light-dark(
+              oklch(from var(--tag-color) 0.9 calc(c * 0.13) h / 1),
+              oklch(
+                from var(--tag-color) calc(l - 0.18) calc(c * 0.22) h / 0.62
+              )
+            )
+            100%
+        );
+        box-shadow:
+          inset 0 1px 0 light-dark(transparent, var(--white-1)),
+          0 1px 3px var(--tag-shadow);
+        translate: 0;
       }
     }
 
     /* Reset button styles when used on button element */
     &:is(button) {
-      background: oklch(from var(--tag-color) l c h / 0.12);
-      box-shadow: none;
+      appearance: none;
       font: inherit;
       margin: 0;
     }
 
     /* Muted variant - colored background, neutral text for better readability */
     &.muted {
-      color: var(--fg);
+      --tag-text: var(--fg-8);
     }
   }
 

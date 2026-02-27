@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.15.3
+
+### Patch Changes
+
+- Retune `.tag` styling to match the rounded status-pill direction with softer light-mode pastels, clearer text contrast, and less gloss while preserving existing `--tag-color`, `.muted`, and interactive behaviors.
+
 ## 4.15.2
 
 ### Patch Changes

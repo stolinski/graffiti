@@ -3,18 +3,18 @@ Card footer style pagination with previous/next controls and current page state.
 
 ## Basic Example
 
-Uses `.button.ghost.mini` for pagination controls:
+Uses `.button.ghost` for pagination controls:
 
 ```html
 <nav class="pagination" aria-label="Pagination">
-  <a class="button ghost mini" href="/page/1" aria-disabled="true">Previous</a>
+  <a class="button ghost" href="/page/1" aria-disabled="true">Previous</a>
   <ul>
-    <li><a class="button ghost mini" href="/page/1">1</a></li>
-    <li><a class="button ghost mini" href="/page/2" aria-current="page">2</a></li>
-    <li><a class="button ghost mini" href="/page/3">3</a></li>
-    <li><a class="button ghost mini" href="/page/4">4</a></li>
+    <li><a class="button ghost" href="/page/1">1</a></li>
+    <li><a class="button ghost" href="/page/2" aria-current="page">2</a></li>
+    <li><a class="button ghost" href="/page/3">3</a></li>
+    <li><a class="button ghost" href="/page/4">4</a></li>
   </ul>
-  <a class="button ghost mini" href="/page/3">Next</a>
+  <a class="button ghost" href="/page/3">Next</a>
 </nav>
 ```
 
@@ -29,13 +29,13 @@ Use inside a card or box with a top border footer feel:
     <p>Showing 1-20 of 120</p>
   </div>
   <nav class="pagination" aria-label="Pagination">
-    <a class="button ghost mini" href="/page/1" aria-disabled="true">Previous</a>
+    <a class="button ghost" href="/page/1" aria-disabled="true">Previous</a>
     <ul>
-      <li><a class="button ghost mini" href="/page/1">1</a></li>
-      <li><a class="button ghost mini" href="/page/2" aria-current="page">2</a></li>
-      <li><a class="button ghost mini" href="/page/3">3</a></li>
+      <li><a class="button ghost" href="/page/1">1</a></li>
+      <li><a class="button ghost" href="/page/2" aria-current="page">2</a></li>
+      <li><a class="button ghost" href="/page/3">3</a></li>
     </ul>
-    <a class="button ghost mini" href="/page/3">Next</a>
+    <a class="button ghost" href="/page/3">Next</a>
   </nav>
 </div>
 ```
@@ -45,7 +45,7 @@ Use inside a card or box with a top border footer feel:
 Use `aria-current="page"` on the active page link:
 
 ```html
-<a class="button ghost mini" href="/page/2" aria-current="page">2</a>
+<a class="button ghost" href="/page/2" aria-current="page">2</a>
 ```
 
 ## Disabled States
@@ -53,13 +53,13 @@ Use `aria-current="page"` on the active page link:
 Use `aria-disabled="true"` on Previous/Next at boundaries:
 
 ```html
-<a class="button ghost mini" href="/page/1" aria-disabled="true">Previous</a>
+<a class="button ghost" href="/page/1" aria-disabled="true">Previous</a>
 ```
 
 ## Styling Details
 
 - `.pagination` handles layout only (flex, gap, border-top)
-- Buttons use existing `.button.ghost.mini` styles
+- Buttons use existing `.button.ghost` styles
 - Page number buttons in `ul` get fixed 2rem square sizing
 - Current page uses primary border and stronger text
 - Border-top and padding give card footer feel

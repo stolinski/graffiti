@@ -610,80 +610,303 @@
 
   button,
   .button {
-    --button-color: var(--gray-2);
+    --button-color: var(--gray-5);
+    --button-bg-top: light-dark(
+      oklch(from var(--button-color) 0.94 calc(c * 0.15) h / 1),
+      oklch(from var(--button-color) calc(l - 0.16) calc(c * 0.55) h / 0.88)
+    );
+    --button-bg-bottom: light-dark(
+      oklch(from var(--button-color) 0.88 calc(c * 0.22) h / 1),
+      oklch(from var(--button-color) calc(l - 0.12) calc(c * 0.62) h / 0.92)
+    );
+    --button-border: light-dark(
+      oklch(from var(--button-color) 0.68 calc(c * 0.35) h / 0.65),
+      oklch(from var(--button-color) calc(l + 0.08) calc(c * 0.55) h / 0.58)
+    );
+    --button-shadow: light-dark(
+      oklch(from var(--button-color) calc(l - 0.25) calc(c * 0.2) h / 0.12),
+      oklch(from var(--button-color) calc(l - 0.35) calc(c * 0.2) h / 0.25)
+    );
+    --button-text: var(--fg);
+
     appearance: none;
     margin: 0;
     cursor: pointer;
-    background: var(--button-color);
-    color: var(--fg);
-    font-weight: 600;
+    background: linear-gradient(
+      180deg,
+      var(--button-bg-top) 0%,
+      var(--button-bg-bottom) 100%
+    );
+    color: var(--button-text);
+    font-weight: 560;
     display: inline-flex;
     justify-content: center;
-    gap: var(--gap, 1rem);
+    gap: 0.45em;
     align-items: center;
-    line-height: var(--lh);
-    border: var(--border-05);
-    border-radius: var(--br-s);
-    padding: var(--pad-s) var(--pad-xl);
+    line-height: var(--lh-s);
+    border: 1px solid var(--button-border);
+    border-radius: 10px;
+    padding: 6px var(--pad-l);
     text-decoration: none;
-    box-shadow: var(--shadow-1);
+    box-shadow:
+      inset 0 1px 0 light-dark(var(--white-5), var(--white-1)),
+      0 1px 2px var(--button-shadow);
+    transition:
+      background 0.15s var(--ease-smooth),
+      border-color 0.15s var(--ease-smooth),
+      color 0.15s var(--ease-smooth),
+      box-shadow 0.15s var(--ease-smooth),
+      translate 0.15s var(--ease-smooth);
+
     &:hover {
-      background: oklch(from var(--button-color) calc(l + 0.05) c h);
+      --button-bg-top: light-dark(
+        oklch(from var(--button-color) 0.97 calc(c * 0.12) h / 1),
+        oklch(from var(--button-color) calc(l - 0.06) calc(c * 0.68) h / 0.96)
+      );
+      --button-bg-bottom: light-dark(
+        oklch(from var(--button-color) 0.92 calc(c * 0.18) h / 1),
+        oklch(from var(--button-color) calc(l - 0.02) calc(c * 0.75) h / 0.98)
+      );
+      border-color: light-dark(
+        oklch(from var(--button-color) 0.6 calc(c * 0.42) h / 0.7),
+        oklch(from var(--button-color) calc(l + 0.14) calc(c * 0.65) h / 0.72)
+      );
+      box-shadow:
+        inset 0 1px 0 light-dark(var(--white-6), var(--white-2)),
+        0 2px 4px var(--button-shadow);
+      translate: 0 -1px;
     }
+
     &:active {
-      background: oklch(from var(--button-color) calc(l + 0.1) c h);
+      --button-bg-top: light-dark(
+        oklch(from var(--button-color) 0.7 calc(c * 0.5) h / 1),
+        oklch(from var(--button-color) calc(l - 0.14) calc(c * 0.58) h / 0.9)
+      );
+      --button-bg-bottom: light-dark(
+        oklch(from var(--button-color) 0.64 calc(c * 0.55) h / 1),
+        oklch(from var(--button-color) calc(l - 0.1) calc(c * 0.65) h / 0.94)
+      );
+      box-shadow:
+        inset 0 1px 0 light-dark(var(--white-2), var(--white-1)),
+        0 1px 2px var(--button-shadow);
+      translate: 0;
     }
+
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
+
     &:focus-visible {
-      outline: 2px solid var(--fg);
-      outline-offset: 2px;
+      outline: var(--focus-ring);
+      outline-offset: var(--focus-ring-offset);
     }
+
     &.mini {
-      --fl: 0;
-      padding: var(--pad-xs) var(--pad-m);
+      --fl: -1;
+      padding: 3px var(--pad-m);
+      gap: 0.35em;
+      border-radius: 8px;
     }
-    &:active {
-      translate: 0 1px;
-    }
+
     &.primary {
       --button-color: var(--primary);
-      color: var(--white);
+      --button-text: var(--white);
+      --button-bg-top: light-dark(
+        oklch(from var(--button-color) calc(l + 0.08) c h),
+        oklch(from var(--button-color) calc(l - 0.08) calc(c * 0.85) h)
+      );
+      --button-bg-bottom: light-dark(
+        oklch(from var(--button-color) calc(l - 0.02) c h),
+        oklch(from var(--button-color) calc(l - 0.04) calc(c * 0.9) h)
+      );
+      --button-border: light-dark(
+        oklch(from var(--button-color) calc(l - 0.12) calc(c * 1.1) h / 0.7),
+        oklch(from var(--button-color) calc(l + 0.15) calc(c * 0.7) h / 0.6)
+      );
+
+      &:hover {
+        --button-bg-top: light-dark(
+          oklch(from var(--button-color) calc(l + 0.14) c h),
+          oklch(from var(--button-color) calc(l - 0.04) calc(c * 0.88) h)
+        );
+        --button-bg-bottom: light-dark(
+          oklch(from var(--button-color) calc(l + 0.04) c h),
+          oklch(from var(--button-color) l calc(c * 0.92) h)
+        );
+      }
     }
+
     &.error {
       --button-color: var(--error);
-      color: var(--white);
+      --button-text: var(--white);
+      --button-bg-top: light-dark(
+        oklch(from var(--button-color) calc(l + 0.08) c h),
+        oklch(from var(--button-color) calc(l - 0.08) calc(c * 0.85) h)
+      );
+      --button-bg-bottom: light-dark(
+        oklch(from var(--button-color) calc(l - 0.02) c h),
+        oklch(from var(--button-color) calc(l - 0.04) calc(c * 0.9) h)
+      );
+      --button-border: light-dark(
+        oklch(from var(--button-color) calc(l - 0.12) calc(c * 1.1) h / 0.7),
+        oklch(from var(--button-color) calc(l + 0.15) calc(c * 0.7) h / 0.6)
+      );
+
+      &:hover {
+        --button-bg-top: light-dark(
+          oklch(from var(--button-color) calc(l + 0.14) c h),
+          oklch(from var(--button-color) calc(l - 0.04) calc(c * 0.88) h)
+        );
+        --button-bg-bottom: light-dark(
+          oklch(from var(--button-color) calc(l + 0.04) c h),
+          oklch(from var(--button-color) l calc(c * 0.92) h)
+        );
+      }
     }
+
     &.warning {
       --button-color: var(--warning);
-      color: var(--black);
+      --button-text: var(--black);
+      --button-bg-top: light-dark(
+        oklch(from var(--button-color) calc(l + 0.06) c h),
+        oklch(from var(--button-color) calc(l - 0.06) calc(c * 0.88) h)
+      );
+      --button-bg-bottom: light-dark(
+        oklch(from var(--button-color) l c h),
+        oklch(from var(--button-color) calc(l - 0.02) calc(c * 0.92) h)
+      );
+      --button-border: light-dark(
+        oklch(from var(--button-color) calc(l - 0.15) calc(c * 1.1) h / 0.7),
+        oklch(from var(--button-color) calc(l + 0.12) calc(c * 0.7) h / 0.6)
+      );
+
+      &:hover {
+        --button-bg-top: light-dark(
+          oklch(from var(--button-color) calc(l + 0.1) c h),
+          oklch(from var(--button-color) calc(l - 0.02) calc(c * 0.9) h)
+        );
+        --button-bg-bottom: light-dark(
+          oklch(from var(--button-color) calc(l + 0.04) c h),
+          oklch(from var(--button-color) calc(l + 0.02) calc(c * 0.94) h)
+        );
+        color: var(--black);
+      }
     }
+
     &.success {
       --button-color: var(--success);
-      color: var(--white);
+      --button-text: var(--white);
+      --button-bg-top: light-dark(
+        oklch(from var(--button-color) calc(l + 0.08) c h),
+        oklch(from var(--button-color) calc(l - 0.08) calc(c * 0.85) h)
+      );
+      --button-bg-bottom: light-dark(
+        oklch(from var(--button-color) calc(l - 0.02) c h),
+        oklch(from var(--button-color) calc(l - 0.04) calc(c * 0.9) h)
+      );
+      --button-border: light-dark(
+        oklch(from var(--button-color) calc(l - 0.12) calc(c * 1.1) h / 0.7),
+        oklch(from var(--button-color) calc(l + 0.15) calc(c * 0.7) h / 0.6)
+      );
+
+      &:hover {
+        --button-bg-top: light-dark(
+          oklch(from var(--button-color) calc(l + 0.14) c h),
+          oklch(from var(--button-color) calc(l - 0.04) calc(c * 0.88) h)
+        );
+        --button-bg-bottom: light-dark(
+          oklch(from var(--button-color) calc(l + 0.04) c h),
+          oklch(from var(--button-color) l calc(c * 0.92) h)
+        );
+      }
     }
+
+    &.dark {
+      --button-text: var(--white);
+      background: oklch(0.18 0 0);
+      border-color: light-dark(oklch(0.1 0 0), oklch(0.28 0 0));
+      box-shadow: 0 1px 2px var(--black-3);
+
+      &:hover {
+        background: oklch(0.24 0 0);
+        box-shadow: 0 2px 4px var(--black-3);
+      }
+
+      &:active {
+        background: oklch(0.12 0 0);
+        box-shadow: 0 1px 2px var(--black-3);
+      }
+    }
+
+    &.light {
+      --button-text: var(--black);
+      background: var(--white);
+      border-color: var(--gray-3);
+      box-shadow: 0 1px 2px var(--black-1);
+
+      &:hover {
+        background: oklch(0.97 0 0);
+        box-shadow: 0 2px 4px var(--black-1);
+      }
+
+      &:active {
+        background: oklch(0.94 0 0);
+        box-shadow: 0 1px 2px var(--black-1);
+      }
+    }
+
+    &.contrast {
+      --button-text: light-dark(var(--white), var(--black));
+      background: light-dark(oklch(0.18 0 0), var(--white));
+      border-color: light-dark(oklch(0.1 0 0), var(--gray-3));
+      box-shadow: 0 1px 2px light-dark(var(--black-3), var(--black-1));
+
+      &:hover {
+        background: light-dark(oklch(0.24 0 0), oklch(0.97 0 0));
+        box-shadow: 0 2px 4px light-dark(var(--black-3), var(--black-1));
+      }
+
+      &:active {
+        background: light-dark(oklch(0.12 0 0), oklch(0.94 0 0));
+        box-shadow: 0 1px 2px light-dark(var(--black-3), var(--black-1));
+      }
+    }
+
     &.ghost {
       --button-color: transparent;
-      border: var(--fg) solid 2px;
-      color: var(--fg);
+      --button-text: var(--fg);
+      border: 1px solid var(--fg-3);
+      background: transparent;
+      box-shadow: none;
+
       &:hover {
         background: var(--fg-05);
+        border-color: var(--fg-4);
+        color: var(--fg);
+        translate: 0;
       }
+
       &:active {
         background: var(--fg-1);
+        border-color: var(--fg-5);
       }
     }
+
     &.minimal {
       --button-color: transparent;
+      --button-text: var(--fg-8);
       border: none;
       box-shadow: none;
-      color: var(--fg-7);
+      background: transparent;
+      padding: var(--pad-xs) var(--pad-s);
+
       &:hover {
         background: transparent;
         color: var(--fg);
+        translate: 0;
       }
+
       &:active {
         background: transparent;
       }
@@ -1249,6 +1472,45 @@
     background: linear-gradient(180deg, var(--fg-05) 0%, var(--fg-1) 100%);
   }
 
+  /* Card */
+
+  .card {
+    background: var(--bg);
+    border: var(--border-1);
+    border-radius: var(--br-l);
+    box-shadow: var(--shadow-2);
+    overflow: clip;
+  }
+
+  .card > :is(header, footer, .card-body, main, section) {
+    padding: var(--pad-l);
+  }
+
+  .card > header,
+  .card > footer {
+    display: flex;
+    align-items: center;
+    gap: var(--pad-s);
+  }
+
+  .card > header {
+    border-block-end: var(--border-1);
+  }
+
+  .card > footer {
+    border-block-start: var(--border-1);
+  }
+
+  .card > :is(header, footer) > * {
+    margin: 0;
+  }
+
+  .card > :is(img, picture, figure) {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
   /* UI Elements */
 
   .header {
@@ -1770,6 +2032,77 @@
       color: var(--fg);
       font-weight: 500;
     }
+  }
+
+  /* Pagination */
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    gap: var(--pad-s);
+    padding: var(--pad-m) var(--pad-l);
+    border-top: var(--border-1);
+    flex-wrap: wrap;
+  }
+
+  .pagination > ul {
+    display: flex;
+    gap: var(--pad-xs);
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .pagination li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .pagination :is(a, button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pad-xs);
+    padding: var(--pad-xs) var(--pad-s);
+    border: var(--border-1);
+    border-radius: var(--br-s);
+    color: var(--fg-6);
+    text-decoration: none;
+    background: transparent;
+    box-shadow: none;
+    font: inherit;
+    font-weight: inherit;
+    line-height: var(--lh);
+    cursor: pointer;
+  }
+
+  .pagination > ul :is(a, button) {
+    inline-size: 2rem;
+    block-size: 2rem;
+    padding: 0;
+  }
+
+  .pagination :is(a, button):hover {
+    color: var(--fg);
+    border-color: var(--fg-4);
+  }
+
+  .pagination :is(a, button):focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .pagination [aria-current="page"] {
+    color: var(--fg);
+    border-color: var(--primary);
+    font-weight: 600;
+  }
+
+  .pagination :is(a, button)[aria-disabled="true"],
+  .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   /* Sidebar Navigation */
@@ -2576,8 +2909,8 @@
 
       /* Focus state */
       &:focus-visible {
-        outline: 2px solid var(--fg);
-        outline-offset: -2px;
+        outline: var(--focus-ring);
+        outline-offset: var(--focus-ring-offset-inset);
       }
 
       /* Active/pressed state */
@@ -2750,6 +3083,146 @@
         color: var(--white);
       }
     }
+  }
+
+  /* Mobile App Patterns */
+
+  /* App Shell - Mobile-first app container respecting safe areas */
+  .app-shell {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: var(--app-shell-min-height, 100dvh);
+    height: 100%;
+    padding-top: var(--safe-top);
+    padding-bottom: var(--safe-bottom);
+    padding-inline: var(--safe-left) var(--safe-right);
+  }
+
+  .app-shell > header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .app-shell > main {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    min-height: 0;
+  }
+
+  .app-shell > footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+    background: var(--bg);
+  }
+
+  /* Bottom Navigation - Fixed tab bar for mobile apps */
+  .bottom-nav {
+    position: fixed;
+    bottom: var(--safe-bottom);
+    inset-inline: 0;
+    display: flex;
+    justify-content: space-around;
+    background: var(--bg);
+    border-top: var(--border-1);
+    padding: var(--pad-xs) 0;
+    z-index: 100;
+  }
+
+  .bottom-nav :is(a, button) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pad-xs);
+    padding: var(--pad-s);
+    color: var(--fg-5);
+    text-decoration: none;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    transition: color 0.15s var(--ease-smooth);
+  }
+
+  .bottom-nav :is(a, button) svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .bottom-nav :is(a, button) span {
+    font-size: 0.75rem;
+  }
+
+  .bottom-nav :is(a, button):hover {
+    color: var(--fg-7);
+  }
+
+  .bottom-nav :is(a, button)[aria-current="page"],
+  .bottom-nav :is(a, button).active {
+    color: var(--primary);
+  }
+
+  .bottom-nav :is(a, button):focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* Bottom Sheet - Drawer from bottom */
+  .bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    inset-inline: 0;
+    max-height: 80dvh;
+    background: var(--bg);
+    border-radius: var(--br-xl) var(--br-xl) 0 0;
+    border: var(--border-1);
+    border-bottom: none;
+    padding: var(--pad-l);
+    padding-bottom: calc(var(--pad-l) + var(--safe-bottom));
+    box-shadow: var(--shadow-6);
+    z-index: 200;
+  }
+
+  .bottom-sheet::before {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 4px;
+    background: var(--fg-2);
+    border-radius: 2px;
+    margin: 0 auto var(--pad-m);
+  }
+
+  /* Mobile Utilities */
+
+  .safe-top {
+    padding-top: var(--safe-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: var(--safe-bottom);
+  }
+
+  .safe-x {
+    padding-inline: var(--safe-left) var(--safe-right);
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .momentum-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   /* END COMPONENTS */

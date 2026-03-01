@@ -1,37 +1,28 @@
 <div class="stack">
-  <!-- Default callout (blue) -->
   <div class="callout">
-    <p>Default callout for general information and tips.</p>
+    <p>Use a default callout for neutral notes and context.</p>
   </div>
 
-  <!-- Warning variant -->
   <div class="callout warning fill">
-    <p>
-      .fill to fill bg color. Warning callout for important notices that need
-      attention.
-    </p>
+    <p>Use warning + fill for high-visibility cautions.</p>
   </div>
 
-  <!-- Error variant -->
   <div class="callout error">
-    <p>Error callout for critical issues or destructive actions.</p>
+    <p>Use error callouts for failures and destructive actions.</p>
   </div>
 
-  <!-- Success variant -->
   <div class="callout success">
-    <p>Success callout for confirmations and positive feedback.</p>
+    <p>Use success callouts for completed states and confirmations.</p>
   </div>
 
-  <!-- Ghost variant -->
   <div class="callout ghost split">
-    <p>Ghost callout for subtle, neutral messages.</p>
-    <button class="mini">With Button</button>
+    <p>Use ghost when the message should stay subtle.</p>
+    <button class="mini">Action</button>
   </div>
 
-  <!-- Hard modifier (stronger left border) -->
   <div class="callout hard">
     <p>
-      Add <code>.hard</code> to any variant for a stronger left border accent.
+      Add <code>.hard</code> to increase emphasis with a stronger leading edge.
     </p>
   </div>
 
@@ -39,9 +30,8 @@
     <p>Warning with the hard modifier for extra emphasis.</p>
   </div>
 
-  <!-- Multi-element callout -->
   <div class="callout success stack">
-    <h5>Callouts support multiple elements</h5>
-    <p>Use .stack fo children with consistent spacing.</p>
+    <h5>Callouts can include multiple elements</h5>
+    <p>Use <code>.stack</code> to keep spacing consistent between children.</p>
   </div>
 </div>

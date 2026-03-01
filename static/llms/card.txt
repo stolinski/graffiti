@@ -1,0 +1,46 @@
+# Card
+
+Structured content container with optional header, body, and footer.
+
+## Basic Card
+
+```html
+<article class="card">
+  <header>
+    <h3>Starter Plan</h3>
+    <span class="tag">Popular</span>
+  </header>
+  <div class="card-body">
+    <p>Everything you need to get started quickly.</p>
+  </div>
+  <footer>
+    <button class="primary">Choose plan</button>
+    <button class="ghost">Details</button>
+  </footer>
+</article>
+```
+
+## With Media
+
+```html
+<article class="card">
+  <figure style="aspect-ratio: 16 / 9; background: var(--fg-05);"></figure>
+  <header>
+    <h3>Release notes</h3>
+  </header>
+  <div class="card-body">
+    <p>Highlights from the latest update.</p>
+  </div>
+</article>
+```
+
+## Notes
+
+- `.card` applies border, radius, shadow, and clips media.
+- Direct `header` and `footer` get padding and separators.
+- Use `.card-body`, `main`, or `section` for padded content.
+
+## See Also
+
+- [Boxes](https://graffiti-ui.com/llms/boxes.txt) - Simple container variants
+- [Layouts](https://graffiti-ui.com/llms/layouts.txt) - Card-friendly grids

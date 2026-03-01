@@ -11,13 +11,15 @@
 
   const fontOptions = [
     { name: "System UI", value: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" },
-    { name: "Helvetica", value: "Helvetica Neue, Helvetica, Arial, sans-serif" },
-    { name: "Arial", value: "Arial, Helvetica, sans-serif" },
-    { name: "Georgia", value: "Georgia, 'Times New Roman', serif" },
-    { name: "Times", value: "'Times New Roman', Times, serif" },
-    { name: "Verdana", value: "Verdana, Geneva, sans-serif" },
-    { name: "Tahoma", value: "Tahoma, Geneva, sans-serif" },
-    { name: "Trebuchet", value: "'Trebuchet MS', sans-serif" },
+    { name: "Inter", value: "'Inter', sans-serif" },
+    { name: "Plus Jakarta Sans", value: "'Plus Jakarta Sans', sans-serif" },
+    { name: "Space Grotesk", value: "'Space Grotesk', sans-serif" },
+    { name: "Outfit", value: "'Outfit', sans-serif" },
+    { name: "DM Sans", value: "'DM Sans', sans-serif" },
+    { name: "Syne", value: "'Syne', sans-serif" },
+    { name: "Lexend", value: "'Lexend', sans-serif" },
+    { name: "Manrope", value: "'Manrope', sans-serif" },
+    { name: "Nunito Sans", value: "'Nunito Sans', sans-serif" },
     { name: "Monospace", value: "'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace" },
   ];
 </script>

@@ -5,8 +5,14 @@
   },
   "description": "A dope package to theme @drop-in",
   "exports": {
-    ".": "./dist/drop-in.css",
-    "./graffiti.css": "./dist/drop-in.css",
+    ".": "./dist/index.css",
+    "./graffiti.css": "./dist/index.css",
+    "./core": "./dist/core.css",
+    "./utilities": "./dist/utilities.css",
+    "./layouts": "./dist/layouts.css",
+    "./components": "./dist/components.css",
+    "./minimal": "./dist/minimal.css",
+    "./standard": "./dist/standard.css",
     "./decks": "./dist/decks.css",
     "./decks.css": "./dist/decks.css",
     "./svelte": "./dist/svelte.js"
@@ -15,13 +21,14 @@
     "dist"
   ],
   "license": "ISC",
-  "main": "drop-in.css",
+  "main": "index.css",
   "name": "@drop-in/graffiti",
   "scripts": {
     "dev": "vite dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vite build",
-    "package": "svelte-kit sync && svelte-package"
+    "build": "vite build && node build-modules.js",
+    "build:modules": "node build-modules.js",
+    "package": "svelte-kit sync && svelte-package && node build-modules.js"
   },
   "type": "module",
   "version": "4.15.3",

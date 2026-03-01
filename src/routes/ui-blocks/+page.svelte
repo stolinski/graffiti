@@ -2,8 +2,12 @@
   import CodeExample from "$docs/CodeExample.svelte";
   import AppShell from "$docs/demos/AppShell.svelte";
   import appShellCode from "$docs/demos/AppShell.svelte?raw";
+  import Mobile from "$docs/demos/Mobile.svelte";
+  import mobileCode from "$docs/demos/Mobile.svelte?raw";
   import Breadcrumbs from "$docs/demos/Breadcrumbs.svelte";
   import breadcrumbsCode from "$docs/demos/Breadcrumbs.svelte?raw";
+  import Pagination from "$docs/demos/Pagination.svelte";
+  import paginationCode from "$docs/demos/Pagination.svelte?raw";
   import Details from "$docs/demos/Details.svelte";
   import detailsCode from "$docs/demos/Details.svelte?raw";
   import Dropdown from "$docs/demos/Dropdown.svelte";
@@ -21,7 +25,7 @@
   import { scroll_on_load, swipe_event } from "$lib/svelte";
 </script>
 
-<div class="stack readable">
+<section class="stack readable">
   <h1>UI Blocks</h1>
   <p class="pull-quote">Common UI patterns done simply, without 100 classes.</p>
   <p>
@@ -31,8 +35,8 @@
     clutter. Cut that out with real, practical html and css that you can connect
     to your framework of choice. Clientside or otherwise.
   </p>
-</div>
-<section class=" stack">
+</section>
+<section class="stack">
   <h3>Accordion</h3>
   <p>
     Native HTML accordion using details/summary with smooth animations via
@@ -43,7 +47,7 @@
   </CodeExample>
 </section>
 
-<section class=" stack">
+<section class="stack">
   <h3>Breadcrumbs</h3>
   <p>
     Simple breadcrumb navigation with slash separators. Uses semantic HTML with
@@ -54,7 +58,18 @@
   </CodeExample>
 </section>
 
-<section class=" stack">
+<section class="stack">
+  <h3>Pagination</h3>
+  <p>
+    Compact pagination with previous/next controls and current page state using
+    semantic HTML and ARIA attributes.
+  </p>
+  <CodeExample code={paginationCode} title="Pagination">
+    <Pagination />
+  </CodeExample>
+</section>
+
+<section class="stack">
   <h3>Dropdown Menu</h3>
   <p>
     Native dropdown menu using HTML popover API and CSS anchor positioning. No
@@ -65,7 +80,7 @@
   </CodeExample>
 </section>
 
-<section class=" stack">
+<section class="stack">
   <h3>Sidebar Navigation</h3>
   <p>
     Vertical navigation for app sidebars with collapsible sections. Uses native
@@ -78,9 +93,23 @@
   </CodeExample>
 </section>
 
-<CodeExample code={appShellCode} title="App Shell Layout">
-  <AppShell />
-</CodeExample>
+<section class="stack">
+  <h3>App Shell</h3>
+  <CodeExample code={appShellCode} title="App Shell Layout">
+    <AppShell />
+  </CodeExample>
+</section>
+
+<section class="stack">
+  <h3>Mobile Patterns</h3>
+  <p>
+    Mobile-first patterns for PWAs and native-like apps: safe area handling,
+    bottom navigation, bottom sheets, and mobile utilities.
+  </p>
+  <CodeExample code={mobileCode} title="Mobile Patterns">
+    <Mobile />
+  </CodeExample>
+</section>
 
 <section class="stack">
   <h3>.header</h3>
@@ -162,7 +191,7 @@
   </div>
 </section>
 
-<div class="stack">
+<section class="stack">
   <h3>User Menu</h3>
   <p>
     User account dropdown combining avatar trigger with dropdown menu. Works
@@ -171,7 +200,7 @@
   <CodeExample code={userMenuCode} title="User Menu">
     <UserMenu />
   </CodeExample>
-</div>
+</section>
 
 <section class="stack">
   <h3 id="confirm-dialog">Confirm Dialog</h3>
@@ -195,24 +224,26 @@
   </CodeExample>
 </section>
 
-<h2 class="heading" id="forms">Forms</h2>
-<section class="stack readable">
-  <p>
-    Complete form patterns and compositions. For default input styling see <a
-      href="/base#forms">Base → Forms</a
-    >. For individual form elements see
-    <a href="/elements#forms">Elements → Forms</a>.
-  </p>
-</section>
-
 <section class="stack">
-  <h3>Login Form</h3>
-  <p>
-    Simple login form using Graffiti's base form styles. No custom CSS needed.
-  </p>
-  <CodeExample code={loginFormCode} title="Login Form">
-    <div style="max-width: 400px;">
-      <LoginForm />
-    </div>
-  </CodeExample>
+  <h2 class="heading" id="forms">Forms</h2>
+  <section class="stack readable">
+    <p>
+      Complete form patterns and compositions. For default input styling see <a
+        href="/base#forms">Base → Forms</a
+      >. For individual form elements see
+      <a href="/elements#forms">Elements → Forms</a>.
+    </p>
+  </section>
+
+  <section class="stack">
+    <h3>Login Form</h3>
+    <p>
+      Simple login form using Graffiti's base form styles. No custom CSS needed.
+    </p>
+    <CodeExample code={loginFormCode} title="Login Form">
+      <div style="max-width: 400px;">
+        <LoginForm />
+      </div>
+    </CodeExample>
+  </section>
 </section>

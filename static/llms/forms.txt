@@ -33,6 +33,30 @@ All form inputs are styled automatically. No classes needed on inputs.
 </select>
 ```
 
+## Modern Select (optional)
+
+Graffiti enhances single selects in supporting browsers using the CSS Forms API.
+To opt in to the fully customizable picker, include a button + selectedcontent
+as the first child of the select.
+
+```html
+<label for="status">Status</label>
+<select id="status" name="status">
+  <button type="button">
+    <selectedcontent></selectedcontent>
+  </button>
+  <option value="">Select status</option>
+  <option value="planning">Planning</option>
+  <option value="in-review">In review</option>
+  <option value="approved">Approved</option>
+</select>
+```
+
+Notes:
+
+- Works for single selects only (no `multiple` or `size`).
+- Falls back to classic select styling in unsupported browsers.
+
 ## Checkboxes & Radios
 
 ```html

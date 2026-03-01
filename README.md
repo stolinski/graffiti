@@ -13,16 +13,27 @@ npm install @drop-in/graffiti
 Then import in your project:
 
 ```js
-// Import base framework (without @drop-in/decks component styles)
-import '@drop-in/graffiti'
+// Import everything (default, ~75KB)
+import "@drop-in/graffiti";
+
+// Or import only what you need for smaller bundles
+import "@drop-in/graffiti/minimal"; // core + utilities (~26KB)
+import "@drop-in/graffiti/standard"; // core + utilities + layouts (~33KB)
+
+// Or pick individual modules
+import "@drop-in/graffiti/core"; // variables, reset, typography
+import "@drop-in/graffiti/utilities"; // helper classes
+import "@drop-in/graffiti/layouts"; // page layouts
+import "@drop-in/graffiti/components"; // UI components
 
 // Optionally import decks component styles separately
-import '@drop-in/graffiti/decks'
+import "@drop-in/graffiti/decks";
 ```
 
 ### Copy & Paste
 
 Download the CSS file directly:
+
 ```
 https://raw.githubusercontent.com/stolinski/graffiti/refs/heads/main/drop-in.css
 ```
@@ -50,11 +61,13 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Custom fluid sizing:**
+
 ```html
 <div style="--fl: 3">Scales like an h3</div>
 ```
 
 **Container-based fluid text:**
+
 ```html
 <div class="fc">
   <h1>Scales with container, not viewport</h1>
@@ -64,6 +77,7 @@ Fluid typography that scales automatically between viewport sizes:
 ### Layouts
 
 **Auto-fill card grid:**
+
 ```html
 <div class="layout-card">
   <div>Card 1</div>
@@ -73,6 +87,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Sidebar layout:**
+
 ```html
 <div class="layout-sidebar">
   <aside>Sidebar (250px)</aside>
@@ -83,6 +98,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **50/50 split:**
+
 ```html
 <div class="layout-split">
   <div>Left Column</div>
@@ -93,6 +109,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Three columns:**
+
 ```html
 <div class="layout-three-col">
   <div>Column 1</div>
@@ -102,6 +119,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Readable content container:**
+
 ```html
 <div class="layout-readable center">
   <p>Optimal line length for readability</p>
@@ -112,6 +130,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Holy Grail layout:**
+
 ```html
 <div class="layout-holy-grail">
   <div style="width: 200px">Left sidebar</div>
@@ -121,6 +140,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Stack (vertical spacing):**
+
 ```html
 <div class="stack">
   <div>Item 1</div>
@@ -130,6 +150,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Cluster (horizontal wrapping):**
+
 ```html
 <div class="cluster">
   <span>Tag 1</span>
@@ -140,6 +161,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Carousel (horizontal scroll-snap):**
+
 ```html
 <div class="carousel">
   <div>Slide 1</div>
@@ -150,6 +172,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Reel (vertical scroll-snap):**
+
 ```html
 <div class="reel" style="--reel-height: 400px">
   <div>Panel 1</div>
@@ -159,9 +182,57 @@ Fluid typography that scales automatically between viewport sizes:
 <!-- Vertical scrolling with CSS scroll-snap -->
 ```
 
+### Mobile Patterns
+
+**App Shell (iOS-safe):**
+
+```html
+<div class="app-shell">
+  <header>Sticky Header</header>
+  <main>Scrollable Content</main>
+  <footer>Sticky Footer</footer>
+</div>
+<!-- Uses 100dvh, respects safe-area-inset-* for notch/home indicator -->
+```
+
+**Bottom Navigation:**
+
+```html
+<nav class="bottom-nav">
+  <a href="/" aria-current="page">
+    <svg><!-- icon --></svg>
+    <span>Home</span>
+  </a>
+  <a href="/search">
+    <svg><!-- icon --></svg>
+    <span>Search</span>
+  </a>
+</nav>
+<!-- Fixed bottom tab bar, respects safe-bottom -->
+```
+
+**Bottom Sheet:**
+
+```html
+<aside class="bottom-sheet">
+  <h3>Sheet Title</h3>
+  <p>Content with drag handle at top.</p>
+</aside>
+```
+
+**Mobile Utilities:**
+
+```html
+<div class="safe-top">Padding for notch</div>
+<div class="safe-bottom">Padding for home indicator</div>
+<div class="hide-scrollbar">Hide scrollbar</div>
+<div class="momentum-scroll">iOS-style scrolling</div>
+```
+
 ### Utilities
 
 **Display utilities:**
+
 ```html
 <div class="flex">Flexbox with gap</div>
 <div class="grid">Grid with gap</div>
@@ -169,12 +240,14 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Box styles:**
+
 ```html
 <div class="box-1">Subtle box</div>
 <div class="box-2">Semi-gloss box</div>
 ```
 
 **Callout boxes:**
+
 ```html
 <!-- Default info callout (blue) -->
 <div class="callout">
@@ -214,6 +287,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Table wrapper:**
+
 ```html
 <div class="table">
   <table>
@@ -242,6 +316,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Aspect ratio utilities:**
+
 ```html
 <div class="aspect-square">1:1</div>
 <div class="aspect-video">16:9</div>
@@ -251,6 +326,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Form validation states:**
+
 ```html
 <input class="error" />
 <small class="error">Error message</small>
@@ -263,8 +339,11 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Other utilities:**
+
 ```html
-<ul class="no-list">Clean list</ul>
+<ul class="no-list">
+  Clean list
+</ul>
 <div class="visually-hidden">Screen reader only</div>
 <button class="circle">Icon</button>
 ```
@@ -272,6 +351,7 @@ Fluid typography that scales automatically between viewport sizes:
 ### CSS Variables
 
 **Customize layouts:**
+
 ```html
 <div class="layout-card" style="--min-card-width: 250px; --gap: 1rem;">
   <!-- Cards with custom min-width and gap -->
@@ -279,6 +359,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Use design tokens:**
+
 ```css
 .custom-box {
   padding: var(--pad-m);
@@ -289,6 +370,7 @@ Fluid typography that scales automatically between viewport sizes:
 ```
 
 **Available variables:**
+
 - Spacing: `--vs-s`, `--vs-base`, `--vs-m`, `--vs-l`, `--vs-xl`
 - Border radius: `--br-xs`, `--br-s`, `--br-m`, `--br-l`
 - Borders: `--border-05`, `--border-1`, `--border-2`
@@ -333,12 +415,14 @@ Fluid typography that scales automatically between viewport sizes:
 Graffiti uses modern CSS features and requires recent browser versions:
 
 **Minimum versions:**
+
 - Chrome 123+ (March 2024)
 - Safari 17.5+ (May 2024)
 - Firefox 128+ (July 2024)
 - Edge 123+ (March 2024)
 
 **Key features requiring modern browsers:**
+
 - OKLCH color space with relative color syntax
 - `light-dark()` function for automatic theming
 - Container queries for responsive typography

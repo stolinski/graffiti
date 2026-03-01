@@ -2,6 +2,33 @@
 
 > A minimal, drop-in CSS toolkit with fluid typography, modern CSS features, and zero JavaScript dependencies.
 
+## Installation
+
+```bash
+npm install @drop-in/graffiti
+```
+
+### Import Options
+
+```js
+// Full framework (~75KB)
+import '@drop-in/graffiti'
+
+// Minimal - core + utilities only (~26KB)
+import '@drop-in/graffiti/minimal'
+
+// Standard - core + utilities + layouts (~33KB)
+import '@drop-in/graffiti/standard'
+
+// Individual modules (each includes required CSS variables)
+import '@drop-in/graffiti/core'       // Variables, reset, typography
+import '@drop-in/graffiti/utilities'  // Helper classes
+import '@drop-in/graffiti/layouts'    // Page layouts
+import '@drop-in/graffiti/components' // UI components
+```
+
+All modules are pre-built standalone files - NO CSS @import.
+
 ## Philosophy
 
 Graffiti styles native HTML elements directly - no component library, no JavaScript framework required. It uses modern CSS features like OKLCH colors, container queries, CSS scroll-snap, and the popover/dialog APIs.
@@ -34,6 +61,7 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 - [Header/navbar](https://graffiti-ui.com/llms/header.txt) - Site header with nav links
 - [Footer](https://graffiti-ui.com/llms/footer.txt) - Site footer with nav columns and legal links
 - [Breadcrumbs](https://graffiti-ui.com/llms/breadcrumbs.txt) - Hierarchy trail navigation
+- [Pagination](https://graffiti-ui.com/llms/pagination.txt) - Page navigation controls
 - [User menu](https://graffiti-ui.com/llms/user-menu.txt) - Avatar + dropdown for user actions
 - [List navigation](https://graffiti-ui.com/llms/list-nav.txt) - Settings/menu rows with icons and chevrons
 
@@ -45,6 +73,15 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 - [Page layouts](https://graffiti-ui.com/llms/layouts.txt) - Sidebar, grid, split, holy-grail, readable
 - [Stack & cluster](https://graffiti-ui.com/llms/stack-cluster.txt) - Vertical and horizontal flow
 
+### Mobile
+- [Mobile patterns](https://graffiti-ui.com/llms/mobile.txt) - App shell, bottom nav, bottom sheet, safe areas
+- `.app-shell` - Grid-based app container with sticky header/footer, uses `100dvh` for iOS URL bar
+- `.bottom-nav` - Fixed bottom tab bar with icon + label, respects safe areas
+- `.bottom-sheet` - Drawer from bottom with drag handle
+- `--safe-top`, `--safe-bottom`, `--safe-left`, `--safe-right` - iOS safe area variables using `env()`
+- `.safe-top`, `.safe-bottom`, `.safe-x` - Utility classes for safe area padding
+- `.hide-scrollbar`, `.momentum-scroll` - Mobile scrolling utilities
+
 ### Elements
 - [Buttons](https://graffiti-ui.com/llms/buttons.txt) - Button variants and styles
 - [Chips](https://graffiti-ui.com/llms/chips.txt) - Interactive filter/selection pills
@@ -52,6 +89,7 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 - [Callouts](https://graffiti-ui.com/llms/callouts.txt) - Info, warning, error, success boxes
 - [Avatar](https://graffiti-ui.com/llms/avatar.txt) - User images and initials
 - [Boxes](https://graffiti-ui.com/llms/boxes.txt) - Container styles (glow, ghost, semi-gloss)
+- [Card](https://graffiti-ui.com/llms/card.txt) - Structured content container with header/body/footer
 - [Tooltip](https://graffiti-ui.com/llms/tooltip.txt) - Hover tooltips with CSS anchor positioning
 
 ### Components

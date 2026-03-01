@@ -116,7 +116,7 @@ After implementation, **always** verify visually:
 1. Navigate to the dev server:
 
 ```
-chrome-devtools_navigate_page(url="http://localhost:5173")
+chrome-devtools_navigate_page(url="http://localhost:6124")
 ```
 
 2. Take a screenshot to verify the component looks correct:
@@ -280,7 +280,7 @@ User: Implement task-xyz (add toggle switch component)
 3. Task(css) → implement .toggle styles in drop-in.css
 4. Task(docs) → create src/docs/demos/Toggle.svelte
 5. Task(docs) → add CodeExample to +page.svelte
-6. chrome-devtools_navigate_page → http://localhost:5173
+6. chrome-devtools_navigate_page → http://localhost:6124
 7. chrome-devtools_take_screenshot → verify visually (light & dark)
 8. pnpm build → verify no errors
 9. git add -A && git commit -m "Add toggle switch component"

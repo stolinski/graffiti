@@ -8,12 +8,14 @@
 </script>
 
 <main style="padding-block: var(--pad-xxxl)">
-  <p
-    class="h5"
-    style="font-weight: 900; text-align: center; text-wrap: balance; --fl:4;"
-  >
-    Useful CSS utilities, elements, complete UI blocks and templates.
-  </p>
+  <section class="stack">
+    <h1
+      class="h5"
+      style="font-weight: 900; text-align: center; text-wrap: balance; --fl:4;"
+    >
+      Useful CSS utilities, elements, complete UI blocks and templates.
+    </h1>
+  </section>
   <section
     class="layout-readable center stack"
     style="align-items: center; margin-block: var(--vs-xl) var(--vs-xxl);"

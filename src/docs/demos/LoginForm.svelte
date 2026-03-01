@@ -2,7 +2,7 @@
   Login Form UI Block Demo
   A composition of existing Graffiti form elements - no custom CSS needed
 -->
-<form>
+<form class="stack">
   <label for="login-email">Email</label>
   <input type="email" id="login-email" placeholder="you@example.com" />
 
@@ -18,11 +18,9 @@
     <a href="#forgot">Forgot password?</a>
   </div>
 
-  <div class="stack">
-    <button type="submit" class="primary">Sign In</button>
+  <button type="submit" class="primary">Sign In</button>
 
-    <p class="fs-xs" style="text-align: center; color: var(--fg-5);">
-      Don't have an account? <a href="#signup">Sign up</a>
-    </p>
-  </div>
+  <p class="fs-xs" style="text-align: center; color: var(--fg-5);">
+    Don't have an account? <a href="#signup">Sign up</a>
+  </p>
 </form>

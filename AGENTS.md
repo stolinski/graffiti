@@ -1,3 +1,32 @@
+## Browser Testing
+
+When using chrome-devtools MCP or any browser automation, **always use the port defined in `vite.config.ts`** (currently `6124`). Do NOT assume default ports like `5173`.
+
+```
+http://localhost:6124
+```
+
+---
+
+## Git Safety
+
+**NEVER run `git revert` without explicit user permission.**
+
+This command rewrites history and can cause significant problems. If you think a revert is needed:
+
+1. **STOP** and explain why you think a revert is necessary
+2. **ASK** the user: "I believe we need to revert [commit]. May I proceed?"
+3. **WAIT** for explicit approval before running any revert command
+
+Other destructive git commands that also require explicit permission:
+
+- `git reset --hard`
+- `git push --force`
+- `git clean -fd`
+- `git checkout -- .` (discarding all changes)
+
+---
+
 ## Issue Tracking with Dex
 
 **IMPORTANT**: This project uses **Dex** for ALL issue tracking. Do NOT use markdown TODOs, task lists, or other tracking methods.

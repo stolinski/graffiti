@@ -6,6 +6,9 @@
     <button class="success">Success</button>
     <button class="warning">Warning</button>
     <button class="error">Error</button>
+    <button class="dark">Dark</button>
+    <button class="light">Light</button>
+    <button class="contrast">Contrast</button>
     <button class="ghost">Ghost</button>
     <button class="minimal">Minimal</button>
   </div>
@@ -17,6 +20,9 @@
     <button class="mini success">Success</button>
     <button class="mini warning">Warning</button>
     <button class="mini error">Error</button>
+    <button class="mini dark">Dark</button>
+    <button class="mini light">Light</button>
+    <button class="mini contrast">Contrast</button>
     <button class="mini ghost">Ghost</button>
     <button class="mini minimal">Minimal</button>
   </div>

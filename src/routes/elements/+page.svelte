@@ -5,15 +5,19 @@
   import calloutCode from "$docs/demos/Callout.svelte?raw";
   import avatarCode from "$docs/demos/Avatar.svelte?raw";
   import buttonsCode from "$docs/demos/Buttons.svelte?raw";
+  import cardCode from "$docs/demos/Card.svelte?raw";
   import Reel from "$docs/demos/Reel.svelte";
   import reelCode from "$docs/demos/Reel.svelte?raw";
   import Buttons from "$docs/demos/Buttons.svelte";
+  import Card from "$docs/demos/Card.svelte";
   import Avatar from "$docs/demos/Avatar.svelte";
   import Callout from "$docs/demos/Callout.svelte";
   import Toggle from "$docs/demos/Toggle.svelte";
   import toggleCode from "$docs/demos/Toggle.svelte?raw";
   import InputGroup from "$docs/demos/InputGroup.svelte";
   import inputGroupCode from "$docs/demos/InputGroup.svelte?raw";
+  import Select from "$docs/demos/Select.svelte";
+  import selectCode from "$docs/demos/Select.svelte?raw";
   import Search from "$docs/demos/Search.svelte";
   import searchCode from "$docs/demos/Search.svelte?raw";
   import Dropzone from "$docs/demos/Dropzone.svelte";
@@ -88,6 +92,13 @@
       var(--shadow-5);
     </div>
   </div>
+</section>
+<section class="stack">
+  <h3>Card</h3>
+  <p>Card containers for grouped content, media, or calls to action.</p>
+  <CodeExample code={cardCode} title="Card">
+    <Card />
+  </CodeExample>
 </section>
 <section class="stack">
   <h3>.avatar</h3>
@@ -245,58 +256,68 @@
 <section class="stack">
   <h3 id="list-nav">.list-nav</h3>
   <p>
-    Navigation list with clickable rows for settings pages, menus, and navigation indexes.
-    Supports icons, descriptions, chevrons, and a bordered variant.
+    Grouped navigation list with clickable rows for settings pages, menus, and navigation
+    indexes. Supports icons and descriptions.
   </p>
   <CodeExample code={listNavCode} title="List Navigation">
     <ListNav />
   </CodeExample>
 </section>
 
-<h2 class="heading" id="forms">Forms</h2>
-
-<section class="stack readable">
-  <p>
-    Form elements with minimal classes. For default input styling see <a href="/base#forms">Base → Forms</a>.
-    For complete form patterns see <a href="/ui-blocks#forms">UI Blocks → Forms</a>.
-  </p>
-</section>
-
 <section class="stack">
-  <h3>Toggle Switch</h3>
-  <p>Accessible toggle/switch input using native checkbox semantics</p>
-  <CodeExample code={toggleCode} title="Toggle Variants">
-    <Toggle />
-  </CodeExample>
-</section>
+  <h2 class="heading" id="forms">Forms</h2>
 
-<section class="stack">
-  <h3>Input Group</h3>
-  <p>
-    Input field with connected button - commonly used for copy-to-clipboard, search,
-    or form submission patterns. Works with all button variants.
-  </p>
-  <CodeExample code={inputGroupCode} title="Input Group">
-    <InputGroup />
-  </CodeExample>
-</section>
+  <section class="stack readable">
+    <p>
+      Form elements with minimal classes. For default input styling see <a href="/base#forms">Base → Forms</a>.
+      For complete form patterns see <a href="/ui-blocks#forms">UI Blocks → Forms</a>.
+    </p>
+  </section>
 
-<section class="stack">
-  <h3>Search Input</h3>
-  <p>
-    Search input with icon. Get icons from <a href="https://phosphoricons.com/" target="_blank" rel="noopener">Phosphor Icons</a>.
-  </p>
-  <CodeExample code={searchCode} title="Search Input">
-    <Search />
-  </CodeExample>
-</section>
+  <section class="stack">
+    <h3>Toggle Switch</h3>
+    <p>Accessible toggle/switch input using native checkbox semantics</p>
+    <CodeExample code={toggleCode} title="Toggle Variants">
+      <Toggle />
+    </CodeExample>
+  </section>
 
-<section class="stack">
-  <h3 id="file-dropzone">File Dropzone</h3>
-  <p>
-    Drag-and-drop file upload zone. Wraps a native file input for click-to-upload fallback.
-  </p>
-  <CodeExample code={dropzoneCode} title="File Dropzone">
-    <Dropzone />
-  </CodeExample>
+  <section class="stack">
+    <h3>Input Group</h3>
+    <p>
+      Input field with connected button - commonly used for copy-to-clipboard, search,
+      or form submission patterns. Works with all button variants.
+    </p>
+    <CodeExample code={inputGroupCode} title="Input Group">
+      <InputGroup />
+    </CodeExample>
+  </section>
+
+  <section class="stack">
+    <h3>Select</h3>
+    <p>Native select menus with matching input styling and compact label spacing.</p>
+    <CodeExample code={selectCode} title="Select">
+      <Select />
+    </CodeExample>
+  </section>
+
+  <section class="stack">
+    <h3>Search Input</h3>
+    <p>
+      Search input with icon. Get icons from <a href="https://phosphoricons.com/" target="_blank" rel="noopener">Phosphor Icons</a>.
+    </p>
+    <CodeExample code={searchCode} title="Search Input">
+      <Search />
+    </CodeExample>
+  </section>
+
+  <section class="stack">
+    <h3 id="file-dropzone">File Dropzone</h3>
+    <p>
+      Drag-and-drop file upload zone. Wraps a native file input for click-to-upload fallback.
+    </p>
+    <CodeExample code={dropzoneCode} title="File Dropzone">
+      <Dropzone />
+    </CodeExample>
+  </section>
 </section>

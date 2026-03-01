@@ -23,10 +23,10 @@
   const { children } = $props();
 
   let theme_values: ThemeValues = $state({
-    fg_light: "#050505",
+    fg_light: "#111111",
     fg_dark: "#ffffff",
     bg_light: "#ffffff",
-    bg_dark: "#050505",
+    bg_dark: "#111111",
     primary: "var(--blue)",
   });
 
@@ -48,6 +48,10 @@
     }
   });
 
+  $effect(() => {
+    document.documentElement.style.setProperty("--font-sans", font_settings.font_family);
+  });
+
   onNavigate((navigation) => {
 	if (!document.startViewTransition) return;
 	return new Promise((resolve) => {
@@ -67,6 +71,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Lexend:wght@100..900&family=Manrope:wght@200..800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&family=Syne:wght@400..800&display=swap"
+    rel="stylesheet"
+  />
   <script
     defer
     data-domain="graffiti-ui.com"
@@ -88,7 +98,6 @@
   style:--font-ratio-max={font_settings.max_ratio}
   style:--font-width-min={font_settings.min_viewport}
   style:--font-width-max={font_settings.max_viewport}
-  style:--font-sans={font_settings.font_family}
 >
   <style>
     .demo-section {

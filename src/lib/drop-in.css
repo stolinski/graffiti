@@ -2058,51 +2058,15 @@
     padding: 0;
   }
 
-  .pagination :is(a, button) {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--pad-xs);
-    padding: var(--pad-xs) var(--pad-s);
-    border: var(--border-1);
-    border-radius: var(--br-s);
-    color: var(--fg-6);
-    text-decoration: none;
-    background: transparent;
-    box-shadow: none;
-    font: inherit;
-    font-weight: inherit;
-    line-height: var(--lh);
-    cursor: pointer;
-  }
-
   .pagination > ul :is(a, button) {
     inline-size: 2rem;
     block-size: 2rem;
     padding: 0;
   }
 
-  .pagination :is(a, button):hover {
-    color: var(--fg);
-    border-color: var(--fg-4);
-  }
-
-  .pagination :is(a, button):focus-visible {
-    outline: var(--focus-ring);
-    outline-offset: var(--focus-ring-offset);
-  }
-
   .pagination [aria-current="page"] {
-    color: var(--fg);
     border-color: var(--primary);
     font-weight: 600;
-  }
-
-  .pagination :is(a, button)[aria-disabled="true"],
-  .pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
   }
 
   /* Sidebar Navigation */

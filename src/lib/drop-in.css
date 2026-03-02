@@ -1654,10 +1654,25 @@
 
   select {
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-image: light-dark(
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23aaa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    );
     background-repeat: no-repeat;
     background-position: right var(--pad-m) center;
     padding-inline-end: calc(var(--pad-m) + 1.5em);
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+    transition:
+      background-color 0.15s var(--ease-smooth),
+      border-color 0.15s var(--ease-smooth),
+      box-shadow 0.15s var(--ease-smooth);
+
+    &:hover {
+      border-color: var(--fg-3);
+      background-color: var(--fg-1);
+      box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+    }
   }
 
   input[type="checkbox"],
@@ -2440,8 +2455,8 @@
   input[type="checkbox"].toggle {
     --toggle-width: 2.75em;
     --toggle-height: 1.5em;
-    --toggle-knob-size: calc(var(--toggle-height) - 4px);
-    --toggle-knob-offset: 2px;
+    --toggle-knob-size: calc(var(--toggle-height) - 8px);
+    --toggle-knob-offset: 3px;
     --toggle-color: var(--primary);
 
     appearance: none;
@@ -2449,14 +2464,17 @@
     width: var(--toggle-width);
     height: var(--toggle-height);
     border-radius: var(--toggle-height);
-    background: var(--fg-2);
+    background: var(--fg-1);
     cursor: pointer;
     margin: 0;
     padding: 0;
-    border: none;
-    box-shadow: none;
+    border: 1px solid var(--fg-2);
+    box-shadow: inset 0 1px 2px var(--black-1);
     flex-shrink: 0;
-    transition: background-color 0.2s var(--ease-smooth);
+    transition:
+      background 0.2s var(--ease-smooth),
+      border-color 0.2s var(--ease-smooth),
+      box-shadow 0.2s var(--ease-smooth);
 
     /* The knob */
     &::before {
@@ -2467,18 +2485,32 @@
       width: var(--toggle-knob-size);
       height: var(--toggle-knob-size);
       border-radius: 50%;
-      background: var(--bg);
-      transition: translate 0.2s var(--ease-smooth);
+      background: linear-gradient(
+        180deg,
+        oklch(1 0 0) 0%,
+        oklch(0.85 0 0) 100%
+      );
+      box-shadow: 0 1px 3px var(--black-2);
+      transition:
+        translate 0.2s var(--ease-smooth),
+        box-shadow 0.2s var(--ease-smooth);
     }
 
     /* Checked state */
     &:checked {
-      background: var(--toggle-color);
+      background: linear-gradient(
+        180deg,
+        oklch(from var(--toggle-color) calc(l + 0.08) c h) 0%,
+        var(--toggle-color) 100%
+      );
+      border-color: oklch(from var(--toggle-color) calc(l - 0.1) c h / 0.5);
+      box-shadow: inset 0 1px 2px
+        oklch(from var(--toggle-color) calc(l - 0.2) c h / 0.2);
 
       &::before {
         translate: calc(
             var(--toggle-width) - var(--toggle-knob-size) -
-              var(--toggle-knob-offset) * 2
+              var(--toggle-knob-offset) * 2 - 2px
           )
           0;
       }
@@ -2486,16 +2518,26 @@
 
     /* Focus state */
     &:focus-visible {
-      outline: 2px solid var(--fg);
-      outline-offset: 2px;
+      outline: var(--focus-ring);
+      outline-offset: var(--focus-ring-offset);
     }
 
     /* Hover state */
     &:hover:not(:disabled) {
-      background: var(--fg-3);
+      background: var(--fg-2);
+      border-color: var(--fg-3);
+
+      &::before {
+        box-shadow: 0 2px 4px var(--black-2);
+      }
 
       &:checked {
-        background: oklch(from var(--toggle-color) calc(l - 0.05) c h);
+        background: linear-gradient(
+          180deg,
+          oklch(from var(--toggle-color) calc(l + 0.12) c h) 0%,
+          oklch(from var(--toggle-color) calc(l + 0.04) c h) 100%
+        );
+        border-color: oklch(from var(--toggle-color) calc(l - 0.08) c h / 0.6);
       }
     }
 
@@ -2509,6 +2551,8 @@
     &.compact {
       --toggle-width: 2em;
       --toggle-height: 1.125em;
+      --toggle-knob-size: calc(var(--toggle-height) - 4px);
+      --toggle-knob-offset: 1px;
     }
   }
 

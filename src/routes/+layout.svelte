@@ -27,7 +27,7 @@
     fg_dark: "#ffffff",
     bg_light: "#ffffff",
     bg_dark: "#111111",
-    primary: "var(--blue)",
+    primary: "#0066ff",
   });
 
   let font_settings: FontSettings = $state({

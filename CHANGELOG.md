@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.16.1
+
+### Patch Changes
+
+- Enhanced select and toggle styling: select now has dark-mode adaptive chevron, hover state with transitions, subtle box-shadow, pointer cursor, disabled styling, and fixed validation state specificity for .error/.success/.warning classes
+
 ## 4.16.0
 
 ### Minor Changes

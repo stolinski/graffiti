@@ -386,3 +386,138 @@
     </div>
   </section>
 </section>
+
+<section class="stack">
+  <h2 class="heading" id="gradients">Gradients</h2>
+  <p>
+    Curated, theme-aware gradient utilities. Each gradient is a complete
+    composition — type, angle, position, and color stops all baked in.
+    Drop a single class on any element. All gradients adapt to light and
+    dark mode automatically via <code>light-dark()</code>.
+  </p>
+
+  <section class="stack">
+    <h3>Background Gradients</h3>
+    <p>
+      Apply to any element for an instant gradient background. Each uses a
+      curated gradient type (linear, radial, or conic) with positioned stops.
+    </p>
+    <div class="layout-card" style="--min-card-width: 200px;">
+      <div
+        class="gradient-sunset"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-sunset</span
+        >
+      </div>
+
+      <div
+        class="gradient-ocean"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-ocean</span
+        >
+      </div>
+
+      <div
+        class="gradient-aurora"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-aurora</span
+        >
+      </div>
+
+      <div
+        class="gradient-midnight"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-midnight</span
+        >
+      </div>
+
+      <div
+        class="gradient-dawn"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-dawn</span
+        >
+      </div>
+
+      <div
+        class="gradient-forest"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-forest</span
+        >
+      </div>
+
+      <div
+        class="gradient-lavender"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-lavender</span
+        >
+      </div>
+
+      <div
+        class="gradient-neon"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-neon</span
+        >
+      </div>
+
+      <div
+        class="gradient-slate"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-slate</span
+        >
+      </div>
+
+      <div
+        class="gradient-surface"
+        style="padding: var(--pad-xl); border-radius: var(--br-m); min-height: 140px; display: grid; place-items: center;"
+      >
+        <span
+          style="background: oklch(0 0 0 / 0.4); color: white; padding: var(--pad-xs) var(--pad-s); border-radius: var(--br-s); font-size: 0.85rem;"
+          >.gradient-surface</span
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="stack">
+    <h3>.gradient-text</h3>
+    <p>
+      Add <code>.gradient-text</code> alongside any gradient class to apply
+      the gradient to text instead of the background.
+    </p>
+    <div class="stack">
+      <h2 class="gradient-sunset gradient-text">Sunset gradient text</h2>
+      <h2 class="gradient-ocean gradient-text">Ocean gradient text</h2>
+      <h2 class="gradient-aurora gradient-text">Aurora gradient text</h2>
+      <h2 class="gradient-neon gradient-text">Neon gradient text</h2>
+      <h2 class="gradient-lavender gradient-text">Lavender gradient text</h2>
+      <h2 class="gradient-forest gradient-text">Forest gradient text</h2>
+    </div>
+  </section>
+</section>

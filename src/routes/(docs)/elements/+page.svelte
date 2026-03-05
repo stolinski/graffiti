@@ -34,6 +34,12 @@
   import tooltipCode from "$docs/demos/Tooltip.svelte?raw";
   import Tabs from "$docs/demos/Tabs.svelte";
   import tabsCode from "$docs/demos/Tabs.svelte?raw";
+  import FeaturedCard from "$docs/demos/FeaturedCard.svelte";
+  import featuredCardCode from "$docs/demos/FeaturedCard.svelte?raw";
+  import StatCard from "$docs/demos/StatCard.svelte";
+  import statCardCode from "$docs/demos/StatCard.svelte?raw";
+  import FeatureCard from "$docs/demos/FeatureCard.svelte";
+  import featureCardCode from "$docs/demos/FeatureCard.svelte?raw";
 </script>
 
 <section class="stack readable">
@@ -98,6 +104,38 @@
   <p>Card containers for grouped content, media, or calls to action.</p>
   <CodeExample code={cardCode} title="Card">
     <Card />
+  </CodeExample>
+
+  <h4>.card.featured</h4>
+  <p>
+    Highlighted card variant with primary border, elevated shadow, and tinted header.
+    Great for pricing tables or any card that needs emphasis.
+  </p>
+  <CodeExample code={featuredCardCode} title="Featured Card Variant">
+    <FeaturedCard />
+  </CodeExample>
+</section>
+
+<section class="stack">
+  <h3>.stat-card</h3>
+  <p>
+    Dashboard KPI card with label, big number, and optional change tag. Uses
+    <code>&lt;small&gt;</code> for the label, <code>&lt;strong&gt;</code> for the value,
+    and a <code>.tag</code> for the trend indicator.
+  </p>
+  <CodeExample code={statCardCode} title="Stat Card">
+    <StatCard />
+  </CodeExample>
+</section>
+
+<section class="stack">
+  <h3>.feature-card</h3>
+  <p>
+    Icon + title + description card for feature grids and marketing pages. Uses
+    <code>.icon</code> for a tinted icon container with primary color background.
+  </p>
+  <CodeExample code={featureCardCode} title="Feature Card">
+    <FeatureCard />
   </CodeExample>
 </section>
 <section class="stack">

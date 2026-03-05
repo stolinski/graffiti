@@ -645,7 +645,7 @@
     align-items: center;
     line-height: var(--lh-s);
     border: 1px solid var(--button-border);
-    border-radius: 10px;
+    border-radius: var(--br-m);
     padding: 6px var(--pad-l);
     text-decoration: none;
     box-shadow:
@@ -706,7 +706,7 @@
       --fl: -1;
       padding: 3px var(--pad-m);
       gap: 0.35em;
-      border-radius: 8px;
+      border-radius: var(--br-s);
     }
 
     &.primary {
@@ -980,6 +980,11 @@
     width: 100%;
   }
 
+  .narrow {
+    max-width: var(--narrow-width, 50ch);
+    width: 100%;
+  }
+
   .flex {
     display: flex;
     gap: var(--gap, 1rem);
@@ -1008,6 +1013,9 @@
     &.vertical {
       flex-direction: column;
       height: 100%;
+    }
+    &.center {
+      align-items: center;
     }
   }
 
@@ -1041,6 +1049,14 @@
 
   .row {
     margin-block: var(--vs-m);
+  }
+
+  /* Text alignment */
+  .text-center {
+    text-align: center;
+  }
+  .text-end {
+    text-align: end;
   }
 
   .circle {
@@ -1104,6 +1120,107 @@
     transition: none;
   }
 
+  /* Gradient Utilities — curated, theme-aware
+   * light-dark() only accepts <color>, not <image>, so we use
+   * light-dark() on each color stop variable, then compose the gradient. */
+
+  .gradient-sunset {
+    --g1: light-dark(oklch(0.92 0.08 80), oklch(0.58 0.19 60));
+    --g2: light-dark(oklch(0.82 0.15 45), oklch(0.45 0.22 35));
+    --g3: light-dark(oklch(0.75 0.17 15), oklch(0.35 0.2 10));
+    background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
+  }
+
+  .gradient-ocean {
+    --g1: light-dark(oklch(0.88 0.08 220), oklch(0.45 0.12 220));
+    --g2: light-dark(oklch(0.78 0.1 230), oklch(0.35 0.14 235));
+    --g3: light-dark(oklch(0.7 0.12 250), oklch(0.25 0.13 255));
+    background: radial-gradient(
+      ellipse at 30% 80%,
+      var(--g1),
+      var(--g2),
+      var(--g3)
+    );
+  }
+
+  .gradient-aurora {
+    --g1: light-dark(oklch(0.88 0.1 160), oklch(0.42 0.14 155));
+    --g2: light-dark(oklch(0.84 0.1 190), oklch(0.38 0.13 195));
+    --g3: light-dark(oklch(0.82 0.08 260), oklch(0.32 0.15 265));
+    --g4: light-dark(oklch(0.86 0.06 300), oklch(0.36 0.12 310));
+    background: linear-gradient(
+      160deg,
+      var(--g1),
+      var(--g2),
+      var(--g3),
+      var(--g4)
+    );
+  }
+
+  .gradient-midnight {
+    --g1: light-dark(oklch(0.75 0.06 270), oklch(0.3 0.08 275));
+    --g2: light-dark(oklch(0.6 0.08 260), oklch(0.2 0.1 260));
+    --g3: light-dark(oklch(0.5 0.1 250), oklch(0.13 0.08 250));
+    background: radial-gradient(
+      circle at 50% 50%,
+      var(--g1),
+      var(--g2),
+      var(--g3)
+    );
+  }
+
+  .gradient-dawn {
+    --g1: light-dark(oklch(0.93 0.06 85), oklch(0.5 0.12 75));
+    --g2: light-dark(oklch(0.9 0.09 50), oklch(0.42 0.16 40));
+    --g3: light-dark(oklch(0.88 0.1 340), oklch(0.38 0.15 335));
+    background: linear-gradient(to top right, var(--g1), var(--g2), var(--g3));
+  }
+
+  .gradient-forest {
+    --g1: light-dark(oklch(0.88 0.08 145), oklch(0.42 0.1 150));
+    --g2: light-dark(oklch(0.78 0.1 150), oklch(0.32 0.12 148));
+    --g3: light-dark(oklch(0.72 0.09 130), oklch(0.25 0.09 135));
+    background: linear-gradient(to bottom, var(--g1), var(--g2), var(--g3));
+  }
+
+  .gradient-lavender {
+    --g1: light-dark(oklch(0.92 0.06 300), oklch(0.48 0.12 305));
+    --g2: light-dark(oklch(0.86 0.08 285), oklch(0.38 0.14 285));
+    --g3: light-dark(oklch(0.82 0.1 310), oklch(0.32 0.13 315));
+    background: radial-gradient(
+      ellipse at 70% 20%,
+      var(--g1),
+      var(--g2),
+      var(--g3)
+    );
+  }
+
+  .gradient-neon {
+    --g1: light-dark(oklch(0.85 0.18 330), oklch(0.6 0.28 330));
+    --g2: light-dark(oklch(0.8 0.16 290), oklch(0.5 0.26 290));
+    --g3: light-dark(oklch(0.82 0.15 195), oklch(0.55 0.22 195));
+    background: linear-gradient(70deg, var(--g1), var(--g2), var(--g3));
+  }
+
+  .gradient-slate {
+    --g1: light-dark(oklch(0.94 0.01 260), oklch(0.35 0.015 260));
+    --g2: light-dark(oklch(0.88 0.015 250), oklch(0.28 0.02 250));
+    --g3: light-dark(oklch(0.85 0.01 240), oklch(0.22 0.015 240));
+    background: linear-gradient(170deg, var(--g1), var(--g2), var(--g3));
+  }
+
+  .gradient-surface {
+    --g1: light-dark(oklch(0.97 0.005 260), oklch(0.22 0.008 260));
+    --g2: light-dark(oklch(0.95 0.003 250), oklch(0.18 0.005 250));
+    background: radial-gradient(ellipse at 50% 0%, var(--g1), var(--g2));
+  }
+
+  .gradient-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   /* END UTILITIES */
 } /* END @layer utilities */
 
@@ -1112,13 +1229,12 @@
   /*
  * Gap Variable Pattern:
  * - Grid layouts (layout-card, layout-sidebar, etc.): var(--layout-gap, var(--gap, 2rem))
- * - Flex layouts (stack, cluster, carousel, reel): var(--layout-gap, var(--gap, 1rem))
+ * - Flex layouts (stack, carousel, reel): var(--gap, 1rem)
+ * - Cluster: var(--gap, 0.5rem)
  * - Components: var(--gap, 1rem)
  *
- * This allows:
- * 1. Global control via --gap
- * 2. Layout-specific override via --layout-gap
- * 3. Sensible defaults (2rem for page grids, 1rem for component layouts)
+ * Override any gap inline with --gap.
+ * Grid layouts also accept --layout-gap for layout-specific control.
  */
 
   /* Card Grid Layout - Auto-fill responsive card grid */
@@ -1319,12 +1435,17 @@
     margin-inline: calc(50% - 50vi);
   }
 
+  /* Section spacing */
+  .section {
+    padding-block: var(--section-padding, var(--pad-xxxl));
+  }
+
   /* Stack Layout - Vertical flexbox stack */
   .stack {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: var(--layout-gap, var(--gap, 1rem));
+    gap: var(--gap, 1rem);
   }
 
   :is(.stack) > * {
@@ -1336,14 +1457,17 @@
   .cluster {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--layout-gap, var(--gap, 1rem));
+    gap: var(--gap, 0.5rem);
     align-items: center;
+    &.center {
+      justify-content: center;
+    }
   }
 
   /* Carousel Layout - Horizontal scroll with scroll snap */
   .carousel {
     display: flex;
-    gap: var(--layout-gap, var(--gap, 1rem));
+    gap: var(--gap, 1rem);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: var(--layout-padding, var(--padding, 1rem));
@@ -1358,7 +1482,7 @@
   .reel {
     display: flex;
     flex-direction: column;
-    gap: var(--layout-gap, var(--gap, 1rem));
+    gap: var(--gap, 1rem);
     overflow-y: auto;
     scroll-snap-type: y mandatory;
     scroll-padding-block: var(--layout-padding, var(--padding, 1rem));
@@ -1509,6 +1633,156 @@
     display: block;
     width: 100%;
     margin: 0;
+  }
+
+  .card.featured {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-4);
+
+    > header {
+      background: var(--primary-1);
+    }
+  }
+
+  /* Stat Card */
+
+  .stat-card {
+    background: var(--bg);
+    border: var(--border-1);
+    border-radius: var(--br-l);
+    padding: var(--pad-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--vs-xs);
+
+    > * {
+      margin: 0;
+    }
+
+    > small {
+      color: var(--fg-5);
+      font-weight: 500;
+    }
+
+    > strong {
+      --fl: 3;
+      font-size: var(--fluid-font-size);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+  }
+
+  /* Feature Card */
+
+  .feature-card {
+    background: var(--bg);
+    border: 1px solid var(--fg-1);
+    border-radius: var(--br-l);
+    padding: var(--pad-xxl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--vs-s);
+    box-shadow: var(--shadow-2);
+    transition:
+      box-shadow 0.2s,
+      translate 0.2s;
+
+    &:hover {
+      box-shadow: var(--shadow-3);
+      translate: 0 -2px;
+    }
+
+    > * {
+      margin: 0;
+    }
+
+    > .icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      width: var(--icon-size, 48px);
+      height: var(--icon-size, 48px);
+      display: grid;
+      place-items: center;
+      border-radius: var(--br-m);
+      background: var(--primary-1);
+      color: var(--primary);
+    }
+
+    > :is(h1, h2, h3, h4, h5, h6) {
+      --fl: 1;
+      font-weight: 600;
+    }
+
+    > p {
+      color: var(--fg-5);
+    }
+  }
+
+  /* Table of Contents */
+
+  .toc {
+    > * {
+      margin: 0;
+    }
+
+    > :is(h1, h2, h3, h4, h5, h6) {
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--fg-5);
+      font-weight: 600;
+      padding-inline: var(--pad-s);
+      margin-block-end: var(--vs-xs);
+    }
+
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-inline-start: 1px solid var(--fg-2);
+
+      ol {
+        border: none;
+        padding-inline-start: var(--pad-m);
+      }
+    }
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: var(--fg-5);
+      font-size: var(--fs-xs);
+      padding: 0.25em var(--pad-s);
+      margin-inline-start: -1px;
+      border-inline-start: 2px solid transparent;
+      transition:
+        color 0.15s,
+        border-color 0.15s;
+
+      &:hover {
+        color: var(--fg);
+        border-inline-start-color: var(--fg-3);
+      }
+
+      &[aria-current="true"] {
+        color: var(--primary);
+        font-weight: 600;
+        border-inline-start-color: var(--primary);
+      }
+    }
+  }
+
+  /* Newsletter */
+
+  .newsletter {
+    background: var(--primary-1);
+    border: 1px solid var(--primary-2);
+    border-radius: var(--br-l);
+    padding: var(--pad-xxl);
   }
 
   /* UI Elements */
@@ -1891,6 +2165,19 @@
     }
   }
 
+  /* Muted text utilities */
+  .text-muted {
+    color: var(--fg-5);
+  }
+  .text-faint {
+    color: var(--fg-3);
+  }
+
+  /* Surface - subtle background for section alternation */
+  .surface {
+    background: var(--surface-bg, var(--fg-05));
+  }
+
   /* Disclosure Elements (details/summary) */
 
   details {
@@ -2019,6 +2306,184 @@
 
   details.minimal[open] > summary::after {
     content: "−";
+  }
+
+  /* Timeline */
+
+  .timeline {
+    --timeline-marker-size: 2.5rem;
+    --timeline-marker-color: var(--fg);
+    --timeline-marker-bg: color-mix(
+      in oklch,
+      var(--timeline-marker-color) 12%,
+      var(--bg)
+    );
+    --timeline-line-width: 2px;
+    --timeline-line-color: var(--fg-1);
+    --timeline-gap: var(--pad-l);
+
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+
+    /* Single continuous connecting line */
+    &::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: calc(
+        var(--timeline-marker-size) / 2 - var(--timeline-line-width) / 2
+      );
+      inset-block-start: calc(var(--timeline-marker-size) / 2);
+      block-size: calc(100% - var(--timeline-marker-size));
+      inline-size: var(--timeline-line-width);
+      background: var(--timeline-line-color);
+      border-radius: var(--timeline-line-width);
+    }
+
+    & li {
+      display: grid;
+      grid-template-columns: var(--timeline-marker-size) 1fr;
+      align-items: center;
+      gap: 0 var(--timeline-gap);
+      margin: 0;
+      padding-block: var(--pad-m);
+
+      &:first-child {
+        padding-block-start: 0;
+      }
+
+      &:last-child {
+        padding-block-end: 0;
+      }
+    }
+
+    & .marker {
+      display: grid;
+      place-items: center;
+      inline-size: var(--timeline-marker-size);
+      block-size: var(--timeline-marker-size);
+      border-radius: 50%;
+      background: var(--timeline-marker-bg);
+      border: 1px solid var(--fg-2);
+      color: color-mix(in oklch, var(--timeline-marker-color) 80%, var(--fg));
+      font-weight: 600;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        inset 0 1px 2px 0
+          light-dark(rgb(255 255 255 / 0.7), rgb(255 255 255 / 0.1)),
+        inset 0 -1px 2px 0 rgb(0 0 0 / 0.05),
+        0 1px 2px 0 rgb(0 0 0 / 0.05),
+        0 2px 4px 0 rgb(0 0 0 / 0.05),
+        0 4px 8px 0 rgb(0 0 0 / 0.05);
+
+      /* Icon sizing */
+      & svg {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+    }
+
+    /* Status variants - colored backgrounds with glow */
+    & li.success > .marker {
+      --timeline-marker-color: var(--success);
+      --timeline-marker-bg: color-mix(in oklch, var(--success) 18%, var(--bg));
+      border-color: var(--success-5);
+      box-shadow:
+        inset 0 1px 2px 0
+          light-dark(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.1)),
+        0 0 0 3px color-mix(in oklch, var(--success) 10%, transparent),
+        0 2px 8px 0 color-mix(in oklch, var(--success) 20%, transparent);
+    }
+
+    & li.warning > .marker {
+      --timeline-marker-color: var(--warning);
+      --timeline-marker-bg: color-mix(in oklch, var(--warning) 22%, var(--bg));
+      border-color: var(--yellow-5);
+      box-shadow:
+        inset 0 1px 2px 0
+          light-dark(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.1)),
+        0 0 0 3px color-mix(in oklch, var(--warning) 12%, transparent),
+        0 2px 8px 0 color-mix(in oklch, var(--warning) 25%, transparent);
+    }
+
+    & li.error > .marker {
+      --timeline-marker-color: var(--error);
+      --timeline-marker-bg: color-mix(in oklch, var(--error) 18%, var(--bg));
+      border-color: var(--red-5);
+      box-shadow:
+        inset 0 1px 2px 0
+          light-dark(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.1)),
+        0 0 0 3px color-mix(in oklch, var(--error) 10%, transparent),
+        0 2px 8px 0 color-mix(in oklch, var(--error) 20%, transparent);
+    }
+
+    & li.info > .marker {
+      --timeline-marker-color: var(--blue);
+      --timeline-marker-bg: color-mix(in oklch, var(--blue) 18%, var(--bg));
+      border-color: var(--blue-5);
+      box-shadow:
+        inset 0 1px 2px 0
+          light-dark(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.1)),
+        0 0 0 3px color-mix(in oklch, var(--blue) 10%, transparent),
+        0 2px 8px 0 color-mix(in oklch, var(--blue) 20%, transparent);
+    }
+
+    /* Active/current step - bold filled marker with ring */
+    & li.active > .marker {
+      background: var(--fg);
+      border-color: var(--fg);
+      color: var(--bg);
+      box-shadow:
+        inset 0 1px 2px 0 rgb(255 255 255 / 0.2),
+        0 0 0 3px var(--fg-2),
+        0 4px 12px -2px rgb(0 0 0 / 0.3);
+    }
+
+    /* Completed step - vibrant success with strong glow */
+    & li.completed > .marker {
+      --timeline-marker-color: var(--success);
+      background: linear-gradient(
+        to bottom,
+        oklch(from var(--success) calc(l + 0.08) c h),
+        var(--success)
+      );
+      border-color: oklch(from var(--success) calc(l - 0.08) calc(c * 1.1) h);
+      color: var(--white);
+      box-shadow:
+        inset 0 1px 2px 0 rgb(255 255 255 / 0.3),
+        0 0 0 3px color-mix(in oklch, var(--success) 20%, transparent),
+        0 4px 12px -2px color-mix(in oklch, var(--success) 40%, transparent),
+        0 8px 20px -4px color-mix(in oklch, var(--success) 25%, transparent);
+    }
+
+    /* Horizontal variant */
+    &.horizontal {
+      flex-direction: row;
+
+      &::before {
+        inset-inline-start: calc(var(--timeline-marker-size) / 2);
+        inset-block-start: calc(
+          var(--timeline-marker-size) / 2 - var(--timeline-line-width) / 2
+        );
+        block-size: var(--timeline-line-width);
+        inline-size: calc(100% - var(--timeline-marker-size));
+      }
+
+      & li {
+        grid-template-columns: 1fr;
+        grid-template-rows: var(--timeline-marker-size) 1fr;
+        justify-items: center;
+        text-align: center;
+        padding-block: 0;
+        flex: 1;
+        gap: var(--pad-s) 0;
+      }
+    }
   }
 
   /* Breadcrumbs */
@@ -3147,13 +3612,14 @@
   /* Bottom Navigation - Fixed tab bar for mobile apps */
   .bottom-nav {
     position: fixed;
-    bottom: var(--safe-bottom);
-    inset-inline: 0;
+    bottom: calc(var(--safe-bottom) + var(--pad-s));
+    inset-inline: var(--pad-m);
     display: flex;
     justify-content: space-around;
     background: var(--bg);
-    border-top: var(--border-1);
-    padding: var(--pad-xs) 0;
+    border-radius: var(--br-xxl);
+    box-shadow: var(--shadow-3);
+    padding: var(--pad-xs) var(--pad-s);
     z-index: 100;
   }
 
@@ -3193,6 +3659,12 @@
   .bottom-nav :is(a, button):focus-visible {
     outline: var(--focus-ring);
     outline-offset: var(--focus-ring-offset);
+  }
+
+  .bottom-nav.blur {
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
   }
 
   /* Bottom Sheet - Drawer from bottom */

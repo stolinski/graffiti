@@ -1,11 +1,12 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
-  import type { ThemeValues, FontSettings } from "$lib/types";
+  import type { ThemeValues, FontSettings, BorderRadiusSettings } from "$lib/types";
 
   let {
     theme_values = $bindable(),
     font_settings = $bindable(),
-  }: { theme_values: ThemeValues; font_settings: FontSettings } = $props();
+    border_radius = $bindable(),
+  }: { theme_values: ThemeValues; font_settings: FontSettings; border_radius: BorderRadiusSettings } = $props();
 
   let theming = $state(false);
 
@@ -92,6 +93,7 @@
     },
   ];
 
+  let selected_theme = $state("Default");
   let copied = $state(false);
   let show_export = $state(false);
 
@@ -128,6 +130,21 @@
     },
   ];
 
+  const borderRadiusPresets: { name: string; values: BorderRadiusSettings }[] = [
+    { name: "Square", values: { br_xs: "0", br_s: "0", br_m: "0", br_l: "0", br_xl: "0", br_xxl: "0" } },
+    { name: "Subtle", values: { br_xs: "1px", br_s: "2px", br_m: "4px", br_l: "6px", br_xl: "8px", br_xxl: "12px" } },
+    { name: "Default", values: { br_xs: "2px", br_s: "4px", br_m: "8px", br_l: "16px", br_xl: "24px", br_xxl: "32px" } },
+    { name: "Rounded", values: { br_xs: "4px", br_s: "8px", br_m: "12px", br_l: "20px", br_xl: "32px", br_xxl: "48px" } },
+  ];
+
+  function apply_border_radius(e: Event) {
+    const select = e.target as HTMLSelectElement;
+    const preset = borderRadiusPresets.find((p) => p.name === select.value);
+    if (preset) {
+      Object.assign(border_radius, preset.values);
+    }
+  }
+
   function apply_type_scale(e: Event) {
     const select = e.target as HTMLSelectElement;
     const scale = typeScales.find((s) => s.name === select.value);
@@ -138,6 +155,7 @@
 
   function apply_theme(e: Event) {
     const select = e.target as HTMLSelectElement;
+    selected_theme = select.value;
     const theme = themes.find((t) => t.name === select.value);
     if (theme) {
       theme_values = { ...theme.values };
@@ -176,6 +194,10 @@
     parts.push(`  --font-ratio-max: ${font_settings.max_ratio};`);
     parts.push(`  --font-width-min: ${font_settings.min_viewport};`);
     parts.push(`  --font-width-max: ${font_settings.max_viewport};`);
+    for (const key in border_radius) {
+      const css_var = `--${key.replace(/_/g, "-")}`;
+      parts.push(`  ${css_var}: ${border_radius[key as keyof BorderRadiusSettings]};`);
+    }
     parts.push("}");
     parts.push("</style>");
     return parts.join("\n");
@@ -225,6 +247,7 @@
             {#each themes as theme (theme.name)}
               <option value={theme.name}>{theme.name}</option>
             {/each}
+            <option value="Custom">Custom</option>
           </select>
         </div>
         <button class="export-toggle" onclick={() => { show_export = !show_export; }}>
@@ -242,14 +265,16 @@
         </div>
       {/if}
 
-      <div class="cluster">
-        {#each Object.keys(theme_values) as key}
-          <label>
-            {key.replace("_", "-")}:
-            <input type="color" bind:value={theme_values[key]} />
-          </label>
-        {/each}
-      </div>
+      {#if selected_theme === "Custom"}
+        <div class="cluster" transition:slide>
+          {#each Object.keys(theme_values) as key}
+            <label>
+              {key.replace("_", "-")}:
+              <input type="color" bind:value={theme_values[key]} />
+            </label>
+          {/each}
+        </div>
+      {/if}
 
       <div class="controls">
         <div class="control-row">
@@ -265,6 +290,14 @@
           <select id="type-scale" onchange={apply_type_scale}>
             {#each typeScales as scale (scale.name)}
               <option value={scale.name} selected={scale.name === "Default"}>{scale.name}</option>
+            {/each}
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="border-radius">Corners</label>
+          <select id="border-radius" onchange={apply_border_radius}>
+            {#each borderRadiusPresets as preset (preset.name)}
+              <option value={preset.name} selected={preset.name === "Default"}>{preset.name}</option>
             {/each}
           </select>
         </div>

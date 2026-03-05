@@ -2,8 +2,10 @@
   import CodeExample from "$docs/CodeExample.svelte";
   import AppShell from "$docs/demos/AppShell.svelte";
   import appShellCode from "$docs/demos/AppShell.svelte?raw";
-  import Mobile from "$docs/demos/Mobile.svelte";
-  import mobileCode from "$docs/demos/Mobile.svelte?raw";
+  import BottomNav from "$docs/demos/BottomNav.svelte";
+  import bottomNavCode from "$docs/demos/BottomNav.svelte?raw";
+  import BottomSheet from "$docs/demos/BottomSheet.svelte";
+  import bottomSheetCode from "$docs/demos/BottomSheet.svelte?raw";
   import Breadcrumbs from "$docs/demos/Breadcrumbs.svelte";
   import breadcrumbsCode from "$docs/demos/Breadcrumbs.svelte?raw";
   import Pagination from "$docs/demos/Pagination.svelte";
@@ -20,6 +22,8 @@
   import loginFormCode from "$docs/demos/LoginForm.svelte?raw";
   import ConfirmDialog from "$docs/demos/ConfirmDialog.svelte";
   import confirmDialogCode from "$docs/demos/ConfirmDialog.svelte?raw";
+  import Timeline from "$docs/demos/Timeline.svelte";
+  import timelineCode from "$docs/demos/Timeline.svelte?raw";
   import Footer from "$docs/demos/Footer.svelte";
   import footerCode from "$docs/demos/Footer.svelte?raw";
   import { scroll_on_load, swipe_event } from "$lib/svelte";
@@ -101,13 +105,22 @@
 </section>
 
 <section class="stack">
-  <h3>Mobile Patterns</h3>
+  <h3>Bottom Navigation</h3>
   <p>
-    Mobile-first patterns for PWAs and native-like apps: safe area handling,
-    bottom navigation, bottom sheets, and mobile utilities.
+    Floating pill-shaped tab bar for mobile apps. Active state via <code>aria-current="page"</code> or <code>.active</code>. Add <code>.blur</code> for a frosted glass effect.
   </p>
-  <CodeExample code={mobileCode} title="Mobile Patterns">
-    <Mobile />
+  <CodeExample code={bottomNavCode} title="Bottom Navigation">
+    <BottomNav />
+  </CodeExample>
+</section>
+
+<section class="stack">
+  <h3>Bottom Sheet</h3>
+  <p>
+    Drawer from bottom with drag handle. Use with <code>&lt;dialog&gt;</code> or popover for open/close. Respects safe-bottom padding.
+  </p>
+  <CodeExample code={bottomSheetCode} title="Bottom Sheet">
+    <BottomSheet />
   </CodeExample>
 </section>
 
@@ -210,6 +223,17 @@
   </p>
   <CodeExample code={confirmDialogCode} title="Confirm Dialog">
     <ConfirmDialog />
+  </CodeExample>
+</section>
+
+<section class="stack">
+  <h3 id="timeline">Timeline</h3>
+  <p>
+    Vertical and horizontal timeline for activity feeds, step indicators, and progress tracking.
+    Customize markers with icons, numbers, or any content.
+  </p>
+  <CodeExample code={timelineCode} title="Timeline">
+    <Timeline />
   </CodeExample>
 </section>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
   import SvelteMarkdown from "@humanspeak/svelte-markdown";
 
-  import source from "../../../CHANGELOG.md?raw";
+  import source from "../../../../CHANGELOG.md?raw";
 </script>
 
 <section class="stack">

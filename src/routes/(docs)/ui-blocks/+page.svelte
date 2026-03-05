@@ -24,6 +24,10 @@
   import confirmDialogCode from "$docs/demos/ConfirmDialog.svelte?raw";
   import Timeline from "$docs/demos/Timeline.svelte";
   import timelineCode from "$docs/demos/Timeline.svelte?raw";
+  import TimelineStepper from "$docs/demos/TimelineStepper.svelte";
+  import timelineStepperCode from "$docs/demos/TimelineStepper.svelte?raw";
+  import TimelineStatus from "$docs/demos/TimelineStatus.svelte";
+  import timelineStatusCode from "$docs/demos/TimelineStatus.svelte?raw";
   import Footer from "$docs/demos/Footer.svelte";
   import footerCode from "$docs/demos/Footer.svelte?raw";
 </script>
@@ -205,10 +209,18 @@
   <h3 id="timeline">Timeline</h3>
   <p>
     Vertical and horizontal timeline for activity feeds, step indicators, and progress tracking.
-    Customize markers with icons, numbers, or any content.
+    Customize markers with icons, numbers, or any content. Status variants include
+    <code>.success</code>, <code>.warning</code>, <code>.error</code>, <code>.info</code>.
+    Use <code>.active</code> for current step and <code>.completed</code> for finished steps.
   </p>
-  <CodeExample code={timelineCode} title="Timeline">
+  <CodeExample code={timelineCode} title="Activity Feed">
     <Timeline />
+  </CodeExample>
+  <CodeExample code={timelineStepperCode} title="Stepper (.horizontal)">
+    <TimelineStepper />
+  </CodeExample>
+  <CodeExample code={timelineStatusCode} title="Status Variants">
+    <TimelineStatus />
   </CodeExample>
 </section>
 

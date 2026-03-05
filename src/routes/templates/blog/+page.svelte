@@ -1,6 +1,6 @@
 <!-- Site Header -->
 <header class="header border">
-	<a href="/templates/blog" class="fs-s"><strong>DevCraft</strong></a>
+	<a href="/templates/blog" class="fs-s"><strong>Drop In</strong></a>
 	<nav>
 		<ul>
 			<li><a href="/templates/blog">Blog</a></li>
@@ -276,7 +276,7 @@ function openModal(dialog) &#123;
 			<hr />
 
 			<!-- Author Bio -->
-			<div class="box cluster" style="--gap: var(--vs-base);">
+			<div class="box cluster gradient-surface" style="--gap: var(--vs-base);">
 				<span class="avatar l" aria-hidden="true">MR</span>
 				<div class="stack" style="--gap: var(--vs-xs);">
 					<strong>Maya Rodriguez</strong>
@@ -322,12 +322,14 @@ function openModal(dialog) &#123;
 <!-- Newsletter -->
 <section class="section surface">
 	<div class="layout-readable center">
-		<div class="newsletter stack text-center" style="align-items: center;">
-			<h3>Stay in the loop</h3>
-			<p class="text-muted narrow">Get weekly articles on web development, accessibility, and CSS delivered to your inbox. No spam, unsubscribe anytime.</p>
-			<div class="input-group" style="max-width: 400px;">
-				<input type="email" placeholder="you@example.com" aria-label="Email address" />
-				<button class="primary">Subscribe</button>
+		<div class="card" style="max-width: 860px; margin-inline: auto;">
+			<div class="card-body stack text-center" style="align-items: center; --gap: var(--vs-m);">
+				<h3>Stay in the loop</h3>
+				<p class="text-muted narrow">Get weekly articles on web development, accessibility, and CSS delivered to your inbox. No spam, unsubscribe anytime.</p>
+				<div class="input-group" style="max-width: 400px;">
+					<input type="email" placeholder="you@example.com" aria-label="Email address" />
+					<button class="primary">Subscribe</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -344,6 +346,6 @@ function openModal(dialog) &#123;
 				<li><a href="/templates/blog" class="fs-xs">Privacy</a></li>
 			</ul>
 		</nav>
-		<p class="fs-xs text-muted">2026 DevCraft. All rights reserved.</p>
+		<p class="fs-xs text-muted">2026 Drop In. All rights reserved.</p>
 	</div>
 </footer>

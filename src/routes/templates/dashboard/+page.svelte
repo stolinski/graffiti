@@ -1,5 +1,5 @@
 <div class="layout-sidebar fill" style="min-height: 100dvh; --layout-gap: 0px;">
-	<aside class="split vertical" style="border-inline-end: var(--border-1); padding: var(--pad-l);">
+	<aside class="split vertical gradient-surface" style="border-inline-end: var(--border-1); padding: var(--pad-l);">
 		<nav class="sidebar-nav">
 			<p style="padding: var(--pad-s) var(--pad-m); margin: 0 0 var(--vs-s) 0;"><strong class="fs-s">Acme Inc.</strong></p>
 			<a href="/templates/dashboard" aria-current="page">Dashboard</a>

@@ -26,7 +26,6 @@
   import timelineCode from "$docs/demos/Timeline.svelte?raw";
   import Footer from "$docs/demos/Footer.svelte";
   import footerCode from "$docs/demos/Footer.svelte?raw";
-  import { scroll_on_load, swipe_event } from "$lib/svelte";
 </script>
 
 <section class="stack readable">
@@ -177,30 +176,6 @@
       </p>
     </div>
     <button style="background: var(--green);">✅</button>
-  </div>
-  <h4>&.stop</h4>
-  <p>Swiper that stays in it's "open" state.</p>
-  <div class="swipe stop">
-    <button style="background: var(--red);">❌</button>
-    <div {@attach scroll_on_load} style="min-height: 100px">
-      <p>You can swipe me side to side, minor JavaScript needed for Safari</p>
-    </div>
-    <button style="background: var(--green);">✅</button>
-  </div>
-
-  <p>You can have multiple buttons of various styles too.</p>
-  <div class="swipe stop">
-    <div class="split even" style="--gap: 10px; padding: var(--pad-m)">
-      <button style="height: 100%">Hide</button>
-      <button style="height: 100%">Save</button>
-    </div>
-    <div style="min-height: 100px" {@attach scroll_on_load}>
-      <p>You can swipe me side to side, minor JavaScript needed for Safari</p>
-    </div>
-    <div class="split even" style="--gap: 10px; padding: var(--pad-m)">
-      <button style="height: 100%">Up</button>
-      <button style="height: 100%">Down</button>
-    </div>
   </div>
 </section>
 

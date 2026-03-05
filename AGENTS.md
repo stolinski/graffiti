@@ -119,3 +119,6 @@ For example: `npx -y @zeeg/dex create --help` shows `--parent` and `--blocked-by
 - ❌ Do NOT clutter repo root with planning documents
 
 For more details, see README.md and QUICKSTART.md.
+
+<!-- This section is maintained by the coding agent via lore (https://github.com/BYK/opencode-lore) -->
+<!-- End lore-managed section -->

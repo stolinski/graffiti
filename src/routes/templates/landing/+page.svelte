@@ -1,5 +1,5 @@
 <!-- Hero -->
-<section class="section">
+<section class="section gradient-aurora">
 	<div class="layout-readable center stack text-center" style="--gap: var(--vs-l);">
 		<div class="stack" style="--gap: var(--vs-s);">
 			<span class="tag" style="align-self: center;">Now in Public Beta</span>
@@ -97,7 +97,7 @@
 					<span class="chip">Nuxt</span>
 				</div>
 			</div>
-			<div class="box text-center" style="padding: var(--pad-xxxl); background: var(--fg-1); border-radius: var(--br-l);">
+			<div class="box text-center gradient-slate" style="padding: var(--pad-xxxl); border-radius: var(--br-l);">
 				<p class="fs-xl" aria-hidden="true">&#128187;</p>
 			<p class="text-muted">
 				<code>git push origin main</code>
@@ -198,7 +198,7 @@
 			</article>
 
 			<!-- Pro Tier (Highlighted) -->
-			<article class="card featured stack" style="--gap: 0;">
+			<article class="card featured gradient-surface stack" style="--gap: 0;">
 				<header>
 					<h3>Pro</h3>
 					<span class="tag" style="margin-inline-start: auto;">Popular</span>
@@ -292,7 +292,7 @@
 </section>
 
 <!-- Final CTA -->
-<section class="section surface">
+<section class="section gradient-surface">
 	<div class="layout-readable center stack text-center" style="--gap: var(--vs-l);">
 		<h2 style="--fl: 5;">Ready to ship faster?</h2>
 		<p class="fs-s text-muted narrow" style="margin-inline: auto;">

@@ -104,5 +104,7 @@
 				<a href="/templates/settings" class="button primary" style="align-self: start;">View Template →</a>
 			</div>
 		</article>
+
+		<!-- AI Chat - hidden until layout issues resolved -->
 	</div>
 </section>

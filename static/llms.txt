@@ -99,6 +99,7 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 - [Reel](https://graffiti-ui.com/llms/reel.txt) - Vertical scroll with snap
 - [Tables](https://graffiti-ui.com/llms/tables.txt) - Data table styling
 - [Swipe](https://graffiti-ui.com/llms/swipe.txt) - Swipe-to-reveal actions
+- [Timeline](https://graffiti-ui.com/llms/timeline.txt) - Activity feeds and step indicators
 
 ### Forms
 - [Form basics](https://graffiti-ui.com/llms/forms.txt) - Inputs, selects, checkboxes, radios

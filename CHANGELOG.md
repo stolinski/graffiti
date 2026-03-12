@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.20.0
+
+### Minor Changes
+
+- Added semantic status tag variants, a linked card variant, and a form option row helper to reduce inline styling and improve class-first template ergonomics.
+
 ## 4.19.0
 
 ### Minor Changes

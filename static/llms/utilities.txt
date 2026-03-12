@@ -38,7 +38,32 @@ See [Stack & Cluster](https://graffiti-ui.com/llms/stack-cluster.txt) for detail
 
 ```html
 <div class="row">Adds vertical margin (--vs-m)</div>
+<h3 class="no-margin">Zero margin</h3>
 ```
+
+For per-instance layout gap tuning, use inline custom properties on the layout container:
+
+```html
+<div class="stack" style="--gap: var(--vs-s);">...</div>
+<div class="cluster" style="--gap: var(--vs-xs);">...</div>
+```
+
+## Alignment
+
+```html
+<div class="stack">
+  <a class="button self-start" href="/">Start-aligned action</a>
+</div>
+```
+
+## Width
+
+```html
+<input class="full" type="email" />
+<button class="button full">Full-width action</button>
+```
+
+Use `.readable` or `.narrow` when you also need max-width constraints.
 
 ## Visibility
 

@@ -160,13 +160,47 @@ Use this guide when prompts are ambiguous, conflicting, or impossible to satisfy
 
 ---
 
+## T11: Matching In-Repo Template Exists
+
+### Symptom
+
+- Prompt intent maps cleanly to one of `src/routes/templates/*/+page.svelte`
+
+### Default action
+
+1. Select the matching template as baseline before recipe selection.
+2. Preserve the baseline section/component skeleton.
+3. Apply requested changes as targeted modifications.
+4. Record baseline path in the output contract.
+
+### What to avoid
+
+- Do not generate a fresh page composition when baseline exists unless user explicitly requests from-scratch output.
+
+---
+
+## T12: User Explicitly Requests Fresh Build
+
+### Symptom
+
+- Prompt clearly asks for "from scratch", "new structure", or "ignore existing template".
+
+### Default action
+
+1. Confirm in assumptions that baseline is intentionally not used.
+2. Use canonical recipes as primary source.
+3. Keep class-first and accessibility gates unchanged.
+
+---
+
 ## Quick Triage Sequence
 
 When in doubt, run this order:
 
-1. Validate classes (unknown classes first)
-2. Restore semantics and landmarks
-3. Normalize layout primitives
-4. Reduce inline styles to budget
-5. Verify accessibility and responsive behavior
-6. Record unresolved gaps explicitly
+1. Resolve baseline template match (if any)
+2. Validate classes (unknown classes first)
+3. Restore semantics and landmarks
+4. Normalize layout primitives
+5. Reduce inline styles to budget
+6. Verify accessibility and responsive behavior
+7. Record unresolved gaps explicitly

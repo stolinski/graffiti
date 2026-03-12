@@ -35,6 +35,7 @@ Scott must review everything before it's finalized. Without his approval, qualit
 - `git push`
 - `npx -y @zeeg/dex complete`
 - `pnpm changeset version`
+- Adding new class names or utility APIs to `drop-in.css`
 - Any destructive or finalizing action
 
 **THE PATTERN IS:**
@@ -236,6 +237,72 @@ Is this both?
   → Then use docs subagent for the demo/documentation
 ```
 
+## Aesthetic Direction (Design DNA)
+
+These are style guardrails for all future component and pattern work. Treat them as defaults unless a task explicitly says otherwise.
+
+### Core Visual Language
+
+- **Tactile over flat** - Prefer subtle gradients, borders, and layered shadows instead of flat color blocks
+- **Rounded geometry** - Use the existing radius scale (`--br-m` through `--br-xxl`) for a soft, friendly shape language
+- **Neutral base + semantic accents** - Build mostly on neutral surfaces, then use semantic colors (`--primary`, `--success`, `--warning`, `--error`, `--blue`) for meaning
+- **Stateful motion** - Hover should gently lift/brighten, active should press in/darken, focus should remain obvious and accessible
+- **Token-first consistency** - Use spacing, radius, color, and shadow tokens instead of one-off values
+
+### Component Signatures
+
+- **Buttons (`button`, `.button`)** - Keep the glossy gradient + crisp border + subtle inset highlight style. Preserve hover lift (`translateY`), active press-in, and semantic variant behavior (`primary/success/warning/error/ghost/minimal`).
+- **Feature cards (`.feature-card`)** - Keep generous padding, a soft border, medium depth, and a small hover lift. Icon sits in a rounded tinted tile (`.icon`), title is semibold, supporting text is muted.
+- **Cards and featured cards (`.card`, `.card.featured`)** - Use structured header/body/footer with built-in separators. Featured cards get primary emphasis (border + tinted header + stronger shadow), not custom ad-hoc treatment.
+- **Chips (`.chip`)** - Use pill geometry and compact density. Default chips stay neutral; selected chips are clearly primary-filled with white text. Keep labels short and icon-friendly.
+- **Toggles (`input.toggle`)** - Always use the native checkbox-based switch pattern. Keep the neutral track + glossy knob + semantic checked gradient; no custom JS switch implementations.
+- **Timeline (`.timeline`)** - Preserve marker-first composition with a continuous connector line, circular markers, depth, and semantic status glow (`success/warning/error/info/active/completed`). Horizontal steppers should keep the same marker language.
+
+### Aesthetic Anti-Patterns
+
+- Flat, borderless controls that lose the library's tactile feel
+- Sharp-cornered replacements where rounded tokens are expected
+- Random accent colors that bypass semantic intent
+- Rebuilding existing patterns (buttons/cards/chips/toggles/timeline) with custom one-off CSS
+
+## Authoring Contract (Tight, Not Bloated)
+
+### Core Model
+
+- The library is class-first for structure/components and custom-property inline for per-instance tuning.
+- Keep a consistent visual language (tactile, token-driven, semantic accents), not random utility sprawl.
+- Reuse existing primitives first (`.readable`, `.stack`, `.cluster`, `.layout-*`, component variants).
+- Use inline custom properties for local overrides like `--gap`, `--layout-gap`, `--surface-bg`, etc.
+- Do not create utility wrappers for those custom-property knobs.
+- Do not invent naming dialects (`prose`, `max-w-form`, etc.) that do not match Graffiti vocabulary.
+- New classes are allowed only when a pattern is truly recurring, semantic, and missing from the existing API.
+
+### Trusted Vocabulary (Prefer Existing Language)
+
+- **Layout:** `.stack`, `.cluster`, `.split`, `.readable`, `.layout-*`, `.section`
+- **Surfaces/Cards:** `.surface`, `.box`, `.card`, `.feature-card`, `.stat-card`, `.callout`
+- **Shell/Nav:** `.app-shell`, `.header`, `.sidebar-nav`, `.toc`
+- **Text/State:** `.text-muted`, `.text-faint`, `.text-center`, `.text-end`, semantic variants
+- **Core Components:** `button`/`.button`, `.chip`, `.tag`, `input.toggle`, `.timeline`
+- **Inline token knobs:** `--gap`, `--layout-gap`, `--surface-bg`, `--layout-min-card-width`, and related existing vars
+
+### Authoring Experience
+
+- Author semantic HTML with a small set of trusted classes.
+- Use library classes for layout and component composition.
+- Apply per-instance tuning inline via CSS custom properties where intended.
+- Keep templates copy/paste friendly for users and LLMs by keeping language consistent and minimal.
+- Keep demos/docs framework-agnostic and aligned with real classes in `drop-in.css`.
+
+### Proposal-First Rule for New API Surface
+
+- Before adding any new class or utility API, present a short proposal with:
+  - the repeated problem pattern,
+  - why existing primitives are insufficient,
+  - the proposed class names and exact intended usage.
+- Ask explicitly for approval: **"Approve these class additions?"**
+- Do not implement new class names until the user explicitly approves.
+
 ## Quality Standards
 
 ### CSS Quality (delegated to css agent)
@@ -260,9 +327,13 @@ Is this both?
 ### Visual Quality (your responsibility)
 
 - Component renders correctly
-- Works in both themes
+- Works in system light and dark mode
 - Interactive states function properly
 - No visual regressions
+
+### What this is not
+
+- This is not a tailwind clone. This is closer to a bleeding edge, modern bootstrap that's highly, systemically configurable though css vars than anything else. Do not turn this into a Utility first css library
 
 ## File Locations
 

@@ -1,6 +1,6 @@
 # Output Contract
 
-Version: 1.0
+Version: 1.1
 
 This contract defines the mandatory output structure and quality gates for Graffiti best-practices generation.
 
@@ -14,6 +14,8 @@ Every response must include these sections in this order:
 
 2. **Recipe Selection**
    - State which canonical pattern(s) are being used.
+   - State baseline template path used from `src/routes/templates/*/+page.svelte`.
+   - If no baseline template match exists, explicitly state "No baseline template match found".
    - If no exact recipe exists, state closest fallback and why.
 
 3. **Markup Output**
@@ -34,6 +36,7 @@ Every response must include these sections in this order:
 - Keep class usage compositional and readable (avoid unnecessary wrappers).
 - Prefer existing utility/component classes over inline declarations.
 - Use a Graffiti-first approach before adding custom CSS.
+- When a matching in-repo template exists, start from that template's structure and customize from it rather than generating a new unrelated structure.
 - Custom CSS is allowed when needed, but it must be implemented as reusable project-level classes/utilities (not ad-hoc local overrides).
 
 ## 3) Inline Style Policy
@@ -45,7 +48,7 @@ Allowed only when using custom property overrides or bounded layout exceptions.
 Approved custom property examples:
 
 - Spacing/layout: `--gap`, `--layout-gap`, `--min-card-width`, `--max-width`, `--padding`
-- Component tokens: `--tag-color`, `--bubble-*`, `--toggle-color`, `--callout-*`
+- Component tokens: `--bubble-*`, `--toggle-color`, `--callout-*`, and `--tag-color` only for non-status category colors
 
 Bounded layout exceptions:
 
@@ -106,12 +109,14 @@ Any hard fail means overall fail regardless of score:
 2. Violates disallowed inline style rules
 3. Missing required accessibility baseline (labels/landmarks/table semantics)
 4. Missing one or more mandatory response sections from section 1
+5. Fails to use a matching in-repo template baseline when one exists (unless user explicitly requested a fresh build)
 
 ## 7) Verification Checklist Template
 
 Use this exact checklist format in responses:
 
 - Class validity: PASS/FAIL (unknown classes: N)
+- Template baseline usage: PASS/FAIL (template path: <path or none>, preserved structure: YES/NO)
 - Inline styles: PASS/FAIL (declarations: N, section max: N, page max: N)
 - Accessibility semantics: PASS/FAIL (landmarks, headings, labels, states, table semantics)
 - Responsive composition: PASS/FAIL (mobile + desktop layout behavior)

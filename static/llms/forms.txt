@@ -70,6 +70,19 @@ Notes:
 <label><input type="radio" name="plan"> Enterprise</label>
 ```
 
+## Option Row Labels
+
+Use `.form-option-row` on checkbox/radio labels to align controls and text with consistent spacing.
+
+```html
+<fieldset class="stack" style="--gap: 0.5rem;">
+  <legend>Size</legend>
+  <label class="form-option-row"><input type="radio" name="size" checked> Small</label>
+  <label class="form-option-row"><input type="radio" name="size"> Medium</label>
+  <label class="form-option-row"><input type="radio" name="size"> Large</label>
+</fieldset>
+```
+
 ## Date & Time
 
 ```html

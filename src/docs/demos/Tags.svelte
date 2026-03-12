@@ -6,14 +6,22 @@
     <span class="tag">Label</span>
   </div>
 
-  <!-- Tags with custom colors -->
+  <!-- Semantic status variants -->
   <div class="cluster">
-    <span class="tag" style="--tag-color: var(--green)">Success</span>
-    <span class="tag" style="--tag-color: var(--red)">Error</span>
-    <span class="tag" style="--tag-color: var(--orange)">Warning</span>
-    <span class="tag" style="--tag-color: var(--purple)">Info</span>
-    <span class="tag" style="--tag-color: var(--teal)">New</span>
-    <span class="tag" style="--tag-color: var(--pink)">Hot</span>
+    <span class="tag success">Completed</span>
+    <span class="tag info">Processing</span>
+    <span class="tag warning">Pending</span>
+    <span class="tag error">Cancelled</span>
+  </div>
+
+  <!-- Category-style tags with custom colors -->
+  <div class="cluster">
+    <span class="tag" style="--tag-color: var(--green)">Product</span>
+    <span class="tag" style="--tag-color: var(--red)">Support</span>
+    <span class="tag" style="--tag-color: var(--orange)">Design</span>
+    <span class="tag" style="--tag-color: var(--purple)">Marketing</span>
+    <span class="tag" style="--tag-color: var(--teal)">Docs</span>
+    <span class="tag" style="--tag-color: var(--pink)">Ops</span>
   </div>
 
   <!-- Tags with icons -->

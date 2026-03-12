@@ -14,7 +14,7 @@
   />
 
   <div class="split">
-    <label><input type="checkbox" /> Remember me</label>
+    <label class="form-option-row"><input type="checkbox" /> Remember me</label>
     <a href="#forgot">Forgot password?</a>
   </div>
 

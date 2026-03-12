@@ -78,12 +78,12 @@ Use case: KPI metrics in dashboard headers.
 <article class="stat-card">
   <small>Active users</small>
   <strong>2,420</strong>
-  <span class="tag" style="--tag-color: var(--green);">+8.1%</span>
+  <span class="tag success">+8.1%</span>
 </article>
 ```
 
 - Recommended: use in `layout-card`
-- Fallback: status tag color uses inline `--tag-color` until semantic status tag variants are standardized
+- Status mapping: use `.tag.success`, `.tag.warning`, `.tag.error`, `.tag.info` before token overrides
 
 ---
 
@@ -128,7 +128,7 @@ Use case: tabular records with horizontal overflow handling.
       <tr>
         <td>#3210</td>
         <td>
-          <span class="tag" style="--tag-color: var(--green);">Completed</span>
+          <span class="tag success">Completed</span>
         </td>
       </tr>
     </tbody>
@@ -204,7 +204,30 @@ Use case: settings preferences row.
 
 ---
 
-## COMP-010: Input Group
+## COMP-010: Form Option Row
+
+Use case: compact checkbox/radio label rows without inline alignment styles.
+
+```html
+<fieldset class="stack" style="--gap: var(--vs-xs);">
+  <legend>Theme</legend>
+  <label class="form-option-row">
+    <input type="radio" name="theme" value="light" checked />
+    Light
+  </label>
+  <label class="form-option-row">
+    <input type="radio" name="theme" value="dark" />
+    Dark
+  </label>
+</fieldset>
+```
+
+- Accessibility: keep a grouped `fieldset` + `legend` for related options
+- Anti-pattern: avoid repeated inline `display: inline-flex; align-items: center; gap: ...`
+
+---
+
+## COMP-011: Input Group
 
 Use case: search, invite flow, newsletter form, username check.
 
@@ -219,7 +242,7 @@ Use case: search, invite flow, newsletter form, username check.
 
 ---
 
-## COMP-011: Chat Message Row
+## COMP-012: Chat Message Row
 
 Use case: assistant/user message formatting in threaded chat.
 
@@ -249,7 +272,7 @@ Use case: assistant/user message formatting in threaded chat.
 
 ---
 
-## COMP-012: Chat Composer
+## COMP-013: Chat Composer
 
 Use case: bottom message input in chat UIs.
 
@@ -266,30 +289,25 @@ Use case: bottom message input in chat UIs.
 
 ---
 
-## COMP-013: Linked Card Fallback Pattern
+## COMP-014: Linked Card Variant
 
-Use case: clickable article/product cards before dedicated linked-card utility exists.
+Use case: clickable article/product cards using the canonical card-as-link variant.
 
 ```html
-<a
-  href="#"
-  class="card stack"
-  style="--gap: 0; text-decoration: none; color: var(--fg);"
->
+<a href="/articles/css" class="card linked">
   <div class="card-body stack" style="--gap: var(--vs-xs);">
-    <span class="tag" style="--tag-color: var(--blue);">Category</span>
+    <span class="tag info">Category</span>
     <strong>Card title</strong>
     <span class="fs-xs text-muted">Meta line</span>
   </div>
 </a>
 ```
 
-- Status: temporary fallback
-- Implementation note: use a dedicated linked-card utility when available; until then keep this fallback minimal.
+- Use `.card.linked` instead of inline `text-decoration`/`color` resets on anchors.
 
 ---
 
-## COMP-014: Footer Column Group
+## COMP-015: Footer Column Group
 
 Use case: multi-column footer with legal row.
 

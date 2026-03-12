@@ -34,6 +34,21 @@ Structured content container with optional header, body, and footer.
 </article>
 ```
 
+## Linked Card
+
+Use `.card.linked` on an anchor for card-as-link patterns. It applies link-reset styles and an interactive affordance (hover/focus/active states):
+
+```html
+<a class="card linked" href="/docs/release-notes">
+  <header>
+    <h3>Release notes</h3>
+  </header>
+  <div class="card-body">
+    <p>Read what changed in the latest update.</p>
+  </div>
+</a>
+```
+
 ## Notes
 
 - `.card` applies border, radius, shadow, and clips media.

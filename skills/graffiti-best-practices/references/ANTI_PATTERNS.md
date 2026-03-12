@@ -63,6 +63,7 @@ Use this with:
 
 - Use `stack` to normalize child margins
 - Use tokenized gap overrides (`--gap`) instead of margin micromanagement
+- Use `.form-option-row` for checkbox/radio label alignment instead of repeated inline `inline-flex` declarations
 
 ---
 
@@ -157,7 +158,9 @@ Use this with:
 ### Detection heuristics
 
 - Hand-built card wrappers instead of `.card`
+- Card anchors with inline `text-decoration`/`color` resets instead of `.card.linked`
 - Manual KPI blocks instead of `.stat-card`
+- Repeated form option label rows with inline `display: inline-flex` instead of `.form-option-row`
 - Manual chat rows instead of `.chat-thread`/`.chat-row`/`.bubble`
 - TOC styles created from scratch instead of `.toc`
 
@@ -170,6 +173,9 @@ Use this with:
 ### Preferred direction
 
 - Start from canonical component classes first
+- Use semantic status tags (`.tag.success/.warning/.error/.info`) before inline `--tag-color`
+- Use `.card.linked` for card-as-link composition
+- Use `.form-option-row` for radio/checkbox option labels
 - Only tokenize appearance when a variant is missing
 
 ---
@@ -296,7 +302,7 @@ Inline styles are allowed only when all conditions are true:
 Approved exception categories:
 
 - Tokenized spacing/layout: `--gap`, `--layout-gap`, `--min-card-width`, `--max-width`
-- Component token overrides: `--tag-color`, `--bubble-*`, `--toggle-color`, `--callout-*`
+- Component token overrides: `--bubble-*`, `--toggle-color`, `--callout-*`, and `--tag-color` only for non-status category colors
 - One-off wrapper constraints: limited `max-width`/`width` when no utility exists
 
 Disallowed even as exceptions:
@@ -304,3 +310,35 @@ Disallowed even as exceptions:
 - Raw color literals for semantic states
 - Inline structural layout declarations when layout classes exist
 - Repeated manual margin reset patterns
+
+---
+
+## AP-012: Template Amnesia (Ignoring In-Repo Baselines)
+
+### Detection heuristics
+
+- Request intent matches an existing template in `src/routes/templates/*/+page.svelte`
+- Output composes a new page structure instead of adapting the baseline template
+- Section ordering and component choices drift from baseline without explicit user request
+
+### Why this is problematic
+
+- Breaks consistency with documented, reviewed template patterns
+- Reintroduces solved composition problems in new ad-hoc markup
+- Produces outputs that feel non-native to Graffiti templates
+
+### Typical bad pattern
+
+```html
+<!-- User asks to customize pricing section in landing template -->
+<main class="layout-readable center stack">
+  ...
+  <!-- completely new page shell and section structure -->
+</main>
+```
+
+### Preferred direction
+
+- Start from the matching in-repo template file as baseline
+- Preserve canonical section/component skeleton unless user requests a full replacement
+- Apply customization as focused edits to baseline structure

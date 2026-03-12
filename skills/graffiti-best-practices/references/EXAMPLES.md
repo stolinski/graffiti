@@ -62,12 +62,12 @@ Each example follows the required response structure from `OUTPUT_CONTRACT.md`.
   <article class="stat-card">
     <small>Total Revenue</small>
     <strong>$48,250</strong>
-    <span class="tag" style="--tag-color: var(--green);">+12.5%</span>
+    <span class="tag success">+12.5%</span>
   </article>
   <article class="stat-card">
     <small>Active Users</small>
     <strong>2,420</strong>
-    <span class="tag" style="--tag-color: var(--green);">+8.1%</span>
+    <span class="tag success">+8.1%</span>
   </article>
 </div>
 ```
@@ -267,7 +267,7 @@ Each example follows the required response structure from `OUTPUT_CONTRACT.md`.
 <article class="stat-card">
   <small>Deployments</small>
   <strong>184</strong>
-  <span class="tag" style="--tag-color: var(--blue);">This week</span>
+  <span class="tag info">This week</span>
 </article>
 ```
 
@@ -285,3 +285,33 @@ Each example follows the required response structure from `OUTPUT_CONTRACT.md`.
 - Choose nearest known intent (for example content page)
 - Explain assumptions briefly
 - Return class-first rewrite + verification checklist
+
+---
+
+## Example 9: Template-First Pricing Customization
+
+### Prompt
+
+"Update the landing template pricing section to support annual billing copy and keep Pro highlighted."
+
+### Expected behavior
+
+- Resolve baseline template first: `src/routes/templates/landing/+page.svelte`
+- Keep pricing section structure from baseline and customize plan copy/labels
+- Preserve canonical `.card.featured` emphasized tier composition
+- Report baseline path in "Recipe Selection" and checklist
+
+### Correct approach excerpt
+
+```html
+<!-- Baseline: src/routes/templates/landing/+page.svelte -->
+<section id="pricing" class="section surface">
+  <div class="layout-readable center stack" style="--gap: var(--vs-xl);">
+    <div class="layout-three-col" style="align-items: stretch;">
+      <article class="card stack" style="--gap: 0;">...</article>
+      <article class="card featured stack" style="--gap: 0;">...</article>
+      <article class="card stack" style="--gap: 0;">...</article>
+    </div>
+  </div>
+</section>
+```

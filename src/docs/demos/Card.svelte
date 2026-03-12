@@ -34,4 +34,15 @@
       <button class="ghost">Share</button>
     </footer>
   </article>
+
+  <a class="card linked" href="/elements">
+    <header>
+      <h4>Documentation overview</h4>
+      <span class="tag info">Explore</span>
+    </header>
+    <div class="card-body stack">
+      <p>Use linked cards for clickable previews, nav lists, and feature rows.</p>
+      <p>Open the Elements docs to browse all component patterns.</p>
+    </div>
+  </a>
 </div>

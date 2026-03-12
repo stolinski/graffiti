@@ -104,7 +104,7 @@ Use case: side-by-side plan comparison.
 - Optional variants: compact pricing with `layout-card` + min card width token
 - Accessibility: plan headers should be headings, CTA labels should be action specific
 - Anti-pattern: avoid manual header tinting when `.card.featured` fits
-- Fallback: if semantic status tags are unavailable, use inline `--tag-color` token only
+- Status mapping: use `.tag.success`, `.tag.warning`, `.tag.error`, `.tag.info` for status labels
 
 ### SECTION-MKT-004: FAQ (details/summary)
 
@@ -198,7 +198,7 @@ Use case: conversion close with nav footer.
   <article class="stat-card">
     <small>Total Revenue</small>
     <strong>$48,250</strong>
-    <span class="tag" style="--tag-color: var(--green);">+12.5%</span>
+    <span class="tag success">+12.5%</span>
   </article>
   <article class="stat-card">...</article>
 </div>
@@ -237,7 +237,7 @@ Use case: conversion close with nav footer.
 ```html
 <header class="stack" style="--gap: var(--vs-s);">
   <div class="cluster" style="--gap: var(--vs-s);">
-    <span class="tag" style="--tag-color: var(--blue);">Accessibility</span>
+    <span class="tag info">Accessibility</span>
     <span class="fs-xs text-muted">10 min read</span>
   </div>
   <h1>Article title</h1>
@@ -251,11 +251,7 @@ Use case: conversion close with nav footer.
 <section class="stack" style="--gap: var(--vs-s);">
   <h3>Related articles</h3>
   <div class="layout-card" style="--min-card-width: 200px;">
-    <a
-      href="#"
-      class="card stack"
-      style="--gap: 0; text-decoration: none; color: var(--fg);"
-    >
+    <a href="/blog" class="card linked">
       <div class="card-body stack" style="--gap: var(--vs-xs);">
         <span class="tag" style="--tag-color: var(--purple);">CSS</span>
         <strong>Card title</strong>
@@ -264,8 +260,6 @@ Use case: conversion close with nav footer.
   </div>
 </section>
 ```
-
-- Fallback warning: linked-card utility is not standardized yet; this pattern is temporary
 
 ### SECTION-CONTENT-003: Newsletter Card
 

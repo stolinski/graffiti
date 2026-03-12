@@ -1051,6 +1051,18 @@
     margin-block: var(--vs-m);
   }
 
+  .no-margin {
+    margin: 0;
+  }
+
+  .self-start {
+    align-self: start;
+  }
+
+  .full {
+    width: 100%;
+  }
+
   /* Text alignment */
   .text-center {
     text-align: center;
@@ -1606,6 +1618,37 @@
     overflow: clip;
   }
 
+  .card.linked {
+    text-decoration: none;
+    color: var(--fg);
+    cursor: pointer;
+    transition:
+      box-shadow 0.15s var(--ease-smooth),
+      border-color 0.15s var(--ease-smooth),
+      translate 0.15s var(--ease-smooth);
+
+    &:visited {
+      color: var(--fg);
+    }
+
+    &:hover {
+      border-color: var(--fg-3);
+      box-shadow: var(--shadow-3);
+      translate: 0 -1px;
+    }
+
+    &:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: var(--focus-ring-offset);
+    }
+
+    &:active {
+      border-color: var(--fg-4);
+      box-shadow: var(--shadow-2);
+      translate: 0;
+    }
+  }
+
   .card > :is(header, footer, .card-body, main, section) {
     padding: var(--pad-l);
   }
@@ -1976,6 +2019,17 @@
     vertical-align: middle;
     accent-color: var(--accent);
     cursor: pointer;
+  }
+
+  .form-option-row {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--vs-s);
+    cursor: pointer;
+
+    > input:is([type="checkbox"], [type="radio"]) {
+      margin: 0;
+    }
   }
 
   .search {
@@ -3692,6 +3746,22 @@
     /* Muted variant - colored background, neutral text for better readability */
     &.muted {
       --tag-text: var(--fg-8);
+    }
+
+    &.success {
+      --tag-color: var(--green);
+    }
+
+    &.warning {
+      --tag-color: var(--yellow);
+    }
+
+    &.error {
+      --tag-color: var(--red);
+    }
+
+    &.info {
+      --tag-color: var(--blue);
     }
   }
 

@@ -103,7 +103,10 @@
 </section>
 <section class="stack">
   <h3>Card</h3>
-  <p>Card containers for grouped content, media, or calls to action.</p>
+  <p>
+    Card containers for grouped content, media, or calls to action, including
+    clickable <code>.card.linked</code> variants.
+  </p>
   <CodeExample code={cardCode} title="Card">
     <Card />
   </CodeExample>
@@ -170,8 +173,11 @@
 <section class="stack">
   <h3>.tag</h3>
   <p>
-    Subtle category labels with customizable colors. Set <code>--tag-color</code> to any color variable.
-    Works as static labels or interactive links/buttons. Add <code>.muted</code> for neutral text with better contrast.
+    Prefer semantic status classes like <code>.success</code>, <code>.warning</code>,
+    <code>.error</code>, and <code>.info</code> for status labels. Use
+    <code>--tag-color</code> as a fallback for custom category colors. Works as
+    static labels or interactive links/buttons. Add <code>.muted</code> for
+    neutral text with better contrast.
   </p>
   <CodeExample code={tagsCode} title="Tags">
     <Tags />

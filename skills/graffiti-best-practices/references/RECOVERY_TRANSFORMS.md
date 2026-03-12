@@ -107,13 +107,13 @@ Each transform includes:
 ### After
 
 ```html
-<span class="tag" style="--tag-color: var(--green);">Active</span>
+<span class="tag success">Active</span>
 ```
 
 ### Verification
 
 - No raw color literals remain for semantic states
-- Uses class + tokenized override path
+- Uses semantic class variant path
 
 ---
 

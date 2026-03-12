@@ -87,11 +87,13 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 - [Buttons](https://graffiti-ui.com/llms/buttons.txt) - Button variants and styles
 - [Chips](https://graffiti-ui.com/llms/chips.txt) - Interactive filter/selection pills
 - [Tags](https://graffiti-ui.com/llms/tags.txt) - Category and metadata labels
+- `.tag.success`, `.tag.warning`, `.tag.error`, `.tag.info` - Preferred semantic status tag variants
 - [Bubble](https://graffiti-ui.com/llms/bubble.txt) - Chat message container with squircle corners
 - [Callouts](https://graffiti-ui.com/llms/callouts.txt) - Info, warning, error, success boxes
 - [Avatar](https://graffiti-ui.com/llms/avatar.txt) - User images and initials
 - [Boxes](https://graffiti-ui.com/llms/boxes.txt) - Container styles (glow, ghost, semi-gloss)
 - [Card](https://graffiti-ui.com/llms/card.txt) - Structured content container with header/body/footer
+- `.card.linked` - Card-as-link variant with built-in link reset and interaction affordance
 - [Tooltip](https://graffiti-ui.com/llms/tooltip.txt) - Hover tooltips with CSS anchor positioning
 
 ### Components
@@ -105,6 +107,7 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 
 ### Forms
 - [Form basics](https://graffiti-ui.com/llms/forms.txt) - Inputs, selects, checkboxes, radios
+- `.form-option-row` - Canonical checkbox/radio label row with aligned control + text
 - [Login form](https://graffiti-ui.com/llms/login-form.txt) - Complete login pattern
 - [Toggle switch](https://graffiti-ui.com/llms/toggle.txt) - On/off switch input
 - [Search input](https://graffiti-ui.com/llms/search.txt) - Search with icon

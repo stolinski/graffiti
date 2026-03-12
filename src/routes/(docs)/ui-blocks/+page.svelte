@@ -90,10 +90,17 @@
 <section class="stack">
   <h3>Sidebar Navigation</h3>
   <p>
-    Vertical navigation for app sidebars with collapsible sections. Uses native
-    details/summary for expand/collapse. Add <code>.active</code> class to show
-    current page. Use <code>.sub</code> class for indented sub-items without a collapsible
-    wrapper.
+    Vertical navigation for app sidebars with button-like hover and active
+    states, optional section headings, and collapsible groups powered by native
+    <code>details</code>/<code>summary</code>. Apply the same variant class
+    names used by <code>.button</code> directly on the
+    <code>.sidebar-nav</code> element, including <code>.primary</code>,
+    <code>.error</code>, <code>.warning</code>, <code>.success</code>,
+    <code>.dark</code>, <code>.light</code>, <code>.contrast</code>,
+    <code>.ghost</code>, and <code>.minimal</code>. Use
+    <code>.sidebar-nav-heading</code> for non-link section labels,
+    <code>aria-current="page"</code> or <code>.active</code> for the current item,
+    and <code>.sub</code> for indented sub-items without a collapsible wrapper.
   </p>
   <CodeExample code={sidebarNavCode} title="Sidebar Navigation">
     <SidebarNav />

@@ -78,6 +78,20 @@ Icons are automatically sized to `20px` (customizable via `--sidebar-nav-icon-si
 - `--sidebar-nav-icon-size` - Icon size (default: 20px)
 - `--sidebar-nav-indent` - Indentation for nested items (default: 1.5rem)
 
+## Compact Variant
+
+Use `.compact` when a sidebar needs denser rows:
+
+```html
+<nav class="sidebar-nav compact">
+  <a href="/inbox" aria-current="page">Inbox</a>
+  <a href="/assigned">Assigned</a>
+  <a href="/done">Done</a>
+</nav>
+```
+
+Compact mode keeps focus and hover behavior, while reducing row padding and icon size.
+
 ## App Shell Pattern
 
 Combine with `.layout-sidebar.fill` for a full app shell:

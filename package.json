@@ -31,7 +31,7 @@
     "package": "svelte-kit sync && svelte-package && node build-modules.js"
   },
   "type": "module",
-  "version": "4.18.0",
+  "version": "4.19.0",
   "publishConfig": {
     "access": "public",
     "directory": "."

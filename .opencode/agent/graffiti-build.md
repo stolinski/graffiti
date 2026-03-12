@@ -255,6 +255,7 @@ Is this both?
 - Uses only existing Graffiti CSS classes
 - Clean, semantic, **framework-agnostic** HTML
 - Accessible
+- One example variant per demo
 
 ### Visual Quality (your responsibility)
 
@@ -269,6 +270,7 @@ Is this both?
 - Demos: `src/docs/demos/*.svelte`
 - Documentation: `src/routes/+page.svelte`
 - Changesets: `.changeset/*.md`
+- AI Skill: `skills/graffiti-best-practices`
 
 ## Example Full Workflow
 
@@ -283,13 +285,14 @@ User: Implement task-xyz (add toggle switch component)
 6. chrome-devtools_navigate_page → http://localhost:6124
 7. chrome-devtools_take_screenshot → verify visually (light & dark)
 8. pnpm build → verify no errors
-9. git add -A && git commit -m "Add toggle switch component"
-10. Create changeset file
-11. pnpm changeset version → bump version
-12. git add -A && git commit -m "Version X.X.X: toggle switch"
-13. Update llms.txt with new component documentation
-14. git add llms.txt && git commit -m "Update llms.txt with toggle documentation"
-15. npx -y @zeeg/dex complete <task-id> --result "Implemented toggle, added demo, released vX.X.X"
+9. Update ./skills/graffiti-best-practices with any relevant new practices
+10. git add -A && git commit -m "Add toggle switch component"
+11. Create changeset file
+12. pnpm changeset version → bump version
+13. git add -A && git commit -m "Version X.X.X: toggle switch"
+14. Update llms.txt with new component documentation
+15. git add llms.txt && git commit -m "Update llms.txt with toggle documentation"
+16. npx -y @zeeg/dex complete <task-id> --result "Implemented toggle, added demo, released vX.X.X"
 ```
 
 ## Important Rules
@@ -303,6 +306,7 @@ User: Implement task-xyz (add toggle switch component)
 7. **Use the right subagent** - don't write CSS yourself, delegate to css agent
 8. **Keep docs clean** - no unnecessary wrappers or containers in demos
 9. **WAIT FOR EXPLICIT USER APPROVAL** before finishing up - after visual testing passes, stop and ask the user for explicit approval (e.g., "finish this up", "looks good, proceed", etc.) before creating changesets, updating llms.txt, bumping versions, or closing issues
+10. **When a requested pattern is not possible with current classes/tokens** - ship the closest class-first fallback, clearly explain the limitation, and create or update Dex follow-up work for the missing library capability
 
 ## 🚨 CRITICAL: User Confirmation Required
 

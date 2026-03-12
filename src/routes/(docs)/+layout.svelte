@@ -101,6 +101,7 @@
       text-decoration-color: var(--primary);
       text-decoration-thickness: 5px;
     }
+
   </style>
   <header class="header readable">
     <div>

@@ -26,6 +26,8 @@
   import dialogCode from "$docs/demos/Dialog.svelte?raw";
   import Chips from "$docs/demos/Chips.svelte";
   import chipsCode from "$docs/demos/Chips.svelte?raw";
+  import Bubble from "$docs/demos/Bubble.svelte";
+  import bubbleCode from "$docs/demos/Bubble.svelte?raw";
   import Tags from "$docs/demos/Tags.svelte";
   import tagsCode from "$docs/demos/Tags.svelte?raw";
   import ListNav from "$docs/demos/ListNav.svelte";
@@ -173,6 +175,17 @@
   </p>
   <CodeExample code={tagsCode} title="Tags">
     <Tags />
+  </CodeExample>
+</section>
+<section class="stack">
+  <h3>.bubble</h3>
+  <p>
+    Chat-style message container with sensible defaults for max width, padding,
+    and wrapping. Use CSS variables like <code>--bubble-bg</code> and
+    <code>--bubble-border</code> for sender-specific variants.
+  </p>
+  <CodeExample code={bubbleCode} title="Bubble">
+    <Bubble />
   </CodeExample>
 </section>
 <section class="stack">

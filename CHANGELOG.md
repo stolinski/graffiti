@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.19.0
+
+### Minor Changes
+
+- Added a new `.bubble` chat message component with squircle corners, plus chat layout helpers for aligned threads and full-width composers. Updated docs, LLM docs, and the AI chat template to use the new primitives.
+
 ## 4.18.0
 
 ### Minor Changes

@@ -92,26 +92,69 @@ Use `.compact` when a sidebar needs denser rows:
 
 Compact mode keeps focus and hover behavior, while reducing row padding and icon size.
 
-## App Shell Pattern
+## App Shell Pattern (Dashboard / Settings)
 
-Combine with `.layout-sidebar.fill` for a full app shell:
+Combine with `.layout-sidebar.fill` for the canonical shell:
 
 ```html
-<div class="layout-sidebar fill" style="--layout-gap: 0; height: 100vh;">
-  <aside class="split vertical" style="padding: var(--pad-m); background: var(--fg-05);">
+<div class="layout-sidebar fill">
+  <aside>
     <nav class="sidebar-nav">
-      <!-- navigation links -->
+      <a href="/overview" aria-current="page">Overview</a>
+      <a href="/settings">Settings</a>
     </nav>
-    <div>
-      <span>v1.0.0</span>
-      <button>Upgrade</button>
-    </div>
   </aside>
-  <main style="overflow-y: auto; padding: var(--pad-l);">
-    <!-- main content -->
+  <div class="app-shell">
+    <header>Workspace</header>
+    <main>Scrollable page content</main>
+    <footer>Footer actions</footer>
+  </div>
+</div>
+```
+
+Notes:
+- `.layout-sidebar.fill` is app-shell-oriented by default (`--layout-gap: 0`, `height: 100dvh`)
+- Fill children auto-scroll when they are not `.app-shell`
+- If a fill child is `.app-shell`, overflow is not forced there, avoiding double-scroll
+
+## Chat-Like Template Pattern
+
+```html
+<div class="layout-sidebar fill">
+  <aside>
+    <nav class="sidebar-nav compact">
+      <a href="/chat/general" aria-current="page">General</a>
+      <a href="/chat/support">Support</a>
+    </nav>
+  </aside>
+
+  <div class="app-shell">
+    <header>Conversation</header>
+    <main>Message thread</main>
+    <footer>Composer row</footer>
+  </div>
+</div>
+```
+
+This keeps channel list + thread stable, with message scrolling isolated to `.app-shell > main`.
+
+## Fixed Sidebar Pattern
+
+```html
+<div class="layout-sidebar fixed">
+  <aside>
+    <nav class="sidebar-nav">
+      <a href="/docs" aria-current="page">Docs</a>
+      <a href="/api">API</a>
+    </nav>
+  </aside>
+  <main>
+    <article>Long docs content</article>
   </main>
 </div>
 ```
+
+Use this when navigation should remain visible while main content scrolls.
 
 ## See Also
 

@@ -16,21 +16,68 @@ CSS Grid-based page layouts. All layouts are responsive by default.
 - `.layout-sidebar.narrow` - 150px sidebar
 - `.layout-sidebar.wide` - 350px sidebar
 - `.layout-sidebar.invert` - Sidebar on right
-- `.layout-sidebar.fill` - Full-height sidebar (for app shells)
+- `.layout-sidebar.fill` - Full app-shell frame (`--layout-gap: 0`, `height: 100dvh`)
+- `.layout-sidebar.fixed` - Sticky sidebar with scrolling main content
 
-## App Shell with Sidebar
+## Canonical: Dashboard / Settings Shell
 
 ```html
-<div class="layout-sidebar fill" style="--layout-gap: 0; height: 100vh;">
-  <aside class="split vertical">
-    <nav class="sidebar-nav"><!-- nav links --></nav>
-    <div><!-- footer/promo --></div>
+<div class="layout-sidebar fill">
+  <aside>
+    <nav class="sidebar-nav">
+      <a href="/overview" aria-current="page">Overview</a>
+      <a href="/settings">Settings</a>
+    </nav>
   </aside>
-  <main style="overflow-y: auto;">
-    <!-- scrollable content -->
+  <div class="app-shell">
+    <header>Workspace</header>
+    <main>Main content scrolls here</main>
+    <footer>Footer actions</footer>
+  </div>
+</div>
+```
+
+Why this is canonical:
+- `.layout-sidebar.fill` provides full-height shell behavior and stretch layout by default
+- Non-`.app-shell` first/second children auto-scroll in fill mode
+- If a fill child is `.app-shell`, overflow is not forced on that child (prevents double-scroll)
+- Nested `.app-shell > main` is the scroll container for page content
+
+## Canonical: Two-Pane Scrolling (No Nested App Shell)
+
+```html
+<div class="layout-sidebar fill">
+  <aside>
+    <nav class="sidebar-nav">
+      <a href="/all" aria-current="page">All</a>
+      <a href="/mine">Mine</a>
+    </nav>
+  </aside>
+  <main>
+    <article>Pane content scrolls independently</article>
   </main>
 </div>
 ```
+
+Use this when you want two independent scrolling panes and do not need sticky header/footer regions.
+
+## Fixed Sidebar
+
+```html
+<div class="layout-sidebar fixed">
+  <aside>
+    <nav class="sidebar-nav">
+      <a href="/docs" aria-current="page">Docs</a>
+      <a href="/api">API</a>
+    </nav>
+  </aside>
+  <main>
+    <article>Long content</article>
+  </main>
+</div>
+```
+
+Use `.layout-sidebar.fixed` when the sidebar should stay pinned while content scrolls.
 
 ## Card Grid
 

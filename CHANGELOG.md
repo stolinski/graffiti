@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.20.1
+
+### Patch Changes
+
+- Hardened app-shell and sidebar layout primitives so dashboard, settings, and chat templates can use class-first full-height shells with predictable scrolling and mobile fallbacks.
+
 ## 4.20.0
 
 ### Minor Changes

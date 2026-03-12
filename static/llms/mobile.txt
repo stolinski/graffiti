@@ -32,6 +32,62 @@ Features:
 - Sticky header with blur backdrop
 - Main content scrolls independently
 - Respects safe areas automatically
+- Better nested scroll resilience (`min-block-size: 0` on shell and direct regions)
+
+## Sidebar + App Shell (Canonical Mobile-Friendly Layout)
+
+```html
+<div class="layout-sidebar fill">
+  <aside>
+    <nav class="sidebar-nav">
+      <a href="/overview" aria-current="page">Overview</a>
+      <a href="/settings">Settings</a>
+    </nav>
+  </aside>
+
+  <div class="app-shell">
+    <header>Page title</header>
+    <main>Scrollable page content</main>
+    <footer>Footer actions</footer>
+  </div>
+</div>
+```
+
+Behavior:
+- `.layout-sidebar.fill` now acts as an app-shell frame by default (`--layout-gap: 0`, `height: 100dvh`)
+- Non-`.app-shell` first/second children auto-scroll on larger layouts
+- If a fill child is `.app-shell`, overflow is not forced on that child; its `main` handles scrolling
+
+## `.invert` on Mobile: Visual Swap, DOM Order Preserved
+
+Use `.invert` to place the sidebar on the right at larger sizes, while keeping the sidebar first in DOM order:
+
+```html
+<div class="layout-sidebar fill invert">
+  <aside>
+    <nav class="sidebar-nav">
+      <a href="/threads" aria-current="page">Threads</a>
+      <a href="/mentions">Mentions</a>
+    </nav>
+  </aside>
+
+  <div class="app-shell">
+    <header>Chat</header>
+    <main>Messages</main>
+    <footer>Composer</footer>
+  </div>
+</div>
+```
+
+On mobile stacking fallback, `.invert` placement resets and items stack in source order.
+
+## Mobile Fallback Rules for Sidebar Layouts
+
+Below mobile breakpoint/container width:
+- `.layout-sidebar*` variants collapse to one column
+- `.layout-sidebar.invert` grid placement resets to default flow
+- `.layout-sidebar.fill` and `.layout-sidebar.fixed` stop forcing sticky/overflow plumbing on children
+- Sidebar-first DOM order becomes the visual order
 
 ## Bottom Navigation
 

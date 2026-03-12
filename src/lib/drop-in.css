@@ -1299,11 +1299,28 @@
   }
 
   .layout-sidebar.fill {
+    --layout-gap: 0;
     align-items: stretch;
+    height: var(--app-shell-min-height, 100dvh);
+
+    > * {
+      min-block-size: 0;
+    }
 
     /* Sidebar is always :first-child in DOM, even for .invert (CSS grid handles visual placement) */
-    > :first-child {
+    > :first-child:not(.app-shell) {
       overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    > :nth-child(2):not(.app-shell) {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    > .app-shell {
+      --app-shell-min-height: 100%;
+      min-height: 100%;
     }
   }
 
@@ -1314,7 +1331,11 @@
     top: 0;
     align-self: start;
     max-height: 100dvh;
+  }
+
+  .layout-sidebar.fixed > :first-child:not(.app-shell) {
     overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .layout-sidebar.layout-readable {
@@ -1343,6 +1364,11 @@
       position: static;
       height: auto;
       max-height: none;
+    }
+
+    .layout-sidebar.fill > :first-child:not(.app-shell),
+    .layout-sidebar.fill > :nth-child(2):not(.app-shell),
+    .layout-sidebar.fixed > :first-child:not(.app-shell) {
       overflow-y: visible;
     }
   }
@@ -1371,6 +1397,11 @@
       position: static;
       height: auto;
       max-height: none;
+    }
+
+    .layout-sidebar.fill > :first-child:not(.app-shell),
+    .layout-sidebar.fill > :nth-child(2):not(.app-shell),
+    .layout-sidebar.fixed > :first-child:not(.app-shell) {
       overflow-y: visible;
     }
   }
@@ -4006,9 +4037,14 @@
     grid-template-rows: auto 1fr auto;
     min-height: var(--app-shell-min-height, 100dvh);
     height: 100%;
+    min-block-size: 0;
     padding-top: var(--safe-top);
     padding-bottom: var(--safe-bottom);
     padding-inline: var(--safe-left) var(--safe-right);
+  }
+
+  .app-shell > :is(header, main, footer) {
+    min-block-size: 0;
   }
 
   .app-shell > header {

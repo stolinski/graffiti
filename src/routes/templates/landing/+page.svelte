@@ -2,11 +2,13 @@
 <section class="section gradient-aurora">
 	<div class="layout-readable center stack text-center" style="--gap: var(--vs-l);">
 		<div class="stack" style="--gap: var(--vs-s);">
-			<span class="tag" style="align-self: center;">Now in Public Beta</span>
+			<div class="cluster center">
+				<span class="tag">Now in Public Beta</span>
+			</div>
 			<h1 style="--fl: 6;">Ship faster with less complexity</h1>
-		<p class="fs-s text-muted narrow" style="margin-inline: auto;">
-			Beacon is the modern deployment platform that eliminates config files, reduces build times by 80%, and lets your team focus on writing code instead of fighting infrastructure.
-		</p>
+			<p class="fs-s text-muted narrow" style="margin-inline: auto;">
+				Beacon is the modern deployment platform that eliminates config files, reduces build times by 80%, and lets your team focus on writing code instead of fighting infrastructure.
+			</p>
 		</div>
 		<div class="cluster center">
 			<a href="#pricing" class="button primary">Start Free Trial</a>
@@ -16,7 +18,7 @@
 </section>
 
 <!-- Logo Bar -->
-<section style="padding-block: var(--pad-xxl); border-block: var(--border-05);">
+<section class="section" style="--section-padding: var(--pad-xxl); border-block: var(--border-05);">
 	<div class="layout-readable center stack text-center" style="--gap: var(--vs-m);">
 		<p class="fs-xs text-faint" style="text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">
 			Trusted by engineering teams at
@@ -81,14 +83,14 @@
 	<div class="layout-readable center">
 		<div class="layout-split" style="align-items: center;">
 			<div class="stack" style="--gap: var(--vs-m);">
-				<span class="tag muted" style="--tag-color: var(--green); align-self: start;">Developer Experience</span>
+				<span class="tag muted self-start" style="--tag-color: var(--green);">Developer Experience</span>
 				<h2>Zero-config that actually works</h2>
-			<p class="text-muted">
-				Beacon detects your framework, installs dependencies, and configures your build pipeline automatically. No YAML files, no Dockerfiles, no guesswork.
-			</p>
-			<p class="text-muted">
-				We support Next.js, Remix, Astro, SvelteKit, Nuxt, and dozens more out of the box. Just connect your repo and push.
-			</p>
+				<p class="text-muted">
+					Beacon detects your framework, installs dependencies, and configures your build pipeline automatically. No YAML files, no Dockerfiles, no guesswork.
+				</p>
+				<p class="text-muted">
+					We support Next.js, Remix, Astro, SvelteKit, Nuxt, and dozens more out of the box. Just connect your repo and push.
+				</p>
 				<div class="cluster">
 					<span class="chip">Next.js</span>
 					<span class="chip">Remix</span>
@@ -99,10 +101,10 @@
 			</div>
 			<div class="box text-center gradient-slate" style="padding: var(--pad-xxxl); border-radius: var(--br-l);">
 				<p class="fs-xl" aria-hidden="true">&#128187;</p>
-			<p class="text-muted">
-				<code>git push origin main</code>
-			</p>
-			<p class="fs-xs text-faint">That's it. That's the deploy process.</p>
+				<p class="text-muted">
+					<code>git push origin main</code>
+				</p>
+				<p class="fs-xs text-faint">That's it. That's the deploy process.</p>
 			</div>
 		</div>
 	</div>
@@ -123,11 +125,11 @@
 					<p style="color: var(--fg-7);">
 						"We cut our deploy times from 12 minutes to 6 seconds. Our team ships 3x more PRs per week now because the feedback loop is so tight."
 					</p>
-					<div class="cluster" style="--gap: var(--vs-s);">
+					<div class="cluster">
 						<div class="avatar auto-color" style="--bg-color: var(--purple);">SK</div>
-						<div>
-							<p style="margin: 0; font-weight: 600;">Sarah Kim</p>
-							<p class="fs-xs text-muted" style="margin: 0;">VP Engineering, Lattice</p>
+						<div class="stack" style="--gap: var(--vs-xs);">
+							<p class="no-margin"><strong>Sarah Kim</strong></p>
+							<p class="fs-xs text-muted no-margin">VP Engineering, Lattice</p>
 						</div>
 					</div>
 				</div>
@@ -137,11 +139,11 @@
 					<p style="color: var(--fg-7);">
 						"The preview environments alone justified the switch. Our design team reviews every PR in context now, and we catch issues before they hit production."
 					</p>
-					<div class="cluster" style="--gap: var(--vs-s);">
+					<div class="cluster">
 						<div class="avatar auto-color" style="--bg-color: var(--teal);">MR</div>
-						<div>
-							<p style="margin: 0; font-weight: 600;">Marcus Rivera</p>
-							<p class="fs-xs text-muted" style="margin: 0;">CTO, Streamline</p>
+						<div class="stack" style="--gap: var(--vs-xs);">
+							<p class="no-margin"><strong>Marcus Rivera</strong></p>
+							<p class="fs-xs text-muted no-margin">CTO, Streamline</p>
 						</div>
 					</div>
 				</div>
@@ -151,11 +153,11 @@
 					<p style="color: var(--fg-7);">
 						"We migrated 40 microservices in a weekend. The zero-config detection nailed every single one. I've never seen an infra migration go that smoothly."
 					</p>
-					<div class="cluster" style="--gap: var(--vs-s);">
+					<div class="cluster">
 						<div class="avatar auto-color" style="--bg-color: var(--orange);">JL</div>
-						<div>
-							<p style="margin: 0; font-weight: 600;">Jenna Liu</p>
-							<p class="fs-xs text-muted" style="margin: 0;">Staff Engineer, Raycast</p>
+						<div class="stack" style="--gap: var(--vs-xs);">
+							<p class="no-margin"><strong>Jenna Liu</strong></p>
+							<p class="fs-xs text-muted no-margin">Staff Engineer, Raycast</p>
 						</div>
 					</div>
 				</div>
@@ -175,14 +177,12 @@
 		</div>
 		<div class="layout-three-col" style="align-items: stretch;">
 			<!-- Free Tier -->
-			<article class="card stack" style="--gap: 0;">
+			<article class="card">
 				<header>
 					<h3>Hobby</h3>
 				</header>
 				<div class="card-body stack" style="--gap: var(--vs-m);">
-					<div>
-						<p style="margin: 0;"><span class="fs-xl" style="font-weight: 700;">$0</span> <span class="text-muted">/ month</span></p>
-					</div>
+					<p class="no-margin"><strong class="fs-xl">$0</strong> <span class="text-muted">/ month</span></p>
 					<p class="text-muted">Perfect for side projects and personal sites.</p>
 					<ul class="stack" style="--gap: var(--vs-s); padding-left: 1.25em;">
 						<li>3 projects</li>
@@ -193,20 +193,18 @@
 					</ul>
 				</div>
 				<footer>
-					<a href="#" class="button ghost" style="width: 100%;">Get Started Free</a>
+					<a href="#" class="button ghost full">Get Started Free</a>
 				</footer>
 			</article>
 
 			<!-- Pro Tier (Highlighted) -->
-			<article class="card featured gradient-surface stack" style="--gap: 0;">
+			<article class="card featured gradient-surface">
 				<header>
 					<h3>Pro</h3>
 					<span class="tag" style="margin-inline-start: auto;">Popular</span>
 				</header>
 				<div class="card-body stack" style="--gap: var(--vs-m);">
-					<div>
-						<p style="margin: 0;"><span class="fs-xl" style="font-weight: 700;">$20</span> <span class="text-muted">/ month per seat</span></p>
-					</div>
+					<p class="no-margin"><strong class="fs-xl">$20</strong> <span class="text-muted">/ month per seat</span></p>
 					<p class="text-muted">For growing teams that need speed and reliability.</p>
 					<ul class="stack" style="--gap: var(--vs-s); padding-left: 1.25em;">
 						<li>Unlimited projects</li>
@@ -220,19 +218,17 @@
 					</ul>
 				</div>
 				<footer>
-					<a href="#" class="button primary" style="width: 100%;">Start Free Trial</a>
+					<a href="#" class="button primary full">Start Free Trial</a>
 				</footer>
 			</article>
 
 			<!-- Enterprise Tier -->
-			<article class="card stack" style="--gap: 0;">
+			<article class="card">
 				<header>
 					<h3>Enterprise</h3>
 				</header>
 				<div class="card-body stack" style="--gap: var(--vs-m);">
-					<div>
-						<p style="margin: 0;"><span class="fs-xl" style="font-weight: 700;">Custom</span></p>
-					</div>
+					<p class="no-margin"><strong class="fs-xl">Custom</strong></p>
 					<p class="text-muted">For organizations with advanced security and compliance needs.</p>
 					<ul class="stack" style="--gap: var(--vs-s); padding-left: 1.25em;">
 						<li>Everything in Pro</li>
@@ -246,7 +242,7 @@
 					</ul>
 				</div>
 				<footer>
-					<a href="#" class="button ghost" style="width: 100%;">Contact Sales</a>
+					<a href="#" class="button ghost full">Contact Sales</a>
 				</footer>
 			</article>
 		</div>
@@ -309,32 +305,32 @@
 <footer class="footer" style="padding: var(--pad-xxxl) 0 var(--pad-xxl);">
 	<div class="layout-readable center stack" style="--gap: var(--vs-xl);">
 		<div class="grid auto" style="--grid-min: 150px; --gap: var(--vs-l);">
-			<nav class="stack" style="--gap: var(--vs-s);">
-				<p style="font-weight: 600; margin: 0;">Product</p>
+			<nav class="stack" style="--gap: var(--vs-s);" aria-label="Product">
+				<p class="no-margin"><strong>Product</strong></p>
 				<a href="#">Features</a>
 				<a href="#">Pricing</a>
 				<a href="#">Changelog</a>
 				<a href="#">Integrations</a>
 				<a href="#">Documentation</a>
 			</nav>
-			<nav class="stack" style="--gap: var(--vs-s);">
-				<p style="font-weight: 600; margin: 0;">Company</p>
+			<nav class="stack" style="--gap: var(--vs-s);" aria-label="Company">
+				<p class="no-margin"><strong>Company</strong></p>
 				<a href="#">About</a>
 				<a href="#">Blog</a>
 				<a href="#">Careers</a>
 				<a href="#">Press Kit</a>
 				<a href="#">Contact</a>
 			</nav>
-			<nav class="stack" style="--gap: var(--vs-s);">
-				<p style="font-weight: 600; margin: 0;">Resources</p>
+			<nav class="stack" style="--gap: var(--vs-s);" aria-label="Resources">
+				<p class="no-margin"><strong>Resources</strong></p>
 				<a href="#">Guides</a>
 				<a href="#">API Reference</a>
 				<a href="#">Status Page</a>
 				<a href="#">Community</a>
 				<a href="#">Support</a>
 			</nav>
-			<nav class="stack" style="--gap: var(--vs-s);">
-				<p style="font-weight: 600; margin: 0;">Legal</p>
+			<nav class="stack" style="--gap: var(--vs-s);" aria-label="Legal">
+				<p class="no-margin"><strong>Legal</strong></p>
 				<a href="#">Privacy Policy</a>
 				<a href="#">Terms of Service</a>
 				<a href="#">Cookie Policy</a>
@@ -344,11 +340,11 @@
 		</div>
 		<hr>
 		<div class="split">
-			<p class="fs-xs text-muted" style="margin: 0;">&copy; 2026 Beacon, Inc. All rights reserved.</p>
+			<p class="fs-xs text-muted no-margin">&copy; 2026 Beacon, Inc. All rights reserved.</p>
 			<div class="cluster" style="--gap: var(--vs-m);">
-			<a href="#" class="fs-xs text-muted">Twitter</a>
-			<a href="#" class="fs-xs text-muted">GitHub</a>
-			<a href="#" class="fs-xs text-muted">Discord</a>
+				<a href="#" class="fs-xs text-muted">Twitter</a>
+				<a href="#" class="fs-xs text-muted">GitHub</a>
+				<a href="#" class="fs-xs text-muted">Discord</a>
 			</div>
 		</div>
 	</div>

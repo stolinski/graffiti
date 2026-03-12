@@ -1,17 +1,21 @@
 <!-- Hero -->
-<section style="padding-block: var(--pad-xxxl);">
-	<div class="layout-readable center stack" style="--gap: var(--vs-s); text-align: center;">
-		<span class="tag" style="align-self: center;">Zero custom CSS</span>
-		<h1 style="--fl: 5;">Real pages. Real layouts. Only Graffiti.</h1>
-		<p style="color: var(--fg-6); max-width: 55ch; margin-inline: auto;">
+<section class="section">
+	<div class="layout-readable center stack text-center" style="--gap: var(--vs-s);">
+		<div class="cluster center">
+			<span class="tag">Zero custom CSS</span>
+		</div>
+		<h1>Real pages. Real layouts. Only Graffiti.</h1>
+		<div class="cluster center">
+			<p class="text-muted narrow" style="--narrow-width: 55ch;">
 			Every heading, card, sidebar, table, and interaction on these pages comes from the same drop-in stylesheet. Copy them, customize them, ship them.
-		</p>
+			</p>
+		</div>
 	</div>
 </section>
 
 <!-- Template Cards -->
-<section class="layout-readable center stack" style="--gap: var(--vs-xl); padding-block: 0 var(--pad-xxxl);">
-	<div class="layout-card" style="--min-card-width: 300px;">
+<section class="section layout-readable center stack" style="--gap: var(--vs-xl); --section-padding: 0 var(--pad-xxxl);">
+	<div class="layout-card" style="--layout-min-card-width: 300px;">
 
 		<!-- Landing Page -->
 		<article class="card">
@@ -20,8 +24,8 @@
 					<div class="cluster" style="--gap: var(--vs-xs);">
 						<span class="tag muted" style="--tag-color: var(--purple);">Marketing</span>
 					</div>
-					<h2 class="h3" style="margin: 0;">Landing Page</h2>
-					<p style="color: var(--fg-5); margin: 0;">
+					<h2 class="h3">Landing Page</h2>
+					<p class="text-muted">
 						A complete SaaS marketing page. Hero section with dual CTAs, a social proof bar, six-feature grid, three-tier pricing table, customer testimonials, FAQ accordion, and a full conversion footer.
 					</p>
 				</div>
@@ -33,7 +37,7 @@
 					<span class="chip">Testimonials</span>
 					<span class="chip">FAQ</span>
 				</div>
-				<a href="/templates/landing" class="button primary" style="align-self: start;">View Template →</a>
+				<a href="/templates/landing" class="button primary self-start">View Template →</a>
 			</div>
 		</article>
 
@@ -42,10 +46,10 @@
 			<div class="card-body stack" style="--gap: var(--vs-m);">
 				<div class="stack" style="--gap: var(--vs-s);">
 					<div class="cluster" style="--gap: var(--vs-xs);">
-						<span class="tag muted" style="--tag-color: var(--blue);">Application</span>
+						<span class="tag muted info">Application</span>
 					</div>
-					<h2 class="h3" style="margin: 0;">Dashboard</h2>
-					<p style="color: var(--fg-5); margin: 0;">
+					<h2 class="h3">Dashboard</h2>
+					<p class="text-muted">
 						An admin dashboard with collapsible sidebar navigation, four KPI stat cards with trend indicators, and an eight-row data table with status tags and sortable columns.
 					</p>
 				</div>
@@ -55,7 +59,7 @@
 					<span class="chip">Data Table</span>
 					<span class="chip">Status Tags</span>
 				</div>
-				<a href="/templates/dashboard" class="button primary" style="align-self: start;">View Template →</a>
+				<a href="/templates/dashboard" class="button primary self-start">View Template →</a>
 			</div>
 		</article>
 
@@ -64,10 +68,10 @@
 			<div class="card-body stack" style="--gap: var(--vs-m);">
 				<div class="stack" style="--gap: var(--vs-s);">
 					<div class="cluster" style="--gap: var(--vs-xs);">
-						<span class="tag muted" style="--tag-color: var(--green);">Content</span>
+						<span class="tag muted success">Content</span>
 					</div>
-					<h2 class="h3" style="margin: 0;">Blog</h2>
-					<p style="color: var(--fg-5); margin: 0;">
+					<h2 class="h3">Blog</h2>
+					<p class="text-muted">
 						A long-form article layout with a sticky table of contents sidebar, related article cards, newsletter signup, author bio, and a full typography showcase including code blocks, blockquotes, and lists.
 					</p>
 				</div>
@@ -78,7 +82,7 @@
 					<span class="chip">Newsletter</span>
 					<span class="chip">Typography</span>
 				</div>
-				<a href="/templates/blog" class="button primary" style="align-self: start;">View Template →</a>
+				<a href="/templates/blog" class="button primary self-start">View Template →</a>
 			</div>
 		</article>
 
@@ -87,10 +91,10 @@
 			<div class="card-body stack" style="--gap: var(--vs-m);">
 				<div class="stack" style="--gap: var(--vs-s);">
 					<div class="cluster" style="--gap: var(--vs-xs);">
-						<span class="tag muted" style="--tag-color: var(--blue);">Application</span>
+						<span class="tag muted info">Application</span>
 					</div>
-					<h2 class="h3" style="margin: 0;">Settings</h2>
-					<p style="color: var(--fg-5); margin: 0;">
+					<h2 class="h3">Settings</h2>
+					<p class="text-muted">
 						A full account settings panel with nested sidebar navigation, profile editing with avatar upload, notification preferences, form sections with every input type, toggles, and a danger zone.
 					</p>
 				</div>
@@ -101,7 +105,7 @@
 					<span class="chip">Avatar</span>
 					<span class="chip">Danger Zone</span>
 				</div>
-				<a href="/templates/settings" class="button primary" style="align-self: start;">View Template →</a>
+				<a href="/templates/settings" class="button primary self-start">View Template →</a>
 			</div>
 		</article>
 

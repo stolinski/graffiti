@@ -68,7 +68,11 @@
 	style:--font-width-max={font_settings.max_viewport}
 >
 	<header class="header border sticky">
-		<a href="/" style="color: var(--fg); text-decoration: none;">← Back to Docs</a>
+		<nav aria-label="Templates navigation">
+			<ul>
+				<li><a href="/">← Back to Docs</a></li>
+			</ul>
+		</nav>
 	</header>
 
 	{@render children()}

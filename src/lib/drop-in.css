@@ -983,6 +983,10 @@
   .narrow {
     max-width: var(--narrow-width, 50ch);
     width: 100%;
+
+    &.center {
+      margin-inline: auto;
+    }
   }
 
   .flex {
@@ -3452,6 +3456,22 @@
     > button:focus-visible,
     > .button:focus-visible {
       z-index: 1;
+    }
+
+    &.stack-mobile {
+      @media (width < 640px) {
+        flex-direction: column;
+        gap: var(--input-group-stack-gap, var(--vs-s));
+
+        > input {
+          border-radius: var(--br-m);
+        }
+
+        > button,
+        > .button {
+          border-radius: var(--br-m);
+        }
+      }
     }
   }
 

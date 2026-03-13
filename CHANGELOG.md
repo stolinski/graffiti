@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.21.0
+
+### Minor Changes
+
+- Add `.narrow.center` for centered constrained content and `.input-group.stack-mobile` for responsive stacked form actions on small screens.
+
 ## 4.20.1
 
 ### Patch Changes

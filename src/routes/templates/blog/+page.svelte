@@ -11,10 +11,10 @@
 </header>
 
 <!-- Article + Sidebar -->
-<main class="layout-readable center" style="padding-block: var(--vs-xl);">
-	<div class="layout-sidebar invert">
+<main class="layout-readable center section">
+	<div class="layout-sidebar invert fixed">
 		<!-- Sidebar (first in DOM, rendered on right by .invert) -->
-		<aside class="stack" style="--gap: var(--vs-l); position: sticky; top: var(--pad-xl); align-self: start;">
+		<aside class="stack self-start" style="--gap: var(--vs-l);">
 			<!-- Table of Contents -->
 			<nav class="toc" aria-label="Table of contents">
 				<h4>On this page</h4>
@@ -55,7 +55,7 @@
 			<!-- Article Header -->
 			<header class="stack" style="--gap: var(--vs-s);">
 				<div class="cluster">
-					<span class="tag" style="--tag-color: var(--blue);">Accessibility</span>
+					<span class="tag info">Accessibility</span>
 					<span class="fs-xs text-muted">10 min read</span>
 				</div>
 				<h1>Building Accessible Web Components</h1>
@@ -161,7 +161,7 @@
 				provides keyboard support, screen reader announcements, and proper focus management out of the box.
 			</p>
 
-			<div class="callout fill" style="--callout-color: var(--blue-1); --callout-border-color: var(--blue-5);">
+			<div class="callout fill">
 				<p>
 					<strong>Tip:</strong> Always start with native HTML elements before reaching for ARIA. The first
 					rule of ARIA is "do not use ARIA if you can use a native HTML element." Native elements come with
@@ -251,7 +251,7 @@ function openModal(dialog) &#123;
 				<li>Test with reduced motion preferences enabled</li>
 			</ul>
 
-			<div class="callout warning fill" style="--callout-color: var(--yellow-1); --callout-border-color: var(--yellow-5);">
+			<div class="callout warning fill">
 				<p>
 					<strong>Warning:</strong> Do not rely solely on automated tools. They cannot detect issues like
 					illogical tab order, missing context for screen readers, or confusing interaction patterns. Manual
@@ -292,23 +292,23 @@ function openModal(dialog) &#123;
 			<section class="stack" style="--gap: var(--vs-s);">
 				<h3>Related Articles</h3>
 				<div class="layout-card" style="--min-card-width: 200px;">
-					<a href="/templates/blog" class="card stack" style="--gap: 0; text-decoration: none; color: var(--fg);">
-						<div class="card-body stack" style="--gap: var(--vs-xs);">
-							<span class="tag" style="--tag-color: var(--purple);">CSS</span>
+					<a href="/templates/blog" class="card linked">
+						<div class="card-body stack">
+							<span class="tag info">CSS</span>
 							<strong>CSS Custom Properties Deep Dive</strong>
 							<span class="fs-xs text-muted">8 min read</span>
 						</div>
 					</a>
-					<a href="/templates/blog" class="card stack" style="--gap: 0; text-decoration: none; color: var(--fg);">
-						<div class="card-body stack" style="--gap: var(--vs-xs);">
-							<span class="tag" style="--tag-color: var(--teal);">Design</span>
+					<a href="/templates/blog" class="card linked">
+						<div class="card-body stack">
+							<span class="tag success">Design</span>
 							<strong>Design Tokens in Practice</strong>
 							<span class="fs-xs text-muted">6 min read</span>
 						</div>
 					</a>
-					<a href="/templates/blog" class="card stack" style="--gap: 0; text-decoration: none; color: var(--fg);">
-						<div class="card-body stack" style="--gap: var(--vs-xs);">
-							<span class="tag" style="--tag-color: var(--orange);">Components</span>
+					<a href="/templates/blog" class="card linked">
+						<div class="card-body stack">
+							<span class="tag warning">Components</span>
 							<strong>The State of Web Components</strong>
 							<span class="fs-xs text-muted">12 min read</span>
 						</div>
@@ -322,11 +322,11 @@ function openModal(dialog) &#123;
 <!-- Newsletter -->
 <section class="section surface">
 	<div class="layout-readable center">
-		<div class="card" style="max-width: 860px; margin-inline: auto;">
-			<div class="card-body stack text-center" style="align-items: center; --gap: var(--vs-m);">
+		<div class="card newsletter">
+			<div class="card-body stack text-center" style="--gap: var(--vs-m);">
 				<h3>Stay in the loop</h3>
-				<p class="text-muted narrow">Get weekly articles on web development, accessibility, and CSS delivered to your inbox. No spam, unsubscribe anytime.</p>
-				<div class="input-group" style="max-width: 400px;">
+				<p class="text-muted narrow center">Get weekly articles on web development, accessibility, and CSS delivered to your inbox. No spam, unsubscribe anytime.</p>
+				<div class="input-group narrow center stack-mobile">
 					<input type="email" placeholder="you@example.com" aria-label="Email address" />
 					<button class="primary">Subscribe</button>
 				</div>

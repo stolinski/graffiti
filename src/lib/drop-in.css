@@ -3931,6 +3931,7 @@
         color: var(--fg);
         font-weight: 600;
         border-bottom-color: var(--primary);
+        pointer-events: none;
       }
 
       /* Tab panel content */
@@ -3977,6 +3978,11 @@
           background: var(--fg-05);
           margin-inline-end: -1px;
           position: relative;
+
+          /* Reset margin on last tab so it aligns with panel border */
+          &:last-of-type {
+            margin-inline-end: 0;
+          }
         }
 
         /* Active tab connects to panel */

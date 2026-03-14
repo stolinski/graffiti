@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.21.1
+
+### Patch Changes
+
+- Refresh the `.tabs.pill` variant as a segmented control with a pure CSS sliding thumb and updated docs examples.
+
 ## 4.21.0
 
 ### Minor Changes

@@ -75,21 +75,17 @@ Tabs that visually connect to the panel below:
 
 ## Pill Variant
 
-Rounded pill-style tabs with primary color active state:
+Segmented-control style tabs with a CSS-only sliding thumb indicator:
 
 ```html
-<div class="tabs pill">
+<div class="tabs pill" style="--tab-count: 2">
   <details name="pill-tabs" open style="--n: 1">
-    <summary>All</summary>
-    <div>All items</div>
+    <summary>Content</summary>
+    <div>Primary content view</div>
   </details>
   <details name="pill-tabs" style="--n: 2">
-    <summary>Active</summary>
-    <div>Active items</div>
-  </details>
-  <details name="pill-tabs" style="--n: 3">
-    <summary>Archived</summary>
-    <div>Archived items</div>
+    <summary>History</summary>
+    <div>Previous updates and activity</div>
   </details>
 </div>
 ```
@@ -107,7 +103,7 @@ Rounded pill-style tabs with primary color active state:
 - Smooth opacity transitions with `@starting-style`
 - Works in light and dark modes
 - Keyboard accessible (native details/summary behavior)
-- Active tab has underline indicator (default), card connection (boxed), or filled pill (pill)
+- Active tab has underline indicator (default), card connection (boxed), or sliding thumb segment (pill)
 
 ## See Also
 

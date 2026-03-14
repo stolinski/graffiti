@@ -4025,26 +4025,140 @@
       }
     }
 
-    /* Pill variant - rounded pill-style tabs */
+    /* Pill variant - segmented control tab rail with sliding thumb */
     &.pill {
-      gap: var(--pad-s);
-      column-gap: var(--pad-s);
+      --pill-gap: var(--pad-xs);
+      --pill-track-pad: var(--pad-xs);
+      --pill-tab-count: var(--tab-count, 3);
+      --pill-tab-height: calc(1lh + (var(--pad-s) * 1.5));
+      --pill-track-height: calc(
+        var(--pill-tab-height) + (var(--pill-track-pad) * 2)
+      );
+      --pill-tab-width: calc(
+        (
+            100% - (var(--pill-track-pad) * 2) -
+              ((var(--pill-tab-count) - 1) * var(--pill-gap))
+          ) /
+          var(--pill-tab-count)
+      );
+      --pill-thumb-width: var(--pill-tab-width);
+      --pill-index: 0;
+      --pill-thumb-offset: calc(
+        var(--pill-track-pad) +
+          (var(--pill-index) * (var(--pill-tab-width) + var(--pill-gap)))
+      );
 
-      > details > summary {
-        border-radius: var(--br-xxl);
+      position: relative;
+      isolation: isolate;
+      grid-template-rows: var(--pill-track-height) 1fr;
+      column-gap: var(--pill-gap);
+      row-gap: var(--pad-s);
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset-inline: 0;
+        inset-block-start: 0;
+        block-size: var(--pill-track-height);
         border: var(--border-1);
-        border-bottom-width: 1px;
-        margin-block-end: var(--pad-s);
+        border-radius: var(--br-xxl);
+        background: linear-gradient(180deg, var(--fg-05) 0%, var(--fg-1) 100%);
+        box-shadow:
+          inset 0 1px 0 var(--bg-4),
+          inset 0 -1px 0 var(--fg-1);
+        pointer-events: none;
+        z-index: 0;
+      }
 
-        &:hover {
-          background: var(--fg-05);
+      &::before {
+        content: "";
+        position: absolute;
+        inset-block-start: var(--pill-track-pad);
+        inset-inline-start: var(--pill-thumb-offset);
+        inline-size: var(--pill-thumb-width);
+        block-size: var(--pill-tab-height);
+        border: var(--border-1);
+        border-radius: calc(var(--br-xxl) - var(--pill-track-pad));
+        background: linear-gradient(180deg, var(--bg) 0%, var(--bg-8) 100%);
+        box-shadow: var(--shadow-1);
+        pointer-events: none;
+        transition:
+          inset-inline-start 0.25s var(--ease-smooth),
+          border-color 0.2s var(--ease-smooth),
+          box-shadow 0.2s var(--ease-smooth);
+        z-index: 1;
+      }
+
+      > details {
+        > summary {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          align-self: center;
+          block-size: var(--pill-tab-height);
+          min-block-size: var(--pill-tab-height);
+          padding-inline: var(--pad-m);
+          padding-block: 0;
+          border: 0;
+          border-bottom: 0;
+          border-radius: var(--br-xl);
+          color: var(--fg-6);
+          margin-block-end: 0;
+          position: relative;
+          z-index: 2;
+
+          &:hover {
+            color: var(--fg-8);
+          }
+
+          &:focus-visible {
+            outline: var(--focus-ring);
+            outline-offset: var(--focus-ring-offset-inset);
+          }
+        }
+
+        &[open] > summary {
+          color: var(--fg);
+          font-weight: 600;
+        }
+
+        &::details-content {
+          border: var(--border-1);
+          border-radius: var(--br-l);
+          box-shadow: var(--shadow-1);
         }
       }
 
-      > details[open] > summary {
-        background: var(--primary);
-        border-color: var(--primary);
-        color: var(--white);
+      &:has(> details:nth-of-type(1)[open]) {
+        --pill-index: 0;
+      }
+
+      &:has(> details:nth-of-type(2)[open]) {
+        --pill-index: 1;
+      }
+
+      &:has(> details:nth-of-type(3)[open]) {
+        --pill-index: 2;
+      }
+
+      &:has(> details:nth-of-type(4)[open]) {
+        --pill-index: 3;
+      }
+
+      &:has(> details:nth-of-type(5)[open]) {
+        --pill-index: 4;
+      }
+
+      &:has(> details:nth-of-type(6)[open]) {
+        --pill-index: 5;
+      }
+
+      &:has(> details:nth-of-type(7)[open]) {
+        --pill-index: 6;
+      }
+
+      &:has(> details:nth-of-type(8)[open]) {
+        --pill-index: 7;
       }
     }
   }

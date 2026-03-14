@@ -208,6 +208,8 @@
   <h3 id="tabs">.tabs</h3>
   <p>
     Pure CSS tabs using details/summary with CSS Grid and Subgrid. No JavaScript required.
+    The <code>.pill</code> variant presents as a segmented control with a sliding thumb,
+    still fully CSS-only.
     Set <code>--tab-count</code> to match your number of tabs (default: 3).
     Use <code>--n</code> on each details element to position its tab.
   </p>

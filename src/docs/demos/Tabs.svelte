@@ -44,23 +44,23 @@
   </div>
 
   <!-- Pill variant -->
-  <div class="tabs pill">
+  <div class="tabs pill" style="--tab-count: 3">
     <details name="tabs-pill" open style="--n: 1">
-      <summary>All</summary>
+      <summary>Content</summary>
       <div>
-        <p>Showing all items across all categories.</p>
+        <p>Primary content view with full details and context.</p>
       </div>
     </details>
     <details name="tabs-pill" style="--n: 2">
-      <summary>Active</summary>
+      <summary>History</summary>
       <div>
-        <p>Showing only active items.</p>
+        <p>Timeline of previous updates, edits, and activity.</p>
       </div>
     </details>
     <details name="tabs-pill" style="--n: 3">
-      <summary>Archived</summary>
+      <summary>Insights</summary>
       <div>
-        <p>Showing archived items.</p>
+        <p>Key observations and highlights from recent engagement.</p>
       </div>
     </details>
   </div>

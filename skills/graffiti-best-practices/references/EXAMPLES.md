@@ -164,27 +164,36 @@ Each example follows the required response structure from `OUTPUT_CONTRACT.md`.
 ### Markup excerpt
 
 ```html
-<section class="stack" style="--gap: var(--vs-s);">
-  <div class="box split center">
-    <div>
-      <p><strong>Email notifications</strong></p>
+<fieldset
+  class="stack"
+  style="padding: 0; margin: 0; border: none; --gap: var(--vs-s);"
+>
+  <legend class="visually-hidden">Notification preferences</legend>
+  <div class="box split" style="--gap: var(--vs-s);">
+    <div class="stack" style="--gap: var(--vs-xs);">
+      <label for="notif-email"><strong>Email notifications</strong></label>
       <p class="fs-xs text-muted">Receive activity updates.</p>
     </div>
-    <input
-      class="toggle"
-      type="checkbox"
-      checked
-      aria-label="Email notifications"
-    />
+    <input id="notif-email" class="toggle" type="checkbox" checked />
   </div>
-</section>
+</fieldset>
 
-<section class="stack" style="--gap: var(--vs-m);">
-  <h2 class="h3" style="color: var(--red);">Danger Zone</h2>
-  <div class="callout error">
-    <p><strong>Delete account</strong></p>
-    <p class="text-muted">This action cannot be undone.</p>
-    <button class="error">Delete Account</button>
+<section
+  class="stack"
+  aria-labelledby="danger-zone-heading"
+  style="--gap: var(--vs-m);"
+>
+  <header>
+    <h2 id="danger-zone-heading" class="h3" style="color: var(--red);">
+      Danger Zone
+    </h2>
+  </header>
+  <div class="callout error fill">
+    <div class="stack" style="--gap: var(--vs-s);">
+      <p><strong>Delete account</strong></p>
+      <p class="text-muted">This action cannot be undone.</p>
+      <button class="error" type="button">Delete Account</button>
+    </div>
   </div>
 </section>
 ```

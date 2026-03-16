@@ -185,22 +185,59 @@ Use case: contextual notices, warnings, and critical actions.
 Use case: settings preferences row.
 
 ```html
-<div class="box split center">
-  <div>
-    <p><strong>Email notifications</strong></p>
+<div class="box split" style="--gap: var(--vs-s);">
+  <div class="stack" style="--gap: var(--vs-xs);">
+    <label for="notif-email"><strong>Email notifications</strong></label>
     <p class="fs-xs text-muted">Receive account updates.</p>
   </div>
-  <input
-    type="checkbox"
-    class="toggle"
-    checked
-    aria-label="Email notifications"
-  />
+  <input id="notif-email" type="checkbox" class="toggle" checked />
 </div>
 ```
 
-- Accessibility: ensure each toggle has a clear label association
+- Accessibility: use explicit `label[for]` + `id` association instead of `aria-label`
 - Anti-pattern: avoid custom switch JS/CSS when native `input.toggle` fits
+
+---
+
+## COMP-016: Form Field Row
+
+Use case: label + input + optional help text grouping inside forms.
+
+```html
+<form class="stack" style="--gap: var(--vs-m);">
+  <div class="row">
+    <label for="email">Email</label>
+    <input type="email" id="email" />
+    <small class="text-faint">Used for account notifications.</small>
+  </div>
+
+  <div class="row">
+    <label for="password">Password</label>
+    <input type="password" id="password" />
+  </div>
+</form>
+```
+
+- `.row` becomes a grid field wrapper inside `form` or `fieldset` contexts
+- Outside forms, `.row` retains its spacing utility behavior (`margin-block`)
+- Anti-pattern: avoid repeated `stack` + `--gap: var(--vs-xs)` wrappers when `.row` handles it
+
+---
+
+## COMP-017: Form Actions
+
+Use case: submit/cancel button row at end of form.
+
+```html
+<div class="form-actions">
+  <button class="ghost" type="button">Cancel</button>
+  <button class="primary" type="submit">Save changes</button>
+</div>
+```
+
+- End-aligned on desktop, stacks full-width on narrow containers via container query
+- Tunable via `--form-actions-justify`, `--form-actions-gap`, `--form-actions-margin`
+- Anti-pattern: avoid bare `cluster` for form actions when `.form-actions` provides responsive stacking
 
 ---
 

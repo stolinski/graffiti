@@ -290,57 +290,108 @@ Use case: conversion close with nav footer.
 ### SECTION-SET-001: Profile Form Block
 
 ```html
-<section class="stack" style="--gap: var(--vs-m);">
-  <div>
-    <h1 class="h3">Profile</h1>
+<section
+  class="stack"
+  aria-labelledby="profile-heading"
+  style="--gap: var(--vs-m);"
+>
+  <header class="stack" style="--gap: var(--vs-xs);">
+    <h1 id="profile-heading" class="h3">Profile</h1>
     <p class="text-muted">Manage your profile info.</p>
-  </div>
+  </header>
 
-  <div class="layout-split">
-    <div>
-      <label for="first-name">First name</label>
-      <input id="first-name" type="text" />
+  <form
+    class="stack"
+    aria-labelledby="profile-heading"
+    style="--gap: var(--vs-m);"
+  >
+    <div class="layout-split" style="--layout-gap: var(--vs-m);">
+      <div class="row">
+        <label for="first-name">First name</label>
+        <input id="first-name" type="text" />
+      </div>
+      <div class="row">
+        <label for="last-name">Last name</label>
+        <input id="last-name" type="text" />
+      </div>
     </div>
-    <div>
-      <label for="last-name">Last name</label>
-      <input id="last-name" type="text" />
-    </div>
-  </div>
 
-  <div class="cluster">
-    <button class="primary">Save</button>
-    <button class="ghost">Cancel</button>
-  </div>
+    <div class="row">
+      <label for="email">Email</label>
+      <input id="email" type="email" />
+      <small class="text-faint">Used for notifications and login.</small>
+    </div>
+
+    <div class="form-actions">
+      <button class="primary" type="button">Save</button>
+      <button class="ghost" type="button">Cancel</button>
+    </div>
+  </form>
 </section>
 ```
+
+- Uses `.row` for field wrappers, `.form-actions` for action row
+- Accessibility: `aria-labelledby` on section and form, explicit `label[for]` on all fields
 
 ### SECTION-SET-002: Notification Toggles
 
 ```html
-<section class="stack" style="--gap: var(--vs-s);">
-  <div class="box split center">
-    <div>
-      <p><strong>Email notifications</strong></p>
-      <p class="fs-xs text-muted">Toggle description.</p>
+<section
+  class="stack"
+  aria-labelledby="notifications-heading"
+  style="--gap: var(--vs-m);"
+>
+  <header class="stack" style="--gap: var(--vs-xs);">
+    <h2 id="notifications-heading" class="h3">Notifications</h2>
+    <p class="text-muted">Choose what notifications you receive.</p>
+  </header>
+
+  <fieldset
+    class="stack"
+    style="padding: 0; margin: 0; border: none; --gap: var(--vs-s);"
+  >
+    <legend class="visually-hidden">Notification preferences</legend>
+    <div class="box split" style="--gap: var(--vs-s);">
+      <div class="stack" style="--gap: var(--vs-xs);">
+        <label for="notif-email"><strong>Email notifications</strong></label>
+        <p class="fs-xs text-muted">Toggle description.</p>
+      </div>
+      <input id="notif-email" class="toggle" type="checkbox" checked />
     </div>
-    <input class="toggle" type="checkbox" checked />
-  </div>
+  </fieldset>
 </section>
 ```
+
+- Uses `fieldset` + `legend` for grouping, explicit `label[for]` + `id` for toggles
+- Accessibility: `visually-hidden` legend for screen readers
 
 ### SECTION-SET-003: Danger Zone
 
 ```html
-<section class="stack" style="--gap: var(--vs-m);">
-  <h2 class="h3" style="color: var(--red);">Danger Zone</h2>
-  <div class="callout error">
-    <p><strong>Delete account</strong></p>
-    <p class="text-muted">This action is permanent.</p>
-    <button class="error">Delete Account</button>
+<section
+  class="stack"
+  aria-labelledby="danger-zone-heading"
+  style="--gap: var(--vs-m);"
+>
+  <header>
+    <h2 id="danger-zone-heading" class="h3" style="color: var(--red);">
+      Danger Zone
+    </h2>
+  </header>
+
+  <div class="callout error fill">
+    <div class="stack" style="--gap: var(--vs-s);">
+      <p><strong>Delete account</strong></p>
+      <p class="text-muted">This action is permanent.</p>
+      <div class="cluster" style="--gap: var(--vs-s);">
+        <button class="error" type="button">Delete Account</button>
+      </div>
+    </div>
   </div>
 </section>
 ```
 
+- Uses `callout error fill` for stronger visual weight
 - Fallback warning: semantic heading color variant is not standardized; one inline color is acceptable until variant exists
 
 ---

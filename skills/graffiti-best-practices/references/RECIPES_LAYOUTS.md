@@ -230,12 +230,13 @@ Use case: Settings pages with left nav and right form sections.
 ### Recommended class set
 
 - `layout-sidebar fill`, `sidebar-nav`, `stack`, `layout-split`
-- `input-group`, `toggle`, `callout error`
+- `input-group`, `toggle`, `callout error`, `row`, `form-actions`
 
 ### Optional variants
 
-- Use `.box split center` for preference rows
-- Use `.cluster` for action button rows
+- Use `.box split` for preference/toggle rows with `label[for]` + `id` association
+- Use `.row` inside forms for field wrappers (label + input + help text)
+- Use `.form-actions` for submit/cancel button rows (responsive stacking built in)
 
 ### Accessibility notes
 
@@ -245,6 +246,8 @@ Use case: Settings pages with left nav and right form sections.
 ### Anti-pattern warnings
 
 - Avoid ad-hoc inline flex declarations on label rows; use `cluster`/`split` patterns
+- Avoid bare `cluster` for form action rows; use `.form-actions` for responsive stacking
+- Avoid repeated `stack` + `--gap` wrappers for form fields; use `.row` inside forms
 
 ### Fallback path
 

@@ -126,6 +126,8 @@ Status defaults:
 - Use `--tag-color` as a fallback for non-status category colors.
 - Prefer `.card.linked` for card-as-link patterns instead of inline link reset styles.
 - Prefer `.form-option-row` for checkbox/radio label rows instead of inline `display: inline-flex` recipes.
+- Prefer `.row` inside forms/fieldsets for field wrappers (label + input + help text) instead of repeated `stack` + `--gap` compositions.
+- Prefer `.form-actions` for submit/cancel rows instead of bare `cluster` compositions (provides responsive stacking).
 
 ## Accessibility Minimums (Must Pass)
 

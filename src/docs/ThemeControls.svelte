@@ -8,8 +8,6 @@
     border_radius = $bindable(),
   }: { theme_values: ThemeValues; font_settings: FontSettings; border_radius: BorderRadiusSettings } = $props();
 
-  let theming = $state(false);
-
   const themes: { name: string; values: ThemeValues }[] = [
     {
       name: "Default",
@@ -89,6 +87,66 @@
         bg_light: "#f1f5f9",
         bg_dark: "#020617",
         primary: "#6366f1",
+      },
+    },
+    {
+      name: "Clay & Cobalt",
+      values: {
+        fg_light: "#2b1f19",
+        fg_dark: "#f7ede4",
+        bg_light: "#faf3ed",
+        bg_dark: "#19130f",
+        primary: "#326fdf",
+      },
+    },
+    {
+      name: "Sea Glass",
+      values: {
+        fg_light: "#12332d",
+        fg_dark: "#dbf7ef",
+        bg_light: "#ecfcf7",
+        bg_dark: "#08201c",
+        primary: "#128277",
+      },
+    },
+    {
+      name: "Night Market",
+      values: {
+        fg_light: "#26163a",
+        fg_dark: "#efe8ff",
+        bg_light: "#f8f4ff",
+        bg_dark: "#140b1f",
+        primary: "#c026d3",
+      },
+    },
+    {
+      name: "Terminal Amber",
+      values: {
+        fg_light: "#2d2418",
+        fg_dark: "#ffe4b8",
+        bg_light: "#fff8eb",
+        bg_dark: "#120d06",
+        primary: "#b95b13",
+      },
+    },
+    {
+      name: "Noir Neon",
+      values: {
+        fg_light: "#14161b",
+        fg_dark: "#dff5ff",
+        bg_light: "#f1f4f7",
+        bg_dark: "#090d14",
+        primary: "#0b79bb",
+      },
+    },
+    {
+      name: "Moss & Plum",
+      values: {
+        fg_light: "#232914",
+        fg_dark: "#eaf1d8",
+        bg_light: "#f4f8ea",
+        bg_dark: "#12170b",
+        primary: "#a148e3",
       },
     },
   ];
@@ -236,10 +294,31 @@
 </script>
 
 <div class="theme-controls">
-  <button onclick={() => (theming = !theming)}>Theme This Page ⇣</button>
+  <button
+    class="theme-fab"
+    aria-label="Open theme controls"
+    aria-controls="theme-controls-popover"
+    popovertarget="theme-controls-popover"
+    popovertargetaction="toggle"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false">
+      <title>palette-2</title>
+      <g fill="currentColor">
+        <path d="M17 9C17 4.53657 13.3437 0.926057 8.8627 1.00109C4.69746 1.07071 1.18068 4.4953 1.00711 8.65877C0.827379 12.9705 4.06314 16.5663 8.23221 16.9636C8.95801 17.0332 9.61501 16.6823 10.0212 16.1745C10.5513 15.5118 10.6344 14.5963 10.2319 13.8493L9.99465 13.4085C9.7736 12.9981 10.071 12.5 10.537 12.5H13.5C15.433 12.5 17 10.9333 17 9Z" fill-opacity="0.4" />
+        <path d="M13.2426 6.5251C12.7544 7.0131 11.963 7.0131 11.4748 6.5251C10.9866 6.0368 10.9866 5.2456 11.4748 4.7573C11.963 4.269 12.7544 4.269 13.2426 4.7573C13.7308 5.2456 13.7308 6.0368 13.2426 6.5251Z" />
+        <path d="M3 9C3 9.6904 3.5596 10.25 4.25 10.25C4.9404 10.25 5.5 9.6904 5.5 9C5.5 8.3096 4.9404 7.75 4.25 7.75C3.5596 7.75 3 8.3096 3 9Z" />
+        <path d="M4.75729 6.5251C5.24549 7.0131 6.03689 7.0131 6.52509 6.5251C7.01329 6.0368 7.01329 5.2456 6.52509 4.7573C6.03689 4.269 5.24549 4.269 4.75729 4.7573C4.26909 5.2456 4.26909 6.0368 4.75729 6.5251Z" />
+        <path d="M7.75 4.25C7.75 4.9404 8.3096 5.5 9 5.5C9.6904 5.5 10.25 4.9404 10.25 4.25C10.25 3.5596 9.6904 3 9 3C8.3096 3 7.75 3.5596 7.75 4.25Z" />
+      </g>
+    </svg>
+  </button>
 
-  {#if theming}
-    <div transition:slide class="settings">
+  <div
+    id="theme-controls-popover"
+    class="settings-popover"
+    popover="auto"
+  >
+    <div class="settings">
       <div class="theme-header">
         <div class="theme-select">
           <label for="theme-preset">Theme</label>
@@ -250,9 +329,14 @@
             <option value="Custom">Custom</option>
           </select>
         </div>
-        <button class="export-toggle" onclick={() => { show_export = !show_export; }}>
-          Export Theme
-        </button>
+        <div class="theme-header-actions">
+          <button class="export-toggle" onclick={() => { show_export = !show_export; }}>
+            Export Theme
+          </button>
+          <button class="close-popover" aria-label="Close theme controls" popovertarget="theme-controls-popover" popovertargetaction="hide">
+            Close
+          </button>
+        </div>
       </div>
 
       {#if show_export}
@@ -267,10 +351,10 @@
 
       {#if selected_theme === "Custom"}
         <div class="cluster" transition:slide>
-          {#each Object.keys(theme_values) as key}
+          {#each Object.keys(theme_values) as key (key)}
             <label>
               {key.replace("_", "-")}:
-              <input type="color" bind:value={theme_values[key]} />
+              <input type="color" bind:value={theme_values[key as keyof ThemeValues]} />
             </label>
           {/each}
         </div>
@@ -303,20 +387,53 @@
         </div>
       </div>
     </div>
-  {/if}
+  </div>
 </div>
 
 <style>
   .theme-controls {
-    position: sticky;
-    top: 0;
-    background: var(--bg);
+    position: fixed;
+    left: var(--vs-base);
+    bottom: var(--vs-base);
     z-index: 100;
+  }
+
+  .theme-fab {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 999px;
+    border: var(--border-1);
+    background: var(--bg);
+    color: var(--fg);
+    box-shadow: var(--shadow-4);
+    padding: 0;
+    font-size: var(--fs-xs);
+    line-height: 1;
+    display: grid;
+    place-items: center;
+  }
+
+  .settings-popover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    inset: auto auto calc(var(--vs-base) + 3.75rem) var(--vs-base);
+    width: min(44rem, calc(100vw - (var(--vs-base) * 2)));
+    max-height: min(80vh, 42rem);
+    overflow: auto;
+  }
+
+  .settings-popover::backdrop {
+    background: color-mix(in oklab, var(--bg-dark) 28%, transparent);
   }
 
   .settings {
     padding: var(--pad-m) var(--vs-l);
-    border-bottom: var(--border-1);
+    border: var(--border-1);
+    border-radius: var(--br-l);
+    background: var(--bg);
+    box-shadow: var(--shadow-5);
   }
 
   .theme-header {
@@ -325,6 +442,11 @@
     justify-content: space-between;
     gap: var(--vs-base);
     margin-bottom: var(--vs-base);
+  }
+
+  .theme-header-actions {
+    display: flex;
+    gap: var(--vs-s);
   }
 
   .theme-select {
@@ -342,6 +464,11 @@
   }
 
   .export-toggle {
+    width: auto;
+    font-size: var(--fs-s);
+  }
+
+  .close-popover {
     width: auto;
     font-size: var(--fs-s);
   }
@@ -395,8 +522,25 @@
     }
   }
 
-  button {
-    width: 100%;
-    background: transparent;
+  @media (max-width: 40rem) {
+    .theme-controls {
+      left: var(--vs-s);
+      bottom: var(--vs-s);
+    }
+
+    .settings-popover {
+      inset: auto var(--vs-s) calc(var(--vs-s) + 3.5rem) var(--vs-s);
+      width: auto;
+      max-height: min(75vh, 34rem);
+    }
+
+    .settings {
+      padding: var(--pad-m);
+    }
+
+    .theme-header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
   }
 </style>

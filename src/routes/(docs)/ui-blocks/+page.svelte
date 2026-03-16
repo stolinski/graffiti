@@ -20,6 +20,10 @@
   import userMenuCode from "$docs/demos/UserMenu.svelte?raw";
   import LoginForm from "$docs/demos/LoginForm.svelte";
   import loginFormCode from "$docs/demos/LoginForm.svelte?raw";
+  import FormRow from "$docs/demos/FormRow.svelte";
+  import formRowCode from "$docs/demos/FormRow.svelte?raw";
+  import FormActions from "$docs/demos/FormActions.svelte";
+  import formActionsCode from "$docs/demos/FormActions.svelte?raw";
   import ConfirmDialog from "$docs/demos/ConfirmDialog.svelte";
   import confirmDialogCode from "$docs/demos/ConfirmDialog.svelte?raw";
   import Timeline from "$docs/demos/Timeline.svelte";
@@ -261,6 +265,35 @@
     <CodeExample code={loginFormCode} title="Login Form">
       <div style="max-width: 400px;">
         <LoginForm />
+      </div>
+    </CodeExample>
+  </section>
+
+  <section class="stack">
+    <h3>Field Rows</h3>
+    <p>
+      Use <code>.row</code> inside a <code>&lt;form&gt;</code> or
+      <code>&lt;fieldset&gt;</code> to group a label, input, and optional help
+      text with tight vertical spacing. Outside of forms, <code>.row</code>
+      simply adds vertical margin.
+    </p>
+    <CodeExample code={formRowCode} title="Field Rows">
+      <div style="max-width: 400px;">
+        <FormRow />
+      </div>
+    </CodeExample>
+  </section>
+
+  <section class="stack">
+    <h3>Form Actions</h3>
+    <p>
+      Use <code>.form-actions</code> to align submit and cancel buttons at the
+      end of a form. Buttons automatically stack full-width on narrow containers
+      via a built-in container query.
+    </p>
+    <CodeExample code={formActionsCode} title="Form Actions">
+      <div style="max-width: 400px;">
+        <FormActions />
       </div>
     </CodeExample>
   </section>

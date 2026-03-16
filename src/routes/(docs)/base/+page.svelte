@@ -268,6 +268,22 @@
 </section>
 
 <section class="stack">
+  <h2 class="heading" id="dividers">Dividers</h2>
+  <section class="stack readable">
+    <h3>&lt;hr&gt;</h3>
+    <p>
+      Horizontal rules are styled with a subtle border and consistent vertical
+      spacing. No classes needed.
+    </p>
+    <div class="box">
+      <p>Content above the divider.</p>
+      <hr />
+      <p>Content below the divider.</p>
+    </div>
+  </section>
+</section>
+
+<section class="stack">
   <h2 class="heading" id="forms">Forms</h2>
   <section class="stack readable">
     <p>

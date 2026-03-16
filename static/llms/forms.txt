@@ -141,6 +141,47 @@ Add `.error`, `.success`, or `.warning` to inputs:
 </form>
 ```
 
+## Field Rows
+
+Use `.row` as a field wrapper to group label + control + help text.
+
+```html
+<form class="stack" style="--gap: var(--vs-m);">
+  <div class="row">
+    <label for="email">Email</label>
+    <input type="email" id="email" />
+    <small class="text-faint">Used for account notifications.</small>
+  </div>
+
+  <div class="row">
+    <label for="password">Password</label>
+    <input type="password" id="password" />
+  </div>
+</form>
+```
+
+Notes:
+
+- Outside forms, `.row` keeps its spacing utility behavior (`margin-block`).
+- Inside forms and fieldsets, `.row` becomes a compact field-group wrapper.
+
+## Form Actions
+
+Use `.form-actions` for submit/cancel rows.
+
+```html
+<div class="form-actions">
+  <button class="ghost" type="button">Cancel</button>
+  <button class="primary" type="submit">Save changes</button>
+</div>
+```
+
+Behavior:
+
+- End-aligned action row on larger containers
+- Wrap-friendly spacing for longer labels
+- Stacks action controls full-width in narrow containers
+
 ## Disabled Inputs
 
 ```html

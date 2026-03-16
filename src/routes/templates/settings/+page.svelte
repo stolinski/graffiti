@@ -1,7 +1,7 @@
-<div class="layout-sidebar fill" style="min-height: 100dvh; --layout-gap: 0px;">
-	<aside class="split vertical" style="border-inline-end: var(--border-1); padding: var(--pad-l);">
-		<nav class="sidebar-nav">
-			<p style="padding: var(--pad-s) var(--pad-m); margin: 0 0 var(--vs-s) 0;">
+<div class="layout-sidebar fill" style="--layout-gap: 0;">
+	<aside class="stack surface" aria-label="Settings navigation panel" style="padding: var(--pad-l); border-inline-end: var(--border-1); --gap: var(--vs-m);">
+		<nav class="sidebar-nav" aria-label="Settings navigation">
+			<p class="sidebar-nav-heading">
 				<strong class="fs-s">Settings</strong>
 			</p>
 			<a href="/templates/settings" aria-current="page">Profile</a>
@@ -17,191 +17,172 @@
 			<a href="/templates/settings">Billing</a>
 			<a href="/templates/settings">API Keys</a>
 		</nav>
-		<p class="fs-xs text-faint" style="padding: var(--pad-s) var(--pad-m); margin: 0;">
-			Logged in as alex@example.com
-		</p>
+		<p class="fs-xs text-faint" style="margin-block-start: auto;">Logged in as alex@example.com</p>
 	</aside>
 
 	<main class="stack" style="padding: var(--pad-xl); --gap: var(--vs-xl);">
+		<section class="stack" aria-labelledby="profile-heading" style="--gap: var(--vs-m);">
+			<header class="stack" style="--gap: var(--vs-xs);">
+				<h1 id="profile-heading" class="h3">Profile</h1>
+				<p class="text-muted">Manage your public profile information.</p>
+			</header>
 
-		<!-- Profile Section -->
-		<section class="stack" style="--gap: var(--vs-m);">
-			<div>
-				<h1 class="h3" style="margin: 0;">Profile</h1>
-				<p class="text-muted" style="margin: var(--vs-xs) 0 0 0;">
-					Manage your public profile information.
-				</p>
-			</div>
-
-			<div class="cluster" style="--gap: var(--vs-m); align-items: center;">
+			<div class="cluster" style="--gap: var(--vs-m);">
 				<div class="avatar xl" aria-label="Alex Johnson's avatar">AJ</div>
 				<div class="stack" style="--gap: var(--vs-xs);">
-					<button class="ghost mini">Change photo</button>
-					<button class="minimal mini text-faint">Remove</button>
+					<button class="ghost mini" type="button">Change photo</button>
+					<button class="minimal mini text-faint" type="button">Remove</button>
 				</div>
 			</div>
 
-			<div class="stack" style="--gap: var(--vs-m);">
-				<div class="layout-split">
-					<div>
+			<form class="stack" aria-labelledby="profile-heading" style="--gap: var(--vs-m);">
+				<div class="layout-split" style="--layout-gap: var(--vs-m);">
+					<div class="row">
 						<label for="first-name">First name</label>
 						<input type="text" id="first-name" value="Alex">
 					</div>
-					<div>
+					<div class="row">
 						<label for="last-name">Last name</label>
 						<input type="text" id="last-name" value="Johnson">
 					</div>
 				</div>
 
-				<div>
+				<div class="row">
 					<label for="email">Email address</label>
 					<input type="email" id="email" value="alex@example.com">
 					<small class="text-faint">This is the email used for notifications and login.</small>
 				</div>
 
-				<div>
+				<div class="row">
 					<label for="username">Username</label>
-					<div class="input-group">
+					<div class="input-group stack-mobile">
 						<input type="text" id="username" value="alexjohnson">
-						<button>Check availability</button>
+						<button type="button">Check availability</button>
 					</div>
 				</div>
 
-				<div>
+				<div class="row">
 					<label for="bio">Bio</label>
 					<textarea id="bio" rows="3">Product designer and developer based in Portland. I love building tools that make people's lives easier.</textarea>
 				</div>
-			</div>
 
-			<div class="cluster">
-				<button class="primary">Save changes</button>
-				<button class="ghost">Cancel</button>
-			</div>
+				<div class="form-actions">
+					<button class="primary" type="button">Save changes</button>
+					<button class="ghost" type="button">Cancel</button>
+				</div>
+			</form>
 		</section>
 
-		<hr style="border: none; border-top: var(--border-1); margin: 0;">
+		<hr>
 
-		<!-- Notifications Section -->
-		<section class="stack" style="--gap: var(--vs-m);">
-			<div>
-				<h2 class="h3" style="margin: 0;">Notifications</h2>
-				<p class="text-muted" style="margin: var(--vs-xs) 0 0 0;">
-					Choose what notifications you receive.
-				</p>
-			</div>
+		<section class="stack" aria-labelledby="notifications-heading" style="--gap: var(--vs-m);">
+			<header class="stack" style="--gap: var(--vs-xs);">
+				<h2 id="notifications-heading" class="h3">Notifications</h2>
+				<p class="text-muted">Choose what notifications you receive.</p>
+			</header>
 
-			<div class="stack" style="--gap: var(--vs-s);">
-				<div class="box split center">
-					<div>
-						<p style="margin: 0;"><strong>Email notifications</strong></p>
-						<p class="fs-xs text-muted" style="margin: var(--vs-xs) 0 0 0;">
-							Receive email updates about your account activity.
-						</p>
+			<fieldset class="stack" style="padding: 0; margin: 0; border: none; --gap: var(--vs-s);">
+				<legend class="visually-hidden">Notification preferences</legend>
+				<div class="box split" style="--gap: var(--vs-s);">
+					<div class="stack" style="--gap: var(--vs-xs);">
+						<label for="notif-email"><strong>Email notifications</strong></label>
+						<p class="fs-xs text-muted">Receive email updates about your account activity.</p>
 					</div>
-					<input type="checkbox" class="toggle" checked aria-label="Email notifications">
+					<input id="notif-email" type="checkbox" class="toggle" checked>
 				</div>
 
-				<div class="box split center">
-					<div>
-						<p style="margin: 0;"><strong>Push notifications</strong></p>
-						<p class="fs-xs text-muted" style="margin: var(--vs-xs) 0 0 0;">
-							Get push notifications on your devices.
-						</p>
+				<div class="box split" style="--gap: var(--vs-s);">
+					<div class="stack" style="--gap: var(--vs-xs);">
+						<label for="notif-push"><strong>Push notifications</strong></label>
+						<p class="fs-xs text-muted">Get push notifications on your devices.</p>
 					</div>
-					<input type="checkbox" class="toggle" checked aria-label="Push notifications">
+					<input id="notif-push" type="checkbox" class="toggle" checked>
 				</div>
 
-				<div class="box split center">
-					<div>
-						<p style="margin: 0;"><strong>Marketing emails</strong></p>
-						<p class="fs-xs text-muted" style="margin: var(--vs-xs) 0 0 0;">
-							Receive tips, product updates, and inspiration.
-						</p>
+				<div class="box split" style="--gap: var(--vs-s);">
+					<div class="stack" style="--gap: var(--vs-xs);">
+						<label for="notif-marketing"><strong>Marketing emails</strong></label>
+						<p class="fs-xs text-muted">Receive tips, product updates, and inspiration.</p>
 					</div>
-					<input type="checkbox" class="toggle" aria-label="Marketing emails">
+					<input id="notif-marketing" type="checkbox" class="toggle">
 				</div>
 
-				<div class="box split center">
-					<div>
-						<p style="margin: 0;"><strong>Weekly digest</strong></p>
-						<p class="fs-xs text-muted" style="margin: var(--vs-xs) 0 0 0;">
-							A weekly summary of your activity and stats.
-						</p>
+				<div class="box split" style="--gap: var(--vs-s);">
+					<div class="stack" style="--gap: var(--vs-xs);">
+						<label for="notif-weekly"><strong>Weekly digest</strong></label>
+						<p class="fs-xs text-muted">A weekly summary of your activity and stats.</p>
 					</div>
-					<input type="checkbox" class="toggle" checked aria-label="Weekly digest">
-				</div>
-			</div>
-		</section>
-
-		<hr style="border: none; border-top: var(--border-1); margin: 0;">
-
-		<!-- Appearance Section -->
-		<section class="stack" style="--gap: var(--vs-m);">
-			<div>
-				<h2 class="h3" style="margin: 0;">Appearance</h2>
-				<p class="text-muted" style="margin: var(--vs-xs) 0 0 0;">
-					Customize how the app looks and feels.
-				</p>
-			</div>
-
-			<fieldset style="border: none; padding: 0; margin: 0;">
-				<legend style="margin-bottom: var(--vs-s);"><strong>Theme</strong></legend>
-				<div class="cluster" style="--gap: var(--vs-m);">
-					<label style="display: inline-flex; align-items: center; gap: var(--vs-s); cursor: pointer;">
-						<input type="radio" name="theme" value="light">
-						Light
-					</label>
-					<label style="display: inline-flex; align-items: center; gap: var(--vs-s); cursor: pointer;">
-						<input type="radio" name="theme" value="dark">
-						Dark
-					</label>
-					<label style="display: inline-flex; align-items: center; gap: var(--vs-s); cursor: pointer;">
-						<input type="radio" name="theme" value="system" checked>
-						System
-					</label>
+					<input id="notif-weekly" type="checkbox" class="toggle" checked>
 				</div>
 			</fieldset>
-
-			<div>
-				<label for="language">Language</label>
-				<select id="language" style="max-width: 300px;">
-					<option selected>English (US)</option>
-					<option>English (UK)</option>
-					<option>Español</option>
-					<option>Français</option>
-					<option>Deutsch</option>
-					<option>日本語</option>
-					<option>한국어</option>
-					<option>Português (BR)</option>
-				</select>
-			</div>
-
-			<div>
-				<button class="primary">Save preferences</button>
-			</div>
 		</section>
 
-		<hr style="border: none; border-top: var(--border-1); margin: 0;">
+		<hr>
 
-		<!-- Danger Zone Section -->
-		<section class="stack" style="--gap: var(--vs-m);">
-			<div>
-				<h2 class="h3" style="margin: 0; color: var(--red);">Danger Zone</h2>
-			</div>
+		<section class="stack" aria-labelledby="appearance-heading" style="--gap: var(--vs-m);">
+			<header class="stack" style="--gap: var(--vs-xs);">
+				<h2 id="appearance-heading" class="h3">Appearance</h2>
+				<p class="text-muted">Customize how the app looks and feels.</p>
+			</header>
 
-			<div class="callout error" style="--gap: var(--vs-s);">
+			<form class="stack" aria-labelledby="appearance-heading" style="--gap: var(--vs-m);">
+				<fieldset class="stack" style="padding: 0; margin: 0; border: none; --gap: var(--vs-s);">
+					<legend><strong>Theme</strong></legend>
+					<div class="cluster" style="--gap: var(--vs-m);">
+						<label class="form-option-row">
+							<input type="radio" name="theme" value="light">
+							Light
+						</label>
+						<label class="form-option-row">
+							<input type="radio" name="theme" value="dark">
+							Dark
+						</label>
+						<label class="form-option-row">
+							<input type="radio" name="theme" value="system" checked>
+							System
+						</label>
+					</div>
+				</fieldset>
+
+				<div class="row">
+					<label for="language">Language</label>
+					<select id="language" style="max-inline-size: 300px;">
+						<option selected>English (US)</option>
+						<option>English (UK)</option>
+						<option>Español</option>
+						<option>Français</option>
+						<option>Deutsch</option>
+						<option>日本語</option>
+						<option>한국어</option>
+						<option>Português (BR)</option>
+					</select>
+				</div>
+
+				<div class="form-actions">
+					<button class="primary" type="button">Save preferences</button>
+				</div>
+			</form>
+		</section>
+
+		<hr>
+
+		<section class="stack" aria-labelledby="danger-zone-heading" style="--gap: var(--vs-m);">
+			<header>
+				<h2 id="danger-zone-heading" class="h3" style="color: var(--red);">Danger Zone</h2>
+			</header>
+
+			<div class="callout error fill">
 				<div class="stack" style="--gap: var(--vs-s);">
-					<p style="margin: 0;"><strong>Delete your account</strong></p>
-					<p style="margin: 0; color: var(--fg-6);">
+					<p><strong>Delete your account</strong></p>
+					<p class="text-muted">
 						Once you delete your account, there is no going back. All of your data,
 						projects, and settings will be permanently removed. This action cannot be undone.
 					</p>
-					<div>
-						<button class="error">Delete Account</button>
+					<div class="cluster" style="--gap: var(--vs-s);">
+						<button class="error" type="button">Delete Account</button>
 					</div>
 				</div>
 			</div>
 		</section>
-
 	</main>
 </div>

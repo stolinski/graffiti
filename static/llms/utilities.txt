@@ -41,6 +41,8 @@ See [Stack & Cluster](https://graffiti-ui.com/llms/stack-cluster.txt) for detail
 <h3 class="no-margin">Zero margin</h3>
 ```
 
+In forms and fieldsets, `.row` also works as a field-group wrapper (label + control + help text).
+
 For per-instance layout gap tuning, use inline custom properties on the layout container:
 
 ```html

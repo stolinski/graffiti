@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.22.0
+
+### Minor Changes
+
+- Add form field rows, form actions, and improved hr defaults. `.row` now serves as a form field wrapper inside forms/fieldsets. `.form-actions` provides end-aligned action rows with mobile stacking. Global `<hr>` is now styled by default with consistent spacing and border.
+
 ## 4.21.1
 
 ### Patch Changes

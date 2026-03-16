@@ -109,6 +109,30 @@
 			</div>
 		</article>
 
+		<!-- Docs Portal -->
+		<article class="card">
+			<div class="card-body stack" style="--gap: var(--vs-m);">
+				<div class="stack" style="--gap: var(--vs-s);">
+					<div class="cluster" style="--gap: var(--vs-xs);">
+						<span class="tag muted success">Documentation</span>
+					</div>
+					<h2 class="h3">Docs Portal</h2>
+					<p class="text-muted">
+						A documentation shell with a sticky top header, searchable sidebar navigation, right-side table of contents, tabs, data table, FAQ disclosures, and pagination controls.
+					</p>
+				</div>
+				<div class="cluster" style="--gap: var(--vs-xs);">
+					<span class="chip">Sticky Header</span>
+					<span class="chip">Sidebar Nav</span>
+					<span class="chip">TOC</span>
+					<span class="chip">Tabs</span>
+					<span class="chip">Table</span>
+					<span class="chip">FAQ</span>
+				</div>
+				<a href="/templates/docs-portal" class="button primary self-start">View Template →</a>
+			</div>
+		</article>
+
 		<!-- AI Chat - hidden until layout issues resolved -->
 	</div>
 </section>

@@ -106,3 +106,30 @@ Remaining route-level migration opportunities:
 
 - Optionally add a dedicated map for the root docs route (`/`) if route-specific topic ordering is needed beyond the index.
 - Add a generated coverage report that maps route topics to rendered headings for drift detection.
+
+## Migration Completion Snapshot (2026-03-18)
+
+Single-source docs migration is now live for all human docs routes backed by topic markdown content.
+
+- Dynamic docs routes now render from `src/docs/content/topics/*.md` using `TopicSection`:
+  - `src/routes/(docs)/base/+page.svelte`
+  - `src/routes/(docs)/utilities/+page.svelte`
+  - `src/routes/(docs)/elements/+page.svelte`
+  - `src/routes/(docs)/ui-blocks/+page.svelte`
+- Sidebar topic sub-links in `src/routes/(docs)/+layout.svelte` are generated from the runtime content graph.
+- Route intro metadata is sourced from `src/docs/content/routes/*.md`.
+
+Verification (2026-03-18):
+
+- `npm run check:docs-content` passes (`43 topics`, `77 demos`, `4 route intros`).
+- `npm run build` passes with existing known a11y `href="#"` warnings in template/demo files.
+- Agent markdown output is stable against latest accepted baselines:
+  - `/base` matches `/tmp/base-agent-after-fix.md`
+  - `/utilities` matches `/tmp/utilities-agent-after.md`
+  - `/elements` matches `/tmp/elements-agent-after.md`
+  - `/ui-blocks` matches `/tmp/ui-blocks-agent-after.md`
+- Browser checks via `agent-browser` on `http://localhost:6124`:
+  - Sidebar sub-link counts: base `5`, utilities `5`, elements `19`, ui-blocks `17`
+  - Deep link `/elements#forms` resolves and anchor exists (`span#forms` count `1`)
+  - Light/dark mode swaps `body` fg/bg color values as expected
+  - Mobile viewport (`375x812`) renders docs layout successfully

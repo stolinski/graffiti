@@ -3,8 +3,8 @@ id: typography
 title: Typography
 route: base
 order: 100
-summary: Fluid typography system that scales smoothly between viewport sizes.
-when_to_use: Default text hierarchy and fluid type sizing tokens.
+summary: Fluid typography defaults that scale predictably across viewport and container sizes.
+when_to_use: Default text hierarchy, heading utilities, and responsive type sizing.
 classes:
   - h1
   - h2
@@ -34,83 +34,11 @@ tags:
   - typography
 ---
 
-## How It Works
+Graffiti type uses a fluid scale controlled by `--fl` and semantic heading classes.
 
-Set `--fl` (fluid level) on any element to control its size:
+- Use native `h1`-`h6` for document structure.
+- Use `.h1`-`.h6` when non-heading elements need heading styling.
+- Use `.fs-*` classes for size-only adjustments without changing semantic elements.
+- Use `.fc` when typography should respond to container width.
 
-```css
---fl: -1 /* smaller than base */ --fl: 0 /* base size */ --fl: 1
-  /* h6 equivalent */ --fl: 2 /* h5 equivalent */ --fl: 3 /* h4 equivalent */
-  --fl: 4 /* h3 equivalent */ --fl: 5 /* h2 equivalent */ --fl: 6
-  /* h1 equivalent */;
-```
-
-## Font Size Classes
-
-```html
-<p class="fs-xs">Extra small (--fl: -1)</p>
-<p class="fs-base">Base size (--fl: 0)</p>
-<p class="fs-s">Small heading (--fl: 1)</p>
-<p class="fs-m">Medium heading (--fl: 2)</p>
-<p class="fs-l">Large heading (--fl: 3)</p>
-<p class="fs-xl">Extra large (--fl: 4)</p>
-<p class="fs-xxl">Double extra large (--fl: 5)</p>
-<p class="fs-xxxl">Triple extra large (--fl: 6)</p>
-```
-
-## Heading Classes
-
-Apply heading styles to non-heading elements:
-
-```html
-<p class="h1">Looks like h1</p>
-<p class="h2">Looks like h2</p>
-<p class="h3">Looks like h3</p>
-<p class="h4">Looks like h4</p>
-<p class="h5">Looks like h5</p>
-<p class="h6">Looks like h6</p>
-```
-
-## Pull Quote
-
-```html
-<p class="pull-quote">Styled quote text at --fl: 2</p>
-```
-
-## Container-Based Fluid Typography
-
-Make typography respond to container width instead of viewport:
-
-```html
-<div class="fc">
-  <h1>Scales with container</h1>
-  <p>Text size based on container, not viewport</p>
-</div>
-```
-
-Also available as `.fluid-text-container`.
-
-## Custom Fluid Size
-
-```css
-.my-element {
-  --fl: 3; /* will scale like h4 */
-}
-```
-
-## Variables
-
-```css
---font-sans: /* system font stack */ --font-size-min: 14px
-  /* minimum base size */ --font-size-max: 18px /* maximum base size */
-  --font-ratio-min: 1.2 /* scale ratio for small screens */
-  --font-ratio-max: 1.33 /* scale ratio for large screens */;
-```
-
-## Line Heights
-
-```css
---lh-xs: 1 /* tight, single line */ --lh-s: 1.2 /* headings */ --lh: 1.5
-  /* body text (default) */ --lh-m: 1.5 /* alias */ --lh-l: 1.8 /* loose */
-  --lh-xl: 2 /* double */;
-```
+Line-height tokens (`--lh-xs` through `--lh-xl`) are available for tighter or looser rhythm control.

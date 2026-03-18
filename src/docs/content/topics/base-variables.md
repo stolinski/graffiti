@@ -3,8 +3,8 @@ id: variables
 title: CSS Variables
 route: base
 order: 110
-summary: All customizable CSS custom properties in Graffiti.
-when_to_use: Spacing, radius, border, line-height, and shadow token references.
+summary: Core spacing, radius, border, padding, line-height, and shadow tokens.
+when_to_use: Theme-safe design tokens for consistent spacing, shape, and elevation.
 classes:
   - --vs-*
   - --pad-*
@@ -23,134 +23,11 @@ tags:
   - tokens
 ---
 
-## Colors (OKLCH)
+These tokens define the core spacing and surface system used by components and utilities.
 
-All colors use OKLCH color space with automatic 1-9 opacity scales.
+- Spacing: `--vs-*` for vertical rhythm and `--pad-*` for interior padding.
+- Shape: `--br-*` for corner radii and `--border-*` for border styles.
+- Type rhythm: `--lh-*` for line-height adjustments.
+- Elevation: `--shadow-*` and `--box` for layered depth.
 
-### Semantic Colors
-
-```css
---primary: var(--blue) --error: var(--red) --warning: var(--yellow)
-  --success: var(--green);
-```
-
-Each semantic color also has a 1-9 opacity scale:
-
-```css
---primary-1 through --primary-9
---error-1 through --error-9
---warning-1 through --warning-9
---success-1 through --success-9
-```
-
-### Color Palette
-
-```css
---yellow    /* oklch(0.88 0.15 95) */
---amber     /* oklch(0.78 0.16 80) */
---orange    /* oklch(0.75 0.18 65) */
---red       /* oklch(0.62 0.22 35) */
---pink      /* oklch(0.62 0.25 350) */
---purple    /* oklch(0.65 0.24 310) */
---indigo    /* oklch(0.55 0.25 275) */
---blue      /* oklch(0.5 0.28 270) */
---teal      /* oklch(0.82 0.08 185) */
---green     /* oklch(0.72 0.18 165) */
---lime      /* oklch(0.80 0.16 130) */
---highlighter /* oklch(0.88 0.22 115) */
---brown     /* oklch(0.55 0.12 60) */
---gray      /* oklch(0.5 0.02 270) */
---slate     /* oklch(0.52 0.04 255) */
---white     /* oklch(1 0 0) - static */
---black     /* oklch(0 0 0) - static */
-```
-
-### Color Scales
-
-Each color has a 1-9 scale based on opacity:
-
-```css
---blue-1  /* 10% opacity */
---blue-5  /* 50% opacity */
---blue-9  /* 100% opacity (same as --blue) */
-```
-
-### Foreground/Background (Auto Theme)
-
-```css
---fg      /* black in light mode, white in dark mode */
---bg      /* white in light mode, black in dark mode */
---fg-05 through --fg-9  /* foreground scale */
---bg-05 through --bg-9  /* background scale */
-```
-
-## Spacing
-
-### Padding
-
-```css
---pad-xs: 0.25rem --pad-s: 0.5rem --pad-m: 0.75rem --pad-l: 1rem
-  --pad-xl: 1.5rem --pad-xxl: 2rem --pad-xxxl: 4rem;
-```
-
-### Vertical Spacing
-
-```css
---vs-xs: 0.25rem --vs-s: 0.5rem --vs-base: 1rem --vs-m: 1.5rem --vs-l: 2rem
-  --vs-xl: 4rem --vs-xxl: 6rem --vs-xxxl: 8rem;
-```
-
-### Gap (for layouts)
-
-```css
---gap: 1rem /* default gap, inheritable */ --layout-gap: 2rem
-  /* layout-specific, non-inheriting */;
-```
-
-## Border Radius
-
-```css
---br-xs: 2px --br-s: 4px --br-m: 8px --br-l: 16px --br-xl: 24px --br-xxl: 32px;
-```
-
-## Borders
-
-```css
---border-05: solid 1px var(--fg-05) /* subtle */ --border-1: solid 1px
-  var(--fg-2) /* thin */ --border-2: solid 2px var(--fg-2) /* thick */;
-```
-
-## Shadows
-
-```css
---shadow-1  /* subtle */
---shadow-2  /* light lift */
---shadow-3  /* moderate */
---shadow-4  /* strong */
---shadow-5  /* dramatic */
---shadow-6  /* maximum */
---box       /* inset highlights + subtle shadow */
-```
-
-## Easing
-
-```css
---ease-smooth      /* smooth acceleration */
---ease-bounce      /* spring-like */
---ease-emphasized  /* material design */
-```
-
-## CSS Layers
-
-Graffiti uses CSS cascade layers for predictable specificity:
-
-```css
-@layer utilities, layouts, components;
-```
-
-Priority (lowest to highest):
-
-1. utilities
-2. layouts
-3. components
-4. Unlayered styles (base, media queries)
+Use tokens first, then compose utilities/components on top to keep custom themes consistent.

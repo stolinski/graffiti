@@ -1,6 +1,6 @@
 ---
 id: form-defaults
-title: "Form defaults"
+title: "Forms"
 route: base
 order: 200
 summary: "Classless native input styling and validation states."
@@ -23,6 +23,8 @@ tags:
   - "base"
   - "forms"
 ---
+
+<span id="forms"></span>
 
 Native controls are styled out of the box, with support for consistent validation classes.
 

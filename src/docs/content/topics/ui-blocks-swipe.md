@@ -39,27 +39,15 @@ Stays in "open" position after swiping:
 </div>
 ```
 
-## Multiple Action Buttons
-
-```html
-<div class="swipe stop">
-  <button>Hide</button>
-  <button class="primary">Save</button>
-  <div>Content with multiple left actions</div>
-  <button>Up</button>
-  <button>Down</button>
-</div>
-```
-
 ## Structure
 
 ```
 [Left actions] [Main content] [Right actions]
 ```
 
-- First child(ren) before the main content = left actions
-- Last child(ren) after the main content = right actions
-- Middle child = main visible content
+- First child = left action
+- Second child = main visible content
+- Third child = right action
 
 ## Styling Details
 

@@ -9,11 +9,9 @@
 
   <div class="swipe stop">
     <button class="warning mini" type="button">Pin</button>
-    <button class="primary mini" type="button">Save</button>
     <div class="box" style="min-height: 120px; display: grid; place-content: center;">
       <p class="no-margin">`.stop` keeps the swipe position when released.</p>
     </div>
-    <button class="mini" type="button">Move</button>
-    <button class="error mini" type="button">Remove</button>
+    <button class="primary mini" type="button">Save</button>
   </div>
 </div>

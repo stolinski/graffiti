@@ -5,6 +5,8 @@
 <script lang="ts">
   import { page } from "$app/state";
   const version = __APP_VERSION__;
+  import { getDocsContentGraph } from "../../docs/content/runtime.js";
+  import * as docsRuntime from "../../docs/content/runtime.js";
   import type { FontSettings, ThemeValues, BorderRadiusSettings } from "$lib/types";
   import ThemeControls from "../../docs/ThemeControls.svelte";
 
@@ -36,6 +38,33 @@
     br_xl: "24px",
     br_xxl: "32px",
   });
+
+  const docsRouteKeys = ["base", "utilities", "elements", "ui-blocks"] as const;
+  const docsRouteLabels = {
+    base: "Base",
+    utilities: "Utilities",
+    elements: "Elements",
+    "ui-blocks": "UI Blocks",
+  } as const;
+  const docsContentGraph = getDocsContentGraph();
+  const getRouteIntroMap = (
+    docsRuntime as {
+      getRouteIntroMap?: () => Map<string, { title?: string }>;
+    }
+  ).getRouteIntroMap;
+  const routeIntroMap = getRouteIntroMap?.() ?? new Map<string, { title?: string }>();
+  const docsRoutes = docsRouteKeys
+    .map((routeKey) => {
+      const route = docsContentGraph.routes.find((entry) => entry.key === routeKey);
+      if (!route) return null;
+
+      return {
+        ...route,
+        introTitle: routeIntroMap.get(routeKey)?.title ?? routeKey,
+        navLabel: docsRouteLabels[routeKey],
+      };
+    })
+    .filter((route) => route !== null);
 
   $effect(() => {
     const style = document.documentElement.style;
@@ -179,46 +208,20 @@
         <a aria-current={page.url.pathname === "/" ? "page" : null} href="/"
           >Get Started</a
         >
-        <a
-          aria-current={page.url.pathname.startsWith("/base") ? "page" : null}
-          href="/base">Base</a
-        >
-        {#if page.url.pathname.startsWith("/base")}
-          <a href="/base#typography" class="sub">Typography</a>
-          <a href="/base#variables" class="sub">Variables & Tokens</a>
-          <a href="/base#colors" class="sub">Colors</a>
-          <a href="/base#forms" class="sub">Forms</a>
-        {/if}
-        <a
-          aria-current={page.url.pathname.startsWith("/utilities")
-            ? "page"
-            : null}
-          href="/utilities">Utilities</a
-        >
-        {#if page.url.pathname.startsWith("/utilities")}
-          <a href="/utilities#layouts" class="sub">Layouts</a>
-          <a href="/utilities#organization" class="sub">Organization</a>
-          <a href="/utilities#handy" class="sub">Handy Stuff</a>
-          <a href="/utilities#font-sizing" class="sub">Font Sizing</a>
-        {/if}
-        <a
-          aria-current={page.url.pathname.startsWith("/elements")
-            ? "page"
-            : null}
-          href="/elements">Elements</a
-        >
-        {#if page.url.pathname.startsWith("/elements")}
-          <a href="/elements#forms" class="sub">Forms</a>
-        {/if}
-        <a
-          aria-current={page.url.pathname.startsWith("/ui-blocks")
-            ? "page"
-            : null}
-          href="/ui-blocks">UI Blocks</a
-        >
-        {#if page.url.pathname.startsWith("/ui-blocks")}
-          <a href="/ui-blocks#forms" class="sub">Forms</a>
-        {/if}
+        {#each docsRoutes as route (route.key)}
+          <a
+            aria-current={page.url.pathname.startsWith(route.path)
+              ? "page"
+              : null}
+            href={route.path}
+            title={route.introTitle}>{route.navLabel}</a
+          >
+          {#if page.url.pathname.startsWith(route.path)}
+            {#each route.topics as topic (topic.id)}
+              <a href={`${route.path}#${topic.id}`} class="sub">{topic.title}</a>
+            {/each}
+          {/if}
+        {/each}
         <a
           aria-current={page.url.pathname.startsWith("/templates")
             ? "page"

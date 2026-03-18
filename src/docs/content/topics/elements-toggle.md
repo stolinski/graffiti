@@ -1,0 +1,74 @@
+---
+id: toggle
+title: Toggle Switch
+route: elements
+order: 340
+summary: Accessible toggle/switch input using native checkbox.
+when_to_use: Boolean settings with checkbox semantics.
+classes:
+  - .toggle
+  - .compact
+demos:
+  - Toggle
+tags:
+  - elements
+  - forms
+---
+
+## Basic Example
+
+```html
+<input type="checkbox" class="toggle" />
+<input type="checkbox" class="toggle" checked />
+```
+
+## With Label
+
+```html
+<label>
+  <input type="checkbox" class="toggle" />
+  Enable notifications
+</label>
+
+<label>
+  <input type="checkbox" class="toggle" checked />
+  Dark mode
+</label>
+```
+
+## Compact Variant
+
+Smaller toggle for tight spaces:
+
+```html
+<input type="checkbox" class="toggle compact" />
+```
+
+## Disabled State
+
+```html
+<input type="checkbox" class="toggle" disabled />
+<input type="checkbox" class="toggle" checked disabled />
+```
+
+## Custom Color
+
+Override the checked color:
+
+```html
+<input type="checkbox" class="toggle" style="--toggle-color: var(--green)" />
+```
+
+## CSS Variables
+
+- `--toggle-color` - Color when checked (default: `var(--primary)`)
+- `--toggle-width` - Track width
+- `--toggle-height` - Track height
+
+## Accessibility
+
+The toggle uses a native checkbox, so it:
+
+- Works with keyboard (Space to toggle)
+- Announces state to screen readers
+- Respects `prefers-reduced-motion`

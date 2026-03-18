@@ -19,15 +19,7 @@ import '@drop-in/graffiti/minimal'
 
 // Standard - core + utilities + layouts (~33KB)
 import '@drop-in/graffiti/standard'
-
-// Individual modules (each includes required CSS variables)
-import '@drop-in/graffiti/core'       // Variables, reset, typography
-import '@drop-in/graffiti/utilities'  // Helper classes
-import '@drop-in/graffiti/layouts'    // Page layouts
-import '@drop-in/graffiti/components' // UI components
 ```
-
-All modules are pre-built standalone files - NO CSS @import.
 
 ## Philosophy
 
@@ -39,85 +31,73 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 - **CSS custom properties** - Customize colors, spacing, and sizing via variables
 - **Fluid typography** - Text scales smoothly between viewport sizes
 - **Automatic theming** - Light/dark mode via `light-dark()` with no extra work
-- **No build step** - Just import the CSS and go
 
-## Documentation Structure
+## Documentation
 
-- **Navigation** - Headers, sidebars, breadcrumbs, menus
-- **Dialogs & Overlays** - Modal dialogs, confirm patterns
-- **Layouts** - Page structure, grids, content flow
-- **Elements** - Simple, single-class UI pieces (buttons, tags, avatars)
-- **Components** - Multi-element patterns (accordion, carousel, tables)
-- **Forms** - Inputs, toggles, search, file upload
-- **Reference** - CSS variables, utilities, typography system
+Full documentation is served via content negotiation. Request any route with `Accept: text/markdown` header to get agent-optimized markdown.
+
+### Routes
+
+- [Base](https://graffiti-ui.com/base) - Typography, variables, colors, form defaults
+- [Utilities](https://graffiti-ui.com/utilities) - Layouts, stack/cluster, handy utilities
+- [Elements](https://graffiti-ui.com/elements) - Buttons, cards, chips, tags, avatars, dialogs
+- [UI Blocks](https://graffiti-ui.com/ui-blocks) - Accordion, sidebar nav, mobile patterns, forms
+
+### Example: Get Elements Documentation
+
+```bash
+curl -H "Accept: text/markdown" https://graffiti-ui.com/elements
+```
 
 ---
 
-## What are you building?
+## Quick Reference by Intent
 
 ### Navigation
-- [Sidebar navigation](https://graffiti-ui.com/llms/sidebar-nav.txt) - Collapsible app sidebar with sections
-- `.sidebar-nav.compact` - Denser row spacing for large navigation lists
-- [Dropdown menu](https://graffiti-ui.com/llms/dropdown.txt) - Popover-based menu (no JS)
-- [Header/navbar](https://graffiti-ui.com/llms/header.txt) - Site header with nav links
-- [Footer](https://graffiti-ui.com/llms/footer.txt) - Site footer with nav columns and legal links
-- [Breadcrumbs](https://graffiti-ui.com/llms/breadcrumbs.txt) - Hierarchy trail navigation
-- [Pagination](https://graffiti-ui.com/llms/pagination.txt) - Page navigation controls
-- [User menu](https://graffiti-ui.com/llms/user-menu.txt) - Avatar + dropdown for user actions
-- [List navigation](https://graffiti-ui.com/llms/list-nav.txt) - Settings/menu rows with icons and chevrons
-
-### Dialogs & Overlays
-- [Dialog](https://graffiti-ui.com/llms/dialog.txt) - Native modal dialog with animations
-- [Confirm dialog](https://graffiti-ui.com/llms/confirm-dialog.txt) - Action confirmation pattern
+- `.sidebar-nav` - Collapsible app sidebar with sections
+- `.dropdown` + `popover` - Popover-based menu (no JS)
+- `.header` - Site header with nav links
+- `.footer` - Site footer with nav columns
+- `.breadcrumbs` - Hierarchy trail navigation
+- `.pagination` - Page navigation controls
+- `.list-nav` - Settings/menu rows with icons
 
 ### Layouts
-- [Page layouts](https://graffiti-ui.com/llms/layouts.txt) - Sidebar, grid, split, holy-grail, readable
-- [Stack & cluster](https://graffiti-ui.com/llms/stack-cluster.txt) - Vertical and horizontal flow
+- `.layout-sidebar` - Sidebar + main content
+- `.layout-card` - Auto-fit card grid
+- `.layout-split` - 50/50 split
+- `.layout-readable` - Max-width content container
+- `.stack` - Vertical flow with gap
+- `.cluster` - Horizontal wrapping flow
+- `.split` - Space-between alignment
 
 ### Mobile
-- [Mobile patterns](https://graffiti-ui.com/llms/mobile.txt) - App shell, bottom nav, bottom sheet, safe areas
-- `.app-shell` - Grid-based app container with sticky header/footer, uses `100dvh` for iOS URL bar
-- `.bottom-nav` - Fixed bottom tab bar with icon + label, respects safe areas
-- `.bottom-sheet` - Drawer from bottom with drag handle
-- `--safe-top`, `--safe-bottom`, `--safe-left`, `--safe-right` - iOS safe area variables using `env()`
-- `.safe-top`, `.safe-bottom`, `.safe-x` - Utility classes for safe area padding
-- `.hide-scrollbar`, `.momentum-scroll` - Mobile scrolling utilities
+- `.app-shell` - Grid-based app container (100dvh)
+- `.bottom-nav` - Fixed bottom tab bar
+- `.bottom-sheet` - Drawer from bottom
+- `.safe-top`, `.safe-bottom` - iOS safe area padding
 
 ### Elements
-- [Buttons](https://graffiti-ui.com/llms/buttons.txt) - Button variants and styles
-- [Chips](https://graffiti-ui.com/llms/chips.txt) - Interactive filter/selection pills
-- [Tags](https://graffiti-ui.com/llms/tags.txt) - Category and metadata labels
-- `.tag.success`, `.tag.warning`, `.tag.error`, `.tag.info` - Preferred semantic status tag variants
-- [Bubble](https://graffiti-ui.com/llms/bubble.txt) - Chat message container with squircle corners
-- [Callouts](https://graffiti-ui.com/llms/callouts.txt) - Info, warning, error, success boxes
-- [Avatar](https://graffiti-ui.com/llms/avatar.txt) - User images and initials
-- [Boxes](https://graffiti-ui.com/llms/boxes.txt) - Container styles (glow, ghost, semi-gloss)
-- [Card](https://graffiti-ui.com/llms/card.txt) - Structured content container with header/body/footer
-- `.card.linked` - Card-as-link variant with built-in link reset and interaction affordance
-- [Tooltip](https://graffiti-ui.com/llms/tooltip.txt) - Hover tooltips with CSS anchor positioning
-
-### Components
-- [Accordion](https://graffiti-ui.com/llms/accordion.txt) - Collapsible sections with details/summary
-- [Tabs](https://graffiti-ui.com/llms/tabs.txt) - Pure CSS tabs with details/summary and subgrid
-- [Carousel](https://graffiti-ui.com/llms/carousel.txt) - Horizontal scroll with snap
-- [Reel](https://graffiti-ui.com/llms/reel.txt) - Vertical scroll with snap
-- [Tables](https://graffiti-ui.com/llms/tables.txt) - Data table styling
-- [Swipe](https://graffiti-ui.com/llms/swipe.txt) - Swipe-to-reveal actions
-- [Timeline](https://graffiti-ui.com/llms/timeline.txt) - Activity feeds and step indicators
+- `button`, `.button` - Button styling and variants
+- `.chip` - Selectable pills for filters
+- `.tag` - Category and status labels
+- `.avatar` - User images and initials
+- `.card` - Structured content container
+- `.callout` - Info/warning/error boxes
+- `.tooltip` - Hover tooltips (CSS anchor positioning)
+- `dialog` - Native modal with animations
 
 ### Forms
-- [Form basics](https://graffiti-ui.com/llms/forms.txt) - Inputs, selects, checkboxes, radios
-- `.row` - Field wrapper pattern inside forms/fieldsets; spacing utility elsewhere
-- `.form-option-row` - Canonical checkbox/radio label row with aligned control + text
-- `.form-actions` - Canonical submit/cancel action row with mobile stacking
-- [Login form](https://graffiti-ui.com/llms/login-form.txt) - Complete login pattern
-- [Toggle switch](https://graffiti-ui.com/llms/toggle.txt) - On/off switch input
-- [Search input](https://graffiti-ui.com/llms/search.txt) - Search with icon
-- [Input group](https://graffiti-ui.com/llms/input-group.txt) - Input + button combo
-- [File dropzone](https://graffiti-ui.com/llms/dropzone.txt) - Drag and drop upload
+- Native inputs styled automatically
+- `.toggle` - Switch input
+- `.input-group` - Input + button combo
+- `.search` - Search with icon
+- `.dropzone` - File upload zone
+- `.form-actions` - Submit/cancel row
 
 ### Reference
-- [CSS variables](https://graffiti-ui.com/llms/variables.txt) - Colors, spacing, shadows, typography
-- [Utility classes](https://graffiti-ui.com/llms/utilities.txt) - Display, spacing, visibility helpers
-- [Typography](https://graffiti-ui.com/llms/typography.txt) - Fluid type system and font sizes
-- `.chat-thread`, `.chat-row`, `.chat-message`, `.chat-composer` - Chat layout helpers for thread spacing, alignment, and full-width composer input groups
+- `--primary`, `--success`, `--warning`, `--error` - Semantic colors
+- `--pad-*`, `--vs-*` - Spacing tokens
+- `--br-*` - Border radius tokens
+- `--shadow-*` - Shadow tokens
+- `.h1`-`.h6`, `.fs-*` - Typography utilities

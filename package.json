@@ -25,9 +25,18 @@
   "name": "@drop-in/graffiti",
   "scripts": {
     "dev": "vite dev",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test:contracts",
+    "test:contracts": "vitest run --config vitest.contracts.config.ts",
+    "test:visual": "playwright test --config playwright.config.ts",
+    "test:visual:update": "playwright test --config playwright.config.ts --update-snapshots",
+    "test:ci": "npm run build && npm run test:contracts && playwright test --config playwright.config.ts --project=desktop-chromium tests/visual/docs.spec.ts tests/visual/templates.spec.ts",
+    "test:ci:full": "npm run build && npm run test:contracts && npm run test:visual",
     "build": "vite build && node build-modules.js",
     "build:modules": "node build-modules.js",
+    "check:docs-content": "node scripts/check-docs-content.mjs",
+    "check:agent-docs": "node scripts/check-agent-docs.mjs",
+    "report:agent-docs": "node scripts/report-agent-docs-coverage.mjs",
+    "generate:agent-docs": "node scripts/generate-agent-docs.mjs",
     "package": "svelte-kit sync && svelte-package && node build-modules.js"
   },
   "type": "module",
@@ -40,6 +49,7 @@
     "@changesets/cli": "^2.29.8",
     "@eslint/compat": "^1.4.0",
     "@eslint/js": "^9.38.0",
+    "@playwright/test": "^1.58.2",
     "@sveltejs/adapter-auto": "^7.0.0",
     "@sveltejs/kit": "^2.47.1",
     "@sveltejs/package": "^2.5.2",
@@ -57,7 +67,8 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.1",
     "vite": "^7.1.10",
-    "vite-plugin-devtools-json": "^1.0.0"
+    "vite-plugin-devtools-json": "^1.0.0",
+    "vitest": "^4.1.0"
   },
   "dependencies": {
     "@humanspeak/svelte-markdown": "^0.8.13"

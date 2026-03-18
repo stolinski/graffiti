@@ -1411,23 +1411,21 @@
       grid-template-columns: 1fr;
     }
 
+    /* Hide sidebar on mobile - sidebar is always :first-child in DOM.
+       Drawers (.drawer) are excluded — they use the popover API and have
+       their own mobile toggle logic via .drawer-toggle.
+       !important is intentional: with CSS @layer ordering (layouts < utilities),
+       utility classes like .split set display:flex which would override this.
+       In layered CSS, !important in a LOWER layer beats normal declarations
+       in HIGHER layers, making this the correct pattern. */
+    .layout-sidebar > :first-child:not(.drawer) {
+      display: none !important;
+    }
+
     .layout-sidebar.invert > :first-child,
     .layout-sidebar.invert > :nth-child(2) {
       grid-column: auto;
       grid-row: auto;
-    }
-
-    .layout-sidebar.fill > :first-child,
-    .layout-sidebar.fixed > :first-child {
-      position: static;
-      height: auto;
-      max-height: none;
-    }
-
-    .layout-sidebar.fill > :first-child:not(.app-shell),
-    .layout-sidebar.fill > :nth-child(2):not(.app-shell),
-    .layout-sidebar.fixed > :first-child:not(.app-shell) {
-      overflow-y: visible;
     }
   }
 
@@ -1442,25 +1440,52 @@
       grid-template-columns: 1fr;
     }
 
-    /* Reset grid placement for invert on mobile so items stack in DOM order */
+    /* Hide sidebar on mobile - see container query block for rationale */
+    .layout-sidebar > :first-child:not(.drawer) {
+      display: none !important;
+    }
+
+    /* Reset grid placement for invert on mobile */
     .layout-sidebar.invert > :first-child,
     .layout-sidebar.invert > :nth-child(2) {
       grid-column: auto;
       grid-row: auto;
     }
+  }
 
-    /* Reset fill/fixed sidebar styles on mobile - sidebar is always :first-child */
-    .layout-sidebar.fill > :first-child,
-    .layout-sidebar.fixed > :first-child {
-      position: static;
-      height: auto;
-      max-height: none;
+  /* Drawer + layout-sidebar integration (responsive) */
+
+  @media (width >= 768px) {
+    /* Desktop: hide toggle, inline the drawer as static sidebar */
+    .layout-sidebar .drawer-toggle {
+      display: none;
     }
 
-    .layout-sidebar.fill > :first-child:not(.app-shell),
-    .layout-sidebar.fill > :nth-child(2):not(.app-shell),
-    .layout-sidebar.fixed > :first-child:not(.app-shell) {
-      overflow-y: visible;
+    .layout-sidebar > [popover].drawer {
+      position: static;
+      inset: auto;
+      translate: none;
+      transition: none;
+      inline-size: auto;
+      max-inline-size: none;
+      block-size: auto;
+      border: none;
+      background: transparent;
+    }
+
+    .layout-sidebar > [popover].drawer:not(:popover-open) {
+      display: block;
+    }
+  }
+
+  @media (width < 768px) {
+    /* Mobile: show toggle, drawer behaves as popover slide-in */
+    .layout-sidebar .drawer-toggle {
+      display: inline-flex;
+    }
+
+    .layout-sidebar > [popover].drawer:not(:popover-open) {
+      display: none;
     }
   }
 
@@ -3547,6 +3572,10 @@
     justify-content: flex-end;
   }
 
+  .chat-row.self .chat-message {
+    align-items: flex-end;
+  }
+
   .chat-message {
     inline-size: min(100%, var(--chat-message-max-inline, 72ch));
     min-inline-size: 0;
@@ -3637,6 +3666,70 @@
     position: absolute;
     inset-block-start: -14px;
     inset-inline-end: var(--pad-m);
+  }
+
+  /* Drawer - popover-based slide-in panel */
+
+  [popover].drawer {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inset-inline-end: auto;
+    margin: 0;
+    border: none;
+    border-inline-end: var(--drawer-border, var(--border-1));
+    inline-size: var(--drawer-inline-size, 300px);
+    max-inline-size: 85vw;
+    block-size: 100dvh;
+    padding: 0;
+    background: var(--drawer-bg, var(--bg));
+    color: var(--fg);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    translate: -100% 0;
+    transition:
+      translate 0.25s var(--ease-emphasized),
+      display 0.25s var(--ease-emphasized) allow-discrete,
+      overlay 0.25s var(--ease-emphasized) allow-discrete;
+
+    &:popover-open {
+      translate: 0;
+
+      @starting-style {
+        translate: -100% 0;
+      }
+    }
+
+    &::backdrop {
+      background: oklch(0 0 0 / 0);
+      transition:
+        background 0.25s var(--ease-smooth),
+        display 0.25s var(--ease-smooth) allow-discrete,
+        overlay 0.25s var(--ease-smooth) allow-discrete;
+    }
+
+    &:popover-open::backdrop {
+      background: oklch(0 0 0 / var(--drawer-backdrop, 0.5));
+
+      @starting-style {
+        background: oklch(0 0 0 / 0);
+      }
+    }
+  }
+
+  [popover].drawer.end {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    border-inline-end: none;
+    border-inline-start: var(--drawer-border, var(--border-1));
+    translate: 100% 0;
+
+    &:popover-open {
+      @starting-style {
+        translate: 100% 0;
+      }
+    }
   }
 
   /* Chip */

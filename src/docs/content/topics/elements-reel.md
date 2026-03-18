@@ -1,0 +1,63 @@
+---
+id: reel
+title: Reel
+route: elements
+order: 280
+summary: Vertical scrolling with CSS scroll-snap. Like carousel but vertical.
+when_to_use: Vertical scroll-snap list or feed.
+classes:
+  - .reel
+demos:
+  - Reel
+tags:
+  - elements
+  - scroll
+---
+
+## Basic Example
+
+```html
+<div class="reel" style="--reel-height: 400px;">
+  <div>Panel 1</div>
+  <div>Panel 2</div>
+  <div>Panel 3</div>
+  <div>Panel 4</div>
+</div>
+```
+
+## With Content Panels
+
+```html
+<div class="reel" style="--reel-height: 500px;">
+  <div class="box">
+    <h3>Section 1</h3>
+    <p>Full panel content here.</p>
+  </div>
+  <div class="box">
+    <h3>Section 2</h3>
+    <p>Another panel.</p>
+  </div>
+  <div class="box">
+    <h3>Section 3</h3>
+    <p>Third panel.</p>
+  </div>
+</div>
+```
+
+## CSS Variables
+
+- `--reel-height` - Container height (default: 80vh)
+- `--gap` - Gap between panels (default: 1rem)
+
+## Styling Details
+
+- `display: flex` with `flex-direction: column`
+- `scroll-snap-type: y mandatory` for snapping
+- Children have `scroll-snap-align: start`
+- Vertical overflow with thin scrollbar
+
+## How It Works
+
+- Scroll vertically to navigate panels
+- Panels snap to top
+- Works with mouse wheel, touch, and keyboard

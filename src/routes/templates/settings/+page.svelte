@@ -1,5 +1,5 @@
 <div class="layout-sidebar fill" style="--layout-gap: 0;">
-	<aside class="stack surface" aria-label="Settings navigation panel" style="padding: var(--pad-l); border-inline-end: var(--border-1); --gap: var(--vs-m);">
+	<aside popover="auto" id="settings-sidebar" class="drawer stack surface" aria-label="Settings navigation panel" style="padding: var(--pad-l); border-inline-end: var(--border-1); --gap: var(--vs-m);">
 		<nav class="sidebar-nav" aria-label="Settings navigation">
 			<p class="sidebar-nav-heading">
 				<strong class="fs-s">Settings</strong>
@@ -20,12 +20,22 @@
 		<p class="fs-xs text-faint" style="margin-block-start: auto;">Logged in as alex@example.com</p>
 	</aside>
 
-	<main class="stack" style="padding: var(--pad-xl); --gap: var(--vs-xl);">
-		<section class="stack" aria-labelledby="profile-heading" style="--gap: var(--vs-m);">
-			<header class="stack" style="--gap: var(--vs-xs);">
-				<h1 id="profile-heading" class="h3">Profile</h1>
-				<p class="text-muted">Manage your public profile information.</p>
-			</header>
+	<div class="app-shell">
+		<header class="header border" style="padding-inline: var(--pad-xl);">
+			<h1 class="h3" style="display: flex; align-items: center; gap: var(--vs-xs);">
+				<button class="drawer-toggle minimal" popovertarget="settings-sidebar" aria-label="Open navigation" style="padding: 0; margin-block-start: -2px;">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+				</button>
+				Settings
+			</h1>
+		</header>
+
+		<main class="stack" style="padding: var(--pad-xl); --gap: var(--vs-xl);">
+			<section class="stack" aria-labelledby="profile-heading" style="--gap: var(--vs-m);">
+				<header class="stack" style="--gap: var(--vs-xs);">
+					<h2 id="profile-heading" class="h3">Profile</h2>
+					<p class="text-muted">Manage your public profile information.</p>
+				</header>
 
 			<div class="cluster" style="--gap: var(--vs-m);">
 				<div class="avatar xl" aria-label="Alex Johnson's avatar">AJ</div>
@@ -184,5 +194,6 @@
 				</div>
 			</div>
 		</section>
-	</main>
+		</main>
+	</div>
 </div>

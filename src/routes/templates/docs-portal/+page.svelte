@@ -1,37 +1,40 @@
 <div class="layout-sidebar fill" style="--layout-gap: 0; min-height: 100dvh;">
-	<aside class="surface split vertical" style="border-inline-end: var(--border-1); padding: var(--pad-l);">
-		<div class="stack" style="--gap: var(--vs-m);">
-			<div class="stack" style="--gap: var(--vs-xs);">
-				<p class="fs-xs text-faint">Documentation</p>
-				<strong class="fs-s">Graffiti UI</strong>
-			</div>
-
-			<div class="search">
-				<input type="search" placeholder="Search docs" aria-label="Search documentation" />
-			</div>
-
-			<nav class="sidebar-nav" aria-label="Documentation navigation">
-				<a href="/templates/docs-portal" aria-current="page">Getting Started</a>
-				<a href="/templates/docs-portal">Installation</a>
-				<a href="/templates/docs-portal">Layout Utilities</a>
-				<a href="/templates/docs-portal">Components</a>
-				<details open>
-					<summary>Patterns</summary>
-					<a href="/templates/docs-portal">Navigation</a>
-					<a href="/templates/docs-portal">Data Display</a>
-					<a href="/templates/docs-portal">Forms</a>
-				</details>
-				<a href="/templates/docs-portal">Accessibility</a>
-				<a href="/templates/docs-portal">Changelog</a>
-			</nav>
+	<aside popover="auto" id="docs-sidebar" class="drawer stack surface" style="border-inline-end: var(--border-1); padding: var(--pad-l); --gap: var(--vs-m);">
+		<div class="stack" style="--gap: var(--vs-xs);">
+			<p class="fs-xs text-faint">Documentation</p>
+			<strong class="fs-s">Graffiti UI</strong>
 		</div>
+
+		<div class="search">
+			<input type="search" placeholder="Search docs" aria-label="Search documentation" />
+		</div>
+
+		<nav class="sidebar-nav" aria-label="Documentation navigation">
+			<a href="/templates/docs-portal" aria-current="page">Getting Started</a>
+			<a href="/templates/docs-portal">Installation</a>
+			<a href="/templates/docs-portal">Layout Utilities</a>
+			<a href="/templates/docs-portal">Components</a>
+			<details open>
+				<summary>Patterns</summary>
+				<a href="/templates/docs-portal">Navigation</a>
+				<a href="/templates/docs-portal">Data Display</a>
+				<a href="/templates/docs-portal">Forms</a>
+			</details>
+			<a href="/templates/docs-portal">Accessibility</a>
+			<a href="/templates/docs-portal">Changelog</a>
+		</nav>
 
 		<p class="fs-xs text-faint" style="margin: 0;">v1.0 docs</p>
 	</aside>
 
 	<div class="app-shell">
 		<header class="header border sticky" style="padding-inline: var(--pad-xl);">
-			<p class="fs-xs text-faint"><strong>Graffiti Docs</strong> / Template Preview</p>
+			<div class="cluster" style="--gap: var(--vs-xs);">
+				<button class="drawer-toggle minimal" popovertarget="docs-sidebar" aria-label="Open navigation" style="padding: 0;">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+				</button>
+				<p class="fs-xs text-faint"><strong>Graffiti Docs</strong> / Template Preview</p>
+			</div>
 			<a class="button ghost mini" href="/templates">All Templates</a>
 		</header>
 

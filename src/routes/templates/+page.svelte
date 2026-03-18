@@ -133,6 +133,27 @@
 			</div>
 		</article>
 
-		<!-- AI Chat - hidden until layout issues resolved -->
+		<!-- AI Chat -->
+		<article class="card">
+			<div class="card-body stack" style="--gap: var(--vs-m);">
+				<div class="stack" style="--gap: var(--vs-s);">
+					<div class="cluster" style="--gap: var(--vs-xs);">
+						<span class="tag muted info">Application</span>
+					</div>
+					<h2 class="h3">AI Chat</h2>
+					<p class="text-muted">
+						A dark-themed AI chat interface with a collapsible conversation sidebar, agent identity header, threaded message bubbles with role alignment, and a docked composer with input group.
+					</p>
+				</div>
+				<div class="cluster" style="--gap: var(--vs-xs);">
+					<span class="chip">Sidebar Drawer</span>
+					<span class="chip">Chat Thread</span>
+					<span class="chip">Message Bubbles</span>
+					<span class="chip">Composer</span>
+					<span class="chip">Dark Theme</span>
+				</div>
+				<a href="/templates/ai-chat" class="button primary self-start">View Template →</a>
+			</div>
+		</article>
 	</div>
 </section>

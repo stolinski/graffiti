@@ -1,5 +1,5 @@
 <div class="layout-sidebar fill" style="--layout-gap: 0; min-height: 100dvh;">
-	<aside class="stack surface" style="padding: var(--pad-l); border-inline-end: var(--border-1); --gap: var(--vs-l);">
+	<aside popover="auto" id="dashboard-sidebar" class="drawer stack surface" style="padding: var(--pad-l); border-inline-end: var(--border-1); --gap: var(--vs-m);">
 		<div class="stack" style="--gap: var(--vs-xs);">
 			<p class="fs-xs text-faint">Workspace</p>
 			<strong class="fs-s">Acme Inc.</strong>
@@ -23,19 +23,24 @@
 	</aside>
 
 	<section class="app-shell">
-		<header class="header border" style="--gap: var(--vs-m); padding-inline: var(--pad-xl); flex-wrap: wrap;">
-			<div class="stack" style="--gap: var(--vs-xs);">
-				<h1 class="h3">Dashboard</h1>
-				<p class="fs-xs text-muted">Monitor storefront performance and fulfillment activity.</p>
-			</div>
-			<div class="cluster">
-				<button class="ghost" type="button">Last 30 days</button>
-				<button class="ghost" type="button">Status: all</button>
-				<button class="primary" type="button">Create report</button>
-			</div>
+		<header class="header border" style="padding-inline: var(--pad-xl);">
+			<h1 class="h3" style="display: flex; align-items: center; gap: var(--vs-xs);">
+				<button class="drawer-toggle minimal" popovertarget="dashboard-sidebar" aria-label="Open navigation" style="padding: 0; margin-block-start: -2px;">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+				</button>
+				Dashboard
+			</h1>
 		</header>
 
 		<main class="stack" style="padding: var(--pad-xl); --gap: var(--vs-xl);">
+			<div class="split center" style="flex-wrap: wrap; --gap: var(--vs-s);">
+				<p class="text-muted">Monitor storefront performance and fulfillment activity.</p>
+				<div class="cluster">
+					<button class="ghost" type="button">Last 30 days</button>
+					<button class="ghost" type="button">Status: all</button>
+					<button class="primary" type="button">Create report</button>
+				</div>
+			</div>
 			<section class="layout-split">
 				<article class="stat-card">
 					<small>Total Revenue</small>

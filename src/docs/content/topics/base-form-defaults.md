@@ -1,0 +1,26 @@
+---
+id: form-defaults
+title: "Form defaults"
+route: base
+order: 200
+summary: "Classless native input styling and validation states."
+when_to_use: "Building forms with minimal custom classes"
+classes:
+  - "input"
+  - "textarea"
+  - "select"
+  - ".error"
+  - ".success"
+  - ".warning"
+demos:
+  - "LoginForm"
+tags:
+  - "base"
+  - "forms"
+---
+
+Native controls are styled out of the box, with support for consistent validation classes.
+
+- Prefer semantic form markup (`label`, `fieldset`, help text) before custom wrappers.
+- Use `.error`, `.success`, and `.warning` classes for status styling.
+- Keep spacing and grouping consistent with `.row` and `.stack` helpers.

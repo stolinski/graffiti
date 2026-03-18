@@ -7,3 +7,5 @@ yarn-error.log
 .claude
 CLAUDE.md
 .svelte-kit
+playwright-report/
+test-results/

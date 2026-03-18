@@ -20,7 +20,7 @@
 
   let { topic }: Props = $props();
 
-  function shiftHeadingDepth(markdown: string): string {
+  function formatTopicMarkdown(markdown: string): string {
     const lines = markdown.split("\n");
     let inFence = false;
     const headingDepthShift = 3;
@@ -29,11 +29,11 @@
       .map((line) => {
         if (/^```/.test(line)) {
           inFence = !inFence;
-          return line;
+          return "";
         }
 
         if (inFence) {
-          return line;
+          return "";
         }
 
         const match = /^(#{1,6})(\s+.+)$/.exec(line);
@@ -44,10 +44,12 @@
         const depth = Math.min(6, match[1].length + headingDepthShift);
         return `${"#".repeat(depth)}${match[2]}`;
       })
-      .join("\n");
+      .join("\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
   }
 
-  const topicMarkdown = $derived(shiftHeadingDepth(topic.markdown));
+  const topicMarkdown = $derived(formatTopicMarkdown(topic.markdown));
 
   function asComponent(value: unknown): Component<any> {
     return value as Component<any>;

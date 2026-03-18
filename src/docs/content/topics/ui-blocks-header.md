@@ -9,6 +9,8 @@ classes:
   - .header
   - .border
   - .sticky
+demos:
+  - Header
 tags:
   - ui-blocks
   - navigation

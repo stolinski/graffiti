@@ -8,6 +8,8 @@ when_to_use: Swipe-to-reveal row actions for touch interactions.
 classes:
   - .swipe
   - .stop
+demos:
+  - Swipe
 tags:
   - ui-blocks
   - mobile

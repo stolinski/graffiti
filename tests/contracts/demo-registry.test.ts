@@ -21,7 +21,9 @@ describe("docs demo registry", () => {
   });
 
   it("registers all current demo components", () => {
-    expect(Object.keys(demoRegistry)).toHaveLength(40);
+    expect(Object.keys(demoRegistry).length).toBeGreaterThanOrEqual(56);
     expect(hasDemo("Buttons")).toBe(true);
+    expect(hasDemo("TypographyScale")).toBe(true);
+    expect(hasDemo("FormValidation")).toBe(true);
   });
 });

@@ -1,6 +1,6 @@
 ---
-id: utilities
-title: Utility Classes
+id: handy
+title: Handy Stuff
 route: utilities
 order: 300
 summary: Helper classes for common styling needs.
@@ -13,6 +13,7 @@ classes:
   - .visually-hidden
   - .auto-color
   - .full
+  - .fc
 demos:
   - Readable
   - NoList
@@ -22,8 +23,6 @@ demos:
   - AutoColor
   - AspectRatio
   - FluidContainer
-  - HeadingClasses
-  - FontSizeClasses
 tags:
   - utilities
   - helpers

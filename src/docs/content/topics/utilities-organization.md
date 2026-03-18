@@ -1,6 +1,6 @@
 ---
-id: stack-cluster
-title: Stack & Cluster
+id: organization
+title: Organization
 route: utilities
 order: 200
 summary: Flexbox utilities for vertical and horizontal layouts.

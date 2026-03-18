@@ -9,6 +9,7 @@ classes:
   - .input-group
 demos:
   - InputGroup
+  - Select
 tags:
   - elements
   - forms

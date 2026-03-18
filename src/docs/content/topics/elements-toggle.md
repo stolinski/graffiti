@@ -15,6 +15,8 @@ tags:
   - forms
 ---
 
+<span id="forms"></span>
+
 ## Basic Example
 
 ```html

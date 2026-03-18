@@ -12,6 +12,9 @@ classes:
   - .card.featured
 demos:
   - Card
+  - FeaturedCard
+  - StatCard
+  - FeatureCard
 tags:
   - elements
   - containers

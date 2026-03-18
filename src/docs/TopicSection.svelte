@@ -24,8 +24,7 @@
     const lines = markdown.split("\n");
     let inFence = false;
     const headingDepthShift = 3;
-
-    return lines
+    const withoutFences = lines
       .map((line) => {
         if (/^```/.test(line)) {
           inFence = !inFence;
@@ -36,20 +35,69 @@
           return "";
         }
 
-        const match = /^(#{1,6})(\s+.+)$/.exec(line);
-        if (!match) {
-          return line;
-        }
-
-        const depth = Math.min(6, match[1].length + headingDepthShift);
-        return `${"#".repeat(depth)}${match[2]}`;
+        return line;
       })
+      .join("\n")
+      .split("\n");
+
+    const isListLine = (value: string): boolean =>
+      /^[-*+]\s+/.test(value) || /^\d+\.\s+/.test(value);
+
+    const hasMeaningfulContent = (body: string[]): boolean => {
+      const nonEmpty = body.map((line) => line.trim()).filter(Boolean);
+      if (nonEmpty.length === 0) return false;
+
+      return nonEmpty.some((line) => {
+        if (isListLine(line)) return true;
+        if (line.endsWith(":")) return false;
+        return true;
+      });
+    };
+
+    const trimTrailingBlanks = (body: string[]): string[] => {
+      const clone = [...body];
+      while (clone.length > 0 && clone[clone.length - 1].trim() === "") {
+        clone.pop();
+      }
+      return clone;
+    };
+
+    const output: string[] = [];
+    let currentHeading: string | null = null;
+    let currentBody: string[] = [];
+
+    const flushSection = () => {
+      if (currentHeading === null) {
+        output.push(...trimTrailingBlanks(currentBody));
+      } else if (hasMeaningfulContent(currentBody)) {
+        output.push(currentHeading, ...trimTrailingBlanks(currentBody));
+      }
+
+      currentBody = [];
+    };
+
+    for (const line of withoutFences) {
+      const match = /^(#{1,6})(\s+.+)$/.exec(line);
+      if (!match) {
+        currentBody.push(line);
+        continue;
+      }
+
+      flushSection();
+      const depth = Math.min(6, match[1].length + headingDepthShift);
+      currentHeading = `${"#".repeat(depth)}${match[2]}`;
+    }
+
+    flushSection();
+
+    return output
       .join("\n")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
 
   const topicMarkdown = $derived(formatTopicMarkdown(topic.markdown));
+  const hasTopicNotes = $derived(topicMarkdown.length > 0);
 
   function asComponent(value: unknown): Component<any> {
     return value as Component<any>;
@@ -85,5 +133,18 @@
     {/if}
   {/each}
 
-  <SvelteMarkdown source={topicMarkdown} />
+  {#if hasTopicNotes}
+    <details class="topic-notes right">
+      <summary>Reference Notes</summary>
+      <div class="stack" style="--gap: var(--vs-s); margin-top: var(--vs-s);">
+        <SvelteMarkdown source={topicMarkdown} />
+      </div>
+    </details>
+  {/if}
 </section>
+
+<style>
+  .topic-notes {
+    margin-top: var(--vs-s);
+  }
+</style>

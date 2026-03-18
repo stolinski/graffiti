@@ -16,6 +16,8 @@ classes:
   - .info
 demos:
   - Timeline
+  - TimelineStepper
+  - TimelineStatus
 tags:
   - ui-blocks
   - progress

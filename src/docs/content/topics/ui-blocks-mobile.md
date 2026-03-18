@@ -17,6 +17,7 @@ classes:
 demos:
   - AppShell
   - BottomNav
+  - BottomSheet
 tags:
   - ui-blocks
   - mobile

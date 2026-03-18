@@ -12,8 +12,11 @@ classes:
   - .layout-three-col
   - .layout-readable
 demos:
-  - AppShell
-  - Layouts
+  - LayoutCard
+  - LayoutSidebar
+  - LayoutSplit
+  - LayoutThreeCol
+  - LayoutReadable
 tags:
   - utilities
   - layout

@@ -12,7 +12,7 @@ classes:
   - .ghost
   - .invisible
 demos:
-  - Boxes
+  - Card
 tags:
   - elements
   - containers

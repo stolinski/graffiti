@@ -13,7 +13,10 @@ classes:
   - .flex
   - .grid
 demos:
-  - StackCluster
+  - Stack
+  - Cluster
+  - Split
+  - FlexGrid
 tags:
   - utilities
   - layout

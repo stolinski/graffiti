@@ -28,7 +28,7 @@ classes:
   - .fs-xxxl
   - .fc
 demos:
-  - Typography
+  - TypographyScale
 tags:
   - base
   - typography

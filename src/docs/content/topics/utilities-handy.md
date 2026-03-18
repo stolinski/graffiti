@@ -14,7 +14,16 @@ classes:
   - .auto-color
   - .full
 demos:
-  - Utilities
+  - Readable
+  - NoList
+  - Circle
+  - Row
+  - VisuallyHidden
+  - AutoColor
+  - AspectRatio
+  - FluidContainer
+  - HeadingClasses
+  - FontSizeClasses
 tags:
   - utilities
   - helpers

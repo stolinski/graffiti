@@ -10,7 +10,8 @@ classes:
   - .form-option-row
   - .form-actions
 demos:
-  - Forms
+  - FormRow
+  - FormActions
 tags:
   - ui-blocks
   - forms

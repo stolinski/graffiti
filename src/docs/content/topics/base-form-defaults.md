@@ -13,7 +13,12 @@ classes:
   - ".success"
   - ".warning"
 demos:
-  - "LoginForm"
+  - "FormInputs"
+  - "FormCheckboxRadio"
+  - "FormDateTime"
+  - "FormRange"
+  - "FormFile"
+  - "FormValidation"
 tags:
   - "base"
   - "forms"

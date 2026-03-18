@@ -12,7 +12,12 @@ classes:
   - --border-*
   - --shadow-*
 demos:
-  - Variables
+  - SpacingScale
+  - BorderRadiusScale
+  - BorderScale
+  - PaddingScale
+  - LineHeightScale
+  - ShadowScale
 tags:
   - base
   - tokens

@@ -14,7 +14,7 @@ classes:
   - .hard
   - .fill
 demos:
-  - Callouts
+  - Callout
 tags:
   - elements
   - status

@@ -7,8 +7,6 @@ summary: Responsive table wrapper with clean data table styling.
 when_to_use: Responsive table wrapper and default table styling.
 classes:
   - .table
-demos:
-  - Tables
 tags:
   - elements
   - data

@@ -7,6 +7,7 @@ See also:
 - `RECIPES_LAYOUTS.md`
 - `RECIPES_SECTIONS.md`
 - `OUTPUT_CONTRACT.md`
+- `CANONICAL_SNIPPETS.md`
 
 ---
 
@@ -285,27 +286,24 @@ Use case: assistant/user message formatting in threaded chat.
 
 ```html
 <div class="chat-row">
-  <article class="chat-message">
-    <div class="bubble">
-      <p>Assistant message</p>
-    </div>
+  <article class="chat-message bubble">
+    <p>Assistant message</p>
   </article>
 </div>
 
 <div class="chat-row self">
-  <article class="chat-message text-end">
-    <div
-      class="bubble"
-      style="--bubble-bg: var(--primary-1); --bubble-border: var(--primary-5);"
-    >
-      <p>User message</p>
-    </div>
+  <article
+    class="chat-message bubble"
+    style="--bubble-bg: var(--primary-1); --bubble-border: var(--primary-5);"
+  >
+    <p>User message</p>
   </article>
 </div>
 ```
 
 - Recommended pairing: wrap rows in `.chat-thread`
 - Fallback: if rich chat theme is unavailable, keep neutral `bubble` defaults
+- Canonical source: `src/docs/content/topics/elements-bubble.md`
 
 ---
 
@@ -365,3 +363,30 @@ Use case: multi-column footer with legal row.
 ```
 
 - Anti-pattern: avoid separate ad-hoc media queries for footer column wrapping when `grid auto` and container behavior handle it
+
+---
+
+## COMP-018: Native Dialog + Close Button
+
+Use case: modal dialogs and confirmations using native dialog primitives.
+
+```html
+<button commandfor="confirm-dialog" command="show-modal">Delete Item</button>
+
+<dialog id="confirm-dialog">
+  <button class="close" commandfor="confirm-dialog" command="close">x</button>
+  <div class="stack">
+    <p class="h4">Confirm Action</p>
+    <p>Are you sure you want to proceed? This cannot be undone.</p>
+    <div class="cluster" style="justify-content: flex-end;">
+      <button commandfor="confirm-dialog" command="close">Cancel</button>
+      <button class="primary" commandfor="confirm-dialog" command="close">
+        Confirm
+      </button>
+    </div>
+  </div>
+</dialog>
+```
+
+- Canonical sources: `src/docs/content/topics/elements-dialog.md`, `src/docs/content/topics/ui-blocks-confirm-dialog.md`
+- Anti-pattern: avoid bespoke modal wrappers and custom open/close JS when native dialog commands are sufficient

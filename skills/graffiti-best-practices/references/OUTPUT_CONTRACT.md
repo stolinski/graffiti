@@ -1,6 +1,6 @@
 # Output Contract
 
-Version: 1.1
+Version: 1.3
 
 This contract defines the mandatory output structure and quality gates for Graffiti best-practices generation.
 
@@ -12,26 +12,47 @@ Every response must include these sections in this order:
    - One sentence summarizing user goal.
    - List explicit constraints (framework, scope, interaction requirements, accessibility, style limits).
 
-2. **Recipe Selection**
+2. **System-First Preflight**
+   - Report coverage for variables, theme, layout primitives, utilities, and components.
+   - Mark each as PASS/FAIL with one short evidence note.
+
+3. **Source Grounding**
+   - List the exact source files used to validate classes and variable contracts.
+   - Must include at least one of `src/docs/content/topics/*.md` and `src/lib/drop-in.css`.
+
+4. **Primitive Mapping**
+   - Map each requested component/interaction to a Graffiti primitive.
+   - Format: `<requested piece> -> <primitive> -> <source path>`.
+   - If no direct primitive exists, include fallback mapping and limitation note.
+
+5. **Recipe Selection**
    - State which canonical pattern(s) are being used.
    - State baseline template path used from `src/routes/templates/*/+page.svelte`.
    - If no baseline template match exists, explicitly state "No baseline template match found".
    - If no exact recipe exists, state closest fallback and why.
 
-3. **Markup Output**
+6. **Markup Output**
    - Provide one final code block (`html` or `svelte`) that is ready to use.
    - No pseudo-code.
 
-4. **Verification Checklist**
+7. **Verification Checklist**
    - Report pass/fail for each quality gate in section 6.
    - Include inline style declaration count and budget result.
+   - Include unknown class count and unknown variable count.
 
-5. **Known Limitations and Adaptation Path**
+8. **Post-Edit Compliance Report**
+   - Explicitly prove no duplicate styling system was introduced.
+   - Must include token, utility, and component duplication checks.
+
+9. **Known Limitations and Adaptation Path**
    - If any requirement could not be met with current classes, list limitation + fallback used.
 
 ## 2) Markup Rules
 
 - Use only classes that exist in current Graffiti CSS.
+- Use only CSS custom properties that exist in Graffiti token/component contracts.
+- Reuse built-in Graffiti primitives instead of recreating them with bespoke wrappers/CSS/JS.
+- For critical patterns (dialog/modal, card/link, bubble/chat, form actions/options, input-group, callout), start from `references/CANONICAL_SNIPPETS.md` baselines.
 - Use semantic HTML structure appropriate to the requested intent.
 - Keep class usage compositional and readable (avoid unnecessary wrappers).
 - Prefer existing utility/component classes over inline declarations.
@@ -57,6 +78,7 @@ Bounded layout exceptions:
 ### 3.2 Disallowed Inline Styles
 
 - Hardcoded color declarations (`color: #...`, `background: #...`) unless explicitly requested
+- Unknown/unverified custom property names (for example undeclared `--card-accent`)
 - Repeated margin reset patterns (`margin: 0`) where utility/class pattern can be used
 - Ad-hoc typography styling that duplicates existing text classes
 - Layout declarations (`display`, `grid-template-*`, etc.) where existing layout classes apply
@@ -106,16 +128,22 @@ Minimum pass score: 85
 Any hard fail means overall fail regardless of score:
 
 1. Uses unknown class names
-2. Violates disallowed inline style rules
-3. Missing required accessibility baseline (labels/landmarks/table semantics)
-4. Missing one or more mandatory response sections from section 1
-5. Fails to use a matching in-repo template baseline when one exists (unless user explicitly requested a fresh build)
+2. Uses unknown custom property names in markup
+3. Re-implements built-in Graffiti primitives instead of using canonical patterns
+4. Introduces a duplicate styling system (ad-hoc utility/component/token framework)
+5. Violates disallowed inline style rules
+6. Missing required accessibility baseline (labels/landmarks/table semantics)
+7. Missing one or more mandatory response sections from section 1
+8. Fails to use a matching in-repo template baseline when one exists (unless user explicitly requested a fresh build)
 
 ## 7) Verification Checklist Template
 
 Use this exact checklist format in responses:
 
 - Class validity: PASS/FAIL (unknown classes: N)
+- Variable contract validity: PASS/FAIL (unknown custom properties: N)
+- Built-in primitive reuse: PASS/FAIL (re-implemented primitives: N)
+- Duplicate-system check: PASS/FAIL (new utility/component/token systems: YES/NO)
 - Template baseline usage: PASS/FAIL (template path: <path or none>, preserved structure: YES/NO)
 - Inline styles: PASS/FAIL (declarations: N, section max: N, page max: N)
 - Accessibility semantics: PASS/FAIL (landmarks, headings, labels, states, table semantics)
@@ -123,7 +151,16 @@ Use this exact checklist format in responses:
 - Graffiti fidelity: PASS/FAIL (matches canonical composition patterns)
 - Overall score: N/100 (PASS >= 85)
 
-## 8) Recovery Rules
+## 8) Post-Edit Compliance Report Template
+
+Use this format:
+
+- Token system reuse: PASS/FAIL (new token families introduced: YES/NO)
+- Utility system reuse: PASS/FAIL (new ad-hoc utility framework introduced: YES/NO)
+- Component system reuse: PASS/FAIL (custom reimplementation of built-ins: YES/NO)
+- Canonical snippet adherence: PASS/FAIL (critical patterns matched: <list>)
+
+## 9) Recovery Rules
 
 If output fails any gate:
 

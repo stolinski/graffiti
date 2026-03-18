@@ -4,6 +4,8 @@ These examples show expected skill behavior for common request types.
 
 Each example follows the required response structure from `OUTPUT_CONTRACT.md`.
 
+Code excerpts are intentionally partial; the actual response must still include all mandatory contract sections.
+
 ---
 
 ## Example 1: Build a Landing Hero Section
@@ -15,10 +17,14 @@ Each example follows the required response structure from `OUTPUT_CONTRACT.md`.
 ### Expected response shape
 
 1. Intent and Constraints
-2. Recipe Selection (`SECTION-MKT-001`)
-3. Markup Output
-4. Verification Checklist
-5. Known Limitations and Adaptation Path
+2. System-First Preflight
+3. Source Grounding
+4. Primitive Mapping
+5. Recipe Selection (`SECTION-MKT-001`)
+6. Markup Output
+7. Verification Checklist
+8. Post-Edit Compliance Report
+9. Known Limitations and Adaptation Path
 
 ### Markup excerpt
 

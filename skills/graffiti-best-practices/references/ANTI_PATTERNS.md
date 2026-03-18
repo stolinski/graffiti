@@ -160,8 +160,11 @@ Use this with:
 - Hand-built card wrappers instead of `.card`
 - Card anchors with inline `text-decoration`/`color` resets instead of `.card.linked`
 - Manual KPI blocks instead of `.stat-card`
+- Custom modal/dialog wrappers and JS toggles instead of native `<dialog>` + `.close`
 - Repeated form option label rows with inline `display: inline-flex` instead of `.form-option-row`
 - Manual chat rows instead of `.chat-thread`/`.chat-row`/`.bubble`
+- Hand-built message/status boxes instead of `.callout` and semantic variants
+- Custom input+button wrappers instead of `.input-group`
 - TOC styles created from scratch instead of `.toc`
 
 ### Why this is problematic
@@ -169,6 +172,8 @@ Use this with:
 - Duplicates implementation effort
 - Creates visual drift from canonical patterns
 - Increases chance of missing states/accessibility hooks
+- Creates parallel systems that violate Graffiti-baseline contract
+- Triggers hard-fail gates in `OUTPUT_CONTRACT.md`
 
 ### Preferred direction
 
@@ -177,6 +182,7 @@ Use this with:
 - Use `.card.linked` for card-as-link composition
 - Use `.form-option-row` for radio/checkbox option labels
 - Only tokenize appearance when a variant is missing
+- Start from `CANONICAL_SNIPPETS.md` for critical patterns before composing custom section structure
 
 ---
 

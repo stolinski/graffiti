@@ -193,14 +193,51 @@ Use this guide when prompts are ambiguous, conflicting, or impossible to satisfy
 
 ---
 
+## T13: Prompt Suggests Rebuilding a Built-In Primitive
+
+### Symptom
+
+- Request includes custom wrapper/CSS instructions for patterns that Graffiti already provides (dialog/modal, card, bubble/chat, callout, form rows/actions, input-group).
+
+### Default action
+
+1. Map request to existing primitive first.
+2. Start from canonical snippet for that primitive.
+3. Preserve requested content intent while keeping built-in structure.
+4. If user explicitly needs extension behavior, apply minimal tokenized adaptation and record it.
+
+### What to avoid
+
+- Do not create bespoke component wrappers that duplicate Graffiti built-ins.
+
+---
+
+## T14: Agent Loses Graffiti Baseline Context
+
+### Symptom
+
+- Output reads like generic CSS utility framework usage and ignores Graffiti system constraints.
+
+### Default action
+
+1. Re-anchor using `references/GRAFFITI_SYSTEM.md`.
+2. Run full system-first preflight (variables, theme, layout, utilities, components).
+3. Build primitive mapping table from docs/CSS before writing markup.
+4. Re-run validation and compliance report sections.
+
+---
+
 ## Quick Triage Sequence
 
 When in doubt, run this order:
 
-1. Resolve baseline template match (if any)
-2. Validate classes (unknown classes first)
-3. Restore semantics and landmarks
-4. Normalize layout primitives
-5. Reduce inline styles to budget
-6. Verify accessibility and responsive behavior
-7. Record unresolved gaps explicitly
+1. Re-anchor to Graffiti system primer (`GRAFFITI_SYSTEM.md`)
+2. Resolve baseline template match (if any)
+3. Run system-first preflight (variables, theme, layout, utilities, components)
+4. Build primitive mapping for requested components/interactions
+5. Validate classes and custom properties (unknown first)
+6. Restore semantics and landmarks
+7. Normalize layout primitives
+8. Reduce inline styles to budget
+9. Verify accessibility and responsive behavior
+10. Record unresolved gaps explicitly

@@ -1,12 +1,20 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
-  import type { ThemeValues, FontSettings, BorderRadiusSettings } from "$lib/types";
+  import type {
+    ThemeValues,
+    FontSettings,
+    BorderRadiusSettings,
+  } from "$lib/types";
 
   let {
     theme_values = $bindable(),
     font_settings = $bindable(),
     border_radius = $bindable(),
-  }: { theme_values: ThemeValues; font_settings: FontSettings; border_radius: BorderRadiusSettings } = $props();
+  }: {
+    theme_values: ThemeValues;
+    font_settings: FontSettings;
+    border_radius: BorderRadiusSettings;
+  } = $props();
 
   const themes: { name: string; values: ThemeValues }[] = [
     {
@@ -160,40 +168,130 @@
   const typeScales: { name: string; values: TypeScale }[] = [
     {
       name: "Compact",
-      values: { min_ratio: 1.067, max_ratio: 1.125, min_font_size: 14, max_font_size: 15, min_viewport: 320, max_viewport: 1500 },
+      values: {
+        min_ratio: 1.067,
+        max_ratio: 1.125,
+        min_font_size: 14,
+        max_font_size: 15,
+        min_viewport: 320,
+        max_viewport: 1500,
+      },
     },
     {
       name: "Small Text",
-      values: { min_ratio: 1.125, max_ratio: 1.2, min_font_size: 15, max_font_size: 16, min_viewport: 320, max_viewport: 1500 },
+      values: {
+        min_ratio: 1.125,
+        max_ratio: 1.2,
+        min_font_size: 15,
+        max_font_size: 16,
+        min_viewport: 320,
+        max_viewport: 1500,
+      },
     },
     {
       name: "Default",
-      values: { min_ratio: 1.2, max_ratio: 4 / 3, min_font_size: 16, max_font_size: 18, min_viewport: 320, max_viewport: 1500 },
+      values: {
+        min_ratio: 1.2,
+        max_ratio: 5 / 4,
+        min_font_size: 16,
+        max_font_size: 18,
+        min_viewport: 320,
+        max_viewport: 1500,
+      },
     },
     {
       name: "Comfortable",
-      values: { min_ratio: 1.2, max_ratio: 4 / 3, min_font_size: 17, max_font_size: 20, min_viewport: 320, max_viewport: 1500 },
+      values: {
+        min_ratio: 1.2,
+        max_ratio: 5 / 4,
+        min_font_size: 17,
+        max_font_size: 20,
+        min_viewport: 320,
+        max_viewport: 1500,
+      },
     },
     {
       name: "Large Text",
-      values: { min_ratio: 1.25, max_ratio: 1.333, min_font_size: 18, max_font_size: 22, min_viewport: 320, max_viewport: 1500 },
+      values: {
+        min_ratio: 1.25,
+        max_ratio: 1.333,
+        min_font_size: 18,
+        max_font_size: 22,
+        min_viewport: 320,
+        max_viewport: 1500,
+      },
     },
     {
       name: "Big Spread",
-      values: { min_ratio: 1.2, max_ratio: 1.5, min_font_size: 16, max_font_size: 18, min_viewport: 320, max_viewport: 1500 },
+      values: {
+        min_ratio: 1.2,
+        max_ratio: 1.5,
+        min_font_size: 16,
+        max_font_size: 18,
+        min_viewport: 320,
+        max_viewport: 1500,
+      },
     },
     {
       name: "Editorial",
-      values: { min_ratio: 1.25, max_ratio: 1.618, min_font_size: 18, max_font_size: 22, min_viewport: 320, max_viewport: 1400 },
+      values: {
+        min_ratio: 1.25,
+        max_ratio: 1.618,
+        min_font_size: 18,
+        max_font_size: 22,
+        min_viewport: 320,
+        max_viewport: 1400,
+      },
     },
   ];
 
-  const borderRadiusPresets: { name: string; values: BorderRadiusSettings }[] = [
-    { name: "Square", values: { br_xs: "0", br_s: "0", br_m: "0", br_l: "0", br_xl: "0", br_xxl: "0" } },
-    { name: "Subtle", values: { br_xs: "1px", br_s: "2px", br_m: "4px", br_l: "6px", br_xl: "8px", br_xxl: "12px" } },
-    { name: "Default", values: { br_xs: "2px", br_s: "4px", br_m: "8px", br_l: "16px", br_xl: "24px", br_xxl: "32px" } },
-    { name: "Rounded", values: { br_xs: "4px", br_s: "8px", br_m: "12px", br_l: "20px", br_xl: "32px", br_xxl: "48px" } },
-  ];
+  const borderRadiusPresets: { name: string; values: BorderRadiusSettings }[] =
+    [
+      {
+        name: "Square",
+        values: {
+          br_xs: "0",
+          br_s: "0",
+          br_m: "0",
+          br_l: "0",
+          br_xl: "0",
+          br_xxl: "0",
+        },
+      },
+      {
+        name: "Subtle",
+        values: {
+          br_xs: "1px",
+          br_s: "2px",
+          br_m: "4px",
+          br_l: "6px",
+          br_xl: "8px",
+          br_xxl: "12px",
+        },
+      },
+      {
+        name: "Default",
+        values: {
+          br_xs: "2px",
+          br_s: "4px",
+          br_m: "8px",
+          br_l: "16px",
+          br_xl: "24px",
+          br_xxl: "32px",
+        },
+      },
+      {
+        name: "Rounded",
+        values: {
+          br_xs: "4px",
+          br_s: "8px",
+          br_m: "12px",
+          br_l: "20px",
+          br_xl: "32px",
+          br_xxl: "48px",
+        },
+      },
+    ];
 
   function apply_border_radius(e: Event) {
     const select = e.target as HTMLSelectElement;
@@ -254,7 +352,9 @@
     parts.push(`  --font-width-max: ${font_settings.max_viewport};`);
     for (const key in border_radius) {
       const css_var = `--${key.replace(/_/g, "-")}`;
-      parts.push(`  ${css_var}: ${border_radius[key as keyof BorderRadiusSettings]};`);
+      parts.push(
+        `  ${css_var}: ${border_radius[key as keyof BorderRadiusSettings]};`,
+      );
     }
     parts.push("}");
     parts.push("</style>");
@@ -264,7 +364,9 @@
   async function copy_theme() {
     await navigator.clipboard.writeText(generate_export());
     copied = true;
-    setTimeout(() => { copied = false; }, 2000);
+    setTimeout(() => {
+      copied = false;
+    }, 2000);
   }
 
   function download_theme() {
@@ -278,18 +380,63 @@
   }
 
   const fontOptions = [
-    { name: "System UI", value: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif", google: "" },
-    { name: "Inter", value: "'Inter', sans-serif", google: "Inter:wght@100..900" },
-    { name: "Plus Jakarta Sans", value: "'Plus Jakarta Sans', sans-serif", google: "Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800" },
-    { name: "Space Grotesk", value: "'Space Grotesk', sans-serif", google: "Space+Grotesk:wght@300..700" },
-    { name: "Outfit", value: "'Outfit', sans-serif", google: "Outfit:wght@100..900" },
-    { name: "DM Sans", value: "'DM Sans', sans-serif", google: "DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000" },
+    {
+      name: "System UI",
+      value:
+        "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif",
+      google: "",
+    },
+    {
+      name: "Inter",
+      value: "'Inter', sans-serif",
+      google: "Inter:wght@100..900",
+    },
+    {
+      name: "Plus Jakarta Sans",
+      value: "'Plus Jakarta Sans', sans-serif",
+      google: "Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800",
+    },
+    {
+      name: "Space Grotesk",
+      value: "'Space Grotesk', sans-serif",
+      google: "Space+Grotesk:wght@300..700",
+    },
+    {
+      name: "Outfit",
+      value: "'Outfit', sans-serif",
+      google: "Outfit:wght@100..900",
+    },
+    {
+      name: "DM Sans",
+      value: "'DM Sans', sans-serif",
+      google: "DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000",
+    },
     { name: "Syne", value: "'Syne', sans-serif", google: "Syne:wght@400..800" },
-    { name: "Lexend", value: "'Lexend', sans-serif", google: "Lexend:wght@100..900" },
-    { name: "Manrope", value: "'Manrope', sans-serif", google: "Manrope:wght@200..800" },
-    { name: "Nunito Sans", value: "'Nunito Sans', sans-serif", google: "Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000" },
-    { name: "Geist Mono", value: "'Geist Mono', monospace", google: "Geist+Mono:wght@100..900" },
-    { name: "Monospace", value: "'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace", google: "" },
+    {
+      name: "Lexend",
+      value: "'Lexend', sans-serif",
+      google: "Lexend:wght@100..900",
+    },
+    {
+      name: "Manrope",
+      value: "'Manrope', sans-serif",
+      google: "Manrope:wght@200..800",
+    },
+    {
+      name: "Nunito Sans",
+      value: "'Nunito Sans', sans-serif",
+      google: "Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000",
+    },
+    {
+      name: "Geist Mono",
+      value: "'Geist Mono', monospace",
+      google: "Geist+Mono:wght@100..900",
+    },
+    {
+      name: "Monospace",
+      value: "'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace",
+      google: "",
+    },
   ];
 </script>
 
@@ -301,23 +448,37 @@
     popovertarget="theme-controls-popover"
     popovertargetaction="toggle"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      aria-hidden="true"
+      focusable="false"
+    >
       <title>palette-2</title>
       <g fill="currentColor">
-        <path d="M17 9C17 4.53657 13.3437 0.926057 8.8627 1.00109C4.69746 1.07071 1.18068 4.4953 1.00711 8.65877C0.827379 12.9705 4.06314 16.5663 8.23221 16.9636C8.95801 17.0332 9.61501 16.6823 10.0212 16.1745C10.5513 15.5118 10.6344 14.5963 10.2319 13.8493L9.99465 13.4085C9.7736 12.9981 10.071 12.5 10.537 12.5H13.5C15.433 12.5 17 10.9333 17 9Z" fill-opacity="0.4" />
-        <path d="M13.2426 6.5251C12.7544 7.0131 11.963 7.0131 11.4748 6.5251C10.9866 6.0368 10.9866 5.2456 11.4748 4.7573C11.963 4.269 12.7544 4.269 13.2426 4.7573C13.7308 5.2456 13.7308 6.0368 13.2426 6.5251Z" />
-        <path d="M3 9C3 9.6904 3.5596 10.25 4.25 10.25C4.9404 10.25 5.5 9.6904 5.5 9C5.5 8.3096 4.9404 7.75 4.25 7.75C3.5596 7.75 3 8.3096 3 9Z" />
-        <path d="M4.75729 6.5251C5.24549 7.0131 6.03689 7.0131 6.52509 6.5251C7.01329 6.0368 7.01329 5.2456 6.52509 4.7573C6.03689 4.269 5.24549 4.269 4.75729 4.7573C4.26909 5.2456 4.26909 6.0368 4.75729 6.5251Z" />
-        <path d="M7.75 4.25C7.75 4.9404 8.3096 5.5 9 5.5C9.6904 5.5 10.25 4.9404 10.25 4.25C10.25 3.5596 9.6904 3 9 3C8.3096 3 7.75 3.5596 7.75 4.25Z" />
+        <path
+          d="M17 9C17 4.53657 13.3437 0.926057 8.8627 1.00109C4.69746 1.07071 1.18068 4.4953 1.00711 8.65877C0.827379 12.9705 4.06314 16.5663 8.23221 16.9636C8.95801 17.0332 9.61501 16.6823 10.0212 16.1745C10.5513 15.5118 10.6344 14.5963 10.2319 13.8493L9.99465 13.4085C9.7736 12.9981 10.071 12.5 10.537 12.5H13.5C15.433 12.5 17 10.9333 17 9Z"
+          fill-opacity="0.4"
+        />
+        <path
+          d="M13.2426 6.5251C12.7544 7.0131 11.963 7.0131 11.4748 6.5251C10.9866 6.0368 10.9866 5.2456 11.4748 4.7573C11.963 4.269 12.7544 4.269 13.2426 4.7573C13.7308 5.2456 13.7308 6.0368 13.2426 6.5251Z"
+        />
+        <path
+          d="M3 9C3 9.6904 3.5596 10.25 4.25 10.25C4.9404 10.25 5.5 9.6904 5.5 9C5.5 8.3096 4.9404 7.75 4.25 7.75C3.5596 7.75 3 8.3096 3 9Z"
+        />
+        <path
+          d="M4.75729 6.5251C5.24549 7.0131 6.03689 7.0131 6.52509 6.5251C7.01329 6.0368 7.01329 5.2456 6.52509 4.7573C6.03689 4.269 5.24549 4.269 4.75729 4.7573C4.26909 5.2456 4.26909 6.0368 4.75729 6.5251Z"
+        />
+        <path
+          d="M7.75 4.25C7.75 4.9404 8.3096 5.5 9 5.5C9.6904 5.5 10.25 4.9404 10.25 4.25C10.25 3.5596 9.6904 3 9 3C8.3096 3 7.75 3.5596 7.75 4.25Z"
+        />
       </g>
     </svg>
   </button>
 
-  <div
-    id="theme-controls-popover"
-    class="settings-popover"
-    popover="auto"
-  >
+  <div id="theme-controls-popover" class="settings-popover" popover="auto">
     <div class="settings">
       <div class="theme-header">
         <div class="theme-select">
@@ -330,10 +491,20 @@
           </select>
         </div>
         <div class="theme-header-actions">
-          <button class="export-toggle" onclick={() => { show_export = !show_export; }}>
+          <button
+            class="export-toggle"
+            onclick={() => {
+              show_export = !show_export;
+            }}
+          >
             Export Theme
           </button>
-          <button class="close-popover" aria-label="Close theme controls" popovertarget="theme-controls-popover" popovertargetaction="hide">
+          <button
+            class="close-popover"
+            aria-label="Close theme controls"
+            popovertarget="theme-controls-popover"
+            popovertargetaction="hide"
+          >
             Close
           </button>
         </div>
@@ -343,7 +514,9 @@
         <div transition:slide class="export-panel">
           <pre><code>{generate_export()}</code></pre>
           <div class="export-actions">
-            <button onclick={copy_theme}>{copied ? "Copied!" : "Copy CSS"}</button>
+            <button onclick={copy_theme}
+              >{copied ? "Copied!" : "Copy CSS"}</button
+            >
             <button onclick={download_theme}>Download</button>
           </div>
         </div>
@@ -354,7 +527,10 @@
           {#each Object.keys(theme_values) as key (key)}
             <label>
               {key.replace("_", "-")}:
-              <input type="color" bind:value={theme_values[key as keyof ThemeValues]} />
+              <input
+                type="color"
+                bind:value={theme_values[key as keyof ThemeValues]}
+              />
             </label>
           {/each}
         </div>
@@ -363,7 +539,11 @@
       <div class="controls">
         <div class="control-row">
           <label for="font-family">Font</label>
-          <select name="font-family" id="font-family" bind:value={font_settings.font_family}>
+          <select
+            name="font-family"
+            id="font-family"
+            bind:value={font_settings.font_family}
+          >
             {#each fontOptions as font (font.value)}
               <option value={font.value}>{font.name}</option>
             {/each}
@@ -373,7 +553,9 @@
           <label for="type-scale">Type Scale</label>
           <select id="type-scale" onchange={apply_type_scale}>
             {#each typeScales as scale (scale.name)}
-              <option value={scale.name} selected={scale.name === "Default"}>{scale.name}</option>
+              <option value={scale.name} selected={scale.name === "Default"}
+                >{scale.name}</option
+              >
             {/each}
           </select>
         </div>
@@ -381,7 +563,9 @@
           <label for="border-radius">Corners</label>
           <select id="border-radius" onchange={apply_border_radius}>
             {#each borderRadiusPresets as preset (preset.name)}
-              <option value={preset.name} selected={preset.name === "Default"}>{preset.name}</option>
+              <option value={preset.name} selected={preset.name === "Default"}
+                >{preset.name}</option
+              >
             {/each}
           </select>
         </div>
@@ -407,7 +591,6 @@
     color: var(--fg);
     box-shadow: var(--shadow-4);
     padding: 0;
-    font-size: var(--fs-xs);
     line-height: 1;
     display: grid;
     place-items: center;
@@ -465,12 +648,10 @@
 
   .export-toggle {
     width: auto;
-    font-size: var(--fs-s);
   }
 
   .close-popover {
     width: auto;
-    font-size: var(--fs-s);
   }
 
   .export-panel {
@@ -480,7 +661,6 @@
       padding: var(--pad-s) var(--pad-m);
       background: var(--fg-05);
       border-radius: var(--br-s);
-      font-size: var(--fs-xs);
       overflow-x: auto;
     }
   }
@@ -490,7 +670,6 @@
     gap: var(--vs-s);
     button {
       width: auto;
-      font-size: var(--fs-s);
     }
   }
 

@@ -14,7 +14,7 @@
 
 	let font_settings: FontSettings = $state({
 		min_ratio: 6 / 5,
-		max_ratio: 4 / 3,
+		max_ratio: 5 / 4,
 		min_font_size: 16,
 		max_font_size: 18,
 		min_viewport: 320,

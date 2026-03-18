@@ -1,5 +1,18 @@
 # @drop-in/graffiti
 
+## 4.23.0
+
+### Minor Changes
+
+- Typography system overhaul for tighter, more professional type rendering:
+  - **Type scale**: Reduced `--font-ratio-max` from `1.33` (Perfect Fourth) to `1.25` (Major Third). Mobile scale unchanged. Desktop headings are now ~55px max instead of ~75px — strong editorial feel without poster-scale blowout.
+  - **Heading line-height**: All h1–h6 now use `var(--lh-s)` (1.2) instead of inheriting `1.5` from the fluid system. Eliminates the excessive leading on large headings.
+  - **Letter-spacing**: Added tighter tracking on display headings — h1: `-0.02em`, h2: `-0.015em`, h3: `-0.01em`. Compensates for optical looseness at large sizes.
+  - **Font-weight tokens**: Added `--fw-medium` (500), `--fw-semibold` (600), `--fw-bold` (700) custom properties. Migrated all hardcoded font-weight values to use tokens (buttons `560` and sidebar-nav-heading `620` intentionally kept as one-offs).
+  - **Hardcoded value cleanup**: Replaced all remaining hardcoded `line-height` values with token vars (`--lh-xs`, `--lh-s`, `--lh`).
+  - **Pull quote**: `.pull-quote` is now a real styled component (italic, muted color, left border, proper margins) instead of just a fluid-level alias for `.fs-m`.
+  - **Bottom nav**: `.bottom-nav span` switched from hardcoded `0.75rem` to fluid system (`--fl: -1`).
+
 ## 4.22.0
 
 ### Minor Changes

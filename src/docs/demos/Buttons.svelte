@@ -11,6 +11,7 @@
     <button class="contrast">Contrast</button>
     <button class="ghost">Ghost</button>
     <button class="minimal">Minimal</button>
+    <button class="reset">Reset</button>
   </div>
 
   <!-- Mini size variants -->
@@ -25,5 +26,6 @@
     <button class="mini contrast">Contrast</button>
     <button class="mini ghost">Ghost</button>
     <button class="mini minimal">Minimal</button>
+    <button class="mini reset">Reset</button>
   </div>
 </div>

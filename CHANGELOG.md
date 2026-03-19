@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.23.1
+
+### Patch Changes
+
+- Add reset button examples to the Buttons demo for both default and mini variant clusters.
+
 ## 4.23.0
 
 ### Minor Changes

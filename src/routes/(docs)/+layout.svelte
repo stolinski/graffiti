@@ -261,7 +261,6 @@
         <strong>Resources</strong>
         <a href="/changelog">Changelog</a>
         <a href="https://github.com/stolinski/graffiti">GitHub</a>
-        <a href="https://graffiti-ui.com/llms.txt">LLM Docs</a>
       </nav>
       <nav class="stack">
         <strong>More</strong>

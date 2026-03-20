@@ -35,11 +35,5 @@
         >Copy the CSS directly</a
       >
     </p>
-    <p>
-      <a
-        href="https://graffiti-ui.com/llms.txt"
-        >Give your LLM our docs</a
-      >
-    </p>
   </section>
 </main>

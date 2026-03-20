@@ -1,6 +1,6 @@
 # Output Contract
 
-Version: 1.3
+Version: 1.5
 
 This contract defines the mandatory output structure and quality gates for Graffiti best-practices generation.
 
@@ -17,8 +17,8 @@ Every response must include these sections in this order:
    - Mark each as PASS/FAIL with one short evidence note.
 
 3. **Source Grounding**
-   - List the exact source files used to validate classes and variable contracts.
-   - Must include at least one of `src/docs/content/topics/*.md` and `src/lib/drop-in.css`.
+   - List the exact sources used to validate classes and variable contracts.
+   - Must include at least one hosted docs markdown URL from `https://graffiti-ui.com/{base|utilities|elements|ui-blocks}` and one stylesheet/package-contract source.
 
 4. **Primitive Mapping**
    - Map each requested component/interaction to a Graffiti primitive.
@@ -27,7 +27,7 @@ Every response must include these sections in this order:
 
 5. **Recipe Selection**
    - State which canonical pattern(s) are being used.
-   - State baseline template path used from `src/routes/templates/*/+page.svelte`.
+   - State baseline template URL used from `https://graffiti-ui.com/templates/*`.
    - If no baseline template match exists, explicitly state "No baseline template match found".
    - If no exact recipe exists, state closest fallback and why.
 
@@ -57,7 +57,7 @@ Every response must include these sections in this order:
 - Keep class usage compositional and readable (avoid unnecessary wrappers).
 - Prefer existing utility/component classes over inline declarations.
 - Use a Graffiti-first approach before adding custom CSS.
-- When a matching in-repo template exists, start from that template's structure and customize from it rather than generating a new unrelated structure.
+- When a matching hosted template exists, start from that template's structure and customize from it rather than generating a new unrelated structure.
 - Custom CSS is allowed when needed, but it must be implemented as reusable project-level classes/utilities (not ad-hoc local overrides).
 
 ## 3) Inline Style Policy
@@ -134,7 +134,7 @@ Any hard fail means overall fail regardless of score:
 5. Violates disallowed inline style rules
 6. Missing required accessibility baseline (labels/landmarks/table semantics)
 7. Missing one or more mandatory response sections from section 1
-8. Fails to use a matching in-repo template baseline when one exists (unless user explicitly requested a fresh build)
+8. Fails to use a matching hosted template baseline when one exists (unless user explicitly requested a fresh build)
 
 ## 7) Verification Checklist Template
 

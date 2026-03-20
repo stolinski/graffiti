@@ -323,7 +323,7 @@ Disallowed even as exceptions:
 
 ### Detection heuristics
 
-- Request intent matches an existing template in `src/routes/templates/*/+page.svelte`
+- Request intent matches an existing hosted template at `https://graffiti-ui.com/templates/*`
 - Output composes a new page structure instead of adapting the baseline template
 - Section ordering and component choices drift from baseline without explicit user request
 
@@ -345,6 +345,6 @@ Disallowed even as exceptions:
 
 ### Preferred direction
 
-- Start from the matching in-repo template file as baseline
+- Start from the matching hosted template as baseline
 - Preserve canonical section/component skeleton unless user requests a full replacement
 - Apply customization as focused edits to baseline structure

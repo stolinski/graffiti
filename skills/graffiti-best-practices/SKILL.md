@@ -2,20 +2,20 @@
 name: graffiti-best-practices
 description: Use when generating or refactoring Graffiti UI markup so output is class-first, semantic, accessible, responsive, and aligned with current Graffiti capabilities.
 metadata:
-  version: 1.3.0
+  version: 1.5.0
 ---
 
 # Graffiti Best Practices
 
 Generate high-quality Graffiti markup using current library constraints.
 
-Graffiti is the baseline design layer in this project: it provides the default system for elements, layout primitives, utilities, components, and color/theme tokens.
+Graffiti is the baseline design layer when this skill is active: it provides the default system for elements, layout primitives, utilities, components, and color/theme tokens.
 
 This skill extends Graffiti patterns; it does not create a parallel styling system.
 
 This skill is strict about class-first composition, minimal inline style usage, semantic HTML, and repeatable quality checks.
 
-It is also strict about template-first adaptation: when a matching in-repo template exists, start from that template and customize it.
+It is also strict about template-first adaptation: when a matching hosted template baseline exists, start from that template and customize it.
 
 Audience: developers using Graffiti in real applications and websites.
 
@@ -57,7 +57,7 @@ Activate this skill when the request includes one or more of these signals:
 5. Do not hardcode raw color literals (`#hex`, `rgb()`, `oklch(...)`) inline unless explicitly requested.
 6. Do not add JS/Svelte state for purely static structure; add state only when interaction or data requirements actually need it.
 7. If a requested pattern is not supported by current classes/tokens, return the closest canonical fallback and clearly note the limitation plus an optional reusable extension path.
-8. If a matching in-repo template exists for the requested intent, use it as the baseline. Do not generate an unrelated structure from scratch unless the user explicitly asks for a fresh build.
+8. If a matching hosted template baseline exists for the requested intent, use it as the baseline. Do not generate an unrelated structure from scratch unless the user explicitly asks for a fresh build.
 9. Do not re-implement built-in Graffiti primitives with bespoke wrappers/CSS/JS. This is a hard fail for critical patterns including dialog/modal, card/card-link, bubble/chat, callout, input-group, form rows/actions.
 10. Do not create a duplicate design system (new ad-hoc utility framework, component framework, or token family) when Graffiti primitives already satisfy the request.
 
@@ -66,11 +66,11 @@ Activate this skill when the request includes one or more of these signals:
 Treat these as fixed truths for this skill:
 
 - Graffiti is a class-first drop-in CSS system. Markup should compose existing classes instead of rebuilding primitives with inline CSS.
-- Graffiti is the baseline layer for page styling in this repo (elements + layouts + utilities + components + full token system).
-- The source of truth is repository content, in this order:
-  1. `src/lib/drop-in.css` (actual selectors and variable contracts)
-  2. `src/docs/content/topics/*.md` (canonical usage patterns and frontmatter `classes`)
-  3. `src/routes/templates/*/+page.svelte` (canonical page composition patterns)
+- Graffiti is the baseline layer for page styling in projects using this skill (elements + layouts + utilities + components + full token system).
+- The source of truth is hosted Graffiti docs/templates plus local package evidence, in this order:
+  1. `https://graffiti-ui.com/base`, `https://graffiti-ui.com/utilities`, `https://graffiti-ui.com/elements`, `https://graffiti-ui.com/ui-blocks` requested with `Accept: text/markdown`
+  2. `https://graffiti-ui.com/templates/landing`, `https://graffiti-ui.com/templates/dashboard`, `https://graffiti-ui.com/templates/blog`, `https://graffiti-ui.com/templates/settings`, `https://graffiti-ui.com/templates/ai-chat`
+  3. Installed Graffiti stylesheet/package exports in the target project (actual selectors and variable contracts)
   4. Skill recipes in `references/*` (guidance layer, never higher authority than source files)
 - Graffiti variables are contracts, not free-form style knobs. Use documented tokens/overrides only.
 - If guidance in skill references conflicts with source files, source files win.
@@ -79,7 +79,7 @@ Treat these as fixed truths for this skill:
 
 Before writing or editing markup, run this preflight in order:
 
-1. Variables: identify required tokens from `src/docs/content/topics/base-variables.md` and `src/lib/drop-in.css`.
+1. Variables: identify required tokens from `https://graffiti-ui.com/base` markdown and installed Graffiti CSS contracts.
 2. Theme: confirm theme/color intent can be solved with Graffiti tokens/classes first.
 3. Layout: map top-level structure to existing layout primitives.
 4. Utilities: map text/state/alignment behavior to existing utilities.
@@ -91,7 +91,7 @@ If any category cannot be mapped, choose a documented fallback and record it bef
 
 When using inline custom properties or token references:
 
-1. Prefer core tokens from `src/docs/content/topics/base-variables.md` and `src/lib/drop-in.css`.
+1. Prefer core tokens documented on `https://graffiti-ui.com/base` markdown and implemented in Graffiti CSS contracts.
 2. Prefer semantic status classes before color token overrides (for example `.tag.success` before `--tag-color`).
 3. Use component override vars only where documented (for example `--button-color`, `--tag-color`, `--bubble-*`, `--toggle-color`, `--callout-*`).
 4. Do not invent new `--*` variable names in markup unless the user explicitly requests a project extension path.
@@ -104,8 +104,8 @@ Follow this sequence every time.
 1. **Classify intent**
    - Map request to one or more intents: layout shell, nav, form, card surface, table/data, chat, utility/text.
 
-2. **Resolve in-repo baseline template first**
-   - Check `src/routes/templates/*/+page.svelte` for the closest intent match.
+2. **Resolve hosted template baseline first**
+   - Check `https://graffiti-ui.com/templates/*` for the closest intent match.
    - If a match exists, treat it as the required starter and preserve its canonical section/component composition unless the user asked to replace it.
    - Record the selected template path in the output contract.
 
@@ -113,9 +113,9 @@ Follow this sequence every time.
    - Complete variable/theme/layout/utilities/components checks from `references/GRAFFITI_SYSTEM.md`.
 
 4. **Resolve source-of-truth class and variable contracts**
-   - For requested components/sections, read relevant `src/docs/content/topics/*.md` files and use frontmatter `classes` plus examples as canonical patterns.
-   - Read `src/docs/content/topics/base-variables.md` for global token names and categories.
-   - If uncertain about availability, confirm against selectors/variables in `src/lib/drop-in.css`.
+   - For requested components/sections, read `https://graffiti-ui.com/base`, `https://graffiti-ui.com/utilities`, `https://graffiti-ui.com/elements`, and `https://graffiti-ui.com/ui-blocks` with `Accept: text/markdown` and use documented classes/examples as canonical patterns.
+   - Use `https://graffiti-ui.com/base` markdown for global token names and categories.
+   - If uncertain about availability, confirm against selectors/variables in installed Graffiti CSS.
 
 5. **Create primitive mapping before coding**
    - For each requested component/interaction, map user intent to an existing Graffiti primitive and cite source file.
@@ -149,7 +149,7 @@ Follow this sequence every time.
     - Ensure composition degrades correctly at mobile widths using existing layout primitives.
 
 13. **Run class and variable validation checks**
-    - Every class in output must be traceable to docs frontmatter/examples, templates, or `src/lib/drop-in.css`.
+    - Every class in output must be traceable to hosted docs markdown, hosted templates, or installed Graffiti CSS.
     - Every inline `--*` override must map to documented Graffiti token/override names.
     - Confirm no built-in primitives were re-implemented with custom wrappers/CSS/JS.
     - Confirm no duplicate utility/component/token system was introduced.
@@ -162,15 +162,15 @@ Follow this sequence every time.
     - Apply troubleshooting defaults from `references/TROUBLESHOOTING.md`.
     - Prefer safe class-first fallback plus explicit limitation note over invented classes.
 
-## In-Repo Template Baseline Map
+## Hosted Template Baseline Map
 
 Use this map before writing markup:
 
-- Landing/marketing pages -> `src/routes/templates/landing/+page.svelte`
-- Dashboard/admin pages -> `src/routes/templates/dashboard/+page.svelte`
-- Blog/content pages -> `src/routes/templates/blog/+page.svelte`
-- Settings/account pages -> `src/routes/templates/settings/+page.svelte`
-- AI chat pages -> `src/routes/templates/ai-chat/+page.svelte`
+- Landing/marketing pages -> `https://graffiti-ui.com/templates/landing`
+- Dashboard/admin pages -> `https://graffiti-ui.com/templates/dashboard`
+- Blog/content pages -> `https://graffiti-ui.com/templates/blog`
+- Settings/account pages -> `https://graffiti-ui.com/templates/settings`
+- AI chat pages -> `https://graffiti-ui.com/templates/ai-chat`
 
 If no direct match exists, use recipes as primary source and state "No baseline template match found" in the output contract.
 
@@ -223,7 +223,7 @@ Treat output as failed if any hard fail occurs:
 - Disallowed inline styles
 - Missing required semantic/accessibility structure
 - Response does not follow output contract sections
-- Matching in-repo template exists but output does not use it as baseline (unless user explicitly requested a fresh build)
+- Matching hosted template exists but output does not use it as baseline (unless user explicitly requested a fresh build)
 
 Treat output as pass only if all sections in `references/OUTPUT_CONTRACT.md` pass their checks.
 

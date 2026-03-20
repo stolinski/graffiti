@@ -12,8 +12,8 @@ Rules:
 
 Source:
 
-- `src/docs/content/topics/elements-dialog.md`
-- `src/docs/content/topics/ui-blocks-confirm-dialog.md`
+- `https://graffiti-ui.com/elements` (markdown, dialog section)
+- `https://graffiti-ui.com/ui-blocks` (markdown, confirm dialog section)
 
 ```html
 <button commandfor="my-dialog" command="show-modal">Open Dialog</button>
@@ -28,7 +28,7 @@ Source:
 
 Source:
 
-- `src/docs/content/topics/elements-card.md`
+- `https://graffiti-ui.com/elements` (markdown, card section)
 
 ```html
 <a class="card linked" href="/docs/release-notes">
@@ -45,7 +45,7 @@ Source:
 
 Source:
 
-- `src/docs/content/topics/elements-bubble.md`
+- `https://graffiti-ui.com/elements` (markdown, bubble/chat section)
 
 ```html
 <section class="chat-thread">
@@ -68,7 +68,7 @@ Source:
 
 Source:
 
-- `src/docs/content/topics/ui-blocks-forms.md`
+- `https://graffiti-ui.com/ui-blocks` (markdown, forms section)
 
 ```html
 <fieldset class="stack" style="--gap: var(--vs-xs);">
@@ -93,7 +93,7 @@ Source:
 
 Source:
 
-- `src/docs/content/topics/elements-input-group.md`
+- `https://graffiti-ui.com/elements` (markdown, input-group section)
 
 ```html
 <div class="input-group" style="max-width: 420px;">
@@ -106,7 +106,7 @@ Source:
 
 Source:
 
-- `src/docs/content/topics/elements-callout.md`
+- `https://graffiti-ui.com/elements` (markdown, callout section)
 
 ```html
 <div class="callout">Default callout for general information.</div>

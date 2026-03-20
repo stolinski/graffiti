@@ -1,10 +1,10 @@
 # Graffiti System Primer
 
-Use this file to ground outputs in how Graffiti actually works in this repo.
+Use this file to ground outputs in how Graffiti actually works for hosted docs + templates and installed package usage.
 
 ## What Graffiti Is
 
-- Graffiti is the baseline design layer for this repository.
+- Graffiti is the baseline design layer for projects using this skill.
 - It provides the default system for elements, layouts, utilities, components, and a full tokenized color/spacing/radius/shadow model.
 - Graffiti is class-first and drop-in: most styling should come from composing existing classes in markup.
 - Inline styles are for narrow token overrides, not for rebuilding layout/component primitives.
@@ -14,7 +14,7 @@ Use this file to ground outputs in how Graffiti actually works in this repo.
 
 Run this before writing or editing markup:
 
-1. Variables: identify required tokens from `src/docs/content/topics/base-variables.md` and `src/lib/drop-in.css`.
+1. Variables: identify required tokens from `https://graffiti-ui.com/base` markdown and installed Graffiti CSS contracts.
 2. Theme: confirm styling relies on Graffiti theme-aware tokens/classes, not raw color literals.
 3. Layout primitives: map major wrappers to existing layout classes (`layout-*`, `stack`, `cluster`, `split`, etc.).
 4. Utilities: select existing text/state/spacing utilities before considering overrides.
@@ -26,9 +26,9 @@ If any preflight category is unresolved, do not write final markup yet; resolve 
 
 When there is any uncertainty, resolve in this order:
 
-1. `src/lib/drop-in.css` (real selectors and variable contracts)
-2. `src/docs/content/topics/*.md` (canonical usage patterns and frontmatter `classes`)
-3. `src/routes/templates/*/+page.svelte` (canonical page composition)
+1. Hosted docs markdown from `https://graffiti-ui.com/base`, `https://graffiti-ui.com/utilities`, `https://graffiti-ui.com/elements`, `https://graffiti-ui.com/ui-blocks`
+2. Hosted templates at `https://graffiti-ui.com/templates/*`
+3. Installed Graffiti stylesheet/package exports (real selectors and variable contracts)
 4. Skill recipe docs in `skills/graffiti-best-practices/references/*.md`
 
 If references conflict with source files, source files win.
@@ -39,7 +39,7 @@ Graffiti variables are contract-based.
 
 ### 1) Global tokens
 
-Defined in `src/lib/drop-in.css` and documented in `src/docs/content/topics/base-variables.md`.
+Defined in Graffiti CSS contracts and documented on `https://graffiti-ui.com/base` markdown.
 
 - Color tokens: `--red`, `--blue`, `--green`, etc. plus `-1` through `-9` scales
 - Semantic colors: `--primary`, `--error`, `--warning`, `--success` and scale variants
@@ -81,10 +81,10 @@ Rebuilding these with custom wrappers + bespoke CSS/JS counts as duplicate-syste
 
 Before writing markup:
 
-1. Find relevant topic docs in `src/docs/content/topics/*.md`.
-2. Read frontmatter `classes` first, then example markup.
-3. Use template routes in `src/routes/templates/*/+page.svelte` for page-level structure.
-4. Confirm uncertain class names against selectors in `src/lib/drop-in.css`.
+1. Fetch relevant hosted docs markdown pages (`/base`, `/utilities`, `/elements`, `/ui-blocks`) from `https://graffiti-ui.com` using `Accept: text/markdown`.
+2. Read documented class lists/pattern examples first.
+3. Use hosted template routes at `https://graffiti-ui.com/templates/*` for page-level structure.
+4. Confirm uncertain class names against selectors in installed Graffiti CSS.
 
 ## Primitive Mapping Requirement
 
@@ -98,8 +98,8 @@ Every requested component or interaction must have a mapped primitive or an expl
 
 ## Fast Guardrails
 
-- If a class is not documented and not present in `src/lib/drop-in.css`, treat it as unknown.
-- If a custom property is not documented and not present in `src/lib/drop-in.css`, treat it as unknown.
+- If a class is not documented in hosted docs and not present in installed Graffiti CSS, treat it as unknown.
+- If a custom property is not documented in hosted docs and not present in installed Graffiti CSS, treat it as unknown.
 - Prefer semantic variants before custom token overrides (example: `.tag.success` before `--tag-color`).
 - Prefer built-in form patterns (`.row`, `.form-option-row`, `.form-actions`) over ad-hoc wrappers.
 - Prefer built-in card/link patterns (`.card`, `.card.featured`, `.card.linked`) over manual recreation.
@@ -107,9 +107,9 @@ Every requested component or interaction must have a mapped primitive or an expl
 
 ## Known Canonical Templates
 
-- Landing: `src/routes/templates/landing/+page.svelte`
-- Dashboard: `src/routes/templates/dashboard/+page.svelte`
-- Blog: `src/routes/templates/blog/+page.svelte`
-- Settings: `src/routes/templates/settings/+page.svelte`
-- AI chat: `src/routes/templates/ai-chat/+page.svelte`
-- Docs portal: `src/routes/templates/docs-portal/+page.svelte`
+- Landing: `https://graffiti-ui.com/templates/landing`
+- Dashboard: `https://graffiti-ui.com/templates/dashboard`
+- Blog: `https://graffiti-ui.com/templates/blog`
+- Settings: `https://graffiti-ui.com/templates/settings`
+- AI chat: `https://graffiti-ui.com/templates/ai-chat`
+- Docs portal: `https://graffiti-ui.com/templates/docs-portal`

@@ -303,7 +303,7 @@ Use case: assistant/user message formatting in threaded chat.
 
 - Recommended pairing: wrap rows in `.chat-thread`
 - Fallback: if rich chat theme is unavailable, keep neutral `bubble` defaults
-- Canonical source: `src/docs/content/topics/elements-bubble.md`
+- Canonical source: `https://graffiti-ui.com/elements` (markdown, bubble/chat section)
 
 ---
 
@@ -388,5 +388,5 @@ Use case: modal dialogs and confirmations using native dialog primitives.
 </dialog>
 ```
 
-- Canonical sources: `src/docs/content/topics/elements-dialog.md`, `src/docs/content/topics/ui-blocks-confirm-dialog.md`
+- Canonical sources: `https://graffiti-ui.com/elements` (markdown, dialog) and `https://graffiti-ui.com/ui-blocks` (markdown, confirm dialog)
 - Anti-pattern: avoid bespoke modal wrappers and custom open/close JS when native dialog commands are sufficient

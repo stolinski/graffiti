@@ -43,7 +43,7 @@ Each transform includes:
 ### Verification
 
 - No inline `display`/`grid-template-*` remains
-- Layout class exists in `drop-in.css`
+- Layout class exists in hosted docs markdown and/or installed `drop-in.css`
 
 ---
 

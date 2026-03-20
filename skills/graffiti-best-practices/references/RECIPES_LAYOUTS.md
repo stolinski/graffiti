@@ -16,17 +16,17 @@ See also:
 2. Prefer `stack` and `cluster` for spacing/alignment before inline layout CSS.
 3. Use inline styles only for approved token overrides (`--gap`, `--min-card-width`, etc.).
 4. Use semantic landmarks (`header`, `nav`, `main`, `aside`, `footer`).
-5. If a matching baseline exists in `src/routes/templates/*/+page.svelte`, adapt that file's structure first.
+5. If a matching baseline exists at `https://graffiti-ui.com/templates/*`, adapt that structure first.
 
 ## In-Repo Baseline Map (Required First Check)
 
 Before using recipes alone, check for a matching baseline template:
 
-- Marketing/landing -> `src/routes/templates/landing/+page.svelte`
-- Dashboard/admin -> `src/routes/templates/dashboard/+page.svelte`
-- Blog/content -> `src/routes/templates/blog/+page.svelte`
-- Settings/account -> `src/routes/templates/settings/+page.svelte`
-- AI chat -> `src/routes/templates/ai-chat/+page.svelte`
+- Marketing/landing -> `https://graffiti-ui.com/templates/landing`
+- Dashboard/admin -> `https://graffiti-ui.com/templates/dashboard`
+- Blog/content -> `https://graffiti-ui.com/templates/blog`
+- Settings/account -> `https://graffiti-ui.com/templates/settings`
+- AI chat -> `https://graffiti-ui.com/templates/ai-chat`
 
 Recipes in this file are canonical composition guides. When a baseline template exists, they should be used to refine/adapt the baseline, not replace it.
 

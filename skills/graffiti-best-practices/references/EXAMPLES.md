@@ -311,7 +311,7 @@ Code excerpts are intentionally partial; the actual response must still include 
 
 ### Expected behavior
 
-- Resolve baseline template first: `src/routes/templates/landing/+page.svelte`
+- Resolve baseline template first: `https://graffiti-ui.com/templates/landing`
 - Keep pricing section structure from baseline and customize plan copy/labels
 - Preserve canonical `.card.featured` emphasized tier composition
 - Report baseline path in "Recipe Selection" and checklist
@@ -319,7 +319,7 @@ Code excerpts are intentionally partial; the actual response must still include 
 ### Correct approach excerpt
 
 ```html
-<!-- Baseline: src/routes/templates/landing/+page.svelte -->
+<!-- Baseline: https://graffiti-ui.com/templates/landing -->
 <section id="pricing" class="section surface">
   <div class="layout-readable center stack" style="--gap: var(--vs-xl);">
     <div class="layout-three-col" style="align-items: stretch;">

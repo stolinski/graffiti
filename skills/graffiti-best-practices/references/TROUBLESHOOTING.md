@@ -164,7 +164,7 @@ Use this guide when prompts are ambiguous, conflicting, or impossible to satisfy
 
 ### Symptom
 
-- Prompt intent maps cleanly to one of `src/routes/templates/*/+page.svelte`
+- Prompt intent maps cleanly to one of `https://graffiti-ui.com/templates/*`
 
 ### Default action
 

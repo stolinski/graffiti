@@ -1143,6 +1143,22 @@
     width: 100%;
   }
 
+  .reset {
+    appearance: none;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    text-align: inherit;
+    text-decoration: none;
+  }
+
   /* Text alignment */
   .text-center {
     text-align: center;

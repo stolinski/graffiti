@@ -13,6 +13,7 @@ classes:
   - .error
   - .ghost
   - .minimal
+  - .reset
   - .mini
 demos:
   - Buttons
@@ -48,6 +49,16 @@ Smaller padding for compact buttons:
 <button class="mini">Small</button>
 <button class="primary mini">Small Primary</button>
 ```
+
+## Reset Button
+
+Use `.reset` when you need a truly unstyled button and want to build custom chrome.
+
+```html
+<button class="reset" type="button">Icon trigger</button>
+```
+
+It removes background, border, radius, shadow, and padding while inheriting typography and color.
 
 ## Disabled State
 

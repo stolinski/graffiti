@@ -1,5 +1,17 @@
 # @drop-in/graffiti
 
+## 4.23.3
+
+### Patch Changes
+
+- Fix sidebar navigation overflow in constrained vertical sidebars by making `.sidebar-nav` scrollable and preventing nav items from shrinking.
+
+## 4.23.2
+
+### Patch Changes
+
+- Fix `.tag` fluid typography by including `.tag` in the fluid selector so `--fl: -1` applies consistently inside table cells and other inherited text contexts.
+
 ## 4.23.1
 
 ### Patch Changes

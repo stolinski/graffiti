@@ -490,6 +490,7 @@
   p,
   li,
   .fluid,
+  .tag,
   textarea,
   input,
   select,
@@ -2844,13 +2845,17 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    min-block-size: 0;
     gap: 2px;
     overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
 
     > :is(a, details, .sidebar-nav-heading),
     > details > :is(a, summary, .sidebar-nav-heading) {
       width: 100%;
       margin: 0;
+      flex: 0 0 auto;
       min-inline-size: 0;
       max-inline-size: 100%;
       box-sizing: border-box;
@@ -3189,6 +3194,11 @@
       padding-block: var(--sidebar-nav-row-pad-block);
       min-block-size: 2.25rem;
     }
+  }
+
+  .split.vertical > .sidebar-nav {
+    flex: 1 1 auto;
+    min-block-size: 0;
   }
 
   /* Footer */
@@ -3888,7 +3898,7 @@
     align-items: center;
     gap: 0.45em;
     padding: calc(var(--pad-xs) + 1px) var(--pad-l);
-    border-radius: 999px;
+    border-radius: var(--br-xxl);
     border: 1px solid var(--tag-border);
     background: linear-gradient(
       180deg,

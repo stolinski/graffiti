@@ -1,4 +1,9 @@
-import { agentSections, docsRouteGuides, siteUrl } from "./manifest.js";
+import {
+  agentSections,
+  docsRouteGuides,
+  siteUrl,
+  templatePages,
+} from "./manifest.js";
 import { getTopicsForRoute } from "$docs/content/runtime.js";
 
 /**
@@ -28,6 +33,17 @@ import { getTopicsForRoute } from "$docs/content/runtime.js";
  * @property {{ label: string, href: string }[]} topLinks
  */
 
+/**
+ * @typedef {Object} TemplatePage
+ * @property {string} slug
+ * @property {string} routePath
+ * @property {string} title
+ * @property {string} summary
+ * @property {string} bestFor
+ * @property {string[]} highlights
+ * @property {string[]} classes
+ */
+
 /** @typedef {ReturnType<import("$docs/content/topics.js").parseTopicMarkdown>} RuntimeTopic */
 
 /** @type {AgentSection[]} */
@@ -35,6 +51,9 @@ const sections = agentSections;
 
 /** @type {RouteGuide[]} */
 const guides = docsRouteGuides;
+
+/** @type {TemplatePage[]} */
+const templates = templatePages;
 
 /** @param {string} pathname */
 function normalizePath(pathname) {
@@ -55,6 +74,16 @@ function routeKeyFromPath(routePath) {
   return routePath.replace(/^\//, "");
 }
 
+/** @param {string} topicId */
+function sectionTopicAnchor(topicId) {
+  return `topic-${topicId}`;
+}
+
+/** @param {string} sectionRoutePath @param {string} topicId */
+function sectionTopicPath(sectionRoutePath, topicId) {
+  return `${normalizePath(sectionRoutePath)}/${topicId}`;
+}
+
 /** @param {{ title: string, url: string, description: string }} input */
 function markdownFrontmatter({ title, url, description }) {
   return `---\ntitle: "${title}"\nurl: ${url}\ndescription: "${description}"\n---`;
@@ -63,47 +92,100 @@ function markdownFrontmatter({ title, url, description }) {
 /**
  * Render a single runtime topic to markdown with full content
  * @param {RuntimeTopic} topic
+ * @param {AgentSection} section
  */
-function renderTopicMarkdown(topic) {
+function renderTopicMarkdown(topic, section) {
   const classSection =
     topic.classes.length > 0
       ? `**Classes:** ${topic.classes.map((c) => `\`${c}\``).join(", ")}\n\n`
       : "";
 
-  return `## ${topic.title}\n\n${topic.summary}\n\n**When to use:** ${topic.whenToUse}\n\n${classSection}${topic.markdown}\n`;
+  const topicPath = sectionTopicPath(section.routePath, topic.id);
+  const topicAnchor = sectionTopicAnchor(topic.id);
+
+  return `<a id="${topicAnchor}"></a>\n\n## ${topic.title}\n\n${topic.summary}\n\n**When to use:** ${topic.whenToUse}\n\n${classSection}**Direct topic doc:** [${toAbsolute(topicPath)}](${toAbsolute(topicPath)})\n\n${topic.markdown}\n`;
 }
 
 /**
- * Get runtime topics for a section, maintaining manifest order
+ * Get runtime topics for a section, strictly matching manifest order.
  * @param {AgentSection} section
  */
 function getOrderedRuntimeTopics(section) {
   const runtimeTopics = getTopicsForRoute(routeKeyFromPath(section.routePath));
-
-  // Create a map by ID for quick lookup
   const runtimeById = new Map(runtimeTopics.map((t) => [t.id, t]));
 
-  // Return topics in manifest order, falling back to runtime order for new topics
-  const orderedTopics = [];
-  const seenIds = new Set();
+  const manifestSlugs = section.usageOrder.map((topic) => topic.slug);
+  const missingInRuntime = manifestSlugs.filter(
+    (slug) => !runtimeById.has(slug),
+  );
+  const manifestSlugSet = new Set(manifestSlugs);
+  const missingInManifest = runtimeTopics
+    .map((topic) => topic.id)
+    .filter((id) => !manifestSlugSet.has(id));
 
-  // First, add topics in manifest order if they exist in runtime
-  for (const manifestTopic of section.usageOrder) {
-    const runtime = runtimeById.get(manifestTopic.slug);
-    if (runtime) {
-      orderedTopics.push(runtime);
-      seenIds.add(runtime.id);
-    }
+  if (missingInRuntime.length > 0 || missingInManifest.length > 0) {
+    const missingRuntimeText =
+      missingInRuntime.length > 0
+        ? `Missing in runtime: ${missingInRuntime.join(", ")}`
+        : "";
+    const missingManifestText =
+      missingInManifest.length > 0
+        ? `Missing in manifest: ${missingInManifest.join(", ")}`
+        : "";
+    const details = [missingRuntimeText, missingManifestText]
+      .filter(Boolean)
+      .join(" | ");
+
+    throw new Error(
+      `Agent docs manifest mismatch for ${section.routePath}. ${details}`,
+    );
   }
 
-  // Then add any runtime topics not in manifest (new topics)
-  for (const topic of runtimeTopics) {
-    if (!seenIds.has(topic.id)) {
-      orderedTopics.push(topic);
+  const ordered = [];
+  for (const slug of manifestSlugs) {
+    const topic = runtimeById.get(slug);
+    if (!topic) {
+      throw new Error(
+        `Agent docs manifest mismatch for ${section.routePath}. Topic "${slug}" was not found after validation.`,
+      );
     }
+    ordered.push(topic);
   }
 
-  return orderedTopics;
+  return ordered;
+}
+
+/**
+ * Render a topic-level markdown page for selective fetches.
+ * @param {AgentSection} section
+ * @param {RuntimeTopic} topic
+ */
+export function renderAgentTopicMarkdown(section, topic) {
+  const topicPath = sectionTopicPath(section.routePath, topic.id);
+  const frontmatter = markdownFrontmatter({
+    title: `Graffiti ${section.title}: ${topic.title}`,
+    url: toAbsolute(topicPath),
+    description: topic.summary,
+  });
+
+  const classes =
+    topic.classes.length > 0
+      ? topic.classes.map((item) => `\`${item}\``).join(", ")
+      : "none";
+
+  return `${frontmatter}
+
+# ${topic.title}
+
+${topic.summary}
+
+- **Section:** [Graffiti ${section.title}](${toAbsolute(section.routePath)})
+- **When to use:** ${topic.whenToUse}
+- **Classes:** ${classes}
+
+---
+
+${topic.markdown}`;
 }
 
 /** @param {AgentSection} section */
@@ -117,7 +199,9 @@ export function renderAgentSectionMarkdown(section) {
   const runtimeTopics = getOrderedRuntimeTopics(section);
 
   // Render full topic content inline
-  const topicContent = runtimeTopics.map(renderTopicMarkdown).join("\n---\n\n");
+  const topicContent = runtimeTopics
+    .map((topic) => renderTopicMarkdown(topic, section))
+    .join("\n---\n\n");
 
   // Quick reference index at the top
   const topicIndex = runtimeTopics
@@ -126,7 +210,9 @@ export function renderAgentSectionMarkdown(section) {
         topic.classes.length > 0
           ? ` (${topic.classes.slice(0, 3).join(", ")})`
           : "";
-      return `- **${topic.title}**${classes} - ${topic.whenToUse}`;
+      const anchor = `#${sectionTopicAnchor(topic.id)}`;
+      const topicPath = sectionTopicPath(section.routePath, topic.id);
+      return `- [**${topic.title}**](${anchor})${classes} - ${topic.whenToUse} ([topic](${toAbsolute(topicPath)}))`;
     })
     .join("\n");
 
@@ -166,6 +252,73 @@ ${guide.summary}
 ## References
 
 ${links}
+`;
+}
+
+export function renderTemplatesIndexMarkdown() {
+  const frontmatter = markdownFrontmatter({
+    title: "Graffiti Templates",
+    url: toAbsolute("/templates"),
+    description:
+      "Production-style templates built with Graffiti classes and semantic HTML.",
+  });
+
+  const templateLinks = templates
+    .map(
+      (template) =>
+        `- [${template.title}](${toAbsolute(template.routePath)}) - ${template.summary}`,
+    )
+    .join("\n");
+
+  return `${frontmatter}
+
+# Graffiti Templates
+
+Production-style templates built with Graffiti classes and semantic HTML.
+
+## Available Templates
+
+${templateLinks}
+
+## Usage Notes
+
+- Copy structure first, then tune with custom properties (\`--gap\`, \`--layout-gap\`, \`--surface-bg\`)
+- Keep semantic HTML and only add classes where the pattern requires it
+- Prefer native elements (\`<dialog>\`, \`<details>\`, popover, table semantics) before custom JS
+`;
+}
+
+/** @param {TemplatePage} template */
+export function renderTemplateMarkdown(template) {
+  const frontmatter = markdownFrontmatter({
+    title: `Graffiti Template: ${template.title}`,
+    url: toAbsolute(template.routePath),
+    description: template.summary,
+  });
+
+  const highlights = template.highlights.map((item) => `- ${item}`).join("\n");
+  const classes = template.classes.map((item) => `\`${item}\``).join(", ");
+
+  return `${frontmatter}
+
+# ${template.title}
+
+${template.summary}
+
+**Best for:** ${template.bestFor}
+
+## Key Patterns
+
+${highlights}
+
+## Common Classes
+
+${classes}
+
+## References
+
+- [Open rendered template](${toAbsolute(template.routePath)})
+- [All templates](${toAbsolute("/templates")})
 `;
 }
 
@@ -233,7 +386,7 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 - **Fluid typography** - Text scales smoothly between viewport sizes
 - **Automatic theming** - Light/dark mode via \`light-dark()\` with no extra work
 
-Request any section route with \`Accept: text/markdown\` header to get full documentation.
+Request section routes, topic routes (for example \`/elements/buttons\`), or template routes with \`Accept: text/markdown\` to get agent-optimized docs.
 `;
 }
 
@@ -245,6 +398,33 @@ const guideByPath = new Map(
   guides.map((guide) => [normalizePath(guide.routePath), guide]),
 );
 
+const templateByPath = new Map(
+  templates.map((template) => [normalizePath(template.routePath), template]),
+);
+
+/** @param {string} normalizedPath */
+function getSectionTopicForPath(normalizedPath) {
+  const match = /^\/([a-z0-9-]+)\/([a-z0-9-]+)$/.exec(normalizedPath);
+  if (!match) {
+    return null;
+  }
+
+  const sectionPath = `/${match[1]}`;
+  const topicId = match[2];
+  const section = sectionByPath.get(sectionPath);
+  if (!section) {
+    return null;
+  }
+
+  const runtimeTopics = getTopicsForRoute(routeKeyFromPath(section.routePath));
+  const topic = runtimeTopics.find((entry) => entry.id === topicId);
+  if (!topic) {
+    return null;
+  }
+
+  return { section, topic };
+}
+
 /** @param {string} pathname */
 export function getAgentMarkdownForPath(pathname) {
   const normalizedPath = normalizePath(pathname);
@@ -253,9 +433,23 @@ export function getAgentMarkdownForPath(pathname) {
     return renderAgentIndexMarkdown();
   }
 
+  if (normalizedPath === "/templates") {
+    return renderTemplatesIndexMarkdown();
+  }
+
+  const template = templateByPath.get(normalizedPath);
+  if (template) {
+    return renderTemplateMarkdown(template);
+  }
+
   const section = sectionByPath.get(normalizedPath);
   if (section) {
     return renderAgentSectionMarkdown(section);
+  }
+
+  const sectionTopic = getSectionTopicForPath(normalizedPath);
+  if (sectionTopic) {
+    return renderAgentTopicMarkdown(sectionTopic.section, sectionTopic.topic);
   }
 
   const guide = guideByPath.get(normalizedPath);

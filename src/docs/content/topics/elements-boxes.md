@@ -12,7 +12,7 @@ classes:
   - .ghost
   - .invisible
 demos:
-  - Card
+  - Boxes
 tags:
   - elements
   - containers
@@ -35,8 +35,8 @@ tags:
 ```html
 <div class="box">
   <div class="stack">
-    <h3>Card Title</h3>
-    <p>Card description text goes here.</p>
+    <h3>Panel Title</h3>
+    <p>Box description text goes here.</p>
     <button class="primary">Action</button>
   </div>
 </div>
@@ -52,13 +52,13 @@ Combine box styles with shadow variables:
 </div>
 ```
 
-## In Card Grid
+## In Grid Layout
 
 ```html
 <div class="layout-card">
-  <div class="box">Card 1</div>
-  <div class="box">Card 2</div>
-  <div class="box">Card 3</div>
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+  <div class="box">Box 3</div>
 </div>
 ```
 

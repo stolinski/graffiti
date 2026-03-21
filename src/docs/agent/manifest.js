@@ -1,12 +1,139 @@
 export const siteUrl = "https://graffiti-ui.com";
 
+export const templatePages = [
+  {
+    slug: "landing",
+    routePath: "/templates/landing",
+    title: "Landing Page",
+    summary:
+      "SaaS marketing page with hero, social proof, feature grid, pricing, testimonials, FAQ, and conversion footer.",
+    bestFor: "Marketing sites and launch pages.",
+    highlights: [
+      "Hero with primary/secondary CTAs",
+      "Feature grid and testimonial cards",
+      "Three-tier pricing layout",
+      "FAQ and conversion footer",
+    ],
+    classes: [
+      ".layout-readable",
+      ".layout-three-col",
+      ".feature-card",
+      ".card.featured",
+      ".footer",
+    ],
+  },
+  {
+    slug: "dashboard",
+    routePath: "/templates/dashboard",
+    title: "Dashboard",
+    summary:
+      "Admin dashboard shell with collapsible sidebar nav, stat cards, and a data table.",
+    bestFor: "Back-office and analytics applications.",
+    highlights: [
+      "Sidebar app shell with drawer behavior",
+      "KPI stat card row",
+      "Large responsive orders table",
+      "Header actions and filters",
+    ],
+    classes: [
+      ".layout-sidebar.fill",
+      ".app-shell",
+      ".sidebar-nav",
+      ".stat-card",
+      ".table",
+    ],
+  },
+  {
+    slug: "blog",
+    routePath: "/templates/blog",
+    title: "Blog",
+    summary:
+      "Long-form article template with sticky TOC, rich typography, related posts, and newsletter CTA.",
+    bestFor: "Editorial and content-heavy publishing pages.",
+    highlights: [
+      "Sticky table-of-contents sidebar",
+      "Readable long-form article flow",
+      "Author bio and related content cards",
+      "Newsletter signup section",
+    ],
+    classes: [
+      ".layout-sidebar.invert.fixed",
+      ".toc",
+      ".breadcrumbs",
+      ".callout",
+      ".footer",
+    ],
+  },
+  {
+    slug: "settings",
+    routePath: "/templates/settings",
+    title: "Settings",
+    summary:
+      "Account settings template with nested navigation, profile forms, toggles, and danger-zone actions.",
+    bestFor: "Product account/preferences pages.",
+    highlights: [
+      "Nested settings sidebar",
+      "Profile editing form sections",
+      "Notification toggles and option rows",
+      "Danger-zone destructive action pattern",
+    ],
+    classes: [
+      ".layout-sidebar.fill",
+      ".app-shell",
+      ".sidebar-nav",
+      ".toggle",
+      ".form-actions",
+    ],
+  },
+  {
+    slug: "docs-portal",
+    routePath: "/templates/docs-portal",
+    title: "Docs Portal",
+    summary:
+      "Documentation shell with persistent nav, right-side TOC, tabs, tables, FAQ, and pagination.",
+    bestFor: "Product docs and knowledge bases.",
+    highlights: [
+      "Drawer-style docs navigation",
+      "Inline tabs and table content blocks",
+      "FAQ disclosures and pagination",
+      "Breadcrumb + TOC context",
+    ],
+    classes: [".layout-sidebar.fill", ".toc", ".tabs", ".table", ".pagination"],
+  },
+  {
+    slug: "ai-chat",
+    routePath: "/templates/ai-chat",
+    title: "AI Chat",
+    summary:
+      "Dark chat interface with conversation drawer, threaded bubbles, and docked composer.",
+    bestFor: "Support, assistant, and chat-driven workflows.",
+    highlights: [
+      "Conversation drawer with compact nav",
+      "Threaded message rows with role alignment",
+      "Bubble styling for assistant vs user",
+      "Input-group composer footer",
+    ],
+    classes: [
+      ".layout-sidebar.fill.wide",
+      ".drawer",
+      ".chat-thread",
+      ".bubble",
+      ".input-group",
+    ],
+  },
+];
+
 export const docsRouteGuides = [
   {
-    slug: "changelog",
-    routePath: "/changelog",
-    title: "Changelog",
-    summary: "Current package changes and release notes.",
-    topLinks: [{ label: "View changelog page", href: "/changelog" }],
+    slug: "templates",
+    routePath: "/templates",
+    title: "Templates",
+    summary:
+      "Production-ready page templates built from Graffiti classes and semantic HTML.",
+    topLinks: templatePages.map((template) => ({
+      label: template.title,
+      href: template.routePath,
+    })),
   },
 ];
 
@@ -26,7 +153,7 @@ export const baseSection = {
       llmsFile: "typography.txt",
     },
     {
-      slug: "variables-and-tokens",
+      slug: "variables",
       title: "Variables and tokens",
       whenToUse:
         "Spacing, radius, border, line-height, and shadow token references.",
@@ -35,7 +162,7 @@ export const baseSection = {
       llmsFile: "variables.txt",
     },
     {
-      slug: "colors-and-theming",
+      slug: "colors",
       title: "Colors and theming",
       whenToUse:
         "Color scales and adaptive theme variables for light and dark modes.",
@@ -107,7 +234,7 @@ export const utilitiesSection = {
       llmsFile: "stack-cluster.txt",
     },
     {
-      slug: "handy-utilities",
+      slug: "handy",
       title: "Handy utilities",
       whenToUse: "Common reset, visibility, width, and helper utilities.",
       classes: [
@@ -194,7 +321,7 @@ export const elementsSection = {
       llmsFile: "avatar.txt",
     },
     {
-      slug: "chip",
+      slug: "chips",
       title: ".chip",
       whenToUse: "Selectable pills for filters and segmented choices.",
       classes: [".chip"],
@@ -202,7 +329,7 @@ export const elementsSection = {
       llmsFile: "chips.txt",
     },
     {
-      slug: "tag",
+      slug: "tags",
       title: ".tag",
       whenToUse: "Status or category labels.",
       classes: [".tag", ".success", ".warning", ".error", ".info"],
@@ -290,14 +417,6 @@ export const elementsSection = {
       llmsFile: "input-group.txt",
     },
     {
-      slug: "select",
-      title: "Select",
-      whenToUse: "Native select controls aligned with form inputs.",
-      classes: ["select"],
-      routeAnchor: "#forms",
-      llmsFile: "forms.txt",
-    },
-    {
       slug: "search",
       title: "Search input",
       whenToUse: "Search field with icon and compact action behavior.",
@@ -348,7 +467,7 @@ export const uiBlocksSection = {
       llmsFile: "pagination.txt",
     },
     {
-      slug: "dropdown-menu",
+      slug: "dropdown",
       title: "Dropdown menu",
       whenToUse: "Action menus using popover and anchor positioning.",
       classes: [".dropdown"],
@@ -356,7 +475,7 @@ export const uiBlocksSection = {
       llmsFile: "dropdown.txt",
     },
     {
-      slug: "sidebar-navigation",
+      slug: "sidebar-nav",
       title: "Sidebar navigation",
       whenToUse: "Sectioned app navigation with collapsible groups.",
       classes: [".sidebar-nav", ".sub", ".compact"],
@@ -364,26 +483,10 @@ export const uiBlocksSection = {
       llmsFile: "sidebar-nav.txt",
     },
     {
-      slug: "app-shell",
-      title: "App shell",
-      whenToUse: "Sticky header/footer app layout with scrolling main region.",
-      classes: [".app-shell", ".layout-sidebar", ".fill"],
-      routeAnchor: "",
-      llmsFile: "mobile.txt",
-    },
-    {
-      slug: "bottom-navigation",
-      title: "Bottom navigation",
-      whenToUse: "Mobile tab navigation fixed near the bottom safe area.",
-      classes: [".bottom-nav"],
-      routeAnchor: "",
-      llmsFile: "mobile.txt",
-    },
-    {
-      slug: "bottom-sheet",
-      title: "Bottom sheet",
-      whenToUse: "Sliding up contextual drawer on mobile views.",
-      classes: [".bottom-sheet"],
+      slug: "mobile",
+      title: "Mobile patterns",
+      whenToUse: "App shell, bottom nav, bottom sheet, and safe-area flows.",
+      classes: [".app-shell", ".bottom-nav", ".bottom-sheet", ".drawer"],
       routeAnchor: "",
       llmsFile: "mobile.txt",
     },
@@ -444,18 +547,10 @@ export const uiBlocksSection = {
       llmsFile: "login-form.txt",
     },
     {
-      slug: "field-rows",
-      title: "Field rows",
-      whenToUse: "Compact label/control/help grouping inside forms.",
-      classes: [".row"],
-      routeAnchor: "#forms",
-      llmsFile: "forms.txt",
-    },
-    {
-      slug: "form-actions",
-      title: "Form actions",
-      whenToUse: "Submit/cancel action alignment with mobile stacking.",
-      classes: [".form-actions"],
+      slug: "forms",
+      title: "Forms",
+      whenToUse: "Field rows and form actions for complete form flows.",
+      classes: [".row", ".form-option-row", ".form-actions"],
       routeAnchor: "#forms",
       llmsFile: "forms.txt",
     },

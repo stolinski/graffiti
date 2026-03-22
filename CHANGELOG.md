@@ -1,5 +1,11 @@
 # @drop-in/graffiti
 
+## 4.23.4
+
+### Patch Changes
+
+- Update `.tag` to use `var(--br-xxl)` for border radius so it follows global `--br-*` radius settings instead of using a fixed pill radius value.
+
 ## 4.23.3
 
 ### Patch Changes

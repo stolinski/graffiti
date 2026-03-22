@@ -441,16 +441,13 @@
   html {
     box-sizing: border-box;
     scroll-padding-top: 60px;
-  }
-
-  html,
-  body,
-  body > .body-fill {
     min-height: 100vh;
     margin: 0;
   }
 
   body > .body-fill {
+    min-height: 100vh;
+    margin: 0;
     display: flex;
     flex-direction: column;
   }
@@ -1425,7 +1422,7 @@
   /* Sidebar is always :first-child in DOM, even for .invert (CSS grid handles visual placement) */
   .layout-sidebar.fixed > :first-child {
     position: sticky;
-    top: 0;
+    inset-block-start: 0;
     align-self: start;
     max-height: 100dvh;
   }
@@ -1806,8 +1803,7 @@
     padding: var(--pad-l);
   }
 
-  .card > header,
-  .card > footer {
+  .card > :is(header, footer) {
     display: flex;
     align-items: center;
     gap: var(--pad-s);
@@ -2010,7 +2006,7 @@
     }
     &.sticky {
       position: sticky;
-      top: 0;
+      inset-block-start: 0;
       z-index: 10;
       background: var(--bg);
     }
@@ -2202,7 +2198,7 @@
       position: absolute;
       inset-inline-start: var(--pad-m);
       inset-block: 0;
-      top: 9px;
+      inset-block-start: 9px;
       margin-block: 0;
       block-size: 1.25em;
       inline-size: 1.25em;
@@ -4387,7 +4383,7 @@
 
   .app-shell > header {
     position: sticky;
-    top: 0;
+    inset-block-start: 0;
     z-index: 100;
     background: var(--bg);
     backdrop-filter: blur(10px);
@@ -4402,7 +4398,7 @@
 
   .app-shell > footer {
     position: sticky;
-    bottom: 0;
+    inset-block-end: 0;
     z-index: 100;
     background: var(--bg);
   }
@@ -4410,7 +4406,7 @@
   /* Bottom Navigation - Fixed tab bar for mobile apps */
   .bottom-nav {
     position: fixed;
-    bottom: calc(var(--safe-bottom) + var(--pad-s));
+    inset-block-end: calc(var(--safe-bottom) + var(--pad-s));
     inset-inline: var(--pad-m);
     display: flex;
     justify-content: space-around;
@@ -4468,7 +4464,7 @@
   /* Bottom Sheet - Drawer from bottom */
   .bottom-sheet {
     position: fixed;
-    bottom: 0;
+    inset-block-end: 0;
     inset-inline: 0;
     max-height: 80dvh;
     background: var(--bg);

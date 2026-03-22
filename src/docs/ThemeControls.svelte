@@ -577,8 +577,8 @@
 <style>
   .theme-controls {
     position: fixed;
-    left: var(--vs-base);
-    bottom: var(--vs-base);
+    inset-inline-start: var(--vs-base);
+    inset-block-end: var(--vs-base);
     z-index: 100;
   }
 
@@ -703,8 +703,8 @@
 
   @media (max-width: 40rem) {
     .theme-controls {
-      left: var(--vs-s);
-      bottom: var(--vs-s);
+      inset-inline-start: var(--vs-s);
+      inset-block-end: var(--vs-s);
     }
 
     .settings-popover {

@@ -16,9 +16,10 @@
 
   interface Props {
     topic: Topic;
+    contentOnly?: boolean;
   }
 
-  let { topic }: Props = $props();
+  let { topic, contentOnly = false }: Props = $props();
 
   function formatTopicMarkdown(markdown: string): string {
     const lines = markdown.split("\n");
@@ -104,13 +105,19 @@
   }
 </script>
 
-<section class="stack readable demo-section" aria-labelledby={topic.id}>
-  <h3 class="heading" id={topic.id}>{topic.title}</h3>
-  <p>{topic.summary}</p>
-  <p class="fs-xs text-muted"><strong>When to use:</strong> {topic.whenToUse}</p>
+<section
+  class="stack readable demo-section"
+  aria-labelledby={contentOnly ? undefined : topic.id}
+  aria-label={contentOnly ? topic.title : undefined}
+>
+  {#if !contentOnly}
+    <h3 class="heading" id={topic.id}>{topic.title}</h3>
+    <p>{topic.summary}</p>
+    <p class="fs-xs text-muted"><strong>When to use:</strong> {topic.whenToUse}</p>
 
-  {#if topic.classes.length > 0}
-    <p class="fs-xs text-muted"><strong>Classes:</strong> {topic.classes.join(", ")}</p>
+    {#if topic.classes.length > 0}
+      <p class="fs-xs text-muted"><strong>Classes:</strong> {topic.classes.join(", ")}</p>
+    {/if}
   {/if}
 
   {#each topic.demos as demoName (demoName)}

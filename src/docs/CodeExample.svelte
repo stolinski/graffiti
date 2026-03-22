@@ -265,8 +265,8 @@
 
   .resize-handle {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    inset-block-end: 0;
+    inset-inline-end: 0;
     width: 16px;
     height: 16px;
     cursor: ew-resize;
@@ -309,8 +309,8 @@
 
   .copy-button {
     position: absolute;
-    top: var(--pad-s);
-    right: var(--pad-s);
+    inset-block-start: var(--pad-s);
+    inset-inline-end: var(--pad-s);
     z-index: 1;
     color: var(--white);
   }

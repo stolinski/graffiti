@@ -2,7 +2,7 @@
 name: graffiti-best-practices
 description: Use when generating or refactoring Graffiti UI markup so output is class-first, semantic, accessible, responsive, and aligned with current Graffiti capabilities.
 metadata:
-  version: 1.5.0
+  version: 1.6.0
 ---
 
 # Graffiti Best Practices
@@ -68,8 +68,8 @@ Treat these as fixed truths for this skill:
 - Graffiti is a class-first drop-in CSS system. Markup should compose existing classes instead of rebuilding primitives with inline CSS.
 - Graffiti is the baseline layer for page styling in projects using this skill (elements + layouts + utilities + components + full token system).
 - The source of truth is hosted Graffiti docs/templates plus local package evidence, in this order:
-  1. `https://graffiti-ui.com/base`, `https://graffiti-ui.com/utilities`, `https://graffiti-ui.com/elements`, `https://graffiti-ui.com/ui-blocks` requested with `Accept: text/markdown`
-  2. `https://graffiti-ui.com/templates/landing`, `https://graffiti-ui.com/templates/dashboard`, `https://graffiti-ui.com/templates/blog`, `https://graffiti-ui.com/templates/settings`, `https://graffiti-ui.com/templates/ai-chat`
+  1. `https://graffiti-ui.com/base`, `https://graffiti-ui.com/utilities`, `https://graffiti-ui.com/elements`, `https://graffiti-ui.com/ui-blocks` requested with `Accept: text/markdown`, plus topic routes like `https://graffiti-ui.com/elements/buttons`
+  2. `https://graffiti-ui.com/templates` and template pages such as `https://graffiti-ui.com/templates/landing`, `https://graffiti-ui.com/templates/dashboard`, `https://graffiti-ui.com/templates/blog`, `https://graffiti-ui.com/templates/settings`, `https://graffiti-ui.com/templates/ai-chat`, `https://graffiti-ui.com/templates/docs-portal`
   3. Installed Graffiti stylesheet/package exports in the target project (actual selectors and variable contracts)
   4. Skill recipes in `references/*` (guidance layer, never higher authority than source files)
 - Graffiti variables are contracts, not free-form style knobs. Use documented tokens/overrides only.
@@ -114,6 +114,7 @@ Follow this sequence every time.
 
 4. **Resolve source-of-truth class and variable contracts**
    - For requested components/sections, read `https://graffiti-ui.com/base`, `https://graffiti-ui.com/utilities`, `https://graffiti-ui.com/elements`, and `https://graffiti-ui.com/ui-blocks` with `Accept: text/markdown` and use documented classes/examples as canonical patterns.
+   - Prefer topic routes (for example `https://graffiti-ui.com/elements/buttons`) when you only need one topic to reduce context noise.
    - Use `https://graffiti-ui.com/base` markdown for global token names and categories.
    - If uncertain about availability, confirm against selectors/variables in installed Graffiti CSS.
 
@@ -171,6 +172,7 @@ Use this map before writing markup:
 - Blog/content pages -> `https://graffiti-ui.com/templates/blog`
 - Settings/account pages -> `https://graffiti-ui.com/templates/settings`
 - AI chat pages -> `https://graffiti-ui.com/templates/ai-chat`
+- Docs/knowledge-base pages -> `https://graffiti-ui.com/templates/docs-portal`
 
 If no direct match exists, use recipes as primary source and state "No baseline template match found" in the output contract.
 

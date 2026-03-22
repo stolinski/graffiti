@@ -26,8 +26,8 @@ If any preflight category is unresolved, do not write final markup yet; resolve 
 
 When there is any uncertainty, resolve in this order:
 
-1. Hosted docs markdown from `https://graffiti-ui.com/base`, `https://graffiti-ui.com/utilities`, `https://graffiti-ui.com/elements`, `https://graffiti-ui.com/ui-blocks`
-2. Hosted templates at `https://graffiti-ui.com/templates/*`
+1. Hosted docs markdown from `https://graffiti-ui.com/base`, `https://graffiti-ui.com/utilities`, `https://graffiti-ui.com/elements`, `https://graffiti-ui.com/ui-blocks`, plus topic routes such as `https://graffiti-ui.com/elements/buttons`
+2. Hosted template index + pages at `https://graffiti-ui.com/templates` and `https://graffiti-ui.com/templates/*`
 3. Installed Graffiti stylesheet/package exports (real selectors and variable contracts)
 4. Skill recipe docs in `skills/graffiti-best-practices/references/*.md`
 
@@ -82,9 +82,10 @@ Rebuilding these with custom wrappers + bespoke CSS/JS counts as duplicate-syste
 Before writing markup:
 
 1. Fetch relevant hosted docs markdown pages (`/base`, `/utilities`, `/elements`, `/ui-blocks`) from `https://graffiti-ui.com` using `Accept: text/markdown`.
-2. Read documented class lists/pattern examples first.
-3. Use hosted template routes at `https://graffiti-ui.com/templates/*` for page-level structure.
-4. Confirm uncertain class names against selectors in installed Graffiti CSS.
+2. When working on a single component/topic, fetch its topic route (for example `/elements/buttons`) to keep context focused.
+3. Read documented class lists/pattern examples first.
+4. Use hosted template routes at `https://graffiti-ui.com/templates/*` for page-level structure.
+5. Confirm uncertain class names against selectors in installed Graffiti CSS.
 
 ## Primitive Mapping Requirement
 

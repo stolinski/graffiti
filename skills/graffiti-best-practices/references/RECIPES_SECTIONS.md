@@ -238,7 +238,7 @@ Use case: conversion close with nav footer.
 <header class="stack" style="--gap: var(--vs-s);">
   <div class="cluster" style="--gap: var(--vs-s);">
     <span class="tag info">Accessibility</span>
-    <span class="fs-xs text-muted">10 min read</span>
+    <span class="fluid fs-xs text-muted">10 min read</span>
   </div>
   <h1>Article title</h1>
   <p class="text-muted">Article dek.</p>

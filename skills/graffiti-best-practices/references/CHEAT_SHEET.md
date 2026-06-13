@@ -139,6 +139,7 @@ When the user says "container", "wrapper", "section" without a role: default to 
 | ---------------------------------------------------------- | ------------------------------------------------------------------- |
 | Page heading                                               | `<h1>` — heading scale is automatic via `--fl`                      |
 | Make a heading shrink in narrow containers                 | Add `.fc` to the heading or a parent                                |
+| Small text on a `<span>` / `<div>` (not a text element)    | Add `.fluid` beside `.fs-*` — `.fs-*` only set `--fl` (see AP-016)   |
 | Body that softens visually                                 | `.text-muted` / `.text-faint`                                       |
 | Center-aligned text block                                  | `.text-center` (or `.text-end` / `.text-start`)                     |
 | Monospace label                                            | inline `<span class="mono">` or `<code>`                            |

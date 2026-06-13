@@ -155,10 +155,11 @@ Easy rule: at mobile widths, any interactive element should be ≥ 44px in its s
 
 Graffiti's fluid typography is already mobile-aware — `--fl` scales down via `clamp()` automatically. Don't override `font-size` per breakpoint; trust the fluid system.
 
-Two corollaries:
+Three corollaries:
 
 - Use the `.fc` (fluid-container) class on any narrow container where headings need to shrink relative to the container, not the viewport.
 - Don't ship a "mobile body font of 14px" override. Body text never drops below 16px in well-designed mobile pages, and Graffiti's defaults respect that.
+- The `.fs-*` size utilities only set `--fl`; that becomes a `font-size` only on text elements (`p`, `a`, `li`, `h1`–`h6`, `.tag`, form controls, `th`, `td`, `label`) or an element carrying `.fluid`. To size a bare `<span>` / `<div>`, add `.fluid` (`<span class="fluid fs-xs">`). See AP-016.
 
 ---
 

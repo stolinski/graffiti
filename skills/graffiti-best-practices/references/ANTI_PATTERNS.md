@@ -466,3 +466,22 @@ Apply the role-first decision tree in `CHEAT_SHEET.md` and `COMPONENT_INTENT_MAT
 2. If none exists, use `<span class="icon" aria-hidden="true">` with a placeholder Unicode glyph until the user supplies a real source.
 3. Never include a third-party icon CDN reference in output unless explicitly requested.
 4. Never invent SVG icons more complex than a basic shape.
+
+---
+
+## AP-016: Fluid Size Utility (`.fs-*`) on a Non-Text Element
+
+### Detection heuristics
+
+- `.fs-xs` / `.fs-s` / … on a bare `<span>` or `<div>` without `.fluid`
+- "Small" caption/meta text that renders at the parent's size
+
+### Why this is problematic
+
+- `.fs-*` only set `--fl`; `font-size: var(--fluid-type)` applies to text elements only (`h1`–`h6`, `p`, `li`, `.tag`, `.fluid`, form controls, `a`, `th`, `td`, `label`)
+- A bare `<span>` / `<div>` is not in that list, so the class is inert — it inherits the parent's size
+
+### Preferred direction
+
+- Add `.fluid` beside `.fs-*` (`<span class="fluid fs-xs">`), or use a text element (`<p class="fs-xs">`)
+- For a static small size, set a rem on a project class (as `.log-card` does), not `.fs-*`

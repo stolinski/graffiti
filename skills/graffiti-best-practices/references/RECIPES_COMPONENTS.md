@@ -337,7 +337,7 @@ Use case: clickable article/product cards using the canonical card-as-link varia
   <div class="card-body stack" style="--gap: var(--vs-xs);">
     <span class="tag info">Category</span>
     <strong>Card title</strong>
-    <span class="fs-xs text-muted">Meta line</span>
+    <span class="fluid fs-xs text-muted">Meta line</span>
   </div>
 </a>
 ```

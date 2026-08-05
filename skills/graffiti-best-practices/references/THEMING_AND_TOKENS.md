@@ -138,6 +138,7 @@ Stock themes available (verify the file exists in `src/lib/themes/` before refer
 - `theme-studio`
 - `theme-signal`
 - `theme-lumen`
+- `theme-schematic`
 
 The stock themes follow a strict template (`bg-light` / `bg-dark` / `fg-light` / `fg-dark` / `primary` / `accent` + the radii / shadow scales + an `@layer themes` block for component-shape overrides). To write a new theme, copy `editorial.css` or `system.css` as a starting point — never start from blank.
 

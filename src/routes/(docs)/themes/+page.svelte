@@ -1,5 +1,6 @@
 <script>
   import CanonicalFixture from "$docs/CanonicalFixture.svelte";
+  import SchematicFixture from "$docs/SchematicFixture.svelte";
 
   // Import all preset CSS files. Page itself does NOT apply any preset
   // class to <html> — the wrapping below carries each scope.
@@ -11,6 +12,7 @@
   import "$lib/themes/studio.css";
   import "$lib/themes/signal.css";
   import "$lib/themes/lumen.css";
+  import "$lib/themes/schematic.css";
 
   const presets = [
     { name: "soft-consumer", label: ".theme-soft-consumer" },
@@ -21,6 +23,7 @@
     { name: "studio", label: ".theme-studio" },
     { name: "signal", label: ".theme-signal" },
     { name: "lumen", label: ".theme-lumen" },
+    { name: "schematic", label: ".theme-schematic" },
   ];
 </script>
 
@@ -37,7 +40,7 @@
 <section class="stack readable">
   <h1>Aesthetic presets</h1>
   <p class="text-muted">
-    Five presets, each wrapped on a container so they re-skin only their subtree
+    Nine presets, each wrapped on a container so they re-skin only their subtree
     (ADR-0003). Same markup, different voice. Open the dialogs to see how each
     preset styles modals.
   </p>
@@ -51,3 +54,10 @@
     </div>
   </section>
 {/each}
+
+<section class="theme-schematic stack" style="--gap: var(--vs-m);">
+  <p class="mono text-faint">.theme-schematic · reference composition</p>
+  <div class="surface box">
+    <SchematicFixture />
+  </div>
+</section>

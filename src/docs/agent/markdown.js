@@ -4,7 +4,7 @@ import {
   siteUrl,
   templatePages,
 } from "./manifest.js";
-import { getTopicsForRoute } from "$docs/content/runtime.js";
+import { getTopicsForRoute } from "../content/runtime.js";
 
 /**
  * @typedef {Object} AgentTopic
@@ -44,7 +44,7 @@ import { getTopicsForRoute } from "$docs/content/runtime.js";
  * @property {string[]} classes
  */
 
-/** @typedef {ReturnType<import("$docs/content/topics.js").parseTopicMarkdown>} RuntimeTopic */
+/** @typedef {ReturnType<import("../content/topics.js").parseTopicMarkdown>} RuntimeTopic */
 
 /** @type {AgentSection[]} */
 const sections = agentSections;
@@ -353,7 +353,7 @@ A minimal, drop-in CSS toolkit with fluid typography, modern CSS features, and z
 ## Installation
 
 \`\`\`bash
-npm install @drop-in/graffiti
+pnpm add @drop-in/graffiti
 \`\`\`
 
 ## Import Options
@@ -382,7 +382,7 @@ Graffiti styles native HTML elements directly - no component library, no JavaScr
 **Key principles:**
 - **Native HTML first** - Use \`<dialog>\`, \`<details>\`, \`popover\`, HTML invokers before reaching for JS
 - **Minimal classes** - Most elements are styled automatically, add classes only when needed
-- **CSS custom properties** - Customize colors, spacing, and sizing via variables
+- **Public token contracts** - Customize through Registry v2 entries with \`public: true\`; private calculated tokens are implementation details
 - **Fluid typography** - Text scales smoothly between viewport sizes
 - **Automatic theming** - Light/dark mode via \`light-dark()\` with no extra work
 

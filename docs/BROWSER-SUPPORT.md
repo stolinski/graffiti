@@ -16,7 +16,9 @@ Graffiti requires support for all of the following. A browser that supports all 
 | `linear()` cubic easing | `--ease-smooth`, `--ease-bounce`, `--ease-emphasized` |
 | `popover` HTML attribute and `:popover-open` | `.drawer`, dialogs, dropdown menus |
 | Cascade layers (`@layer`) | The entire cascade architecture ([ADR-0002](./adr/0002-cascade-layer-order.md)) |
-| CSS anchor positioning (`anchor()`, `position-anchor`, `position-try`) | `tooltip`, `dropdown-menu`, `badge` |
+| CSS anchor positioning (`anchor()`, `anchor-scope`, `position-anchor`, `position-try`) | `tooltip`, `dropdown-menu`, `badge` |
+| `forced-colors` and CSS system colours | High-contrast control states and structural boundaries |
+| `accent-color` | Native checkbox and radio selected states |
 
 ## Reference snapshot — current implementing versions
 
@@ -30,16 +32,31 @@ Graffiti requires support for all of the following. A browser that supports all 
 | `light-dark()` | 123+ | 17.5+ | 120+ |
 | Cascade layers | 99+ | 15.4+ | 97+ |
 | `color-mix()` (oklab) | 111+ | 16.2+ | 113+ |
+| `forced-colors` | 89+ | 16+ | 89+ |
+| `accent-color` | 93+ | 15.4+ | 92+ |
 | **CSS anchor positioning** | **125+** | **17.4+ (partial)** | **not in stable** |
 
 The effective floor at the time of this snapshot is **Chrome 125+, Safari 17.5+, Firefox (no stable version yet)** — driven by anchor positioning and `light-dark()`. Once Firefox ships anchor positioning, the floor will reduce to the highest among the other features.
+
+## Forced-colors contract
+
+Graffiti keeps native HTML state as the source of truth and adds structural fallbacks only where authored paint would disappear. Under `@media (forced-colors: active)`:
+
+- Custom selects return to native `appearance` and remove the URL-based arrow, so the platform supplies a contrast-safe affordance.
+- Native checkboxes and radios use the user's `Highlight` accent. `.toggle` keeps its native checkbox semantics while its track, translated knob, checked, and disabled states use system colours.
+- Pressed chips, open tab summaries, workbench tabs, and current navigation items gain a `Highlight` fill, border, outline, or underline that does not depend on gradients or shadows.
+- Tags, list navigation rows, dialogs, drawers, bottom navigation, icon rails, and pagination retain visible system-colour boundaries when shadows and decorative backgrounds are removed.
+- Dropzones retain their dashed boundary; keyboard focus and `.dragover` remain separately visible through outlines and `Highlight`.
+- Existing `:focus-visible` rings remain active in normal and forced-colour modes.
+
+The framework deliberately does not use `forced-color-adjust: none` for these controls: user-selected colours remain authoritative. Chromium fixtures use Playwright's `forcedColors: "active"` emulation for computed-style and screenshot evidence. Safari and Firefox should additionally be checked on platforms that expose their real forced-colour settings because emulation is not equivalent to an operating-system palette.
 
 ## Known degraded behaviour
 
 The following components depend on features that may not yet be universally available. They will render but not function correctly without their dependency:
 
 - **`tooltip`** — without anchor positioning, the tooltip element appears in the document flow rather than anchored to its trigger.
-- **`dropdown-menu`** — without anchor positioning, the menu appears at its DOM location rather than anchored to the trigger.
+- **`dropdown-menu`** — without anchor positioning the menu appears at its unanchored fallback position. Without `anchor-scope`, repeated dropdowns may bind to another instance's trigger.
 - **`badge`** — without anchor positioning, badge positioning relative to its host is incorrect.
 
 Consumers needing to support browsers without anchor positioning should either avoid these three components or layer their own JS-based positioning fallback (e.g., the [floating-ui anchor-positioning polyfill](https://floating-ui.com/)).

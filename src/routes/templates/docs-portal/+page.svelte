@@ -85,8 +85,8 @@
 						<h3>Quickstart</h3>
 						<div class="card">
 							<p class="text-muted">Install Graffiti and import the stylesheet in your SvelteKit layout:</p>
-							<pre><code>npm i @graffiti-css/drop-in
-import '@graffiti-css/drop-in';</code></pre>
+							<pre><code>pnpm add @drop-in/graffiti
+import '@drop-in/graffiti';</code></pre>
 						</div>
 					</section>
 

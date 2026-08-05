@@ -7,7 +7,7 @@ summary: Compact square button for an icon-only action, with auto glyph sizing a
 when_to_use: Toolbar controls, close affordances, overflow menus, and any action carried by an icon alone.
 classes:
   - .icon-button
-  - button[aria-label]
+  - button
 demos:
   - IconButton
 tags:

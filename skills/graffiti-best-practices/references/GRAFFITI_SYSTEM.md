@@ -33,20 +33,30 @@ When there is any uncertainty, resolve in this order:
 
 If references conflict with source files, source files win.
 
-## Variable Model (Do Not Invent)
+## Four-Tier Token Model (Do Not Invent)
 
-Graffiti variables are contract-based.
+Graffiti tokens are contract-based. Resolve uncertain names with `graffiti-lookup` or Registry v2's flat `tokenInventory`; a custom property is usable only when its inventory entry has `public: true`.
 
-### 1) Global tokens
+### 1) Primitive/reference tokens
 
-Defined in Graffiti CSS contracts and documented on `https://graffiti-ui.com/base` markdown.
+Public raw values and reference scales:
 
 - Color tokens: `--red`, `--blue`, `--green`, etc. plus `-1` through `-9` scales
-- Semantic colors: `--primary`, `--error`, `--warning`, `--success` and scale variants
-- Surface/foreground tokens: `--fg`, `--bg`, `--fg-*`, `--bg-*`
-- Spacing/radius/border/shadow/easing: `--vs-*`, `--pad-*`, `--br-*`, `--border-*`, `--shadow-*`, `--ease-*`
+- Spacing/radius/type/easing references: `--vs-*`, `--pad-*`, `--br-*`, `--lh-*`, `--ease-*`
 
-### 2) Layout knobs
+### 2) Global semantic tokens
+
+Public purpose-bound roles shared by components and themes:
+
+- Semantic colors: `--primary`, `--error`, `--warning`, `--success` and scale variants
+- Surface/foreground roles: `--fg`, `--bg`, `--fg-*`, `--bg-*`
+- Border, shadow, duration, and stacking roles: `--border-*`, `--shadow-*`, `--d-*`, `--z-*`
+
+### 3) Component-contract tokens
+
+Public hooks owned by a component, utility, or layout. Use only with the matching pattern and when a semantic class variant does not solve the request.
+
+Layout knobs:
 
 Use only when class composition cannot express the requested spacing/size.
 
@@ -55,15 +65,17 @@ Use only when class composition cannot express the requested spacing/size.
 - `--min-card-width`
 - `--max-width`
 
-### 3) Component override tokens
-
-Use only with the matching component pattern and when a semantic class variant does not solve it.
+Component overrides:
 
 - `--tag-color`
 - `--button-color`
 - `--toggle-color`
 - `--callout-*`
 - `--bubble-*`
+
+### 4) Private calculated tokens
+
+Never set or emit these. Registry v2 marks them `public: false`; new private names use the `--_component-*` prefix. Their presence in installed CSS is not permission to use them, and their names or values may change without migration.
 
 ## Do Not Re-Implement Built-ins (Hard Fail)
 
@@ -120,7 +132,7 @@ Every requested component or interaction must have a mapped primitive or an expl
 ## Fast Guardrails
 
 - If a class is not documented in hosted docs and not present in installed Graffiti CSS, treat it as unknown.
-- If a custom property is not documented in hosted docs and not present in installed Graffiti CSS, treat it as unknown.
+- If a custom property is absent from Registry v2 or has `public: false`, treat it as unavailable even when its spelling appears in installed CSS.
 - Prefer semantic variants before custom token overrides (example: `.tag.success` before `--tag-color`).
 - Prefer built-in form patterns (`.row`, `.form-option-row`, `.form-actions`) over ad-hoc wrappers.
 - Prefer built-in card/link patterns (`.card`, `.card.featured`, `.card.linked`) over manual recreation.

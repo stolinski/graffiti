@@ -21,9 +21,9 @@ tags:
   - colors
 ---
 
-Graffiti ships an OKLCH palette with generated `-1` through `-9` scales and semantic aliases.
+Graffiti ships an OKLCH palette with generated `-1` through `-9` scales. Palette anchors and their reference scales are primitive/reference tokens; purpose-bound aliases and scales are global semantic tokens.
 
 - Semantic colors (`--primary`, `--error`, `--warning`, `--success`) support scale variants.
 - `--accent` defaults to `var(--primary)` and is the interactive-accent knob — checkbox/radio `accent-color` and the dropzone hover/dragover state read from it. Override `--accent` independently when the accent UI shouldn't follow the brand primary.
 - Adaptive tokens (`--fg`, `--bg`) flip automatically for light and dark themes.
-- Prefer semantic tokens in app UI; reserve raw palette tokens for illustration-heavy surfaces.
+- Prefer global semantic tokens in app UI; reserve primitive/reference palette tokens for illustration-heavy surfaces and theme construction.

@@ -154,9 +154,9 @@ export const baseSection = {
     },
     {
       slug: "variables",
-      title: "Variables and tokens",
+      title: "Token tiers and variables",
       whenToUse:
-        "Spacing, radius, border, line-height, and shadow token references.",
+        "Public primitive, semantic, and component token contracts; private calculated tokens are excluded.",
       classes: ["--vs-*", "--pad-*", "--br-*", "--border-*", "--shadow-*"],
       routeAnchor: "#variables",
       llmsFile: "variables.txt",
@@ -339,8 +339,9 @@ export const elementsSection = {
     {
       slug: "tooltip",
       title: ".tooltip",
-      whenToUse: "Popover-based tooltips with CSS anchor positioning.",
-      classes: [".tooltip"],
+      whenToUse:
+        "Brief non-interactive descriptions with an explicit trigger-to-tooltip relationship.",
+      classes: [".tooltip", ".tooltip-trigger", ".tooltip-content", ".tip"],
       routeAnchor: "#tooltip",
       llmsFile: "tooltip.txt",
     },
@@ -375,6 +376,31 @@ export const elementsSection = {
       classes: [".bubble"],
       routeAnchor: "",
       llmsFile: "bubble.txt",
+    },
+    {
+      slug: "icon-rail",
+      title: ".icon-rail",
+      whenToUse: "Narrow workspace navigation and tool-switching rails.",
+      classes: [
+        ".icon-rail",
+        ".icon-rail > .brand",
+        ".icon-rail > .status",
+        ".icon-rail > .spacer",
+      ],
+      routeAnchor: "",
+    },
+    {
+      slug: "log-card",
+      title: ".log-card",
+      whenToUse: "Tool calls, deploy logs, build steps, and activity feeds.",
+      classes: [
+        ".log-card",
+        ".log-card > header",
+        ".log-card > header > .label",
+        ".log-card > header > .status",
+        ".log-card > pre",
+      ],
+      routeAnchor: "",
     },
     {
       slug: "callout",
@@ -441,10 +467,40 @@ export const elementsSection = {
       llmsFile: "toggle.txt",
     },
     {
+      slug: "segmented-control",
+      title: "Segmented control",
+      whenToUse: "Mutually exclusive compact choices backed by native radios.",
+      classes: [".segmented-control", ".compact", ".full"],
+      routeAnchor: "",
+    },
+    {
+      slug: "combobox",
+      title: "Combobox and listbox",
+      whenToUse:
+        "Enhanced searchable choices whose keyboard and ARIA behavior is owned by Decks.",
+      classes: [".combobox", ".listbox", ".option"],
+      routeAnchor: "",
+    },
+    {
+      slug: "tag-input",
+      title: "Tag input",
+      whenToUse: "Adding and removing several short values in one field.",
+      classes: [".tag-input", ".tag", ".listbox", ".option"],
+      routeAnchor: "",
+    },
+    {
+      slug: "date-picker",
+      title: "Date picker and calendar",
+      whenToUse:
+        "Native date entry first, with an enhanced calendar when requirements exceed the platform picker.",
+      classes: [".date-picker", ".calendar", ".calendar-grid", ".calendar-day"],
+      routeAnchor: "",
+    },
+    {
       slug: "input-group",
       title: "Input group",
       whenToUse: "Input plus attached action button or inert affix patterns.",
-      classes: [".input-group", ".input-group > .affix"],
+      classes: [".input-group", ".affix"],
       routeAnchor: "#forms",
       llmsFile: "input-group.txt",
     },
@@ -469,7 +525,7 @@ export const elementsSection = {
       title: "Toolbar",
       whenToUse:
         "Editor control strips, card action rows, and composer footers that should wrap gracefully.",
-      classes: [".toolbar", ".toolbar > .separator", ".toolbar > .spacer"],
+      classes: [".toolbar", ".separator", ".spacer"],
       routeAnchor: "#toolbar",
     },
     {
@@ -479,6 +535,27 @@ export const elementsSection = {
         "Showing an average score or collecting a star rating without JavaScript.",
       classes: [".rating"],
       routeAnchor: "#rating",
+    },
+    {
+      slug: "data-table",
+      title: "Data table",
+      whenToUse:
+        "Sortable, selectable, actionable tables whose state is owned by Decks or another table engine.",
+      classes: [
+        ".data-table",
+        ".data-table-toolbar",
+        ".data-table-sort",
+        ".data-table-actions",
+      ],
+      routeAnchor: "",
+    },
+    {
+      slug: "async-state",
+      title: "Async and empty states",
+      whenToUse:
+        "Communicating progress, loading geometry, busy state, or no content.",
+      classes: [".progress", ".meter", ".empty", ".skeleton", ".spinner"],
+      routeAnchor: "",
     },
   ],
 };
@@ -523,12 +600,35 @@ export const uiBlocksSection = {
       llmsFile: "dropdown.txt",
     },
     {
+      slug: "popover",
+      title: "Popover",
+      whenToUse:
+        "Interactive anchored content that would be invalid inside a tooltip.",
+      classes: [".popover-anchor", ".popover"],
+      routeAnchor: "",
+    },
+    {
+      slug: "toast",
+      title: "Toast",
+      whenToUse:
+        "Brief asynchronous feedback that does not interrupt the task.",
+      classes: [".toast-viewport", ".toast-item", ".toast", ".toast-progress"],
+      routeAnchor: "",
+    },
+    {
       slug: "sidebar-nav",
       title: "Sidebar navigation",
       whenToUse: "Sectioned app navigation with collapsible groups.",
       classes: [".sidebar-nav", ".sub", ".compact"],
       routeAnchor: "",
       llmsFile: "sidebar-nav.txt",
+    },
+    {
+      slug: "drawer",
+      title: "Drawer",
+      whenToUse: "Popover panels that slide in from a viewport edge.",
+      classes: [".drawer", ".left", ".right", ".end", ".top", ".bottom"],
+      routeAnchor: "",
     },
     {
       slug: "mobile",
@@ -587,6 +687,19 @@ export const uiBlocksSection = {
       llmsFile: "timeline.txt",
     },
     {
+      slug: "kanban",
+      title: "Kanban board",
+      whenToUse:
+        "Moving ordered work items among named workflow stages with pointer and keyboard paths.",
+      classes: [
+        ".kanban-board",
+        ".kanban-column",
+        ".kanban-card",
+        ".kanban-dropzone",
+      ],
+      routeAnchor: "",
+    },
+    {
       slug: "footer",
       title: "Footer",
       whenToUse: "Site footer with grouped navigation and legal links.",
@@ -609,6 +722,31 @@ export const uiBlocksSection = {
       classes: [".row", ".form-option-row", ".form-actions"],
       routeAnchor: "#forms",
       llmsFile: "forms.txt",
+    },
+    {
+      slug: "composer",
+      title: "Composer",
+      whenToUse:
+        "Multi-line inputs with adjacent model, tool, or attach controls.",
+      classes: [
+        ".composer",
+        ".composer > textarea",
+        ".composer > .toolbar",
+        ".composer > .toolbar > .spacer",
+      ],
+      routeAnchor: "",
+    },
+    {
+      slug: "workbench-panel",
+      title: "Workbench panel",
+      whenToUse: "Artifact viewers, file previews, and properties inspectors.",
+      classes: [
+        ".workbench-panel",
+        ".workbench-panel > header",
+        ".workbench-panel > header > .tabs",
+        ".workbench-panel > .body",
+      ],
+      routeAnchor: "",
     },
   ],
 };

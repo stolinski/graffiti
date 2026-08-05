@@ -438,6 +438,34 @@
         br_xxl: "999px",
       },
     },
+    {
+      name: "Schematic",
+      class_name: "theme-schematic",
+      theme_values: {
+        fg_light: "#10201d",
+        fg_dark: "#f4f1e9",
+        bg_light: "#f4f1e9",
+        bg_dark: "#10201d",
+        primary: "#ff705d",
+      },
+      font_family: "'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      type_scale: {
+        min_ratio: 1.333,
+        max_ratio: 1.414,
+        min_font_size: 16,
+        max_font_size: 18,
+        min_viewport: 320,
+        max_viewport: 1500,
+      },
+      border_radius: {
+        br_xs: "0",
+        br_s: "2px",
+        br_m: "4px",
+        br_l: "2px",
+        br_xl: "2px",
+        br_xxl: "999px",
+      },
+    },
   ];
 
   // Core preset-application logic — separated from the DOM event so it can

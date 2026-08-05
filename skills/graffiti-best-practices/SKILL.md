@@ -2,7 +2,7 @@
 name: graffiti-best-practices
 description: Use when generating or refactoring Graffiti UI markup so output is class-first, semantic, accessible, responsive, and aligned with current Graffiti capabilities.
 metadata:
-  version: 1.9.0
+  version: 1.10.0
 ---
 
 # Graffiti Best Practices
@@ -58,7 +58,7 @@ Activate this skill when the request includes one or more of these signals:
 ## Hard Boundaries (Refusal + Redirect Rules)
 
 1. Do not invent class names not present in current Graffiti CSS/docs.
-2. Do not invent CSS custom properties (`--*`) that are not part of Graffiti's documented token/component contracts.
+2. Do not invent CSS custom properties (`--*`) that are not part of Graffiti's public Registry v2 token contracts. Never emit a token whose `tokenInventory` entry has `public: false`.
 3. Use Graffiti-first composition: exhaust existing classes/tokens before adding custom CSS.
 4. Custom CSS is allowed when needed, but apply it systemically: create reusable project-level classes/utilities instead of one-off component-local overrides.
 5. Do not hardcode raw color literals (`#hex`, `rgb()`, `oklch(...)`) inline unless explicitly requested.
@@ -83,7 +83,7 @@ Treat these as fixed truths for this skill:
   2. `https://graffiti-ui.com/templates` and template pages such as `https://graffiti-ui.com/templates/landing`, `https://graffiti-ui.com/templates/dashboard`, `https://graffiti-ui.com/templates/blog`, `https://graffiti-ui.com/templates/settings`, `https://graffiti-ui.com/templates/ai-chat`, `https://graffiti-ui.com/templates/docs-portal`
   3. Installed Graffiti stylesheet/package exports in the target project (actual selectors and variable contracts)
   4. Skill recipes in `references/*` (guidance layer, never higher authority than source files)
-- Graffiti variables are contracts, not free-form style knobs. Use documented tokens/overrides only.
+- Graffiti tokens are contracts, not free-form style knobs. Use only Registry v2 primitive/reference, global semantic, and public component-contract tokens; private calculated tokens are unavailable even if their spelling appears in CSS.
 - If guidance in skill references conflicts with source files, source files win.
 
 ## System-First Preflight (Required)
@@ -169,6 +169,7 @@ When using inline custom properties or token references:
 5. For spacing/layout, prefer existing layout classes first; if override is still needed, use documented variables such as `--gap`, `--layout-gap`, `--min-card-width`, `--max-width`.
 6. To re-color a whole surface, prefer applying a theme class (`class="theme-X"`) over inline-overriding hue tokens. Inline hue overrides do not propagate to opaque scales. See `references/THEMING_AND_TOKENS.md`.
 7. When inline-overriding `--bg` or `--fg`, also pin `color-scheme` on the same element to prevent `light-dark()` resolution drift.
+8. Resolve uncertain custom properties with `graffiti-lookup`; list/search exclude private tokens by default, and an exact result with `public: false` is a hard stop.
 
 ## Theming Decision (Required Before Markup)
 
@@ -183,7 +184,7 @@ Pick the lowest level that solves the requested change. Decide once, apply once.
 | Status/role color (success / warning / error / info)           | Semantic class variant (`.tag.success`, `.callout.error`, etc.)        | Semantic variants always beat color overrides                  |
 
 Available stock themes (verify against `src/lib/themes/` before referencing):
-`theme-editorial`, `theme-paper`, `theme-system`, `theme-soft-consumer`, `theme-neon-arcade`, `theme-studio`, `theme-signal`, `theme-lumen`. The unstyled canvas (no theme class) is also a valid choice — pick it deliberately, not by accident.
+`theme-editorial`, `theme-paper`, `theme-system`, `theme-soft-consumer`, `theme-neon-arcade`, `theme-studio`, `theme-signal`, `theme-lumen`, `theme-schematic`. The unstyled canvas (no theme class) is also a valid choice — pick it deliberately, not by accident.
 
 Hard rules:
 
@@ -261,7 +262,7 @@ Follow this sequence every time.
 
 16. **Run class and variable validation checks**
     - Every class in output must be traceable to hosted docs markdown, hosted templates, or installed Graffiti CSS.
-    - Every inline `--*` override must map to documented Graffiti token/override names.
+    - Every inline `--*` override must map to a Registry v2 entry with `public: true`.
     - Every role-specific component must pass intent-fit validation from `references/COMPONENT_INTENT_MATRIX.md`.
     - Confirm no built-in primitives were re-implemented with custom wrappers/CSS/JS.
     - Confirm no duplicate utility/component/token system was introduced.

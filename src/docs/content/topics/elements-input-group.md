@@ -7,7 +7,7 @@ summary: Input field with connected button.
 when_to_use: Input plus attached action button patterns.
 classes:
   - .input-group
-  - .input-group > .affix
+  - .affix
   - .input-group.stack-mobile
 demos:
   - InputGroup

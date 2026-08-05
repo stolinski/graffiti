@@ -17,24 +17,38 @@ tags:
   - navigation
 ---
 
-No JavaScript required for open/close.
+No JavaScript required for open/close. The trigger and menu must be children of the
+same `.dropdown`, and each menu still needs a document-unique `id` referenced by
+its trigger's `popovertarget`.
 
-## Anchor Setup (Required)
+## Anchor Setup (Automatic)
 
-Each dropdown needs a unique `--anchor` value set on `.dropdown`. The menu uses CSS anchor positioning to attach to its trigger, and `--anchor` is the dashed-ident that ties them together. Without it, the popover falls back to default centered placement.
+`.dropdown` supplies a locally scoped `--dropdown` anchor by default. The local
+scope lets several dropdowns reuse that internal name without a menu attaching to
+another instance. No inline custom property is required.
 
 ```html
-<div class="dropdown" style="--anchor: --my-menu">
+<div class="dropdown">
   <!-- trigger + menu -->
 </div>
 ```
 
-The value must start with `--` and be unique per dropdown on the page.
+The legacy `--anchor` override remains available for integrations that already
+assign an explicit dashed-ident:
+
+```html
+<div class="dropdown" style="--anchor: --account-menu">
+  <!-- trigger + menu -->
+</div>
+```
+
+Normal dropdowns should use the automatic local anchor. If supplied, the override
+must start with `--`; local scoping still keeps it isolated to that dropdown.
 
 ## Basic Example
 
 ```html
-<div class="dropdown" style="--anchor: --menu-options">
+<div class="dropdown">
   <button popovertarget="menu-id">Options</button>
   <div id="menu-id" popover class="dropdown-menu">
     <a href="/profile">Profile</a>
@@ -47,7 +61,8 @@ The value must start with `--` and be unique per dropdown on the page.
 
 ## How It Works
 
-- `--anchor` on `.dropdown` declares the anchor name; the menu reads it as `position-anchor`
+- `.dropdown` scopes the default anchor name to its subtree
+- The direct `[popovertarget]` trigger declares the anchor used by its menu
 - `popovertarget` on the button points to the menu's `id`
 - `popover` attribute enables native popover behavior
 - `.dropdown-menu` provides styling and positioning
@@ -56,7 +71,7 @@ The value must start with `--` and be unique per dropdown on the page.
 ## With Section Headers
 
 ```html
-<div class="dropdown" style="--anchor: --menu-actions">
+<div class="dropdown">
   <button popovertarget="actions-menu">Actions</button>
   <div id="actions-menu" popover class="dropdown-menu">
     <div class="dropdown-header">Account</div>
@@ -69,18 +84,27 @@ The value must start with `--` and be unique per dropdown on the page.
 </div>
 ```
 
-## End-Aligned (Right)
+## End-Aligned
 
-Use `.end` to align menu to the right edge of the trigger:
+Use `.end` to align the menu to the trigger's inline-end edge:
 
 ```html
-<div class="dropdown end" style="--anchor: --menu-end">
+<div class="dropdown end">
   <button popovertarget="menu">Options</button>
   <div id="menu" popover class="dropdown-menu">
     <!-- menu items -->
   </div>
 </div>
 ```
+
+## Browser Behavior
+
+Opening and dismissal require the HTML Popover API. Placement requires CSS anchor
+positioning, including `anchor-scope`. In supporting browsers, the default aligns
+the menu's inline-start edge to the trigger and `.end` aligns their inline-end
+edges. In browsers without all of those placement features, the native popover
+still opens and its actions remain usable, but it may render at an unanchored
+fallback position. Graffiti does not add a JavaScript positioning polyfill.
 
 ## Disabled Items
 

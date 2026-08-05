@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 // @ts-expect-error — ESM .mjs without types
-import { lintCss, parseAnnotation } from "../../scripts/graffiti-lint.mjs";
+import {
+  findPrivateTokenReferences,
+  lintCss,
+  parseAnnotation,
+} from "../../scripts/graffiti-lint.mjs";
 
 interface Violation {
   line: number;
@@ -10,10 +14,23 @@ interface Violation {
 interface LintResult {
   violations: Violation[];
   registry: {
+    schemaVersion: number;
+    tokenContract: { privatePrefix: string };
     patterns: { name: string; modifiers: string[] }[];
     patternGroups: { name: string; members: string[] }[];
     tokens: { name: string; category: string }[];
     tokenGroups: { name: string; matches: string; members: string[] }[];
+    tokenSets: { name: string; members: string[] }[];
+    tokenInventory: {
+      name: string;
+      tier: string;
+      public: boolean;
+      defaultStability: string;
+      inheritance: string;
+      themeScope: string;
+      declared: boolean;
+      consumed: boolean;
+    }[];
   };
   summary: {
     targets: number;
@@ -22,11 +39,33 @@ interface LintResult {
     patternGroups: number;
     tokens: number;
     tokenGroups: number;
+    inventoryTokens: number;
+    tierCounts: Record<string, number>;
   };
 }
 
-const lint = (css: string) => lintCss(css, { sourcePath: "test.css" }) as LintResult;
+const lint = (css: string) =>
+  lintCss(css, { sourcePath: "test.css" }) as LintResult;
 const rules = (r: LintResult) => r.violations.map((v) => v.rule);
+
+const tokenSet = (
+  matches: string,
+  {
+    name = "fixture-tokens",
+    tier = "primitive-reference",
+    visibility = "public",
+    defaultStability = "stable",
+    legacyName = false,
+  } = {},
+) => `
+/**
+ * @token-set ${name}
+ * @matches ${matches}
+ * @tier ${tier}
+ * @visibility ${visibility}
+ * @default ${defaultStability}
+ * @role Fixture token contract
+${legacyName ? " * @legacy-name allowed\n" : ""} */`;
 
 const valid = {
   pattern: (name = "card") => `
@@ -48,7 +87,7 @@ const valid = {
    */
 ${names.map((n) => `  .${n} { aspect-ratio: 1; }`).join("\n")}
 }`,
-  token: (name = "--font-sans") => `
+  token: (name = "--font-sans") => `${tokenSet(name)}
 @layer base {
   :root {
     /**
@@ -59,7 +98,7 @@ ${names.map((n) => `  .${n} { aspect-ratio: 1; }`).join("\n")}
     ${name}: sans-serif;
   }
 }`,
-  tokenGroup: () => `
+  tokenGroup: () => `${tokenSet("--vs-*")}
 @layer base {
   :root {
     /**
@@ -222,7 +261,7 @@ describe("lintCss — exempt constructs (must NOT trigger violations)", () => {
   });
 
   it("ignores :root token declarations in @layer themes", () => {
-    const css = `
+    const css = `${tokenSet("--bg")}
 @layer base {
   :root {
     /**
@@ -376,7 +415,7 @@ describe("lintCss — members-exact rule (@pattern-group)", () => {
 
 describe("lintCss — @matches supports comma-separated globs", () => {
   it("matches any of a list of exact names", () => {
-    const css = `
+    const css = `${tokenSet("--yellow, --amber, --orange")}
 @layer base {
   :root {
     /**
@@ -608,6 +647,185 @@ describe("lintCss — related-resolves rule", () => {
   });
 });
 
+describe("lintCss — four-tier token contracts", () => {
+  it("classifies declarations, registrations, and consumed-only hooks", () => {
+    const css = `
+${tokenSet("--space", { name: "primitive" })}
+${tokenSet("--surface", { name: "semantic", tier: "global-semantic" })}
+${tokenSet("--button-color", { name: "component" }).replace(
+  "@tier primitive-reference",
+  "@tier component-contract",
+)}
+${tokenSet("--button-gap", {
+  name: "component-fallback",
+  tier: "component-contract",
+  defaultStability: "fallback",
+})}
+${tokenSet("--_component-button-mix", {
+  name: "private",
+  tier: "private-calculated",
+  visibility: "private",
+  defaultStability: "calculated",
+})}
+@property --button-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: black;
+}
+@layer base {
+  :root {
+    /**
+     * @token --space
+     * @category spacing
+     * @role Reference spacing
+     */
+    --space: 1rem;
+    /**
+     * @token --surface
+     * @category color
+     * @role Semantic surface
+     */
+    --surface: white;
+  }
+  :where([class*="theme-"]) { --surface: Canvas; }
+}
+@layer components {
+  button {
+    --button-color: var(--surface);
+    --_component-button-mix: color-mix(in oklab, var(--button-color), black);
+    color: var(--_component-button-mix);
+    gap: var(--button-gap, var(--space));
+  }
+}`;
+    const result = lint(css);
+    const inventory = new Map(
+      result.registry.tokenInventory.map((token) => [token.name, token]),
+    );
+
+    expect(result.violations).toEqual([]);
+    expect(result.registry.schemaVersion).toBe(2);
+    expect(result.registry.tokenContract.privatePrefix).toBe("--_component-");
+    expect(result.summary.inventoryTokens).toBe(5);
+    expect(inventory.get("--space")).toMatchObject({
+      tier: "primitive-reference",
+      public: true,
+      defaultStability: "stable",
+      inheritance: "inherited",
+    });
+    expect(inventory.get("--surface")?.themeScope).toBe("rederived");
+    expect(inventory.get("--button-color")).toMatchObject({
+      tier: "component-contract",
+      inheritance: "non-inheriting",
+    });
+    expect(inventory.get("--button-gap")).toMatchObject({
+      declared: false,
+      consumed: true,
+      defaultStability: "fallback",
+    });
+    expect(inventory.get("--_component-button-mix")).toMatchObject({
+      tier: "private-calculated",
+      public: false,
+      themeScope: "internal",
+    });
+  });
+
+  it("fails new root and component tokens that are not classified", () => {
+    const css = `
+@layer base {
+  :root {
+    /**
+     * @token --new-root
+     * @category misc
+     * @role New root token
+     */
+    --new-root: 1;
+  }
+}
+@layer components {
+  button { color: var(--new-component, red); }
+}`;
+    const result = lint(css);
+    const messages = result.violations
+      .filter((violation) => violation.rule === "token-classification")
+      .map((violation) => violation.message);
+
+    expect(messages).toContain(
+      "Unclassified token --new-root; add it to exactly one @token-set with tier, visibility, default stability, and role metadata",
+    );
+    expect(messages).toContain(
+      "Unclassified token --new-component; add it to exactly one @token-set with tier, visibility, default stability, and role metadata",
+    );
+  });
+
+  it("rejects overlapping classifications", () => {
+    const css = `
+${tokenSet("--surface", { name: "first" })}
+${tokenSet("--surface", { name: "second" })}
+@layer base {
+  :root {
+    /**
+     * @token --surface
+     * @category color
+     * @role Surface
+     */
+    --surface: white;
+  }
+}`;
+
+    expect(rules(lint(css))).toContain("token-classification-overlap");
+  });
+
+  it("requires the private prefix for newly classified calculations", () => {
+    const css = `
+${tokenSet("--internal", {
+  name: "private",
+  tier: "private-calculated",
+  visibility: "private",
+  defaultStability: "calculated",
+})}
+@layer components { button { --internal: 1; color: var(--internal); } }`;
+
+    expect(rules(lint(css))).toContain("private-token-name");
+  });
+
+  it("validates declared defaults against fallback classifications", () => {
+    const css = `
+${tokenSet("--button-gap", {
+  name: "fallback",
+  tier: "component-contract",
+  defaultStability: "fallback",
+})}
+@layer components {
+  button { --button-gap: 1rem; gap: var(--button-gap); }
+}`;
+
+    expect(rules(lint(css))).toContain("token-default-stability");
+  });
+});
+
+describe("private token documentation guard", () => {
+  it("reports exact private token references with file and line context", () => {
+    const violations = findPrivateTokenReferences(
+      [
+        {
+          path: "docs/example.md",
+          source: "Public `--lh` is fine.\nNever recommend `--_component-mix`.",
+        },
+      ],
+      ["--l", "--_component-mix"],
+    );
+
+    expect(violations).toEqual([
+      expect.objectContaining({
+        file: "docs/example.md",
+        line: 2,
+        rule: "private-token-docs",
+        message: expect.stringContaining("--_component-mix"),
+      }),
+    ]);
+  });
+});
+
 describe("lintCss — registry shape", () => {
   it("captures modifiers from the @modifiers tag", () => {
     const css = `
@@ -619,6 +837,9 @@ describe("lintCss — registry shape", () => {
    * @modifiers ghost, invisible, glow
    */
   .card { padding: 1rem; }
+  .card.ghost { opacity: 0.8; }
+  .card.invisible { visibility: hidden; }
+  .card.glow { box-shadow: 0 0 1rem gold; }
 }`;
     const r = lint(css);
     expect(r.violations).toEqual([]);

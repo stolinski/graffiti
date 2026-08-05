@@ -5,14 +5,24 @@ Graffiti is a CSS theming and primitives package: design tokens, fluid typograph
 ## Language
 
 **Token**:
-A CSS custom property declared on `:root` or another scoping element. Tokens carry meaning the framework or a consumer can override.
+A Graffiti-owned CSS custom property that the framework registers, declares, or consumes. Registry v2 classifies every token by tier, public status, inheritance, default stability, and theme-scope behavior. Only public tokens are override contracts.
 _Avoid_: variable, custom property (use these only when speaking strictly about the CSS feature, not Graffiti's design system).
 
-**Literal token**:
-A token whose value is a concrete primitive — a color, a length, a duration. Examples: `--blue`, `--pad-l`, `--vs-base`, `--lh-s`. Literals are the source colors and spacings the rest of the system composes from.
+**Primitive/reference token**:
+A public token whose value is a concrete primitive or reference-scale step: a color, length, type ratio, easing curve, or environmental inset. Examples: `--blue`, `--pad-l`, `--vs-base`, `--lh-s`. Primitive/reference tokens are the source values the rest of the system composes from.
+_Avoid_: literal token (the old two-tier term excludes reference scales and environmental references).
 
-**Semantic token**:
-A token whose value resolves through one or more literals to express *purpose*. Examples: `--primary`, `--accent`, `--focus-ring`, `--border-1`, `--shadow-2`. Semantic tokens are what components should consume; literals are what consumers may override at the root.
+**Global semantic token**:
+A public token whose value resolves through one or more references to express *purpose* across the framework. Examples: `--primary`, `--accent`, `--focus-ring`, `--border-1`, `--shadow-2`. Components consume global semantic tokens; themes may override them.
+
+**Component-contract token**:
+A public override hook owned by one component, utility, or layout. It may have a stable declaration (`--button-color`) or exist only as a fallback-bearing consumption (`--drawer-bg`). Override it on the owning instance or an ancestor; do not assume it has global semantic meaning.
+
+**Private calculated token**:
+A non-public implementation intermediate. New names use the `--_component-*` convention. Consumers, docs, themes, and agents must not set or consume private tokens; their names and values may change without migration.
+
+**Default stability**:
+The source of a token's no-override behavior. `stable` means Graffiti declares or registers the default, `fallback` means each public default lives at a `var()` consumption site, and `calculated` means the framework owns a private expression.
 
 **Alpha scale**:
 A nine-step color scale built by varying *alpha*, not lightness — e.g. `--blue-1` (10% alpha of `--blue`) through `--blue-9` (full opacity). Monotonic: 1 is faintest, 9 is full opacity. Designed for tints, overlays, and surfaces that should adapt to the underlying background and `color-scheme`. Pairs with the **opaque scale** for cases where alpha-on-background fails (photo backdrops, stacked transparency, print, contrast-stable text).
@@ -41,7 +51,7 @@ _Avoid_: "theme" used alone for these (ambiguous — the docs site currently cal
 
 **Aesthetic preset**:
 A *coordinated* override stack that couples multiple theme axes (color + type + radius + shadow + font family, plus optional typographic selector rules) to deliver a single recognisable visual personality — e.g. brutalist, editorial, soft-consumer, neon-arcade, paper. Distinguished from an axis selection by being non-orthogonal: an aesthetic preset commits a constellation of decisions together. The intended job of an aesthetic preset is to absorb taste-level decisions on behalf of a consumer (human or AI) so that "use Graffiti, walk away" produces a coherent look.
-Aesthetic presets ship as CSS classes (`.theme-brutalist`, `.theme-editorial`, etc.) via an opt-in import path separate from `drop-in.css`, so consumers only pay bytes for the presets they choose to load. Their selector rules live in `@layer themes`, slotted between `base` and `components`, so a preset cannot accidentally restyle component internals. The same class can be applied at `:root`/`html` for app-wide effect or on any container element for scoped theming. See [ADR-0003](./docs/adr/0003-aesthetic-preset-architecture.md).
+Aesthetic presets ship as CSS classes (`.theme-system`, `.theme-editorial`, etc.) via an opt-in import path separate from `drop-in.css`, so consumers only pay bytes for the presets they choose to load. Their selector rules live in `@layer themes`, slotted between `base` and `components`, so a preset cannot accidentally restyle component internals. The same class can be applied at `:root`/`html` for app-wide effect or on any container element for scoped theming. See [ADR-0003](./docs/adr/0003-aesthetic-preset-architecture.md).
 Graffiti does **not** ship algorithmic palette derivation (a single `--brand` seed expanded into `--accent`/`--secondary`/surface tints). Coherence is the job of a preset author committing a constellation of decisions, not the job of a complementary-hue formula. Consumers seeking brand coherence apply the closest-fitting preset and override `--primary` — the preset class is implicitly a **theme scope**, so the alpha scale follows the override and the rest of the preset's coordinated tokens survive.
 _Avoid_: "theme preset" (collides with the current color-only "themes" in `ThemeControls.svelte`).
 
@@ -51,8 +61,8 @@ _Avoid_: "theme container" (overlaps with **layout primitive** terminology).
 
 ## Relationships
 
-- A **literal token** may feed one or more **semantic tokens** (`--blue` → `--primary`).
-- A **component** consumes **semantic tokens**, never **literal tokens** directly.
+- A **primitive/reference token** may feed one or more **global semantic tokens** (`--blue` → `--primary`).
+- A **component** consumes global semantic tokens and exposes component-contract tokens at deliberate override boundaries. Private calculated tokens stay inside the implementation.
 - A **layout primitive** wins over a **utility** applied within it ([ADR-0002](./docs/adr/0002-cascade-layer-order.md)).
 - `.layout-three-col` (equal-width columns) and `.layout-holy-grail` (centered readable content with optional `.rail-start` / `.rail-end` children, [ADR-0010](./docs/adr/0010-holy-grail-repurpose-as-rails-layout.md)) serve distinct intents — equal-width grids vs. editorial reading layouts. Pick by what the middle column should do.
 - A **utility** wins over a **component** for atomic property toggles.
@@ -62,7 +72,7 @@ _Avoid_: "theme container" (overlaps with **layout primitive** terminology).
 
 The docs site at `src/routes/(docs)/` exposes sections to consumers. Nav labels are anchored to the architectural terms above; the full IA rule is in [ADR-0014](./docs/adr/0014-docs-information-architecture.md).
 
-- **Tokens** (nav) = **literal token** + **semantic token**
+- **Tokens** (nav) = public **primitive/reference**, **global semantic**, and **component-contract** tiers; private calculated tokens are intentionally absent
 - **Base** (nav) = classless defaults — no architectural term; this is "what the browser gets before any Graffiti class is applied"
 - **Layouts** (nav) = **layout primitive**
 - **Utilities** (nav) = **utility**

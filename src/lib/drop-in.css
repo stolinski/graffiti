@@ -3,6 +3,64 @@
    presets can re-skin base elements without outranking component contracts. */
 @layer base, themes, components, utilities, layouts;
 
+/* Registry v2 token tiers. These sets classify every Graffiti-owned custom
+   property whether it is declared, registered, or consumed through var(). */
+/**
+ * @token-set primitive-reference
+ * @matches --font-sans, --min-vw, --max-vw, --font-size-*, --font-ratio-*, --font-width-*, --vs-*, --pad-*, --safe-*, --br-*, --lh, --lh-*, --fw-*, --ls-h*, --yellow, --yellow-*, --amber, --amber-*, --orange, --orange-*, --red, --red-*, --pink, --pink-*, --purple, --purple-*, --indigo, --indigo-*, --blue, --blue-*, --teal, --teal-*, --green, --green-*, --lime, --lime-*, --highlighter, --highlighter-*, --brown, --brown-*, --gray, --gray-*, --slate, --slate-*, --white, --white-*, --black, --black-*, --fg-light, --fg-dark, --bg-light, --bg-dark, --ease-*
+ * @tier primitive-reference
+ * @visibility public
+ * @default stable
+ * @role Raw values and reference scales used to construct semantic decisions
+ */
+
+/**
+ * @token-set global-semantic
+ * @matches --d-*, --z-*, --fg, --fg-05, --fg-1, --fg-2, --fg-3, --fg-4, --fg-5, --fg-6, --fg-7, --fg-8, --fg-9, --fg-opaque-*, --bg, --bg-05, --bg-1, --bg-2, --bg-3, --bg-4, --bg-5, --bg-6, --bg-7, --bg-8, --bg-9, --bg-opaque-*, --primary, --primary-*, --accent, --error, --error-*, --warning, --warning-*, --success, --success-*, --shadow-*, --border-*, --focus-ring, --focus-ring-offset, --focus-ring-offset-inset
+ * @tier global-semantic
+ * @visibility public
+ * @default stable
+ * @role Purpose-bound roles shared across components and themes
+ */
+
+/**
+ * @token-set component-contract-stable
+ * @matches --tooltip-offset, --tooltip-show-delay, --tooltip-hide-delay, --box, --layout-gap, --gap, --animation-reduced, --app-shell-min-height, --avatar-size, --bubble-bg, --bubble-border, --bubble-max-inline, --bubble-pad-block, --bubble-pad-inline, --bubble-radius, --button-bg-bottom, --button-bg-top, --button-border, --button-color, --button-icon-size, --button-shadow, --button-text, --callout-accent, --callout-tint, --dark-text-l, --fl, --icon-button-pad, --light-text-l, --max-width, --rail-size, --rating-gap, --rating-off, --rating-on, --rating-size, --rating-star, --reaction-size, --separator, --sidebar-nav-icon-size, --sidebar-nav-indent, --sidebar-nav-row-pad-block, --sidebar-nav-row-pad-inline, --sidebar-nav-row-radius, --size, --sn-color, --tag-bg-bottom, --tag-bg-top, --tag-border, --tag-color, --tag-shadow, --tag-text, --threshold, --timeline-gap, --timeline-line-color, --timeline-line-width, --timeline-marker-bg, --timeline-marker-color, --timeline-marker-size, --toast-bg, --toast-border, --toast-duration, --toast-fg, --toast-font-size, --toast-gap, --toast-line-height, --toast-muted, --toast-offset, --toast-padding-block, --toast-padding-inline, --toast-progress-color, --toast-progress-size, --toast-progress-track, --toast-radius, --toast-shadow, --toast-title-weight, --toast-tone, --toast-width, --toggle-color, --toggle-height, --toggle-knob-offset, --toggle-knob-size, --toggle-width
+ * @tier component-contract
+ * @visibility public
+ * @default stable
+ * @role Public component, utility, and layout overrides with framework defaults
+ */
+
+/**
+ * @token-set component-contract-fallback
+ * @matches --anchor, --aspect, --bg-color, --bubble-flow-space, --button-background, --button-error-background, --button-error-text, --button-primary-background, --button-primary-text, --button-success-background, --button-success-text, --button-warning-background, --button-warning-text, --card-featured-border, --card-featured-border-block-start, --card-featured-header-bg, --card-featured-shadow, --chat-message-max-inline, --chat-thread-gap, --chat-thread-padding, --chip-selected-active-bg, --chip-selected-active-border, --chip-selected-bg, --chip-selected-border, --chip-selected-hover-bg, --chip-selected-hover-border, --chip-selected-text, --dialog-radius, --drawer-backdrop, --drawer-bg, --drawer-border, --drawer-inline-size, --feature-card-hover-translate, --form-actions-gap, --form-actions-justify, --form-actions-margin, --fs--1, --grid-min, --icon-size, --input-group-stack-gap, --layout-max-width, --layout-min-card-width, --layout-padding, --list-nav-row-radius, --min-card-width, --n, --narrow-width, --padding, --rating, --reel-height, --row-gap, --section-padding, --segmented-selected-bg, --segmented-selected-border, --segmented-selected-shadow, --segmented-selected-text, --surface-bg, --tab-count, --table-border, --table-max-height, --transition-name
+ * @tier component-contract
+ * @visibility public
+ * @default fallback
+ * @role Public component, utility, and layout overrides whose defaults live at their var() consumption sites
+ */
+
+/**
+ * @token-set private-calculated-legacy
+ * @matches --l, --fluid-min, --fluid-max, --fluid-preferred, --fluid-type, --variable-unit, --focus-ring-color, --g1, --g2, --g3, --g4, --pill-gap, --pill-index, --pill-tab-count, --pill-tab-height, --pill-tab-width, --pill-thumb-offset, --pill-thumb-width, --pill-track-height, --pill-track-pad, --sn-active-bg-bottom, --sn-active-bg-top, --sn-active-border, --sn-active-hi, --sn-active-shadow, --sn-active-text, --sn-bg-bottom, --sn-bg-top, --sn-border, --sn-hi, --sn-hover-bg-bottom, --sn-hover-bg-top, --sn-hover-border, --sn-hover-hi, --sn-hover-shadow, --sn-hover-text, --sn-hover-y, --sn-row-bg-bottom, --sn-row-bg-top, --sn-row-border, --sn-row-hi, --sn-row-shadow, --sn-shadow, --sn-text
+ * @tier private-calculated
+ * @visibility private
+ * @default calculated
+ * @legacy-name allowed
+ * @role Pre-v2 implementation intermediates retained by name to avoid an unnecessary public migration
+ */
+
+/**
+ * @token-set private-fallback-legacy
+ * @matches --l-threshold
+ * @tier private-calculated
+ * @visibility private
+ * @default fallback
+ * @legacy-name allowed
+ * @role Pre-v2 private fallback input retained by name; new private tokens use --_component-*
+ */
+
 @layer base {
   /* Non-inheriting custom properties */
   @property --layout-gap {
@@ -43,9 +101,8 @@
     }
 
     /* =====================================================================
-     * Tier 1: Literal tokens — concrete primitives
-     * Colors, lengths, durations, raw scales. These are what consumers
-     * override at the root to retheme.
+     * Primitive/reference tokens — concrete values and reference scales.
+     * Consumers may override these at the root to retheme.
      * ===================================================================== */
 
     /* Typography primitives */
@@ -113,6 +170,19 @@
     --pad-xl: 1.5rem;
     --pad-xxl: 2rem;
     --pad-xxxl: 4rem;
+
+    /* Device safe-area insets */
+    /**
+     * @token-group safe-area-insets
+     * @matches --safe-top, --safe-right, --safe-bottom, --safe-left
+     * @category layout
+     * @role User-agent viewport insets for keeping app-shell and fixed-edge content clear of display cutouts and system UI; override on an embedded shell to supply host insets
+     * @scale top, right, bottom, left
+     */
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
 
     /* Border Radius */
     /**
@@ -811,12 +881,17 @@
     --bg-light: #fff;
     --bg-dark: #050505;
 
-    /* Easing Tokens - Using linear() for modern, natural motion */
+    /* Easing Tokens - Using linear() for modern, natural motion.
+     * Spring curves are the analytic solution of a damped harmonic oscillator
+     * at the noted damping ratio, sampled and normalized to settle at 100% of
+     * the duration; bounce curves are gravity plus a restitution coefficient.
+     * Oscillation count is baked into each curve — tune feel by switching
+     * curves, and scale only the duration (springs want the longer end). */
     /**
      * @token-group easing
      * @matches --ease-*
      * @category motion
-     * @role Easing curves expressed with `linear()` for natural motion; choose smooth for UI, bounce for affordances, emphasized for hero transitions
+     * @role Easing curves expressed with `linear()`; spring-* for settle/overshoot feel (drawer, toggle, popover, badge, drag release), bounce-* for landing metaphors, enter-* and exit-* for surface in and out, pop for sub-300ms emphasis
      */
     --ease-smooth: linear(
       0,
@@ -866,6 +941,200 @@
       0.7655 45%,
       1
     );
+    /* Spring, critically damped (ζ = 1.00) — zero overshoot; drawers, panels,
+     * layout shifts. ~450–550ms. */
+    --ease-spring-smooth: linear(
+      0,
+      0.019 2.3%,
+      0.081 5%,
+      0.46 16.5%,
+      0.637 23%,
+      0.769 29.8%,
+      0.862 37%,
+      0.901 41.5%,
+      0.931 46.3%,
+      0.955 51.8%,
+      0.972 58%,
+      0.992 73.3%,
+      1
+    );
+    /* Spring, ζ = 0.85 — imperceptible 0.6% overshoot; toggles, tabs, chips.
+     * ~300–380ms. */
+    --ease-spring-snappy: linear(
+      0,
+      0.006 1.3%,
+      0.026 2.8%,
+      0.098 5.8%,
+      0.514 17.8%,
+      0.694 24%,
+      0.824 30.3%,
+      0.914 37%,
+      0.946 40.8%,
+      0.972 45%,
+      0.989 49.8%,
+      1 55%,
+      1.006 66.8%,
+      1
+    );
+    /* Spring, ζ = 0.62 — 8% overshoot, one recovery; popovers, dropdowns,
+     * tooltips. ~350–450ms. */
+    --ease-spring-pop: linear(
+      0,
+      0.008 1.3%,
+      0.031 2.5%,
+      0.119 5.3%,
+      0.639 16%,
+      0.839 21%,
+      0.97 25.8%,
+      1.016 28.3%,
+      1.051 31%,
+      1.077 34.8%,
+      1.083 39%,
+      1.072 44%,
+      1.017 58%,
+      0.999 66.3%,
+      0.993 77%,
+      1
+    );
+    /* Spring, ζ = 0.42 — 23% overshoot, visible wobble; badges, reactions,
+     * playful scale-ins on small elements. ~600–800ms. */
+    --ease-spring-bouncy: linear(
+      0,
+      0.012 1%,
+      0.045 2%,
+      0.161 4%,
+      0.794 11.3%,
+      1.01 14.3%,
+      1.154 17.3%,
+      1.198 18.8%,
+      1.226 20.5%,
+      1.233 22.5%,
+      1.216 24.8%,
+      1.179 27%,
+      1.006 35.8%,
+      0.967 39%,
+      0.948 42.3%,
+      0.945 44.5%,
+      0.949 46.8%,
+      0.997 57.5%,
+      1.012 63.8%,
+      1.012 68.8%,
+      0.998 84.8%,
+      1
+    );
+    /* Spring, ζ = 0.22 — rubber-band oscillation; released drags snapping
+     * home, over-scroll recoil. ~800–1000ms. */
+    --ease-spring-elastic: linear(
+      0,
+      0.044 1%,
+      0.207 2.3%,
+      1.267 7.5%,
+      1.436 9%,
+      1.491 10.3%,
+      1.491 10.8%,
+      1.472 11.5%,
+      1.393 12.8%,
+      0.853 18.3%,
+      0.786 19.5%,
+      0.759 20.8%,
+      0.758 21.3%,
+      0.763 21.8%,
+      0.787 22.8%,
+      1.053 28.3%,
+      1.1 29.8%,
+      1.119 31.3%,
+      1.117 32.3%,
+      1.105 33.3%,
+      0.974 38.8%,
+      0.951 40.3%,
+      0.942 41.8%,
+      0.942 42.8%,
+      0.95 44%,
+      1.012 49.3%,
+      1.024 50.7%,
+      1.029 52.3%,
+      1.025 54.5%,
+      0.994 59.8%,
+      0.986 62.8%,
+      0.988 65%,
+      1.003 70.3%,
+      1.007 73%,
+      0.997 83.5%,
+      1.002 93.5%,
+      1
+    );
+    /* Bounce, restitution 0.35 — lands and hops once; items arriving in a
+     * dock, cart, or collection. ~550–700ms. */
+    --ease-bounce-soft: linear(
+      0,
+      0.015 6.3%,
+      0.062 12.8%,
+      0.141 19.3%,
+      0.249 25.7%,
+      0.387 32%,
+      0.556 38.3%,
+      0.749 44.5%,
+      0.999 51.5%,
+      0.946 56%,
+      0.908 60.5%,
+      0.885 65%,
+      0.878 69.5%,
+      0.885 73.8%,
+      0.908 78.3%,
+      0.946 82.8%,
+      0.999 87.3%,
+      0.985 93.8%,
+      1
+    );
+    /* Bounce, restitution 0.5 — three rebounds, a literal ball drop;
+     * drag-and-drop confirmations, gamified rewards. ~700–900ms. */
+    --ease-bounce-firm: linear(
+      0,
+      0.015 4.5%,
+      0.061 9%,
+      0.141 13.7%,
+      0.25 18.2%,
+      0.394 22.8%,
+      0.565 27.3%,
+      0.998 36.3%,
+      0.885 41.2%,
+      0.812 45.5%,
+      0.766 50%,
+      0.75 54.5%,
+      0.765 59%,
+      0.811 63.5%,
+      0.887 68%,
+      0.998 72.7%,
+      0.952 77.5%,
+      0.938 81.8%,
+      0.953 86.3%,
+      0.999 90.8%,
+      0.984 95.5%,
+      1
+    );
+    /* Entrance — 40% of the travel in the first 14% of time, long
+     * deceleration tail; sheets, route pushes. ~400–500ms. */
+    --ease-enter-glide: linear(0, 0.4 14%, 0.7 30%, 0.86 47%, 0.94 62%, 0.98 78%, 1);
+    /* Entrance — gentle S-curve; cards, list items, staggered reveals.
+     * ~350–450ms with 40–80ms stagger. */
+    --ease-enter-soft: linear(0, 0.06 12%, 0.3 34%, 0.72 63%, 0.92 84%, 1);
+    /* Exit — pure acceleration, fastest at the last frame; dismissed toasts,
+     * closed dialogs, deleted rows. ~200–280ms, shorter than the enter. */
+    --ease-exit-swift: linear(0, 0.08 22%, 0.28 46%, 0.62 70%, 1);
+    /* Exit — dips to −8% before leaving (animation anticipation); send
+     * actions and launches, translate only. ~450–600ms. */
+    --ease-exit-anticipate: linear(
+      0,
+      -0.06 14%,
+      -0.08 22%,
+      -0.03 32%,
+      0.3 54%,
+      0.72 74%,
+      1
+    );
+    /* Emphasis — hard launch, clean landing, no oscillation; press-release
+     * rebounds and selection pulses. ~180–260ms. */
+    --ease-pop: linear(0, 0.38 20%, 0.88 62%, 1);
 
     /* Duration Tokens - Semantic motion scale, see docs/adr/0008 */
     /**
@@ -880,6 +1149,22 @@
     --d-base: 0.2s;
     --d-slow: 0.3s;
     --d-emphatic: 0.4s;
+
+    /**
+     * @token --tooltip-offset
+     * @category spacing
+     * @role Gap between a tooltip trigger and its `.tip` or `.tooltip-content` surface
+     */
+    --tooltip-offset: var(--vs-xs);
+
+    /**
+     * @token-group tooltip-timing
+     * @matches --tooltip-show-delay, --tooltip-hide-delay
+     * @category motion
+     * @role Delay controls for tooltip reveal and dismissal; Decks may override them per instance without owning visual CSS
+     */
+    --tooltip-show-delay: var(--d-base);
+    --tooltip-hide-delay: 0s;
 
     /* Z-Index Tokens - Stacking tier vocabulary, see docs/adr/0008 */
     /**
@@ -897,9 +1182,8 @@
     --z-toast: 300;
 
     /* =====================================================================
-     * Tier 2: Semantic tokens — purpose-bound, consume tier 1
-     * What components should reference. Override these to change UI semantics
-     * without touching color literals.
+     * Global semantic tokens — purpose-bound roles built from references.
+     * Components consume these; themes override them to change UI semantics.
      * ===================================================================== */
 
     /* Theme-resolved fg/bg */
@@ -1637,6 +1921,11 @@
     height: stretch;
   }
 
+  /**
+   * @pattern fluid
+   * @role Opt an element into Graffiti's fluid type calculation when no styled native text element or dedicated type-size utility applies
+   * @example <span class="fluid" style="--fl: 2">Fluid label</span>
+   */
   h1,
   h2,
   h3,
@@ -1694,11 +1983,23 @@
 
   /* This makes containers, with container queries use a cqi unit instead of vi */
   /* FC Fluid Container */
+  /**
+   * @pattern fluid-text-container
+   * @role Switch fluid typography from viewport-relative units to the nearest inline-size container
+   * @example <section class="fluid-text-container"><h2>Container-scaled heading</h2></section>
+   * @aliases fc
+   */
   .fluid-text-container,
   .fc {
     container-type: inline-size;
     --variable-unit: 100cqi;
   }
+  /**
+   * @pattern-group headings
+   * @members h1, h2, h3, h4, h5, h6
+   * @role Apply the native heading type scale to an element without changing its HTML semantics
+   * @example <p class="h2">Visually a level-two heading</p>
+   */
   h1,
   h2,
   h3,
@@ -1843,6 +2144,14 @@
     text-wrap: pretty;
   }
 
+  /**
+   * @pattern button
+   * @role Action styling shared by native buttons and links carrying `.button`; semantic, tone, surface, and compact modifiers preserve the same interaction states
+ * @example <a class="button primary" href="/start">Get started</a>
+ * @modifiers mini, primary, error, warning, success, dark, light, contrast, ghost, minimal
+ * @selector-aliases button
+ * @accessibility Use a native button for actions and an anchor with href for navigation; icon-only controls require an accessible name
+   */
   button,
   .button {
     --button-color: var(--gray-5);
@@ -1870,10 +2179,13 @@
     appearance: none;
     margin: 0;
     cursor: pointer;
-    background: linear-gradient(
-      180deg,
-      var(--button-bg-top) 0%,
-      var(--button-bg-bottom) 100%
+    background: var(
+      --button-background,
+      linear-gradient(
+        180deg,
+        var(--button-bg-top) 0%,
+        var(--button-bg-bottom) 100%
+      )
     );
     color: var(--button-text);
     font-weight: 560;
@@ -1939,7 +2251,6 @@
       outline: var(--focus-ring);
       outline-offset: var(--focus-ring-offset);
     }
-
     @media (forced-colors: active) {
       /* In forced-colors mode, the gradient background and inset gloss disappear.
          Add an explicit border so the button has a visible edge. */
@@ -1968,7 +2279,7 @@
 
     &.primary {
       --button-color: var(--primary);
-      --button-text: var(--white);
+      --button-text: var(--button-primary-text, var(--white));
 
       /* Vivid solid surface — high color percentage preserves chroma */
       --button-bg-top: light-dark(
@@ -1982,6 +2293,14 @@
       --button-border: light-dark(
         color-mix(in oklab, var(--button-color) 75%, black),
         color-mix(in oklab, var(--button-color) 70%, white)
+      );
+      background: var(
+        --button-primary-background,
+        linear-gradient(
+          180deg,
+          var(--button-bg-top) 0%,
+          var(--button-bg-bottom) 100%
+        )
       );
 
       &:hover {
@@ -2009,7 +2328,7 @@
 
     &.error {
       --button-color: var(--error);
-      --button-text: var(--white);
+      --button-text: var(--button-error-text, var(--white));
 
       --button-bg-top: light-dark(
         color-mix(in oklab, var(--button-color) 92%, white),
@@ -2022,6 +2341,14 @@
       --button-border: light-dark(
         color-mix(in oklab, var(--button-color) 75%, black),
         color-mix(in oklab, var(--button-color) 70%, white)
+      );
+      background: var(
+        --button-error-background,
+        linear-gradient(
+          180deg,
+          var(--button-bg-top) 0%,
+          var(--button-bg-bottom) 100%
+        )
       );
 
       &:hover {
@@ -2049,7 +2376,7 @@
 
     &.warning {
       --button-color: var(--warning);
-      --button-text: var(--black);
+      --button-text: var(--button-warning-text, var(--black));
 
       --button-bg-top: light-dark(
         color-mix(in oklab, var(--button-color) 95%, white),
@@ -2063,6 +2390,14 @@
         color-mix(in oklab, var(--button-color) 80%, black),
         color-mix(in oklab, var(--button-color) 65%, black)
       );
+      background: var(
+        --button-warning-background,
+        linear-gradient(
+          180deg,
+          var(--button-bg-top) 0%,
+          var(--button-bg-bottom) 100%
+        )
+      );
 
       &:hover {
         --button-bg-top: light-dark(
@@ -2073,7 +2408,7 @@
           color-mix(in oklab, var(--button-color) 98%, white),
           var(--button-color)
         );
-        color: var(--black);
+        color: var(--button-text);
       }
 
       &:active {
@@ -2090,7 +2425,7 @@
 
     &.success {
       --button-color: var(--success);
-      --button-text: var(--white);
+      --button-text: var(--button-success-text, var(--white));
 
       --button-bg-top: light-dark(
         color-mix(in oklab, var(--button-color) 92%, white),
@@ -2103,6 +2438,14 @@
       --button-border: light-dark(
         color-mix(in oklab, var(--button-color) 75%, black),
         color-mix(in oklab, var(--button-color) 70%, white)
+      );
+      background: var(
+        --button-success-background,
+        linear-gradient(
+          180deg,
+          var(--button-bg-top) 0%,
+          var(--button-bg-bottom) 100%
+        )
       );
 
       &:hover {
@@ -2290,7 +2633,7 @@
    *   <button class="icon-button" aria-label="Edit">
    *     <svg aria-hidden="true">…</svg>
    *   </button>
-   * @modifiers ghost, minimal, primary, mini
+   * @modifiers mini
    * @prefer-over custom: a bare <button> with hand-tuned svg sizing and square padding
    * @related circle, close
    */
@@ -2340,6 +2683,126 @@
 
   textarea {
     field-sizing: content;
+  }
+
+  /**
+   * @pattern progress
+   * @role Native `<progress>` indicator for determinate work (`value` present) or indeterminate work (`value` omitted); always pair it with an accessible label
+   * @example <progress class="progress" value="68" max="100">68%</progress>
+   * @related meter
+   */
+  .progress {
+    accent-color: var(--primary);
+  }
+
+  :where(progress, .progress) {
+    inline-size: 100%;
+    block-size: var(--pad-m);
+    overflow: hidden;
+    border: 0;
+    border-radius: var(--br-xxl);
+    background: var(--fg-1);
+    color: var(--primary);
+  }
+
+  :where(progress, .progress)::-webkit-progress-bar {
+    background: var(--fg-1);
+    border-radius: inherit;
+  }
+
+  :where(progress, .progress)::-webkit-progress-value {
+    background: var(--primary);
+    border-radius: inherit;
+  }
+
+  :where(progress, .progress)::-moz-progress-bar {
+    background: var(--primary);
+    border-radius: inherit;
+  }
+
+  /**
+   * @pattern meter
+   * @role Native known-range gauge for quantities such as quota or strength; `.signaling` opts into low/high/optimum semantic coloring
+   * @example <meter class="meter signaling" min="0" max="100" low="30" high="80" optimum="90" value="72">72%</meter>
+   * @modifiers signaling
+   * @related progress
+   */
+  .meter {
+    accent-color: var(--primary);
+  }
+
+  :where(meter, .meter) {
+    inline-size: 100%;
+    block-size: var(--pad-m);
+    border: 0;
+    border-radius: var(--br-xxl);
+    background: var(--fg-1);
+  }
+
+  :where(meter, .meter)::-webkit-meter-bar {
+    background: var(--fg-1);
+    border: 0;
+    border-radius: inherit;
+  }
+
+  :where(meter, .meter)::-webkit-meter-optimum-value,
+  :where(meter, .meter)::-webkit-meter-suboptimum-value,
+  :where(meter, .meter)::-webkit-meter-even-less-good-value {
+    background: var(--primary);
+    border-radius: inherit;
+  }
+
+  :where(meter, .meter)::-moz-meter-bar {
+    background: var(--primary);
+    border-radius: inherit;
+  }
+
+  :where(meter.signaling, .meter.signaling)::-webkit-meter-optimum-value {
+    background: var(--success);
+  }
+
+  :where(meter.signaling, .meter.signaling)::-webkit-meter-suboptimum-value {
+    background: var(--warning);
+  }
+
+  :where(meter.signaling, .meter.signaling)::-webkit-meter-even-less-good-value {
+    background: var(--error);
+  }
+
+  :where(meter.signaling, .meter.signaling):-moz-meter-optimum::-moz-meter-bar {
+    background: var(--success);
+  }
+
+  :where(meter.signaling, .meter.signaling):-moz-meter-sub-optimum::-moz-meter-bar {
+    background: var(--warning);
+  }
+
+  :where(meter.signaling, .meter.signaling):-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background: var(--error);
+  }
+
+  @media (forced-colors: active) {
+    :where(progress, .progress),
+    :where(meter, .meter) {
+      border: 1px solid CanvasText;
+      background: Canvas;
+      color: Highlight;
+      forced-color-adjust: auto;
+    }
+
+    :where(progress, .progress)::-webkit-progress-bar,
+    :where(meter, .meter)::-webkit-meter-bar {
+      background: Canvas;
+    }
+
+    :where(progress, .progress)::-webkit-progress-value,
+    :where(progress, .progress)::-moz-progress-bar,
+    :where(meter, .meter)::-webkit-meter-optimum-value,
+    :where(meter, .meter)::-webkit-meter-suboptimum-value,
+    :where(meter, .meter)::-webkit-meter-even-less-good-value,
+    :where(meter, .meter)::-moz-meter-bar {
+      background: Highlight;
+    }
   }
 
   input,
@@ -2427,33 +2890,26 @@
     }
   }
 
+  /* Cluster Utility - Horizontal wrapping list with gap */
   /**
-   * @pattern split
-   * @role Two-pane horizontal split with items pushed to the ends; container query collapses to vertical at <500px so it adapts to its parent, not the viewport
-   * @example <div class="split"><h2>Section title</h2><a href="/more">See all</a></div>
-   * @modifiers even, vertical, center
+   * @pattern cluster
+   * @role Wrapping horizontal row with small gap (0.5rem default); used for chip rows, tag collections, button groups that should reflow gracefully
+   * @example
+   *   <div class="cluster">
+   *     <span class="tag">design</span>
+   *     <span class="tag">research</span>
+   *     <span class="tag">prototype</span>
+   *   </div>
+   * @modifiers center
    */
-  .split {
+  .cluster {
     display: flex;
-    gap: var(--gap, 1rem);
-    align-items: start;
-    justify-content: space-between;
-    &.even {
-      flex: 1 1 auto;
-    }
-    &.vertical {
-      flex-direction: column;
-      height: 100%;
-    }
+    flex-wrap: wrap;
+    --gap: 0.5rem;
+    gap: var(--gap);
+    align-items: center;
     &.center {
-      align-items: center;
-    }
-  }
-
-  /* Container query for .split - stacks when in narrow container */
-  @container (max-width: 500px) {
-    .split {
-      flex-direction: column;
+      justify-content: center;
     }
   }
 
@@ -2690,6 +3146,12 @@
   }
 
   /* Focus Ring - Consistent focus styling utility */
+  /**
+   * @pattern-group focus-rings
+   * @members focus-ring, focus-ring-inset
+   * @role Apply the canonical keyboard focus outline, with the inset variant for clipped surfaces
+   * @example <button class="focus-ring">Focusable action</button>
+   */
   .focus-ring:focus-visible {
     outline: var(--focus-ring);
     outline-offset: var(--focus-ring-offset);
@@ -3139,24 +3601,89 @@
 
   /**
    * @pattern layout-holy-grail
-   * @role Three-zone horizontal rail layout (auto | 1fr | auto); use for icon-rail + main + side-rail combinations. Collapses to one column under 768px. See ADR-0010 for the rails repurposing.
+   * @role Centered direct `<main>` or `<article>` capped by `--max-width` (default 720px), with optional direct `.rail-start` and `.rail-end` slots before and after it in DOM order. At <=1024px the end rail hides and retained slots share one centered track; at <=768px a plain start rail hides or composes with `[popover].drawer` and `.drawer-toggle` for native mobile access.
    * @example
-   *   <div class="layout-holy-grail">
-   *     <nav class="icon-rail">…</nav>
-   *     <main>…</main>
-   *     <aside>…</aside>
+   *   <div class="layout-holy-grail" style="--max-width: 65ch">
+   *     <aside id="contents" class="rail-start drawer" popover="auto">…</aside>
+   *     <main>
+   *       <button class="drawer-toggle" popovertarget="contents">Contents</button>
+   *       …
+   *     </main>
+   *     <aside class="rail-end">…</aside>
    *   </div>
    * @related layout-rail, layout-sidebar
+   * @slots
+   *   optional start-rail: > .rail-start
+   *   required content: > :is(main, article)
+   *   optional end-rail: > .rail-end
+   * @accessibility Keep the required main/article and optional rails in semantic source order; retain a hidden start rail on mobile only through a labeled native popover drawer trigger
    */
   .layout-holy-grail {
+    --max-width: 720px;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns:
+      minmax(0, 1fr) min(var(--max-width, 720px), 100%) minmax(0, 1fr);
     gap: var(--layout-gap, var(--gap, 2rem));
+    align-items: start;
   }
 
-  @media (width < 768px) {
+  .layout-holy-grail > .rail-start {
+    grid-column: 1;
+  }
+
+  .layout-holy-grail > :is(main, article) {
+    grid-column: 2;
+  }
+
+  .layout-holy-grail > .rail-end {
+    grid-column: 3;
+  }
+
+  @media (width <= 1024px) {
     .layout-holy-grail {
-      grid-template-columns: 1fr;
+      grid-template-columns: min(var(--max-width, 720px), 100%);
+      place-content: start center;
+    }
+
+    .layout-holy-grail > :is(.rail-start, main, article, .rail-end) {
+      grid-column: 1;
+    }
+
+    .layout-holy-grail > .rail-end {
+      display: none;
+    }
+  }
+
+  @media (width > 768px) {
+    .layout-holy-grail .drawer-toggle {
+      display: none;
+    }
+
+    .layout-holy-grail > [popover].drawer.rail-start {
+      position: static;
+      inset: auto;
+      translate: none;
+      transition: none;
+      inline-size: auto;
+      max-inline-size: none;
+      block-size: auto;
+      border: none;
+      background: transparent;
+    }
+
+    .layout-holy-grail > [popover].drawer.rail-start:not(:popover-open) {
+      display: block;
+    }
+  }
+
+  @media (width <= 768px) {
+    .layout-holy-grail .drawer-toggle {
+      display: inline-flex;
+    }
+
+    .layout-holy-grail > .rail-start:not(.drawer),
+    .layout-holy-grail > [popover].drawer.rail-start:not(:popover-open) {
+      display: none;
     }
   }
 
@@ -3199,26 +3726,33 @@
     margin-inline: 0;
   }
 
-  /* Cluster Layout - Horizontal wrapping list with gap */
   /**
-   * @pattern cluster
-   * @role Wrapping horizontal row with small gap (0.5rem default); used for chip rows, tag collections, button groups that should reflow gracefully
-   * @example
-   *   <div class="cluster">
-   *     <span class="tag">design</span>
-   *     <span class="tag">research</span>
-   *     <span class="tag">prototype</span>
-   *   </div>
-   * @modifiers center
+   * @pattern split
+   * @role Two-pane horizontal split with items pushed to the ends; container query collapses to vertical at <500px so it adapts to its parent, not the viewport
+   * @example <div class="split"><h2>Section title</h2><a href="/more">See all</a></div>
+   * @modifiers even, vertical, center
    */
-  .cluster {
+  .split {
     display: flex;
-    flex-wrap: wrap;
-    --gap: 0.5rem;
-    gap: var(--gap);
-    align-items: center;
+    gap: var(--gap, 1rem);
+    align-items: start;
+    justify-content: space-between;
+    &.even {
+      flex: 1 1 auto;
+    }
+    &.vertical {
+      flex-direction: column;
+      height: 100%;
+    }
     &.center {
-      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  /* Container query for .split - stacks when in narrow container */
+  @container (max-width: 500px) {
+    .split {
+      flex-direction: column;
     }
   }
 
@@ -3331,7 +3865,7 @@
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
-    view-transition-name: var(--transition-name);
+    view-transition-name: var(--transition-name, none);
     text-wrap: balance;
   }
 
@@ -3506,11 +4040,15 @@
   }
 
   .card.featured {
-    border-color: var(--primary);
-    box-shadow: var(--shadow-4);
+    border-color: var(--card-featured-border, var(--primary));
+    border-block-start: var(
+      --card-featured-border-block-start,
+      solid 1px var(--card-featured-border, var(--primary))
+    );
+    box-shadow: var(--card-featured-shadow, var(--shadow-4));
 
     > header {
-      background: var(--primary-1);
+      background: var(--card-featured-header-bg, var(--primary-1));
     }
   }
 
@@ -3578,7 +4116,7 @@
 
     &:hover {
       box-shadow: var(--shadow-3);
-      translate: 0 -2px;
+      translate: var(--feature-card-hover-translate, 0 -2px);
     }
 
     > * {
@@ -3853,6 +4391,8 @@
    *     <table>…</table>
    *   </div>
    * @modifiers zebra, sticky
+   * @slots
+   *   required table: > table
    */
   .table {
     overflow-x: auto;
@@ -3994,6 +4534,99 @@
   }
 
   /**
+   * @pattern segmented-control
+   * @role Mutually exclusive compact choices backed by native radios; direct `<label>` children each contain one radio so forms, keyboard navigation, and validation remain native
+   * @example
+   *   <fieldset class="segmented-control">
+   *     <legend class="visually-hidden">View</legend>
+   *     <label><input type="radio" name="view" value="list" checked> List</label>
+   *     <label><input type="radio" name="view" value="board"> Board</label>
+   *   </fieldset>
+   * @modifiers compact, full
+   * @prefer-over custom: buttons with manually synchronized pressed state
+   * @related form-option-row, toggle, tabs
+   */
+  .segmented-control {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 2px;
+    inline-size: fit-content;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 2px;
+    border: var(--border-1);
+    border-radius: var(--br-m);
+    background: var(--fg-05);
+  }
+
+  .segmented-control.full {
+    inline-size: 100%;
+  }
+
+  .segmented-control > label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 0;
+    min-block-size: 2.5rem;
+    margin: 0;
+    padding: var(--pad-xs) var(--pad-l);
+    border: 1px solid transparent;
+    border-radius: calc(var(--br-m) - 2px);
+    color: var(--fg-6);
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background-color var(--d-fast) var(--ease-smooth),
+      border-color var(--d-fast) var(--ease-smooth),
+      color var(--d-fast) var(--ease-smooth),
+      box-shadow var(--d-fast) var(--ease-smooth);
+  }
+
+  .segmented-control.compact > label {
+    min-block-size: 2rem;
+    padding: 2px var(--pad-s);
+    --fl: -1;
+  }
+
+  .segmented-control > label:hover:not(:has(input:disabled)) {
+    color: var(--fg);
+    background: var(--fg-1);
+  }
+
+  .segmented-control > label:has(input:checked) {
+    color: var(--segmented-selected-text, var(--fg));
+    background: var(--segmented-selected-bg, var(--bg));
+    border-color: var(--segmented-selected-border, var(--fg-2));
+    box-shadow: var(--segmented-selected-shadow, var(--shadow-1));
+  }
+
+  .segmented-control > label:has(input:focus-visible) {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .segmented-control > label:has(input:disabled) {
+    color: var(--fg-4);
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+
+  .segmented-control > label > input[type="radio"] {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  /**
    * @pattern search
    * @role Wrap an `<input>` + leading SVG icon so the icon overlays the input's inline-start padding; native search-input affordance without inventing a new control
    * @example
@@ -4051,8 +4684,15 @@
     input[type="file"] {
       position: absolute;
       inset: 0;
+      block-size: 100%;
+      inline-size: 100%;
       opacity: 0;
-      cursor: pointer;
+      cursor: inherit;
+    }
+
+    &:focus-within {
+      outline: var(--focus-ring);
+      outline-offset: var(--focus-ring-offset);
     }
 
     svg {
@@ -4070,7 +4710,12 @@
       transition: color var(--d-fast) var(--ease-smooth);
     }
 
-    &:hover {
+    &:has(input[type="file"]:disabled) {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:has(input[type="file"]:disabled)) {
       border-color: var(--fg-3);
       background-color: var(--fg-05);
 
@@ -4084,7 +4729,7 @@
       }
     }
 
-    &.dragover {
+    &.dragover:not(:has(input[type="file"]:disabled)) {
       border-color: var(--accent, var(--fg-5));
       background-color: var(--fg-1);
 
@@ -4158,10 +4803,10 @@
     --threshold: 0.6;
     --light-text-l: 1;
     --dark-text-l: 0;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color, var(--bg));
     color: light-dark(
       oklch(
-        from var(--bg-color)
+        from var(--bg-color, var(--bg))
           clamp(
             var(--dark-text-l),
             calc(((l * alpha + 1 - alpha) / var(--threshold) - 1) * -infinity),
@@ -4170,7 +4815,7 @@
           0 0 / 1
       ),
       oklch(
-        from var(--bg-color)
+        from var(--bg-color, var(--bg))
           clamp(
             var(--dark-text-l),
             calc(((l * alpha) / var(--threshold) - 1) * -infinity),
@@ -4183,7 +4828,7 @@
     &.chroma {
       color: light-dark(
         oklch(
-          from var(--bg-color)
+          from var(--bg-color, var(--bg))
             clamp(
               var(--dark-text-l),
               calc(
@@ -4194,7 +4839,7 @@
             0 0 / 0.8
         ),
         oklch(
-          from var(--bg-color)
+          from var(--bg-color, var(--bg))
             clamp(
               var(--dark-text-l),
               calc(((l * alpha) / var(--threshold) - 1) * -infinity),
@@ -4363,9 +5008,49 @@
 
   /* Timeline */
 
-  .timeline,
+  /**
+   * @pattern timeline
+   * @role Ordered event history whose direct `<li>` children pair a `.marker` with event content; semantic item classes convey success, warning, error, info, active, and completed states
+   * @example <ol class="timeline"><li class="completed"><span class="marker">1</span><p>Created</p></li></ol>
+   * @modifiers horizontal
+   * @states
+   *   success: li.success > .marker
+   *   warning: li.warning > .marker
+   *   error: li.error > .marker
+   *   info: li.info > .marker
+   *   active: li.active > .marker
+   *   completed: li.completed > .marker
+   * @slots
+   *   required item: > li
+   *   required marker: li > .marker
+   * @related steps
+   */
+  .timeline {
+    --timeline-marker-size: 2.5rem;
+  }
+
+  /**
+   * @pattern steps
+   * @role Ordered workflow steps sharing the timeline marker/line anatomy; use `active` and `completed` on direct `<li>` children to expose progress through a process
+   * @example <ol class="steps"><li class="active"><span class="marker">1</span><p>Details</p></li></ol>
+   * @modifiers horizontal
+   * @states
+   *   success: li.success > .marker
+   *   warning: li.warning > .marker
+   *   error: li.error > .marker
+   *   info: li.info > .marker
+   *   active: li.active > .marker
+   *   completed: li.completed > .marker
+   * @slots
+   *   required item: > li
+   *   required marker: li > .marker
+   * @related timeline, progress
+   */
   .steps {
     --timeline-marker-size: 2.5rem;
+  }
+
+  :is(.timeline, .steps) {
     --timeline-marker-color: var(--fg);
     --timeline-marker-bg: color-mix(
       in oklch,
@@ -4553,6 +5238,10 @@
    *       <li aria-current="page">Alpha</li>
    *     </ul>
    *   </nav>
+   * @states
+   *   current: li[aria-current="page"]
+   * @slots
+   *   required list: > ul
    * @related pagination
    */
   .breadcrumbs {
@@ -4612,6 +5301,10 @@
    *     </ul>
    *     <a href="/p/3">Next</a>
    *   </nav>
+   * @states
+   *   current: [aria-current="page"]
+   * @slots
+   *   required list: > ul
    * @related breadcrumbs
    */
   .pagination {
@@ -4659,7 +5352,17 @@
    *     <h3 class="sidebar-nav-heading">Folders</h3>
    *     <a href="/archive">Archive</a>
    *   </nav>
-   * @modifiers minimal, ghost, compact
+   * @modifiers minimal, ghost, compact, strong-active, primary, error, success, warning, dark, light, contrast
+   * @states
+   *   current: > [aria-current="page"]
+   *   current: > details > a[aria-current="page"]
+   * @state-aliases
+   *   current: > .active
+   *   current: > details > a.active
+   * @slots
+   *   optional row: > :is(a, details, .sidebar-nav-heading)
+   *   optional nested-row: > details > :is(a, summary, .sidebar-nav-heading)
+   *   optional sub-row: > a.sub
    * @related layout-sidebar, list-nav
    */
   .sidebar-nav {
@@ -5133,11 +5836,120 @@
     }
   }
 
+  /* Generic anchored popover */
+
+  /**
+   * @pattern popover-anchor
+   * @role Local anchor scope for one trigger and one sibling `.popover[popover]`; the direct `popovertarget` trigger becomes the positioning anchor automatically
+   * @example
+   *   <span class="popover-anchor">
+   *     <button popovertarget="profile-card">Profile</button>
+   *     <aside id="profile-card" class="popover" popover>…</aside>
+   *   </span>
+   * @related popover, dropdown, tooltip
+   */
+  .popover-anchor {
+    position: relative;
+    display: inline-block;
+    anchor-scope: var(--anchor, --popover);
+  }
+
+  .popover-anchor > [popovertarget] {
+    anchor-name: var(--anchor, --popover);
+  }
+
+  /**
+   * @pattern popover
+   * @role Generic interactive top-layer surface anchored to a trigger inside `.popover-anchor`; use for links, controls, or rich content that would be invalid inside a tooltip
+   * @example
+   *   <span class="popover-anchor">
+   *     <button popovertarget="filters">Filters</button>
+   *     <form id="filters" class="popover end" popover>…</form>
+   *   </span>
+   * @modifiers end, top, left, right
+   * @prefer-over tooltip for interactive revealed content
+   * @related popover-anchor, dropdown, tooltip
+   */
+  .popover {
+    isolation: isolate;
+  }
+
+  :where(.popover, .di-menu) {
+    min-inline-size: 12rem;
+    max-inline-size: min(32rem, calc(100vi - var(--pad-xxl)));
+    max-block-size: min(32rem, calc(100dvb - var(--pad-xxl)));
+    margin: 0;
+    padding: var(--pad-m);
+    overflow: auto;
+    overscroll-behavior: contain;
+    color: var(--fg);
+    background: var(--bg);
+    border: var(--border-1);
+    border-radius: var(--br-m);
+    box-shadow: var(--shadow-4);
+  }
+
+  .popover[popover] {
+    position: absolute;
+    position-anchor: var(--anchor, --popover);
+    position-area: block-end span-inline-end;
+    inset: unset;
+    margin-block-start: var(--vs-xs);
+    opacity: 1;
+    scale: 1;
+    transform-origin: top left;
+    transition:
+      opacity var(--d-fast) var(--ease-smooth),
+      scale var(--d-fast) var(--ease-smooth),
+      display var(--d-fast) var(--ease-smooth) allow-discrete,
+      overlay var(--d-fast) var(--ease-smooth) allow-discrete;
+  }
+
+  .popover[popover].end {
+    position-area: block-end span-inline-start;
+    transform-origin: top right;
+  }
+
+  .popover[popover].top {
+    position-area: block-start span-inline-end;
+    margin-block: 0 var(--vs-xs);
+    transform-origin: bottom left;
+  }
+
+  .popover[popover].top.end {
+    position-area: block-start span-inline-start;
+    transform-origin: bottom right;
+  }
+
+  .popover[popover].left {
+    position-area: inline-start center;
+    margin: 0 var(--vs-xs) 0 0;
+    transform-origin: right center;
+  }
+
+  .popover[popover].right {
+    position-area: inline-end center;
+    margin: 0 0 0 var(--vs-xs);
+    transform-origin: left center;
+  }
+
+  .popover[popover]:not(:popover-open) {
+    opacity: 0;
+    scale: 0.96;
+  }
+
+  @starting-style {
+    .popover[popover]:popover-open {
+      opacity: 0;
+      scale: 0.96;
+    }
+  }
+
   /* Dropdown Menu */
 
   /**
    * @pattern dropdown
-   * @role Anchor-positioned dropdown trigger; sibling `.dropdown-menu[popover]` uses CSS `position-anchor` to attach. `.end` aligns the menu to the inline-end edge.
+   * @role Locally scoped anchor-positioned dropdown; sibling `.dropdown-menu[popover]` attaches without per-instance anchor setup. `.end` aligns the menu to the inline-end edge.
    * @example
    *   <div class="dropdown">
    *     <button popovertarget="m">Open</button>
@@ -5148,30 +5960,65 @@
    *     </div>
    *   </div>
    * @modifiers end
+   * @slots
+   *   required trigger: > [popovertarget]
+   *   required menu: > .dropdown-menu[popover]
    * @related dropdown-header
    */
   .dropdown {
     position: relative;
     display: inline-block;
-    anchor-name: var(--anchor);
+    anchor-scope: var(--anchor, --dropdown);
   }
 
-  .dropdown-menu[popover] {
-    position: absolute;
-    position-anchor: var(--anchor);
-    inset: unset;
-    position-area: block-end span-inline-end;
-    margin: 0;
-    margin-block-start: var(--pad-xs);
-    padding: 0;
+  .dropdown > [popovertarget] {
+    anchor-name: var(--anchor, --dropdown);
+  }
 
-    /* Styling */
+  /**
+   * @pattern dropdown-menu
+   * @role Menu-shaped popover surface inside `.dropdown`; direct links and buttons become full-width rows, while `.dropdown-header` and `<hr>` provide grouping
+   * @example
+   *   <div class="dropdown-menu" popover>
+   *     <p class="dropdown-header">Account</p>
+   *     <a href="/profile">Profile</a>
+   *     <button>Sign out</button>
+   *   </div>
+   * @selector .dropdown-menu[popover]
+   * @qualified-hosts [popover]
+   * @states
+   *   disabled: a[aria-disabled="true"]
+   *   disabled: button[aria-disabled="true"]
+   * @state-aliases
+   *   disabled: a.disabled
+   *   disabled: button.disabled
+   * @slots
+   *   optional header: .dropdown-header
+   *   optional legacy-inner: .di-menu-inner
+   * @related dropdown, dropdown-header, popover
+   * @aliases di-menu
+   * @alias-deprecated di-menu: Use .dropdown-menu[popover]; scheduled for removal in 6.0.0
+   * @alias-lifecycle
+   *   di-menu: deprecated; since=5.0.0; remove=6.0.0; replacement=.dropdown-menu[popover]
+   */
+  .dropdown-menu {
     min-inline-size: 12rem;
+    color: var(--fg);
     background: var(--bg);
     border: var(--border-1);
     border-radius: var(--br-m);
     box-shadow: var(--shadow-4);
     overflow: hidden;
+  }
+
+  .dropdown-menu[popover] {
+    position: absolute;
+    position-anchor: var(--anchor, --dropdown);
+    inset: unset;
+    position-area: block-end span-inline-end;
+    margin: 0;
+    margin-block-start: var(--pad-xs);
+    padding: 0;
 
     /* Animation */
     opacity: 1;
@@ -5232,6 +6079,39 @@
     }
   }
 
+  /* One-major compatibility alias for the former Decks menu primitive.
+     New markup uses `.dropdown-menu[popover]`; remove `.di-menu` in v6. */
+  .di-menu .di-menu-inner {
+    display: grid;
+    gap: var(--vs-xs);
+  }
+
+  .di-menu :is(a, button) {
+    display: block;
+    inline-size: 100%;
+    margin: 0;
+    padding: var(--pad-s) var(--pad-m);
+    color: var(--fg-7);
+    font: inherit;
+    text-align: start;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    border-radius: var(--br-s);
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  .di-menu :is(a, button):is(:hover, :active) {
+    color: var(--fg);
+    background: var(--fg-1);
+  }
+
+  .di-menu :is(a, button):focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset-inset);
+  }
+
   .dropdown-menu[popover]:not(:popover-open) {
     opacity: 0;
     scale: 0.95;
@@ -5270,24 +6150,69 @@
 
   /**
    * @pattern tooltip
-   * @role Anchor wrapper for a hover/focus tip. Two usage forms: (1) rich pattern — wrap a trigger and a sibling `.tip` element; (2) standalone — set `aria-label` on a trigger inside `.tooltip` and the pseudo-element renders the text. Tip surface styling is shared between both forms.
+   * @role Non-interactive supplemental help shown on pointer hover or trigger focus; rich tips pair `.tooltip-trigger` with `.tooltip-content[role="tooltip"]`, while `.tip` remains the concise compatibility child and pseudo-tip trigger
    * @example
    *   <span class="tooltip">
-   *     <button>?</button>
-   *     <span class="tip">Detailed help text</span>
+   *     <span class="tooltip-trigger"><button aria-describedby="save-tip">Save</button></span>
+   *     <span class="tooltip-content" id="save-tip" role="tooltip">Saves locally.</span>
    *   </span>
+   * @modifiers bottom, left, right, open
+   * @related tooltip-trigger, tooltip-content, tip, popover
+   * @slots
+   *   required > .tooltip-trigger
+   *   required > .tooltip-content[role="tooltip"]
+   * @accessibility Keep tooltip content non-interactive; the named focusable trigger references the tooltip id with aria-describedby
    */
   .tooltip {
-    anchor-scope: --tooltip;
-    anchor-name: --tooltip;
+    anchor-scope: var(--anchor, --tooltip);
     display: inline-block;
   }
 
-  /* Shared visual styling for the tip surface — applies to both
-     the rich-content child (.tooltip .tip) and the attr-driven pseudo
-     (.tip[aria-label]::after). */
+  /**
+   * @pattern tooltip-trigger
+   * @role Direct trigger slot inside `.tooltip`; wraps the focusable control and supplies the CSS positioning anchor without changing its accessible name
+   * @example <span class="tooltip-trigger"><button aria-describedby="help-tip">Help</button></span>
+   * @related tooltip, tooltip-content
+   * @accessibility Wrap exactly one normally named focusable control and put aria-describedby on that control, not on this positioning slot
+   */
+  .tooltip-trigger {
+    display: inline-flex;
+    anchor-name: var(--anchor, --tooltip);
+  }
+
+  /**
+   * @pattern tooltip-content
+   * @role Canonical non-interactive tooltip body referenced by its trigger through `aria-describedby`; requires a unique `id` and `role="tooltip"`
+   * @example <span class="tooltip-content" id="help-tip" role="tooltip">More context</span>
+   * @related tooltip, tooltip-trigger, tip
+   * @accessibility Requires a unique id and role="tooltip" matching the trigger's aria-describedby; must not contain interactive descendants
+   */
+  .tooltip-content {
+    isolation: isolate;
+  }
+
+  /**
+   * @pattern tip
+   * @role Concise tooltip compatibility child or decorative pseudo-tip trigger; rich child usage requires `id` + `role="tooltip"`, while pseudo usage requires matching accessible text and `data-tooltip`
+   * @example <button class="tip" aria-label="Save" data-tooltip="Save">…</button>
+   * @modifiers bottom, left, right
+   * @related tooltip, tooltip-content
+   * @accessibility Rich child usage requires id plus role="tooltip"; pseudo usage requires an accessible control name mirrored exactly in data-tooltip
+   */
+  .tip {
+    isolation: isolate;
+  }
+
+  .tooltip > :not(.tip, .tooltip-content, .tooltip-trigger) {
+    anchor-name: var(--anchor, --tooltip);
+  }
+
+  /* Shared visual styling for the tip surface - applies to both
+     rich-content children and the attr-driven pseudo
+     (.tip[data-tooltip]::after). */
   .tooltip .tip,
-  .tip[aria-label]::after {
+  .tooltip .tooltip-content,
+  .tip[data-tooltip]::after {
     position: absolute;
     padding: var(--pad-xs) var(--pad-s);
     inline-size: max-content;
@@ -5301,75 +6226,90 @@
     text-align: center;
 
     opacity: 0;
-    transition: opacity var(--d-fast) var(--ease-smooth);
+    visibility: hidden;
+    transition:
+      opacity var(--d-fast) var(--ease-smooth),
+      visibility var(--d-fast) var(--ease-smooth);
+    transition-delay: var(--tooltip-hide-delay);
   }
 
-  /* Rich pattern: child is a sibling of the trigger inside .tooltip,
-     so it needs anchor positioning to attach to the wrapper. */
-  .tooltip .tip {
+  .tooltip :is(.tip, .tooltip-content) {
     inset: unset;
-    position-anchor: --tooltip;
+    position-anchor: var(--anchor, --tooltip);
     position-area: block-start center;
-    margin-block-end: var(--vs-xs);
+    margin-block-end: var(--tooltip-offset);
   }
 
-  .tooltip.bottom .tip {
+  .tooltip.bottom :is(.tip, .tooltip-content) {
     position-area: block-end center;
     margin-block-end: 0;
-    margin-block-start: var(--vs-xs);
+    margin-block-start: var(--tooltip-offset);
   }
 
-  .tooltip.left .tip {
+  .tooltip.left :is(.tip, .tooltip-content) {
     position-area: inline-start center;
     margin-block-end: 0;
-    margin-inline-end: var(--vs-xs);
+    margin-inline-end: var(--tooltip-offset);
   }
 
-  .tooltip.right .tip {
+  .tooltip.right :is(.tip, .tooltip-content) {
     position-area: inline-end center;
     margin-block-end: 0;
-    margin-inline-start: var(--vs-xs);
+    margin-inline-start: var(--tooltip-offset);
   }
 
   /* Standalone pattern: the pseudo is a descendant of the trigger,
      so plain relative/absolute positioning works in every engine —
      no anchor-positioning support required. */
-  .tip[aria-label] {
+  .tip[data-tooltip] {
     position: relative;
   }
 
-  .tip[aria-label]::after {
-    content: attr(aria-label);
-    inset-block-end: calc(100% + var(--vs-xs));
+  .tip[data-tooltip]::after {
+    content: attr(data-tooltip);
+    inset-block-end: calc(100% + var(--tooltip-offset));
     inset-inline-start: 50%;
     translate: -50% 0;
   }
 
-  .tip[aria-label].bottom::after {
+  .tip[data-tooltip].bottom::after {
     inset-block-end: unset;
-    inset-block-start: calc(100% + var(--vs-xs));
+    inset-block-start: calc(100% + var(--tooltip-offset));
   }
 
-  .tip[aria-label].left::after {
+  .tip[data-tooltip].left::after {
     inset-block-end: unset;
     inset-inline-start: unset;
     inset-block-start: 50%;
-    inset-inline-end: calc(100% + var(--vs-xs));
+    inset-inline-end: calc(100% + var(--tooltip-offset));
     translate: 0 -50%;
   }
 
-  .tip[aria-label].right::after {
+  .tip[data-tooltip].right::after {
     inset-block-end: unset;
-    inset-inline-start: calc(100% + var(--vs-xs));
+    inset-inline-start: calc(100% + var(--tooltip-offset));
     inset-block-start: 50%;
     translate: 0 -50%;
   }
 
   .tooltip:hover .tip,
   .tooltip:focus-within .tip,
-  .tip[aria-label]:hover::after,
-  .tip[aria-label]:focus-visible::after {
+  .tooltip:hover .tooltip-content,
+  .tooltip:focus-within .tooltip-content,
+  .tooltip.open :is(.tip, .tooltip-content),
+  .tooltip[data-state="open"] :is(.tip, .tooltip-content),
+  .tooltip :is(.tip, .tooltip-content)[data-state="open"],
+  .tip[data-tooltip]:hover::after,
+  .tip[data-tooltip]:focus-visible::after {
     opacity: 1;
+    visibility: visible;
+    transition-delay: var(--tooltip-show-delay);
+  }
+
+  .tooltip :is(.tip, .tooltip-content):is([hidden], [data-state="closed"]) {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: var(--tooltip-hide-delay);
   }
 
   /* Avatar */
@@ -5446,6 +6386,22 @@
   }
 
   /* Toggle Switch */
+
+  /**
+   * @pattern toggle
+   * @role Native checkbox rendered as an on/off switch; keep the checkbox in an associated `<label>` and use `.compact` only in dense toolbars
+   * @example <label class="form-option-row"><input class="toggle" type="checkbox"> Notifications</label>
+   * @selector input[type="checkbox"].toggle
+   * @qualified-hosts input[type="checkbox"]
+   * @modifiers compact
+   * @states
+   *   checked: &:checked
+   *   disabled: &:disabled
+   * @related form-option-row, segmented-control
+   */
+  .toggle {
+    accent-color: var(--accent);
+  }
 
   input[type="checkbox"].toggle {
     --toggle-width: 2.75em;
@@ -5562,6 +6518,8 @@
    *     <span class="affix">USD</span>
    *   </div>
    * @modifiers stack-mobile
+   * @slots
+   *   optional affix: > .affix
    * @related search
    */
   .input-group {
@@ -5670,6 +6628,12 @@
    *     <div class="chat-row">…</div>
    *     <div class="chat-row self">…</div>
    *   </div>
+   * @modifiers flowing
+   * @slots
+   *   optional row: > .chat-row
+   *   optional turn: > .turn
+   *   optional speaker: > .turn > .who
+   *   optional body: > .turn > .body
    * @related chat-row, chat-message, chat-composer
    */
   .chat-thread {
@@ -5745,6 +6709,7 @@
    * @pattern bubble
    * @role Speech-bubble surface (rounded, padded, capped at `--bubble-max-inline`); used by chat messages and any short callout that wants a "spoken" feel
    * @example <div class="bubble"><p>Quick note</p></div>
+   * @modifiers thinking, streaming
    * @related chat-message, callout
    */
   .bubble {
@@ -5778,12 +6743,28 @@
 
   /* Dialog */
 
+  /**
+   * @pattern dialog
+   * @role Native modal or non-modal dialog surface; compose direct content with `.stack`, `.form-actions`, and an optional `.close` button
+   * @example <dialog id="confirm"><button class="close" aria-label="Close">×</button><div class="stack">…</div></dialog>
+   * @selector dialog
+   * @states
+   *   open: &[open]
+   *   closed: &:not([open])
+   * @slots
+   *   optional close: > .close
+   *   optional legacy-close: > :is(.di-dialog-close, .di-drawer-close-button)
+   * @aliases di-dialog
+   * @alias-deprecated di-dialog: Use native dialog with .close; scheduled for removal in 6.0.0
+   * @alias-lifecycle
+   *   di-dialog: deprecated; since=5.0.0; remove=6.0.0; replacement=dialog
+   */
   dialog {
     max-inline-size: 40ch;
     inline-size: calc(100% - var(--pad-xxl) * 2);
     padding: var(--pad-xl);
     border: none;
-    border-radius: var(--br-xxl);
+    border-radius: var(--dialog-radius, var(--br-xxl));
     box-shadow: var(--shadow-5);
     background: var(--bg);
     color: var(--fg);
@@ -5823,7 +6804,29 @@
     inset-inline-end: var(--pad-m);
   }
 
+  dialog:is(.di-dialog, .di-drawer)
+    > :is(.di-dialog-close, .di-drawer-close-button) {
+    position: absolute;
+    inset-block-start: var(--pad-s);
+    inset-inline-end: var(--pad-s);
+  }
+
   /* Drawer - popover-based slide-in panel */
+
+  /**
+   * @pattern drawer
+   * @role Native popover promoted to a viewport-edge panel; default opens from inline-start and side modifiers select inline-end, block-start, or block-end
+   * @example <aside id="nav-drawer" class="drawer" popover><button popovertarget="nav-drawer" popovertargetaction="hide">Close</button></aside>
+   * @selector [popover].drawer
+   * @qualified-hosts [popover]
+   * @modifiers end, right, top, bottom
+   * @states
+   *   open: &:popover-open
+   * @related bottom-sheet, popover
+   */
+  .drawer {
+    overscroll-behavior: contain;
+  }
 
   [popover].drawer {
     position: fixed;
@@ -5991,18 +6994,30 @@
     /* Selected state - via aria-pressed or .selected class */
     &[aria-pressed="true"],
     &.selected {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: var(--white);
+      background: var(--chip-selected-bg, var(--primary));
+      border-color: var(--chip-selected-border, var(--primary));
+      color: var(--chip-selected-text, var(--white));
 
       &:hover {
-        background: oklch(from var(--primary) calc(l - 0.05) c h);
-        border-color: oklch(from var(--primary) calc(l - 0.05) c h);
+        background: var(
+          --chip-selected-hover-bg,
+          oklch(from var(--primary) calc(l - 0.05) c h)
+        );
+        border-color: var(
+          --chip-selected-hover-border,
+          oklch(from var(--primary) calc(l - 0.05) c h)
+        );
       }
 
       &:active {
-        background: oklch(from var(--primary) calc(l - 0.1) c h);
-        border-color: oklch(from var(--primary) calc(l - 0.1) c h);
+        background: var(
+          --chip-selected-active-bg,
+          oklch(from var(--primary) calc(l - 0.1) c h)
+        );
+        border-color: var(
+          --chip-selected-active-border,
+          oklch(from var(--primary) calc(l - 0.1) c h)
+        );
       }
     }
 
@@ -6313,6 +7328,14 @@
    *       Billing
    *     </a>
    *   </nav>
+   * @states
+   *   disabled: > a[aria-disabled="true"]
+   *   disabled: > button[aria-disabled="true"]
+   * @state-aliases
+   *   disabled: > a.disabled
+   *   disabled: > button.disabled
+   * @slots
+   *   required item: > :is(a, button)
    * @related sidebar-nav, tabs
    */
   .list-nav {
@@ -6332,7 +7355,7 @@
       cursor: pointer;
       margin: 0;
       background: var(--bg);
-      border-radius: var(--br-xxl);
+      border-radius: var(--list-nav-row-radius, var(--br-xxl));
 
       box-shadow: var(--shadow-2);
       transition: box-shadow var(--d-instant) var(--ease-smooth);
@@ -6405,7 +7428,7 @@
    *     <details name="t" style="--n: 2"><summary>Details</summary><p>Panel B</p></details>
    *     <details name="t" style="--n: 3"><summary>Activity</summary><p>Panel C</p></details>
    *   </div>
-   * @modifiers boxed
+   * @modifiers boxed, pill
    * @related list-nav
    */
   .tabs {
@@ -6426,7 +7449,7 @@
       /* Summary acts as the tab button */
       > summary {
         grid-row: 1;
-        grid-column: var(--n) / span 1;
+        grid-column: var(--n, 1) / span 1;
         z-index: var(--z-raised);
         display: flex;
         align-items: center;
@@ -6737,6 +7760,13 @@
    *     <a href="/" aria-current="page"><svg aria-hidden="true">…</svg><span>Home</span></a>
    *     <a href="/inbox"><svg aria-hidden="true">…</svg><span>Inbox</span></a>
    *   </nav>
+   * @modifiers blur
+   * @states
+   *   current: :is(a, button)[aria-current="page"]
+   * @state-aliases
+   *   current: :is(a, button).active
+   * @slots
+   *   required item: :is(a, button)
    * @related app-shell, list-nav
    */
   /* Bottom Navigation - Fixed tab bar for mobile apps */
@@ -6839,8 +7869,18 @@
    *     <div class="cluster">…</div>
    *   </div>
    * @related app-shell
+   * @aliases di-drawer
+   * @alias-deprecated di-drawer: Use [popover].drawer or .bottom-sheet; scheduled for removal in 6.0.0
+   * @alias-lifecycle
+   *   di-drawer: deprecated; since=5.0.0; remove=6.0.0; replacement=[popover].drawer or .bottom-sheet
+   * @slots
+   *   optional legacy-close: > :is(.di-dialog-close, .di-drawer-close-button)
    */
   .bottom-sheet {
+    isolation: isolate;
+  }
+
+  :where(.bottom-sheet, dialog.di-drawer) {
     position: fixed;
     inset-block-end: 0;
     inset-inline: 0;
@@ -6856,7 +7896,7 @@
   }
 
   /* Bottom Sheet pseudo-grip — separate rule, not a primary def. */
-  .bottom-sheet::before {
+  :where(.bottom-sheet, dialog.di-drawer)::before {
     content: "";
     display: block;
     inline-size: 36px;
@@ -6944,6 +7984,14 @@
    *     <div class="spacer"></div>
    *     <button><svg aria-hidden="true">…</svg></button>
    *   </nav>
+   * @states
+   *   current-page: > a[aria-current="page"]
+   *   pressed: > button[aria-pressed="true"]
+   * @slots
+   *   optional brand: > .brand
+   *   required item: > :is(a, button)
+   *   optional status: > :is(a, button) > .status
+   *   optional spacer: > .spacer
    * @related layout-rail, sidebar-nav, bottom-nav
    */
   .icon-rail {
@@ -7037,6 +8085,7 @@
    *     <nav class="chat-list">…</nav>
    *     <main>…</main>
    *   </div>
+   * @modifiers with-workbench
    * @related icon-rail, layout-sidebar, layout-holy-grail
    */
   .layout-rail {
@@ -7118,11 +8167,18 @@
     margin-inline-start: 2px;
     color: var(--primary);
     animation: bubble-streaming-cursor 1s steps(2) infinite;
+    --animation-reduced: none;
   }
 
   @keyframes bubble-streaming-cursor {
-    0%, 49%   { opacity: 1; }
-    50%, 100% { opacity: 0; }
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
   }
 
   /* -----------------------------------------------------------------------
@@ -7142,6 +8198,11 @@
    *     </header>
    *     <pre>$ pnpm test</pre>
    *   </article>
+   * @slots
+   *   required header: > header
+   *   optional label: > header > .label
+   *   optional status: > header > .status
+   *   optional output: > pre
    * @related card, callout, bubble
    */
   .log-card {
@@ -7200,6 +8261,9 @@
    *     <span class="spacer"></span>
    *     <button type="button">Done</button>
    *   </div>
+   * @slots
+   *   optional separator: > .separator
+   *   optional spacer: > .spacer
    * @related composer, cluster, icon-button
    */
   .toolbar {
@@ -7389,6 +8453,10 @@
    *       <button type="submit">Send</button>
    *     </div>
    *   </form>
+   * @slots
+   *   required input: > :is(textarea, input[type="text"])
+   *   required toolbar: > .toolbar
+   *   optional spacer: > .toolbar > .spacer
    * @related chat-composer, input-group
    */
   .composer {
@@ -7454,6 +8522,9 @@
    *     </header>
    *     <div class="body">…</div>
    *   </aside>
+   * @slots
+   *   required header: > header
+   *   required body: > .body
    * @related layout-rail, tabs
    */
   .workbench-panel {
@@ -7542,6 +8613,1365 @@
 
   .chat-thread.flowing > .turn > .body > * + * {
     margin-block-start: var(--vs-s);
+  }
+
+  /* Decks-facing feedback and workflow contracts */
+
+  /**
+   * @pattern empty
+   * @role Centered no-content state whose direct children are an optional icon, heading, body copy, and `.form-actions`; use inside a bounded list or panel, not as generic page decoration
+   * @example <section class="empty"><h2>No projects</h2><p>Create a project to begin.</p><div class="form-actions"><button>Create project</button></div></section>
+   * @modifiers compact
+   * @prefer-over .stack plus one-off centering and padding
+   * @related callout, skeleton, spinner
+   */
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--vs-s);
+    inline-size: 100%;
+    min-block-size: 12rem;
+    max-inline-size: 48ch;
+    margin-inline: auto;
+    padding: var(--pad-xxxl);
+    text-align: center;
+    color: var(--fg-6);
+  }
+
+  .empty.compact {
+    min-block-size: 0;
+    padding: var(--pad-xl);
+  }
+
+  .empty > * {
+    margin: 0;
+  }
+
+  .empty > :is(.icon, svg) {
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    color: var(--fg-4);
+  }
+
+  .empty > :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--fg);
+  }
+
+  .empty > .form-actions {
+    margin-block-start: var(--vs-s);
+  }
+
+  /**
+   * @pattern skeleton
+   * @role Non-interactive placeholder matching content geometry while data loads; mark each skeleton `aria-hidden="true"` and put the loading announcement on the containing region
+   * @example <div aria-busy="true"><span class="skeleton text" aria-hidden="true">Loading title</span><span class="visually-hidden">Loading</span></div>
+   * @modifiers text, circle
+   * @related spinner, empty, data-table-loading
+   */
+  .skeleton {
+    display: block;
+    min-block-size: 1rem;
+    color: transparent;
+    background: var(--fg-1);
+    border-radius: var(--br-s);
+    cursor: wait;
+    user-select: none;
+    animation: skeleton-pulse 1.6s var(--ease-smooth) infinite alternate;
+    --animation-reduced: none;
+  }
+
+  .skeleton > * {
+    visibility: hidden;
+  }
+
+  .skeleton.text {
+    inline-size: min(100%, 32ch);
+    block-size: 0.8em;
+    min-block-size: 0;
+    border-radius: var(--br-xxl);
+  }
+
+  .skeleton.circle {
+    inline-size: var(--size, 2.5rem);
+    block-size: var(--size, 2.5rem);
+    border-radius: 50%;
+  }
+
+  @keyframes skeleton-pulse {
+    from {
+      opacity: 0.55;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /**
+   * @pattern spinner
+   * @role Standalone indeterminate busy indicator; use `role="status"` with an accessible label, or mark it hidden when adjacent text already announces loading
+   * @example <span class="spinner" role="status" aria-label="Loading"></span>
+   * @modifiers s, l
+   * @related progress, skeleton, empty
+   */
+  .spinner {
+    display: inline-block;
+    inline-size: var(--size, 1.25rem);
+    block-size: var(--size, 1.25rem);
+    border: 2px solid var(--fg-2);
+    border-block-start-color: var(--primary);
+    border-radius: 50%;
+    vertical-align: -0.2em;
+    animation: spinner-rotate 0.8s linear infinite;
+    --animation-reduced: none;
+  }
+
+  .spinner.s {
+    --size: 1rem;
+    border-width: 1px;
+  }
+
+  .spinner.l {
+    --size: 2rem;
+    border-width: 3px;
+  }
+
+  @keyframes spinner-rotate {
+    to {
+      rotate: 1turn;
+    }
+  }
+
+  button[aria-busy="true"] {
+    position: relative;
+    pointer-events: none;
+    color: transparent;
+  }
+
+  button[aria-busy="true"]::after {
+    content: "";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    inline-size: 1em;
+    block-size: 1em;
+    border: 2px solid currentColor;
+    border-block-start-color: transparent;
+    border-radius: 50%;
+    color: var(--button-text, var(--fg));
+    translate: -50% -50%;
+    animation: spinner-rotate 0.8s linear infinite;
+    --animation-reduced: none;
+  }
+
+  /**
+   * @pattern combobox
+   * @role Enhanced text-entry choice field that anchors one `.listbox`; Decks owns filtering, `aria-expanded`, `aria-controls`, `aria-activedescendant`, and keyboard behavior
+   * @example <div class="combobox" aria-expanded="true"><input role="combobox" aria-controls="people-list"><div id="people-list" class="listbox" role="listbox">…</div></div>
+   * @states
+   *   expanded: &[aria-expanded="true"]
+   * @state-aliases
+   *   expanded: &.open
+   * @slots
+   *   required listbox: > .listbox
+   * @related listbox, option, tag-input
+   */
+  .combobox {
+    position: relative;
+    display: grid;
+    gap: var(--vs-xs);
+    min-inline-size: 0;
+    anchor-scope: var(--anchor, --combobox);
+  }
+
+  .combobox > :is(input[role="combobox"], .search) {
+    anchor-name: var(--anchor, --combobox);
+  }
+
+  /**
+   * @pattern listbox
+   * @role Popup or inline collection of `.option[role="option"]` rows; Decks owns active-descendant focus and selection while Graffiti renders open, selected, active, disabled, and empty visuals
+   * @example <div class="listbox" role="listbox"><button class="option" role="option" aria-selected="true">Ada</button></div>
+   * @modifiers open
+   * @related combobox, option, tag-input
+   */
+  .listbox {
+    z-index: var(--z-overlay);
+    display: grid;
+    gap: 2px;
+    min-inline-size: max(100%, 12rem);
+    max-block-size: 18rem;
+    margin: 0;
+    padding: var(--pad-xs);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    color: var(--fg);
+    background: var(--bg);
+    border: var(--border-1);
+    border-radius: var(--br-m);
+    box-shadow: var(--shadow-4);
+  }
+
+  .combobox > .listbox:not([popover]) {
+    position: absolute;
+    inset-block-start: calc(100% + var(--vs-xs));
+    inset-inline: 0 auto;
+    display: none;
+  }
+
+  .combobox:is([aria-expanded="true"], .open)
+    > .listbox:not([popover]),
+  .combobox > .listbox.open:not([popover]) {
+    display: grid;
+  }
+
+  .listbox[popover] {
+    position: absolute;
+    position-anchor: var(--anchor, --combobox);
+    position-area: block-end span-inline-end;
+    inset: unset;
+    margin-block-start: var(--vs-xs);
+  }
+
+  .listbox[hidden],
+  .listbox[data-state="closed"] {
+    display: none;
+  }
+
+  /**
+   * @pattern option
+   * @role One selectable row inside `.listbox`; use `role="option"`, `aria-selected`, and `aria-disabled`, with `data-active="true"` for the active-descendant highlight
+   * @example <button class="option" role="option" aria-selected="false" data-active="true">Grace</button>
+   * @modifiers selected, active, disabled
+   * @related listbox, combobox
+   */
+  .option {
+    display: flex;
+    align-items: center;
+    gap: var(--vs-s);
+    inline-size: 100%;
+    min-block-size: 2.5rem;
+    margin: 0;
+    padding: var(--pad-s) var(--pad-m);
+    color: var(--fg-7);
+    font: inherit;
+    text-align: start;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    border-radius: var(--br-s);
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  .option:is(:hover, .active, [data-active="true"]) {
+    color: var(--fg);
+    background: var(--fg-1);
+  }
+
+  .option:is(.selected, [aria-selected="true"]) {
+    color: var(--primary-opaque-8);
+    background: var(--primary-opaque-1);
+    font-weight: var(--fw-semibold);
+  }
+
+  .option:is(.disabled, [aria-disabled="true"], :disabled) {
+    color: var(--fg-4);
+    cursor: not-allowed;
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  .option:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset-inset);
+  }
+
+  /**
+   * @pattern tag-input
+   * @role Multi-value input frame containing `.tag` values and one borderless combobox/text input; Decks owns add/remove behavior and listbox keyboard state
+   * @example <div class="tag-input"><span class="tag">Design <button aria-label="Remove Design">×</button></span><input role="combobox" aria-label="Add tag"></div>
+   * @states
+   *   invalid: &[aria-invalid="true"]
+   * @state-aliases
+   *   invalid: &.error
+   * @related tag, combobox, listbox
+   */
+  .tag-input {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--vs-xs);
+    min-inline-size: 0;
+    min-block-size: 2.75rem;
+    padding: var(--pad-xs);
+    color: var(--fg);
+    background: var(--fg-05);
+    border: var(--border-1);
+    border-radius: var(--br-m);
+  }
+
+  .tag-input:focus-within {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .tag-input:is([aria-invalid="true"], .error) {
+    border-color: var(--error-6);
+  }
+
+  .tag-input:has(input:disabled) {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  .tag-input > input {
+    flex: 1 1 8ch;
+    min-inline-size: 8ch;
+    inline-size: auto;
+    margin: 0;
+    padding: 0 var(--pad-xs);
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .tag-input > input:focus {
+    outline: 0;
+  }
+
+  .tag-input > .tag > button {
+    display: inline-grid;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    color: currentColor;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    line-height: var(--lh-xs);
+  }
+
+  /**
+   * @pattern date-picker
+   * @role Native-first date field wrapper; use a labeled `<input type="date">` alone when possible, or anchor a Decks-enhanced `.calendar[popover]` when product requirements exceed the platform picker
+   * @example <label class="date-picker">Due date <input type="date" name="due"></label>
+   * @related calendar, calendar-grid, calendar-day
+   */
+  .date-picker {
+    position: relative;
+    display: grid;
+    gap: var(--vs-xs);
+    min-inline-size: 0;
+    anchor-scope: var(--anchor, --date-picker);
+  }
+
+  .date-picker > :is(button[popovertarget], input[type="date"]) {
+    anchor-name: var(--anchor, --date-picker);
+  }
+
+  /**
+   * @pattern calendar
+   * @role Date-grid popover surface inside `.date-picker`; Decks owns month arithmetic, roving focus, range state, localization, and keyboard behavior
+   * @example <section class="calendar" popover aria-label="Choose a date"><header class="calendar-header">…</header><table class="calendar-grid">…</table></section>
+   * @related date-picker, calendar-header, calendar-grid, calendar-day
+   */
+  .calendar {
+    inline-size: min(22rem, calc(100vi - var(--pad-xxl)));
+    margin: 0;
+    padding: var(--pad-m);
+    color: var(--fg);
+    background: var(--bg);
+    border: var(--border-1);
+    border-radius: var(--br-l);
+    box-shadow: var(--shadow-4);
+  }
+
+  .calendar[popover] {
+    position: absolute;
+    position-anchor: var(--anchor, --date-picker);
+    position-area: block-end span-inline-end;
+    inset: unset;
+    margin-block-start: var(--vs-xs);
+  }
+
+  /**
+   * @pattern calendar-header
+   * @role Calendar title and previous/next controls row; direct buttons remain native controls with explicit accessible labels
+   * @example <header class="calendar-header"><button aria-label="Previous month">‹</button><strong>July 2026</strong><button aria-label="Next month">›</button></header>
+   * @related calendar, calendar-grid
+   */
+  .calendar-header {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--vs-s);
+    margin-block-end: var(--vs-s);
+    text-align: center;
+  }
+
+  .calendar-header > * {
+    margin: 0;
+  }
+
+  /**
+   * @pattern calendar-grid
+   * @role Semantic calendar `<table>` with seven equal date columns; column headers and cells stay aligned without replacing table semantics with ARIA grids
+   * @example <table class="calendar-grid"><thead><tr><th scope="col">Mo</th>…</tr></thead><tbody>…</tbody></table>
+   * @related calendar, calendar-day
+   */
+  .calendar-grid {
+    table-layout: fixed;
+    inline-size: 100%;
+    border-collapse: separate;
+    border-spacing: 2px;
+  }
+
+  .calendar-grid :is(th, td) {
+    padding: 0;
+    text-align: center;
+    border: 0;
+  }
+
+  .calendar-grid th {
+    padding-block: var(--pad-xs);
+    color: var(--fg-5);
+    font-weight: var(--fw-medium);
+    --fl: -1;
+  }
+
+  /**
+   * @pattern calendar-day
+   * @role One date button inside `.calendar-grid`; `aria-current="date"`, `aria-pressed`, range data attributes, and disabled state drive all visuals
+   * @example <button class="calendar-day" aria-current="date" aria-pressed="true">17</button>
+   * @modifiers outside
+   * @related calendar, calendar-grid
+   */
+  .calendar-day {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 100%;
+    aspect-ratio: 1;
+    margin: 0;
+    padding: 0;
+    color: var(--fg-7);
+    font: inherit;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--br-m);
+    box-shadow: none;
+  }
+
+  .calendar-day:is(:hover, [data-active="true"]):not(:disabled) {
+    color: var(--fg);
+    background: var(--fg-1);
+  }
+
+  .calendar-day[aria-current="date"] {
+    border-color: var(--primary);
+  }
+
+  .calendar-day:is([aria-pressed="true"], [data-selected="true"]) {
+    color: var(--white);
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .calendar-day:is([data-range-start="true"], [data-range-end="true"]) {
+    border-radius: var(--br-xxl);
+  }
+
+  .calendar-day.outside {
+    color: var(--fg-4);
+  }
+
+  .calendar-day:disabled {
+    color: var(--fg-3);
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+
+  .calendar-day:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset-inset);
+  }
+
+  /**
+   * @pattern data-table
+   * @role Stateful table composition containing `.data-table-toolbar` and a semantic `.table`; sorting, filtering, selection, pagination, and server callbacks remain Decks behavior
+   * @example <section class="data-table sticky"><div class="data-table-toolbar">…</div><div class="table"><table>…</table></div></section>
+   * @modifiers compact, sticky
+   * @states
+   *   selected: tbody tr[aria-selected="true"]
+   * @state-aliases
+   *   selected: tbody tr.selected
+   * @slots
+   *   required table: > .table
+   *   optional toolbar: > .data-table-toolbar
+   * @related table, data-table-toolbar, data-table-sort, data-table-actions, data-table-empty, data-table-loading
+   */
+  .data-table {
+    display: grid;
+    gap: var(--vs-s);
+    min-inline-size: 0;
+    container-type: inline-size;
+  }
+
+  .data-table.compact :is(th, td) {
+    padding: var(--pad-xs) var(--pad-s);
+  }
+
+  .data-table.sticky > .table {
+    max-block-size: min(70dvh, 42rem);
+    overflow: auto;
+  }
+
+  .data-table.sticky thead th {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: var(--z-raised);
+    background: var(--bg);
+    box-shadow: 0 1px 0 var(--fg-2);
+  }
+
+  .data-table tbody tr:is(.selected, [aria-selected="true"]) {
+    background: var(--primary-opaque-1);
+  }
+
+  .data-table tbody tr:focus-within {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset-inset);
+  }
+
+  /**
+   * @pattern data-table-toolbar
+   * @role Search, filters, visibility, and bulk actions row above `.data-table`; direct groups wrap and stack through a container query on narrow hosts
+   * @example <div class="data-table-toolbar"><label class="search"><input type="search"></label><button>Columns</button></div>
+   * @related data-table, search, data-table-actions
+   */
+  .data-table-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--vs-s);
+  }
+
+  .data-table-toolbar > :first-child {
+    flex: 1 1 16rem;
+  }
+
+  /**
+   * @pattern data-table-sort
+   * @role Full header-cell sort control; parent `<th>` communicates `aria-sort`, and Decks owns cycling ascending, descending, and unsorted states
+   * @example <th aria-sort="ascending"><button class="data-table-sort">Name</button></th>
+   * @related data-table
+   */
+  .data-table-sort {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--vs-xs);
+    inline-size: 100%;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    font-weight: var(--fw-semibold);
+    text-align: start;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  th[aria-sort] > .data-table-sort::after {
+    content: "↕";
+    color: var(--fg-4);
+  }
+
+  th[aria-sort="ascending"] > .data-table-sort::after {
+    content: "↑";
+    color: var(--fg);
+  }
+
+  th[aria-sort="descending"] > .data-table-sort::after {
+    content: "↓";
+    color: var(--fg);
+  }
+
+  /**
+   * @pattern data-table-actions
+   * @role Inline-end row action cell or bulk-action group; direct controls stay compact and never force the table wider than their labels
+   * @example <td class="data-table-actions"><button class="mini">Edit</button><button class="mini">Archive</button></td>
+   * @related data-table, data-table-toolbar
+   */
+  .data-table-actions {
+    text-align: end;
+    white-space: nowrap;
+  }
+
+  .data-table-actions:not(:is(td, th)) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--vs-xs);
+  }
+
+  .data-table-actions:is(td, th) > :is(a, button) + :is(a, button) {
+    margin-inline-start: var(--vs-xs);
+  }
+
+  /**
+   * @pattern data-table-empty
+   * @role Empty-result cell or panel inside `.data-table`; spans the table columns and defers richer no-content composition to `.empty`
+   * @example <td class="data-table-empty" colspan="4">No matching records</td>
+   * @related data-table, empty
+   */
+  .data-table-empty {
+    padding: var(--pad-xxl);
+    color: var(--fg-5);
+    text-align: center;
+  }
+
+  /**
+   * @pattern data-table-loading
+   * @role Loading row or body inside `.data-table`; combine with `aria-busy="true"` on the data-table region and `.skeleton` cells for shape-preserving placeholders
+   * @example <tr class="data-table-loading"><td colspan="4"><span class="skeleton text" aria-hidden="true">Loading</span></td></tr>
+   * @related data-table, skeleton, spinner
+   */
+  .data-table-loading {
+    color: var(--fg-5);
+  }
+
+  .data-table-loading > td {
+    padding-block: var(--pad-l);
+  }
+
+  @container (max-width: 36rem) {
+    .data-table-toolbar {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .data-table-toolbar > * {
+      flex: 0 1 auto;
+      inline-size: 100%;
+    }
+  }
+
+  /**
+   * @pattern kanban-board
+   * @role Horizontally scrollable workflow board containing direct `.kanban-column` children; Decks owns item transfer, announcements, pointer drag, and keyboard drag orchestration
+   * @example <section class="kanban-board" aria-label="Project board"><section class="kanban-column">…</section></section>
+   * @related kanban-column, kanban-card, kanban-dropzone
+   */
+  .kanban-board {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(
+      var(--layout-min-card-width, var(--min-card-width, 18rem)),
+      1fr
+    );
+    align-items: start;
+    gap: var(--layout-gap, var(--vs-base));
+    inline-size: 100%;
+    padding-block-end: var(--pad-s);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline proximity;
+    container-type: inline-size;
+  }
+
+  /**
+   * @pattern kanban-column
+   * @role One workflow lane with `.kanban-column-header`, task list, and `.kanban-dropzone`; `drag-over` marks the current valid destination
+   * @example <section class="kanban-column"><header class="kanban-column-header"><h2>Doing</h2><span class="tag">2</span></header><div class="stack">…</div></section>
+   * @modifiers drag-over
+   * @related kanban-board, kanban-column-header, kanban-card, kanban-dropzone
+   */
+  .kanban-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--vs-s);
+    min-block-size: 12rem;
+    padding: var(--pad-s);
+    background: var(--fg-05);
+    border: var(--border-1);
+    border-radius: var(--br-l);
+    scroll-snap-align: start;
+    transition:
+      background-color var(--d-fast) var(--ease-smooth),
+      border-color var(--d-fast) var(--ease-smooth);
+  }
+
+  .kanban-column:is(.drag-over, [data-drag-over="true"]) {
+    background: var(--primary-opaque-1);
+    border-color: var(--primary);
+  }
+
+  /**
+   * @pattern kanban-column-header
+   * @role Lane title, count, and actions row at the start of `.kanban-column`; first child grows while trailing controls stay compact
+   * @example <header class="kanban-column-header"><h2>Done</h2><span class="tag success">4</span></header>
+   * @related kanban-column
+   */
+  .kanban-column-header {
+    display: flex;
+    align-items: center;
+    gap: var(--vs-s);
+  }
+
+  .kanban-column-header > * {
+    margin: 0;
+  }
+
+  .kanban-column-header > :first-child {
+    flex: 1;
+  }
+
+  /**
+   * @pattern kanban-card
+   * @role Drag-state extension for a task `.card`; Decks toggles `dragging` for pointer drag, `keyboard-dragging` for grabbed keyboard mode, and `selected` for multi-select
+   * @example <article class="card kanban-card" draggable="true" tabindex="0"><h3>Ship docs</h3></article>
+   * @modifiers dragging, keyboard-dragging, selected
+   * @related card, kanban-board, kanban-column, kanban-dropzone
+   */
+  .kanban-card {
+    cursor: grab;
+    touch-action: manipulation;
+    transition:
+      border-color var(--d-fast) var(--ease-smooth),
+      box-shadow var(--d-fast) var(--ease-smooth),
+      opacity var(--d-fast) var(--ease-smooth),
+      rotate var(--d-fast) var(--ease-smooth);
+  }
+
+  .kanban-card:active {
+    cursor: grabbing;
+  }
+
+  .kanban-card:is(.dragging, [data-dragging="true"]) {
+    opacity: 0.55;
+    rotate: 1deg;
+    box-shadow: var(--shadow-4);
+  }
+
+  .kanban-card:is(.keyboard-dragging, [data-keyboard-dragging="true"]) {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-4);
+  }
+
+  .kanban-card:is(.selected, [aria-selected="true"]) {
+    border-color: var(--primary);
+    background: var(--primary-opaque-1);
+  }
+
+  .kanban-card:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /**
+   * @pattern kanban-dropzone
+   * @role Destination placeholder between cards; Decks toggles `active` for a valid target and `invalid` for a rejected target while announcing movement in a live region
+   * @example <div class="kanban-dropzone active" data-drop-target="true">Drop before Ship docs</div>
+   * @modifiers active, invalid
+   * @related kanban-board, kanban-column, kanban-card
+   */
+  .kanban-dropzone {
+    display: grid;
+    place-items: center;
+    min-block-size: 2.75rem;
+    padding: var(--pad-s);
+    color: var(--fg-5);
+    text-align: center;
+    border: 1px dashed var(--fg-2);
+    border-radius: var(--br-m);
+    opacity: 0.65;
+    transition:
+      background-color var(--d-fast) var(--ease-smooth),
+      border-color var(--d-fast) var(--ease-smooth),
+      opacity var(--d-fast) var(--ease-smooth);
+  }
+
+  .kanban-dropzone:is(.active, [data-drop-target="true"]) {
+    color: var(--primary-opaque-8);
+    background: var(--primary-opaque-1);
+    border-color: var(--primary);
+    opacity: 1;
+  }
+
+  .kanban-dropzone:is(.invalid, [data-drop-valid="false"]) {
+    color: var(--error-opaque-8);
+    background: var(--error-opaque-1);
+    border-color: var(--error);
+    opacity: 1;
+  }
+
+  @container (max-width: 36rem) {
+    .kanban-board {
+      grid-auto-columns: min(18rem, 85cqi);
+    }
+  }
+
+  /**
+   * @pattern toast-viewport
+   * @role Fixed top-layer stack for `.toast-item` notifications; placement modifiers cover every logical viewport corner plus centered top/bottom positions
+   * @example <div class="toast-viewport bottom-end" popover="manual"><div class="toast-item"><article class="toast"><strong>Saved</strong><p>Draft updated.</p></article></div></div>
+   * @modifiers top-start, top-center, top-end, bottom-start, bottom-center, bottom-end
+   * @related toast-item, toast
+   */
+  .toast-viewport {
+    --toast-width: 22rem;
+    --toast-offset: var(--pad-l);
+
+    inset: auto;
+    display: grid;
+    gap: var(--vs-s);
+    inline-size: min(var(--toast-width), calc(100vi - var(--toast-offset) * 2));
+    max-inline-size: calc(100vi - var(--toast-offset) * 2);
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    pointer-events: none;
+    color: var(--fg);
+    background: transparent;
+    border: 0;
+    z-index: var(--z-toast);
+  }
+
+  .toast-viewport[popover] {
+    opacity: 1;
+    transition:
+      opacity var(--d-fast) var(--ease-exit-swift),
+      display var(--d-fast) var(--ease-exit-swift) allow-discrete,
+      overlay var(--d-fast) var(--ease-exit-swift) allow-discrete;
+  }
+
+  .toast-viewport[popover]:not(:popover-open) {
+    display: none;
+    opacity: 0;
+  }
+
+  @starting-style {
+    .toast-viewport[popover]:popover-open {
+      opacity: 0;
+    }
+  }
+
+  .toast-viewport:is(.bottom-end, :not([class*="top-"]):not([class*="bottom-"])),
+  .toast-viewport[data-inline="end"][data-block="end"] {
+    inset-inline-end: calc(var(--toast-offset) + var(--safe-right));
+    inset-block-end: calc(var(--toast-offset) + var(--safe-bottom));
+  }
+
+  .toast-viewport.top-start,
+  .toast-viewport[data-inline="start"][data-block="start"] {
+    inset-inline-start: calc(var(--toast-offset) + var(--safe-left));
+    inset-block-start: calc(var(--toast-offset) + var(--safe-top));
+  }
+
+  .toast-viewport.top-end,
+  .toast-viewport[data-inline="end"][data-block="start"] {
+    inset-inline-end: calc(var(--toast-offset) + var(--safe-right));
+    inset-block-start: calc(var(--toast-offset) + var(--safe-top));
+  }
+
+  .toast-viewport.bottom-start,
+  .toast-viewport[data-inline="start"][data-block="end"] {
+    inset-inline-start: calc(var(--toast-offset) + var(--safe-left));
+    inset-block-end: calc(var(--toast-offset) + var(--safe-bottom));
+  }
+
+  .toast-viewport:is(.top-center, .bottom-center),
+  .toast-viewport[data-inline="center"] {
+    inset-inline-start: 50%;
+    translate: -50% 0;
+  }
+
+  .toast-viewport.top-center,
+  .toast-viewport[data-inline="center"][data-block="start"] {
+    inset-block-start: calc(var(--toast-offset) + var(--safe-top));
+  }
+
+  .toast-viewport.bottom-center,
+  .toast-viewport[data-inline="center"][data-block="end"] {
+    inset-block-end: calc(var(--toast-offset) + var(--safe-bottom));
+  }
+
+  /**
+   * @pattern toast-item
+   * @role One independently animated slot inside `.toast-viewport`; Decks keys, inserts, reorders, and removes these slots while the child `.toast` owns visual anatomy
+   * @example <div class="toast-item"><article class="toast info" role="status">…</article></div>
+   * @related toast-viewport, toast
+   */
+  .toast-item {
+    inline-size: 100%;
+    pointer-events: auto;
+    opacity: 1;
+    translate: 0;
+    transition:
+      opacity var(--d-base) var(--ease-enter-soft),
+      translate var(--d-base) var(--ease-enter-soft);
+  }
+
+  @starting-style {
+    .toast-item {
+      opacity: 0;
+      translate: 0 var(--vs-s);
+    }
+  }
+
+  /**
+   * @pattern toast
+   * @role Compact neutral notification surface whose canonical anatomy uses direct `<strong>`, `<p>`, an optional existing Graffiti button pattern, and a native `button[popovertargetaction="hide"]`; add `.toast-progress` only when a real auto-dismiss timer exists
+   * @example
+   *   <div id="notifications" class="toast-viewport" popover="manual">
+   *     <div class="toast-item">
+   *       <article class="toast success" role="status">
+   *         <strong>Saved</strong>
+   *         <p>Draft updated.</p>
+   *         <button popovertarget="notifications" popovertargetaction="hide" aria-label="Dismiss saved notification">×</button>
+   *       </article>
+   *     </div>
+   *   </div>
+   * @modifiers info, success, warning, error
+   * @related toast-viewport, toast-item, toast-progress
+   * @aliases di-toast-slice
+   * @alias-deprecated di-toast-slice: Use .toast; scheduled for removal in 6.0.0
+   * @alias-lifecycle
+   *   di-toast-slice: deprecated; since=5.0.0; remove=6.0.0; replacement=.toast
+   */
+  .toast {
+    isolation: isolate;
+  }
+
+  :where(.toast, .di-toast-slice) {
+    --toast-bg: var(--bg);
+    --toast-fg: var(--fg);
+    --toast-muted: color-mix(in oklab, var(--toast-fg) 72%, transparent);
+    --toast-border: 0;
+    --toast-radius: calc((var(--br-m) + var(--br-l)) / 2);
+    --toast-shadow: var(--shadow-3);
+    --toast-padding-block: var(--pad-m);
+    --toast-padding-inline: var(--pad-m);
+    --toast-font-size: 0.875rem;
+    --toast-line-height: 1.35;
+    --toast-title-weight: var(--fw-semibold);
+    --toast-gap: calc(var(--vs-xs) / 2);
+    --toast-tone: var(--primary);
+    --toast-progress-color: var(--toast-tone);
+    --toast-progress-track: color-mix(
+      in oklab,
+      var(--toast-fg) 20%,
+      transparent
+    );
+    --toast-progress-size: calc(var(--vs-xs) / 2);
+    --toast-duration: 5s;
+
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: var(--toast-gap);
+    inline-size: 100%;
+    margin: 0;
+    padding-block: var(--toast-padding-block);
+    padding-inline: var(--toast-padding-inline);
+    overflow: hidden;
+    color: var(--toast-fg);
+    background: var(--toast-bg);
+    border: var(--toast-border);
+    border-radius: var(--toast-radius);
+    box-shadow: var(--toast-shadow);
+  }
+
+  :where(.toast, .di-toast-slice):has(
+      > button[popovertargetaction="hide"],
+      > .toast-dismiss
+    ) {
+    padding-inline-end: calc(
+      var(--toast-padding-inline) + 1.75rem + var(--vs-s)
+    );
+  }
+
+  :where(.toast.info, .di-toast-slice.info) {
+    --toast-tone: var(--primary);
+  }
+
+  :where(.toast.success, .di-toast-slice.success) {
+    --toast-tone: var(--success);
+  }
+
+  :where(.toast.warning, .di-toast-slice.warning) {
+    --toast-tone: var(--warning);
+  }
+
+  :where(.toast.error, .di-toast-slice.error) {
+    --toast-tone: var(--error);
+  }
+
+  /**
+   * @pattern toast-header
+   * @role Compatibility hook for legacy wrapped title/dismiss markup; canonical `.toast` markup uses a direct `<strong>` and native `button[popovertargetaction="hide"]` and does not require this class
+   * @example <header class="toast-header"><strong>Connection restored</strong><button class="toast-dismiss" aria-label="Dismiss connection notification">×</button></header>
+   * @related toast, toast-dismiss
+   */
+  .toast-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-column: 1 / -1;
+    align-items: start;
+    gap: var(--vs-s);
+  }
+
+  .toast-header > * {
+    margin: 0;
+  }
+
+  /**
+   * @pattern toast-body
+   * @role Compatibility hook for legacy message markup; canonical `.toast` markup uses a direct `<p>` descendant and does not require this class
+   * @example <p class="toast-body">Legacy toast message</p>
+   * @related toast
+   */
+  .toast-body {
+    grid-column: 1 / -1;
+  }
+
+  /**
+   * @pattern toast-actions
+   * @role Compatibility hook for legacy wrapped action rows; canonical `.toast` markup composes one direct action with existing button modifiers such as `.mini.minimal`
+   * @example <div class="toast-actions"><button>Undo</button></div>
+   * @related toast
+   */
+  .toast-actions {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    gap: var(--vs-xs);
+  }
+
+  /**
+   * @pattern toast-dismiss
+   * @role Compatibility hook for legacy dismiss controls; canonical `.toast` markup identifies its direct dismiss button with `popovertargetaction="hide"`
+   * @example <button class="toast-dismiss" aria-label="Dismiss legacy notification">×</button>
+   * @related toast
+   */
+  .toast-dismiss {
+    flex: none;
+  }
+
+  :where(.toast, .di-toast-slice) > strong {
+    grid-column: 1;
+  }
+
+  .toast-header > strong {
+    grid-column: 1;
+  }
+
+  :where(.toast, .di-toast-slice) > strong,
+  .toast-header > strong {
+    min-inline-size: 0;
+    margin: 0;
+    font-size: var(--toast-font-size);
+    font-weight: var(--toast-title-weight);
+    line-height: var(--toast-line-height);
+    letter-spacing: var(--ls-h3);
+    overflow-wrap: anywhere;
+  }
+
+  :where(.toast, .di-toast-slice) > p {
+    grid-column: 1;
+  }
+
+  :where(.toast, .di-toast-slice) > p,
+  .toast-body {
+    min-inline-size: 0;
+    margin: 0;
+    color: var(--toast-muted);
+    font-size: var(--toast-font-size);
+    line-height: var(--toast-line-height);
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+  }
+
+  :where(.toast, .di-toast-slice)
+    > :is(
+      a,
+      button:not([popovertargetaction="hide"]):not(.toast-dismiss)
+    ) {
+    grid-column: 1;
+    justify-self: start;
+    inline-size: fit-content;
+    max-inline-size: 100%;
+  }
+
+  :where(.toast, .di-toast-slice) > button[popovertargetaction="hide"],
+  .toast-dismiss {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
+    margin: 0;
+    padding: 0;
+    color: var(--toast-muted);
+    font-size: 1.125rem;
+    font-weight: var(--fw-medium);
+    line-height: 1;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    box-shadow: none;
+    translate: 0 calc((1lh - 1.75rem) / 2);
+    transition: color var(--d-fast) var(--ease-smooth);
+  }
+
+  :where(.toast, .di-toast-slice) > button[popovertargetaction="hide"],
+  :where(.toast, .di-toast-slice) > .toast-dismiss {
+    position: absolute;
+    inset-block-start: var(--toast-padding-block);
+    inset-inline-end: var(--toast-padding-inline);
+  }
+
+  .toast-header > .toast-dismiss {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  :where(.toast, .di-toast-slice)
+    > button[popovertargetaction="hide"]:hover,
+  .toast-dismiss:hover {
+    color: var(--toast-fg);
+  }
+
+  :where(.toast, .di-toast-slice)
+    > button[popovertargetaction="hide"]:focus-visible,
+  .toast-dismiss:focus-visible {
+    color: var(--toast-fg);
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /**
+   * @pattern toast-progress
+   * @role Optional auto-dismiss countdown with a neutral track and tone-colored fill; set `--toast-duration` on `.toast` and pause with `data-paused="true"`
+   * @example <article class="toast success" style="--toast-duration: 6s"><strong>Uploaded</strong><p>Your file is ready.</p><span class="toast-progress" aria-hidden="true"></span></article>
+   * @related toast
+   */
+  .toast-progress {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: var(--toast-padding-inline);
+    block-size: var(--toast-progress-size);
+    overflow: hidden;
+    background: var(--toast-progress-track);
+    border-radius: var(--toast-radius);
+  }
+
+  .toast-progress::before {
+    --animation-reduced: none;
+
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--toast-progress-color);
+    border-radius: inherit;
+    transform-origin: left center;
+    animation: toast-countdown var(--toast-duration) linear forwards;
+  }
+
+  .toast-progress[data-paused="true"]::before {
+    animation-play-state: paused;
+  }
+
+  .toast-progress:dir(rtl)::before {
+    transform-origin: right center;
+  }
+
+  @keyframes toast-countdown {
+    to {
+      scale: 0 1;
+    }
+  }
+
+  /* Forced-colors control contract. Prefer system colors and structural
+     indicators over preserving authored paint with forced-color-adjust. */
+  @media (forced-colors: active) {
+    select {
+      appearance: auto;
+      background-image: none;
+      padding-inline-end: var(--pad-m);
+    }
+
+    input:is([type="checkbox"], [type="radio"]) {
+      accent-color: Highlight;
+    }
+
+    input[type="checkbox"].toggle {
+      background: Canvas;
+      border-color: ButtonText;
+    }
+
+    input[type="checkbox"].toggle::before {
+      background: ButtonText;
+    }
+
+    input[type="checkbox"].toggle:checked {
+      background: Highlight;
+      border-color: Highlight;
+    }
+
+    input[type="checkbox"].toggle:checked::before {
+      background: HighlightText;
+    }
+
+    input[type="checkbox"].toggle:disabled {
+      border-color: GrayText;
+    }
+
+    input[type="checkbox"].toggle:disabled::before {
+      background: GrayText;
+    }
+
+    .chip {
+      border-color: ButtonBorder;
+    }
+
+    .chip:is([aria-pressed="true"], .selected) {
+      background: Highlight;
+      border-color: Highlight;
+      color: HighlightText;
+    }
+
+    .chip:is(:disabled, [aria-disabled="true"]) {
+      border-color: GrayText;
+      color: GrayText;
+    }
+
+    .tag {
+      border-color: CanvasText;
+    }
+
+    a.tag {
+      border-color: LinkText;
+    }
+
+    button.tag {
+      border-color: ButtonBorder;
+    }
+
+    .tabs > details[open] > summary,
+    .workbench-panel > header > .tabs > button[aria-pressed="true"],
+    .bottom-nav :is(a, button):is([aria-current="page"], .active) {
+      border-block-end-color: Highlight;
+      text-decoration: underline;
+      text-decoration-color: Highlight;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.35em;
+    }
+
+    .dropzone {
+      border-color: CanvasText;
+    }
+
+    .dropzone:has(input[type="file"]:disabled) {
+      border-color: GrayText;
+    }
+
+    .dropzone:focus-within {
+      outline: var(--focus-ring);
+      outline-offset: var(--focus-ring-offset);
+    }
+
+    .dropzone.dragover:not(:has(input[type="file"]:disabled)) {
+      border-color: Highlight;
+      outline: 2px solid Highlight;
+      outline-offset: var(--focus-ring-offset);
+    }
+
+    .segmented-control,
+    .popover,
+    .dropdown-menu,
+    .listbox,
+    .tag-input,
+    .calendar,
+    .kanban-column {
+      border-color: CanvasText;
+    }
+
+    :where(.toast, .di-toast-slice) {
+      border: 1px solid CanvasText;
+    }
+
+    .segmented-control > label:has(input:checked),
+    .option:is(.selected, [aria-selected="true"]),
+    .calendar-day:is([aria-pressed="true"], [data-selected="true"]),
+    .data-table tbody tr:is(.selected, [aria-selected="true"]),
+    .kanban-card:is(.selected, [aria-selected="true"]) {
+      color: HighlightText;
+      background: Highlight;
+      border-color: Highlight;
+    }
+
+    .spinner {
+      border-color: GrayText;
+      border-block-start-color: Highlight;
+    }
+
+    .skeleton {
+      background: GrayText;
+      border: 1px solid CanvasText;
+    }
+
+    .kanban-column:is(.drag-over, [data-drag-over="true"]),
+    .kanban-dropzone:is(.active, [data-drop-target="true"]),
+    .kanban-card:is(.keyboard-dragging, [data-keyboard-dragging="true"]) {
+      border-color: Highlight;
+      outline: 2px solid Highlight;
+      outline-offset: var(--focus-ring-offset);
+    }
+
+    .kanban-dropzone:is(.invalid, [data-drop-valid="false"]) {
+      border-color: Mark;
+      outline: 2px solid Mark;
+      outline-offset: var(--focus-ring-offset);
+    }
+
+    .toast-progress {
+      background: CanvasText;
+    }
+
+    .toast-progress::before {
+      background: Highlight;
+    }
+
+    dialog,
+    [popover].drawer,
+    .bottom-nav {
+      border: 1px solid CanvasText;
+    }
+
+    .list-nav > :is(a, button),
+    button.close,
+    button.avatar {
+      border: 1px solid ButtonBorder;
+    }
+
+    .sidebar-nav > :is([aria-current="page"], .active),
+    .sidebar-nav > details > :is(a[aria-current="page"], a.active) {
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+
+    .icon-rail > a[aria-current="page"],
+    .icon-rail > button[aria-pressed="true"],
+    .pagination [aria-current="page"] {
+      border-color: Highlight;
+    }
   }
 
   /* END COMPONENTS */

@@ -7,8 +7,8 @@ summary: Horizontal control bar — a wrapping flex row of buttons and controls 
 when_to_use: Editor control strips, card action rows, composer footers, and any cluster of related controls that should wrap gracefully when cramped.
 classes:
   - .toolbar
-  - .toolbar > .separator
-  - .toolbar > .spacer
+  - .separator
+  - .spacer
 demos:
   - Toolbar
 tags:

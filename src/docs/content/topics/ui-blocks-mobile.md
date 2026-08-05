@@ -30,12 +30,28 @@ Graffiti provides CSS variables for iOS safe areas (notch, home indicator, statu
 
 ```css
 --safe-top: env(safe-area-inset-top, 0px);
+--safe-right: env(safe-area-inset-right, 0px);
 --safe-bottom: env(safe-area-inset-bottom, 0px);
 --safe-left: env(safe-area-inset-left, 0px);
---safe-right: env(safe-area-inset-right, 0px);
 ```
 
-These use `env()` which returns the actual safe area on iOS/Android, or 0px on desktop.
+These inherited tokens use `env()` to return the user agent's safe area, or `0px`
+on an ordinary rectangular viewport. For embedded app shells, override them on
+the shell's containing element; descendants such as `.app-shell`, `.bottom-nav`,
+and `.bottom-sheet` inherit the host-provided insets:
+
+```css
+.embedded-shell {
+  --safe-top: 24px;
+  --safe-right: 12px;
+  --safe-bottom: 16px;
+  --safe-left: 12px;
+}
+```
+
+An override replaces the corresponding user-agent value. To add host spacing
+while preserving a device inset, include `env()` in the override, for example
+`--safe-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem)`.
 
 ## App Shell
 

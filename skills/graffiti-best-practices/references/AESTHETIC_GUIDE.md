@@ -139,6 +139,7 @@ Stock themes (verify availability against `src/lib/themes/` in the consuming pro
 - `theme-studio`
 - `theme-signal`
 - `theme-lumen`
+- `theme-schematic`
 
 Apply by class. **Apply high in the tree** — `<html>` for whole-app, section root for one feature. Don't theme by inline `--bg` / `--fg` swap.
 
@@ -159,6 +160,7 @@ Apply by class. **Apply high in the tree** — `<html>` for whole-app, section r
 | Design tool / creative workshop               | `theme-studio`         |
 | Inbox / async messaging / triage              | `theme-signal`         |
 | Dark hero / cinematic AI / late-night tool    | `theme-lumen`          |
+| Technical schematic / field manual / hardware | `theme-schematic`      |
 
 If unsure, default to no theme (the canvas). The canvas is meant to look unbranded — that's the point. **Picking "no theme" is a deliberate decision; not picking is not.**
 

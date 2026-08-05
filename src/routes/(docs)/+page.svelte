@@ -24,7 +24,7 @@
     style="align-items: center; margin-block: var(--vs-xl) var(--vs-xxl);"
   >
     <h2>Install</h2>
-    <p class="code">npm install @drop-in/graffiti</p>
+    <p class="code">pnpm add @drop-in/graffiti</p>
     <p>Then drop it into your project.</p>
     <p class="code">import @drop-in/graffiti</p>
     <p class="fs-xl">or</p>

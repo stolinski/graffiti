@@ -8,7 +8,7 @@ This directory is the single authored source for runtime docs fan-out.
 
 Validation:
 
-- `npm run check:docs-content`
+- `pnpm check:docs-content`
 
 Current phase status:
 

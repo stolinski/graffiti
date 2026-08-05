@@ -13,7 +13,7 @@ Utilities, elements, blocks, and templates. Highly configurable. Endlessly theme
 
 ## Authoring `src/lib/drop-in.css`
 
-Every primary class definition and every token at `:root` inside `@layer base` requires a structured annotation comment (`@pattern`, `@pattern-group`, `@token`, or `@token-group`). `npm run lint:graffiti` enforces this and emits `registry.json`. Full rules and examples in [docs/ANNOTATION-SPEC.md](docs/ANNOTATION-SPEC.md).
+Every primary class definition and every token at `:root` inside `@layer base` requires a structured descriptive annotation (`@pattern`, `@pattern-group`, `@token`, or `@token-group`). Every custom property registered, declared, or consumed in the file must also match exactly one four-tier `@token-set`; new private calculations use `--_component-*`. `pnpm lint:graffiti` enforces both contracts, blocks private-token references in consumer/agent docs, and emits Registry v2. Full rules and examples are in [docs/ANNOTATION-SPEC.md](docs/ANNOTATION-SPEC.md).
 
 ## Authoring docs demos
 

@@ -12,7 +12,7 @@
   <details class="bordered">
     <summary>Installation Options</summary>
     <p>
-      Install via npm with <code>npm install graffiti-css</code>, or include directly
+      Install with <code>pnpm add @drop-in/graffiti</code>, or include it directly
       from a CDN. The library works with any framework or vanilla HTML.
     </p>
   </details>

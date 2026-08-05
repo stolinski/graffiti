@@ -5,21 +5,21 @@ The standards-first, full-featured CSS library for the modern web.
 
 ## Install
 
-### NPM Package
+### Package
 
 ```bash
-npm install @drop-in/graffiti
+pnpm add @drop-in/graffiti
 ```
 
 Then import in your project:
 
 ```js
-// Import everything (default, ~75KB)
+// Import everything (readable, layered source)
 import "@drop-in/graffiti";
 
-// Or import only what you need for smaller bundles
-import "@drop-in/graffiti/minimal"; // core + utilities (~26KB)
-import "@drop-in/graffiti/standard"; // core + utilities + layouts (~33KB)
+// Or import only what you need
+import "@drop-in/graffiti/minimal"; // core + utilities
+import "@drop-in/graffiti/standard"; // core + utilities + layouts
 
 // Or pick individual modules
 import "@drop-in/graffiti/core"; // variables, reset, typography
@@ -28,18 +28,79 @@ import "@drop-in/graffiti/layouts"; // page layouts
 import "@drop-in/graffiti/components"; // UI components
 
 // Optionally import aesthetic presets (apply as a class on any container)
-import "@drop-in/graffiti/themes"; // all five presets
+import "@drop-in/graffiti/themes"; // all eight presets
 // or tree-shake to a single preset
-import "@drop-in/graffiti/themes/soft-consumer"; // also: editorial, paper, system, neon-arcade
+import "@drop-in/graffiti/themes/soft-consumer"; // also: editorial, paper, system, neon-arcade, studio, signal, lumen
 ```
+
+For a pre-minified full distributable, use the layered production entry:
+
+```js
+import "@drop-in/graffiti/min";
+```
+
+`@drop-in/graffiti/min` is generated deterministically from the same canonical
+CSS as the readable package root. It preserves the cascade layers and removes
+comments and formatting only. `@drop-in/graffiti/drop-in.min.css` is the
+equivalent minification of the flat `dist/drop-in.css` used by the CLI; use it
+only when the consumer intentionally does not want Graffiti's layer wrappers.
+Existing root, `drop-in.css`, and module imports remain readable and unchanged.
+
+`components`, `utilities`, and `layouts` are standalone: each build
+contains the transitive canonical token declarations its CSS requires. The
+layer entries also preserve Graffiti's cascade order and global safety rules.
+Theme entries are additive, not standalone; load the default bundle, or `core`
+plus the relevant modular entries, alongside a theme import.
+
+### Bundle Budgets
+
+Every public CSS entry is measured from an installed packed tarball. Local
+`@import` dependencies are included, so the all-themes entry reports its full
+eight-file payload. The checked metrics are raw bytes, level-9 gzip bytes, CSS
+rule and declaration counts, unique class names, and unique declared custom
+properties (including `@property` registrations).
+
+```bash
+pnpm size:report # fresh package, report only
+pnpm size:check  # fresh package, enforce reviewed maxima
+pnpm size:update # deliberately replace maxima after reviewing growth
+```
+
+Checks never rewrite `css-size-budgets.json`. Any new CSS export, dependency
+closure change, or metric above its reviewed maximum fails with the entry,
+metric, exact delta, and update command.
+
+### Token Registry
+
+`@drop-in/graffiti/registry` exposes Registry v2. Its flat `tokenInventory`
+classifies every token Graffiti declares, registers, or consumes as
+primitive/reference, global semantic, public component-contract, or private
+calculated. Each entry also records inheritance, default stability, theme-scope
+behavior, and source evidence.
+
+```bash
+pnpm lookup --button-color
+pnpm lookup list --tokens
+pnpm lookup search spacing
+```
+
+List and search return public tokens by default. Private calculated tokens are
+framework implementation details, not theme or component override hooks.
 
 Apply a preset via class on `:root`, `html`, or any container element:
 
 ```html
 <html class="theme-editorial">...</html>
 
-<section class="theme-brutalist">...</section>
+<section class="theme-system">...</section>
 ```
+
+### Legacy Compatibility Imports
+
+Versions through `4.1.0` published `@drop-in/graffiti/raw` and
+`@drop-in/graffiti/drop-in.css`. These paths remain compatibility aliases and
+are generated from the same current CSS as the primary exports. New code should
+import `@drop-in/graffiti` unless it specifically needs a CSS string.
 
 ### Copy & Paste
 
@@ -52,7 +113,7 @@ https://raw.githubusercontent.com/stolinski/graffiti/refs/heads/main/src/lib/dro
 ### CLI Tool
 
 ```bash
-npx @drop-in/graffiti
+pnpm dlx @drop-in/graffiti
 ```
 
 This copies `drop-in.css` to your `src/` folder.
@@ -95,4 +156,4 @@ Full documentation: https://graffiti-ui.com/
 
 ## License
 
-ISC
+MIT

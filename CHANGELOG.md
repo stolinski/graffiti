@@ -142,6 +142,9 @@
 
   ### Migration notes
   - No breaking changes. `.prose` was never a shipped class; long-form content should already be wrapped in `.readable`, which now also receives the editorial drop-cap.
+- Repair the published CSS and package contracts. Standalone module entries now preserve Graffiti's cascade layers, reduced-motion and print safeguards, and transitive token dependencies without leaking forced-colors overrides. Add safe-area inset tokens and collision-safe default dropdown anchors, and make every package export and CLI build and execute from a clean packed artifact.
+
+  Correct the documented layer assignments for `.split` and `.cluster`: `.split` now receives layout-layer priority, while `.cluster` is classified as a utility. Consumers relying on their previous relative cascade priority should review composed class conflicts.
 
 ## 4.30.0
 

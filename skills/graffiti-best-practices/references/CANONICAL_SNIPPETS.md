@@ -119,3 +119,26 @@ Source:
 <div class="callout error">Error callout for critical issues.</div>
 <div class="callout success">Success callout for confirmations.</div>
 ```
+
+## 7) Accessible Tooltip
+
+Source:
+
+- `https://graffiti-ui.com/elements` (markdown, tooltip section)
+- `docs/adr/0015-accessible-tooltip-semantics.md`
+
+```html
+<span class="tooltip">
+  <button aria-describedby="save-tip">Save</button>
+  <span class="tip" id="save-tip" role="tooltip">
+    Saves to your local draft folder.
+  </span>
+</span>
+```
+
+Intent boundary:
+
+- Keep tooltip content non-interactive and supplemental. Use a popover or disclosure for links and controls.
+- The trigger must remain focusable and retain its normal accessible name.
+- For an icon-only decorative pseudo tip, use identical `aria-label` and `data-tooltip` values. Never generate pseudo content from `aria-label`, and never put a replacement `aria-label` on a visible-label control.
+- CSS-only tooltips dismiss on pointer or focus exit, not Escape while activation remains. Choose an enhanced pattern when Escape dismissal is required.

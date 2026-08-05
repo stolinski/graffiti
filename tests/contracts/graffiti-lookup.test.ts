@@ -18,7 +18,9 @@ const registry = {
       members: ["aspect-square", "aspect-video"],
     },
   ],
-  tokens: [{ name: "--font-sans", role: "Default sans stack", category: "typography" }],
+  tokens: [
+    { name: "--font-sans", role: "Default sans stack", category: "typography" },
+  ],
   tokenGroups: [
     {
       name: "vertical-spacing",
@@ -26,6 +28,26 @@ const registry = {
       category: "spacing",
       matches: "--vs-*",
       members: ["--vs-xs", "--vs-s", "--vs-m"],
+    },
+  ],
+};
+
+const registryV2 = {
+  ...registry,
+  tokenInventory: [
+    {
+      name: "--vs-m",
+      role: "Medium spacing reference",
+      category: "spacing",
+      tier: "primitive-reference",
+      public: true,
+    },
+    {
+      name: "--_component-mix",
+      role: "Internal color calculation",
+      category: "color",
+      tier: "private-calculated",
+      public: false,
     },
   ],
 };
@@ -87,6 +109,17 @@ describe("findExact", () => {
   it("returns null when nothing matches", () => {
     expect(findExact(registry, "banana")).toBeNull();
   });
+
+  it("returns flat Registry v2 metadata for grouped and private tokens", () => {
+    expect(findExact(registryV2, "--vs-m")).toMatchObject({
+      kind: "token",
+      entry: { tier: "primitive-reference", public: true },
+    });
+    expect(findExact(registryV2, "--_component-mix")).toMatchObject({
+      kind: "token",
+      entry: { tier: "private-calculated", public: false },
+    });
+  });
 });
 
 describe("searchAll", () => {
@@ -107,5 +140,12 @@ describe("searchAll", () => {
 
   it("returns empty array when nothing matches", () => {
     expect(searchAll(registry, "zzzznope")).toEqual([]);
+  });
+
+  it("hides private Registry v2 tokens unless explicitly requested", () => {
+    expect(searchAll(registryV2, "component")).toEqual([]);
+    expect(
+      searchAll(registryV2, "component", { includePrivate: true }),
+    ).toHaveLength(1);
   });
 });

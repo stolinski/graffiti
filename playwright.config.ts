@@ -20,7 +20,7 @@ export default defineConfig({
   },
   webServer: {
     command:
-      "npm run build && npx vite preview --host 127.0.0.1 --port 6124 --strictPort",
+      "pnpm run build && pnpm exec vite preview --host 127.0.0.1 --port 6124 --strictPort",
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 180000,
@@ -37,6 +37,14 @@ export default defineConfig({
       name: "mobile-chromium",
       use: {
         ...devices["Pixel 7"],
+      },
+    },
+    {
+      name: "platform-webkit",
+      testMatch: "**/platform-features.spec.ts",
+      use: {
+        ...devices["Desktop Safari"],
+        viewport: { width: 1440, height: 1200 },
       },
     },
   ],

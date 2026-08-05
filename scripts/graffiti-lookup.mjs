@@ -9,14 +9,16 @@
  * Usage:
  *   graffiti-lookup <name>            exact lookup (with or without leading `.` or `--`)
  *   graffiti-lookup search <term>     substring search in name + role
- *   graffiti-lookup list              list everything grouped by kind
- *   graffiti-lookup list --patterns   limit to a kind (also --tokens, --pattern-groups, --token-groups)
+ *   graffiti-lookup list              list public entries grouped by kind
+ *   graffiti-lookup list --patterns   limit to a kind (also --classes, --tokens, --themes, --exports)
  *
  * Flags (any command):
- *   --json    print machine-readable JSON instead of pretty text
+ *   --json       print machine-readable JSON instead of pretty text
+ *   --private    include private calculated tokens in search/list output
  */
 
 import { readFile } from "node:fs/promises";
+import { realpathSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -75,10 +77,12 @@ export function normalizeQuery(q) {
  * Match precedence (most specific first):
  *   1. pattern by name
  *   2. pattern-group by name
- *   3. token by name (with `--` prefix preserved)
- *   4. token-group by name
- *   5. token as a member of a token-group (returns the group, with memberOf=name)
- *   6. pattern as a member of a pattern-group (returns the group, with memberOf=name)
+ *   3. Registry v2 inventory token by name (with `--` prefix preserved)
+ *   4. legacy standalone token by name
+ *   5. token-group by name
+ *   6. token as a member of a token-group (Registry v1 fallback)
+ *   7. pattern as a member of a pattern-group (returns the group, with memberOf=name)
+ *   8. Registry v2 class, theme, element, package export, command, or feature
  */
 export function findExact(registry, rawQuery) {
   const query = normalizeQuery(rawQuery);
@@ -88,6 +92,11 @@ export function findExact(registry, rawQuery) {
 
   const patternGroup = registry.patternGroups.find((g) => g.name === query);
   if (patternGroup) return { kind: "pattern-group", entry: patternGroup };
+
+  const inventoryToken = registry.tokenInventory?.find(
+    (token) => token.name === query,
+  );
+  if (inventoryToken) return { kind: "token", entry: inventoryToken };
 
   const token = registry.tokens.find((t) => t.name === query);
   if (token) return { kind: "token", entry: token };
@@ -114,6 +123,30 @@ export function findExact(registry, rawQuery) {
     };
   }
 
+  const classContract = registry.classContracts?.find(
+    (contract) => contract.name === query && contract.public !== false,
+  );
+  if (classContract) return { kind: "class-contract", entry: classContract };
+
+  const theme = registry.themes?.find((entry) => entry.name === query);
+  if (theme) return { kind: "theme", entry: theme };
+
+  const element = registry.elements?.find((entry) => entry.name === query);
+  if (element) return { kind: "element", entry: element };
+
+  const packageExport = registry.packageExports?.find(
+    (entry) => entry.name === rawQuery || entry.specifier === rawQuery,
+  );
+  if (packageExport) return { kind: "package-export", entry: packageExport };
+
+  const command = registry.commands?.find((entry) => entry.name === query);
+  if (command) return { kind: "command", entry: command };
+
+  const feature = registry.features?.find(
+    (entry) => entry.id === query || entry.name === rawQuery,
+  );
+  if (feature) return { kind: "feature", entry: feature };
+
   return null;
 }
 
@@ -121,7 +154,11 @@ export function findExact(registry, rawQuery) {
  * Substring search across names + role text. Returns an array of
  * { kind, entry, score } sorted by relevance (name matches outrank role matches).
  */
-export function searchAll(registry, rawTerm) {
+export function searchAll(
+  registry,
+  rawTerm,
+  { includePrivate = false } = {},
+) {
   const term = normalizeQuery(rawTerm).toLowerCase();
   const results = [];
 
@@ -144,8 +181,27 @@ export function searchAll(registry, rawTerm) {
 
   scan(registry.patterns, "pattern");
   scan(registry.patternGroups, "pattern-group");
-  scan(registry.tokens, "token");
+  const searchableTokens = registry.tokenInventory
+    ? registry.tokenInventory.filter(
+        (token) => includePrivate || token.public,
+      )
+    : registry.tokens;
+  scan(searchableTokens, "token");
   scan(registry.tokenGroups, "token-group");
+  scan(
+    (registry.classContracts ?? []).filter(
+      (contract) =>
+        contract.public !== false &&
+        contract.kind !== "pattern" &&
+        contract.kind !== "pattern-group-member",
+    ),
+    "class-contract",
+  );
+  scan(registry.themes ?? [], "theme");
+  scan(registry.elements ?? [], "element");
+  scan(registry.packageExports ?? [], "package-export");
+  scan(registry.commands ?? [], "command");
+  scan(registry.features ?? [], "feature");
 
   results.sort((a, b) => b.score - a.score || a.entry.name.localeCompare(b.entry.name));
   return results;
@@ -184,6 +240,17 @@ function renderEntry(match) {
     out.push(`  Category:   ${entry.category ?? "—"}`);
   }
 
+  if (kind === "token" && entry.tier) {
+    out.push(`  Tier:       ${entry.tier}`);
+    out.push(`  Visibility: ${entry.public ? "public" : "private"}`);
+    out.push(`  Inherits:   ${entry.inheritance ?? "—"}`);
+    out.push(`  Default:    ${entry.defaultStability ?? "—"}`);
+    out.push(`  Theme scope:${entry.themeScope ? ` ${entry.themeScope}` : " —"}`);
+    if (!entry.public) {
+      out.push("  Consumer use: prohibited (framework implementation detail)");
+    }
+  }
+
   if (kind === "token-group" && entry.matches) {
     out.push(`  Matches:    ${entry.matches}`);
     if (entry.scale) out.push(`  Scale:      ${entry.scale}`);
@@ -215,7 +282,11 @@ function renderEntry(match) {
   }
 
   if (entry.source) {
-    const parts = [`${entry.source.file}:${entry.source.annotationLine}`];
+    const sourceLine =
+      entry.source.annotationLine ??
+      entry.source.classificationLine ??
+      entry.source.line;
+    const parts = [`${entry.source.file}:${sourceLine}`];
     if (entry.source.declarationLine) {
       parts.push(`declaration at ${entry.source.file}:${entry.source.declarationLine}`);
     }
@@ -237,7 +308,7 @@ function renderSearch(results, term) {
   return lines.join("\n");
 }
 
-function renderList(registry, only) {
+function renderList(registry, only, includePrivate = false) {
   const sections = [];
   const include = (key) => !only || only === key;
 
@@ -258,10 +329,18 @@ function renderList(registry, only) {
     );
   }
   if (include("tokens")) {
+    const tokens = registry.tokenInventory
+      ? registry.tokenInventory.filter(
+          (token) => includePrivate || token.public,
+        )
+      : registry.tokens;
     sections.push(
-      `Tokens (${registry.tokens.length}):\n` +
-        registry.tokens
-          .map((t) => `  ${t.name}  — ${t.role ?? ""}`)
+      `Tokens (${tokens.length}${registry.tokenInventory && !includePrivate ? " public" : ""}):\n` +
+        tokens
+          .map(
+            (token) =>
+              `  ${token.name}${token.tier ? `  [${token.tier}]` : ""}  — ${token.role ?? ""}`,
+          )
           .join("\n"),
     );
   }
@@ -270,6 +349,44 @@ function renderList(registry, only) {
       `Token groups (${registry.tokenGroups.length}):\n` +
         registry.tokenGroups
           .map((g) => `  ${g.name}  [matches ${g.matches}, ${g.members.length} tokens]  — ${g.role ?? ""}`)
+          .join("\n"),
+    );
+  }
+  if (include("classes") && registry.classContracts) {
+    const classes = registry.classContracts.filter(
+      (entry) =>
+        entry.public !== false &&
+        entry.kind !== "pattern" &&
+        entry.kind !== "pattern-group-member",
+    );
+    sections.push(
+      `Class contracts (${classes.length}):\n` +
+        classes
+          .map((entry) => `  .${entry.name}  [${entry.kind}]  — ${entry.role ?? ""}`)
+          .join("\n"),
+    );
+  }
+  if (include("themes") && registry.themes) {
+    sections.push(
+      `Themes (${registry.themes.length}):\n` +
+        registry.themes
+          .map((entry) => `  .${entry.name}  — ${entry.canonicalSelector}`)
+          .join("\n"),
+    );
+  }
+  if (include("exports") && registry.packageExports) {
+    sections.push(
+      `Package exports (${registry.packageExports.length}):\n` +
+        registry.packageExports
+          .map((entry) => `  ${entry.specifier}  → ${entry.target}`)
+          .join("\n"),
+    );
+  }
+  if (include("features") && registry.features) {
+    sections.push(
+      `Feature requirements (${registry.features.length}):\n` +
+        registry.features
+          .map((entry) => `  ${entry.id}  — ${entry.name}`)
           .join("\n"),
     );
   }
@@ -288,17 +405,23 @@ Usage:
   graffiti-lookup <name>             exact match (with or without leading . or --)
   graffiti-lookup search <term>      substring search in name + role
   graffiti-lookup list               list everything
-  graffiti-lookup list --patterns    limit to one kind (also --tokens, --pattern-groups, --token-groups)
+  graffiti-lookup list --patterns    limit to one kind
+                                      also --classes, --tokens, --pattern-groups,
+                                      --token-groups, --themes, --exports, --features
 
 Flags (any command):
-  --json    machine-readable output
-  --help    this message`;
+  --json       machine-readable output
+  --private    include private calculated tokens in search/list results
+  --help       this message`;
 }
 
 async function main() {
   const args = process.argv.slice(2);
   const json = args.includes("--json");
-  const filtered = args.filter((a) => a !== "--json");
+  const includePrivate = args.includes("--private");
+  const filtered = args.filter(
+    (argument) => argument !== "--json" && argument !== "--private",
+  );
 
   if (filtered.length === 0 || filtered.includes("--help") || filtered.includes("-h")) {
     console.log(usage());
@@ -313,16 +436,40 @@ async function main() {
     else if (filtered.includes("--pattern-groups")) only = "pattern-groups";
     else if (filtered.includes("--tokens")) only = "tokens";
     else if (filtered.includes("--token-groups")) only = "token-groups";
+    else if (filtered.includes("--classes")) only = "classes";
+    else if (filtered.includes("--themes")) only = "themes";
+    else if (filtered.includes("--exports")) only = "exports";
+    else if (filtered.includes("--features")) only = "features";
 
     if (json) {
       const payload = {};
       if (!only || only === "patterns") payload.patterns = registry.patterns;
       if (!only || only === "pattern-groups") payload.patternGroups = registry.patternGroups;
-      if (!only || only === "tokens") payload.tokens = registry.tokens;
+      if (!only || only === "tokens") {
+        payload.tokens = registry.tokenInventory
+          ? registry.tokenInventory.filter(
+              (token) => includePrivate || token.public,
+            )
+          : registry.tokens;
+      }
       if (!only || only === "token-groups") payload.tokenGroups = registry.tokenGroups;
+      if ((!only || only === "classes") && registry.classContracts) {
+        payload.classContracts = registry.classContracts.filter(
+          (entry) => entry.public !== false,
+        );
+      }
+      if ((!only || only === "themes") && registry.themes) {
+        payload.themes = registry.themes;
+      }
+      if ((!only || only === "exports") && registry.packageExports) {
+        payload.packageExports = registry.packageExports;
+      }
+      if ((!only || only === "features") && registry.features) {
+        payload.features = registry.features;
+      }
       console.log(JSON.stringify(payload, null, 2));
     } else {
-      console.log(renderList(registry, only));
+      console.log(renderList(registry, only, includePrivate));
     }
     return;
   }
@@ -333,7 +480,7 @@ async function main() {
       console.error("Usage: graffiti-lookup search <term>");
       process.exit(1);
     }
-    const results = searchAll(registry, term);
+    const results = searchAll(registry, term, { includePrivate });
     if (json) {
       console.log(JSON.stringify(results, null, 2));
     } else {
@@ -371,7 +518,7 @@ async function main() {
 }
 
 const isCli =
-  process.argv[1] && path.resolve(process.argv[1]) === filePath;
+  process.argv[1] && realpathSync(process.argv[1]) === filePath;
 if (isCli) {
   await main().catch((err) => {
     console.error(`graffiti-lookup: ${err.message}`);

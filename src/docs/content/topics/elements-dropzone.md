@@ -87,6 +87,8 @@ Get icons from [Phosphor Icons](https://phosphoricons.com/). The upload icon sho
 - Padding: `var(--pad-xxxl)`, radius: `var(--br-l)` (hardcoded; theme by editing the source or wrapping)
 - Dashed border (`2px dashed var(--fg-2)`)
 - Centered flex layout for icon and text
-- File input is hidden but covers entire area
+- File input is transparent but covers the entire area, preserving its native keyboard and pointer behavior
 - Click anywhere to trigger file picker
+- Keyboard focus on the file input is shown on the visible dropzone surface
+- Disabled file inputs dim the dropzone and suppress hover and dragover treatments
 - `.dragover` state swaps border and icon colour to `var(--accent)`

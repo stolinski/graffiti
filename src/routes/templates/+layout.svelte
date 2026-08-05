@@ -13,6 +13,7 @@
 	import "$lib/themes/studio.css";
 	import "$lib/themes/signal.css";
 	import "$lib/themes/lumen.css";
+	import "$lib/themes/schematic.css";
 
 	let { children } = $props();
 

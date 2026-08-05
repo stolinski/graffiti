@@ -32,7 +32,7 @@ Cross-referenced against shadcn/ui (Radix-based, modern baseline), Radix Themes 
 | Surface / panel | ✅ | `.surface`, `.box` |
 | Callout / alert | ✅ | `.callout` with `.warning`/`.error`/`.success`/`.ghost`, `.fill` |
 | Banner | 🟢 | ADR 0004, Dex `05c00pne` |
-| Empty state | 🟢 | ADR 0004, Dex `05c00pne` (named `.empty`) |
+| Empty state | ✅ | `.empty` with `.compact`; icon/heading/body/`.form-actions` child contract |
 | Hero section | ⚫ | Template composition (`.layout-readable` + headings + CTA) |
 | Bento grid | ⚫ | Template composition via `.layout-*` primitives |
 | App shell | ✅ | `.app-shell`, `.layout-sidebar.fill` |
@@ -48,7 +48,7 @@ Cross-referenced against shadcn/ui (Radix-based, modern baseline), Radix Themes 
 | Sidebar nav | ✅ | `.sidebar-nav`, `.sidebar-nav-heading`, `.sub` |
 | List nav | ✅ | `.list-nav` |
 | Bottom nav (mobile tab bar) | ✅ | `.bottom-nav` |
-| Toolbar / action bar | 🟡 | Compose with `.cluster` + buttons. No formal `.toolbar` class |
+| Toolbar / action bar | ✅ | `.toolbar` with `.separator` and `.spacer` child slots |
 | Pagination | ✅ | `.pagination` |
 | TOC | ✅ | `.toc` |
 | Header | ✅ | `.header` + `.border`, `.sticky` modifiers |
@@ -72,13 +72,13 @@ Cross-referenced against shadcn/ui (Radix-based, modern baseline), Radix Themes 
 | Form field (label + hint + error) | 🟢 | ADR 0003, Dex `zsxd8rgz` (generalized `.row`) |
 | Form actions row | ✅ | `.form-actions` |
 | Option row (single checkbox/radio) | ✅ | `.form-option-row` |
-| Segmented control | 🟢 | Dex `v495ewst` |
+| Segmented control | ✅ | `.segmented-control`; direct labels contain native radios, with `.compact` / `.full` |
 | Slider / range input | 🟢 | Dex `v495ewst` |
 | Color input | 🟡 | `<input type="color">` browser-default; no Graffiti styling |
-| Date / time picker | ⚫ | Native `<input type="date">` browser-default; full picker UI requires JS |
-| Combobox / autocomplete | ⚫ | JS — `<datalist>` partial fallback exists natively |
+| Date / time picker | ✅ | Native `<input type="date">` first; `.date-picker` + `.calendar*` provide the Decks-enhanced visual surface |
+| Combobox / autocomplete | ✅ | `.combobox`, `.listbox`, `.option`; Decks owns behavior |
 | Multi-select | ⚫ | JS |
-| Tag input (with chip removal) | ⚫ | JS |
+| Tag input (with chip removal) | ✅ | `.tag-input` composes `.tag` + combobox/listbox contracts; Decks owns behavior |
 | OTP input | ⚫ | JS |
 | Rich text editor | ⚫ | JS |
 | Validation states | ✅ | `:user-invalid`, `:user-valid`, `[aria-invalid]` baseline styling |
@@ -100,17 +100,17 @@ Cross-referenced against shadcn/ui (Radix-based, modern baseline), Radix Themes 
 
 | Pattern | Status | Notes |
 |---|---|---|
-| Tooltip | ✅ | `.tip` (`attr(aria-label)` via `::after`) for icon-button labels; `.tooltip` wrapper + child `.tip` for rich content |
+| Tooltip | ✅ | `.tip[data-tooltip]` is a decorative icon-label mirror; accessible supplemental help uses `.tooltip`, a trigger with `aria-describedby`, and non-interactive `.tip[role="tooltip"]` content |
 | Hover card (interactive tooltip) | 🔴 | Similar shape to tooltip but persists on hover, can contain links. Pure CSS feasible |
-| Toast | ⚫ | Requires JS for timing/dismissal — out of scope |
-| Modal / dialog | ✅ | Native `<dialog>` styled in `@layer components` |
+| Toast | ✅ | Shallow semantic anatomy/direct descendants, tones, optional timed progress, and six logical placements |
+| Modal / dialog | ✅ | Native `<dialog>` styled in `@layer components`; `.di-dialog` is deprecated by ADR-0017 |
 | Confirm dialog | ✅ | Native `<dialog>` + `<form method="dialog">` |
-| Drawer / side sheet | ✅ | `.drawer` via popover |
-| Popover | ✅ | Native `popover` + anchor positioning patterns used by `.dropdown-menu` |
-| Spinner | 🟢 | Dex `hwitb7hy` (ADR 0005) |
-| Progress bar | 🟢 | Dex `hwitb7hy` (native `<progress>`) |
-| Meter / gauge | 🟢 | Dex `hwitb7hy` (native `<meter>` + `.signaling`) |
-| Skeleton loader | ⚫ | Explicitly dropped in grilling session 2026-05-15 — too app-specific to standardize as a primitive |
+| Drawer / side sheet | ✅ | Registered `.drawer` via popover; `.di-drawer` is deprecated by ADR-0017 |
+| Popover | ✅ | `.popover-anchor` + `.popover[popover]` with generic logical placements |
+| Spinner | ✅ | `.spinner`, size modifiers, and `button[aria-busy="true"]` |
+| Progress bar | ✅ | Native `<progress class="progress">` |
+| Meter / gauge | ✅ | Native `<meter class="meter">` + `.signaling` |
+| Skeleton loader | ✅ | `.skeleton` with `.text` / `.circle`; ADR-0017 reverses the former scope mismatch |
 | Loading overlay | 🟡 | Compose `[aria-busy]` + spinner. No formal full-region overlay class |
 
 ## Display & content
@@ -118,7 +118,8 @@ Cross-referenced against shadcn/ui (Radix-based, modern baseline), Radix Themes 
 | Pattern | Status | Notes |
 |---|---|---|
 | Table (static) | ✅ | `.table` + `.zebra` |
-| Data table (sortable, paginated) | ⚫ | JS |
+| Data table (sortable, paginated) | ✅ | `.data-table*` covers sortable/selected/actions/empty/loading/compact/sticky/toolbar visuals; Decks owns JS |
+| Kanban board | ✅ | `.kanban-board`, column/header/card/dropzone plus pointer and keyboard drag states; Decks owns JS |
 | Timeline | ✅ | `.timeline` (also serves as stepper) |
 | Stepper / wizard nav | ✅ | Same primitive as `.timeline` — naming polysemy noted in meta-system grill (Dex `elztgg8o`) |
 | List (ordered, definition) | ✅ | `<ol>`, `<ul>`, `<dl>` element-default styling |
@@ -135,7 +136,7 @@ Cross-referenced against shadcn/ui (Radix-based, modern baseline), Radix Themes 
 | Code block (`<pre><code>`) | 🟢 | Dex `40o648j9` (planned `@layer base` styling; no syntax highlighting) |
 | Diff (side-by-side or unified) | ⚫ | Heavy CSS; rarely used outside docs sites |
 | Pull quote / blockquote | ✅ | `.pull-quote` + base `<blockquote>` styling |
-| Figure / figcaption | 🔴 | Only sized inside `.card`. No general figure pattern |
+| Figure / figcaption | ✅ | Classless `<figure>` and `<figcaption>` styling |
 | Image with overlay | 🟡 | Compose `.aspect-*` + absolute children. No formal class |
 
 ## Atomic primitives
@@ -152,9 +153,9 @@ Cross-referenced against shadcn/ui (Radix-based, modern baseline), Radix Themes 
 | Inline code | 🟢 | Dex `40o648j9` (`<code>` element styling) |
 | Separator | ✅ | `<hr>` element styling |
 | Aspect ratio container | ✅ | `.aspect-square`, `.aspect-video`, `.aspect-4-3`, etc. |
-| Rating stars | 🔴 | Radio-button + CSS pattern, pure HTML+CSS feasible. Small gap |
+| Rating stars | ✅ | `.rating` supports display and native-radio input forms |
 | Color swatch / palette display | 🟡 | Compose; no formal class |
-| Mark / highlight (`<mark>`) | 🔴 | No element-default styling |
+| Mark / highlight (`<mark>`) | ✅ | Classless highlighter styling with forced-colors support |
 
 ## Marketing & content blocks
 
@@ -196,11 +197,11 @@ Cross-referenced against shadcn/ui (Radix-based, modern baseline), Radix Themes 
 
 | Status | Count | What |
 |---|---|---|
-| ✅ Shipped | ~55 patterns | Healthy baseline coverage |
-| 🟢 Planned (Dex/ADR) | 11 patterns | Already designed in this grilling cycle |
+| ✅ Shipped | ~67 patterns | Healthy baseline coverage, including the Decks-facing visual contracts |
+| 🟢 Planned (Dex/ADR) | 6 patterns | Already designed in an ADR or separate task |
 | 🟡 Partial | 13 patterns | Primitives exist; canonical pattern missing |
-| 🔴 Missing (real gap, HTML+CSS feasible) | 6 patterns | Hover card, floating-label inputs, figure/figcaption, rating stars, `<mark>` styling, master-detail layout |
-| ⚫ Out of scope | ~17 patterns | JS-required or template-level composition |
+| 🔴 Missing (real gap, HTML+CSS feasible) | 2 patterns | Hover card, floating-label inputs, master-detail layout |
+| ⚫ Out of scope | ~11 patterns | Behavior-only Decks work or template-level composition |
 
 ## Triage of the 6 real remaining gaps
 

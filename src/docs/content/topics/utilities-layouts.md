@@ -14,12 +14,15 @@ classes:
   - .layout-three-col
   - .layout-readable
   - .layout-holy-grail
+  - .rail-start
+  - .rail-end
   - .section
 demos:
   - LayoutCard
   - LayoutSidebar
   - LayoutSplit
   - LayoutThreeCol
+  - LayoutHolyGrail
   - LayoutReadable
 tags:
   - utilities
@@ -126,15 +129,42 @@ Responsive: 3 cols → 2 cols → 1 col.
 
 ## Holy Grail
 
-Sidebar + content + sidebar:
+Use `.layout-holy-grail` for editorial and documentation pages with a centered,
+max-width reading column and supporting side rails. The `<main>` or `<article>`
+is the required direct child. When present, `.rail-start` and `.rail-end` must
+also be direct children in semantic source order: start rail, middle, end rail.
 
 ```html
 <div class="layout-holy-grail">
-  <aside style="width: 200px">Left</aside>
-  <main>Content</main>
-  <aside style="width: 200px">Right</aside>
+  <aside id="page-toc" class="rail-start drawer" popover="auto">
+    <button
+      class="close drawer-toggle"
+      popovertarget="page-toc"
+      popovertargetaction="hide"
+      aria-label="Close table of contents"
+    >
+      ×
+    </button>
+    <nav class="toc" aria-label="On this page">…</nav>
+  </aside>
+  <article>
+    <button class="drawer-toggle" popovertarget="page-toc">On this page</button>
+    …
+  </article>
+  <aside class="rail-end" aria-label="Marginalia">…</aside>
 </div>
 ```
+
+The reading column uses `--max-width` (default `720px`) and stays centered
+between the rails. At `1024px` and narrower, `.rail-end` is hidden so disposable
+marginalia yields first. At `768px` and narrower, a plain `.rail-start` is
+hidden. Compose the start rail with `[popover].drawer` and use a `.drawer-toggle`
+with `popovertarget` to keep the table of contents available as a native drawer.
+The Popover API handles opening and closing without JavaScript.
+
+Use `.layout-three-col` instead when the content calls for equal-width columns;
+`.layout-holy-grail` is specifically a readable center column with supporting
+rails.
 
 ## Readable Width
 
@@ -179,6 +209,7 @@ Override the default with `--section-padding` (defaults to `var(--pad-xxxl)`).
 
 - `--gap` or `--layout-gap` - Gap between grid items
 - `--min-card-width` - Minimum card width for `.layout-card`
-- `--max-width` - Max width for `.layout-readable`
+- `--max-width` - Reading-column max width for `.layout-holy-grail` (default `720px`); also the fallback max width for `.layout-readable`
+- `--layout-max-width` - Max width for `.layout-readable`
 - `--padding` - Inline padding for `.layout-readable`
 - `--section-padding` - Block padding for `.section`

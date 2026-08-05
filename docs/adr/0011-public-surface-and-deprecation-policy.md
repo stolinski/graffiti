@@ -3,24 +3,26 @@
 Graffiti's *public surface* — the set of things consumer code is allowed to depend on — is:
 
 - **Class names** in any documented layer (`@layer base, themes, components, utilities, layouts`), including their semantics: cascade layer assignment, documented child contracts, responsive breakpoints, and modifier classes.
-- **Token names** declared on `:root` or as documented component override variables (`--button-color`, `--card-bg`, etc.), including their resolved values when no override is in effect.
+- **Public token names** classified by Registry v2 as primitive/reference, global semantic, or component-contract tokens ([ADR-0018](./0018-token-tiers-and-private-boundary.md)), including stable declared defaults and documented fallback defaults.
 - **The cascade layer order itself** (`@layer base, themes, components, utilities, layouts`).
-- **Aesthetic preset class names** (`.theme-brutalist`, etc.) and the **theme scope** convention (`.theme-scope` from [ADR-0006](./0006-theme-scope-derived-scale-rederivation.md)).
+- **Aesthetic preset class names** (`.theme-system`, `.theme-editorial`, etc.) and the **theme scope** convention (`.theme-scope` from [ADR-0006](./0006-theme-scope-derived-scale-rederivation.md)).
 - **The alpha and opaque color scale conventions** (`--{base}-1..9` alpha, `--{base}-opaque-1..9` symmetric, [ADR-0007](./0007-opaque-color-scale.md)).
+- **Package entry points and CLIs** declared by `package.json`, including compatibility aliases. The generated `@drop-in/graffiti/drop-in.css` and `@drop-in/graffiti/raw` paths preserve exports published through `4.1.0`; new code should prefer the package root. `@drop-in/graffiti/min` is the minified layered root, while `@drop-in/graffiti/drop-in.min.css` is the explicitly flat minified output.
 
-Explicitly **not public**: component-internal selectors (consumers must override via documented tokens, not selector rules — see [`PRINCIPLES.md`](../PRINCIPLES.md) §6); internal CSS organisation; whether a particular rule lives in one CSS file or another; the specific oklch values literal tokens resolve to *if* the resolved value is undocumented.
+Explicitly **not public**: private calculated tokens (`public: false` in Registry v2), even when a pre-v2 name lacks the reserved private prefix; component-internal selectors (consumers must override via documented tokens, not selector rules — see [`PRINCIPLES.md`](../PRINCIPLES.md) §6); internal CSS organisation; whether a particular rule lives in one CSS file or another; the specific oklch values literal tokens resolve to *if* the resolved value is undocumented.
 
 ## What counts as a breaking change
 
 A modification is **breaking** if it alters observable behavior of any item in the public surface above. Concretely:
 
-- Removing or renaming a class or token.
+- Removing or renaming a class or public token.
 - Changing a class's cascade layer assignment.
 - Changing a class's documented child contract (`> *` selectors, `.rail-*` slots, etc.).
 - Changing a responsive breakpoint of a layout primitive.
 - Changing a token's resolved value in a way that doesn't track with documented override paths.
 - Reordering the cascade layer declaration.
 - Removing or renaming an aesthetic preset class.
+- Removing or renaming a package export or CLI.
 
 A modification is **non-breaking** if:
 
@@ -38,6 +40,8 @@ Deprecation is decided **per ADR**, not globally. Each ADR that ships a breaking
 1. **Clean removal.** The surface is removed in a single major version bump. Used when the surface has no real consumers or the removal is too small to deserve a deprecation period. Example: [ADR-0010](./0010-holy-grail-repurpose-as-rails-layout.md) repurposes `.layout-holy-grail` directly — the only references in the repo were demo pages.
 2. **One-major deprecation.** The old surface is marked deprecated in docs, skill, and changeset for one major version, then removed in the next. The skill refuses to generate the deprecated pattern as soon as deprecation lands. Used when a surface is load-bearing enough that consumers should get a release-cycle's warning. Example: a rename of `--primary` (hypothetical) would deserve this.
 3. **Coexistence with alias.** The old surface continues to work indefinitely as a documented alias of the new one. Used when removing the old surface produces no benefit but adding the new surface does. Example: shipping `--primary-opaque-N` alongside the existing `--primary-N` ([ADR-0007](./0007-opaque-color-scale.md)) is itself a coexistence-by-default move.
+
+The legacy package paths `./drop-in.css` and `./raw` use coexistence with alias. They are generated from the current primary CSS outputs, exercised by the packed-package smoke test, and have no separately maintained source files.
 
 The choice belongs to the ADR author. The system-integrity stance ([feedback memory](../../skills/.claude/memory/feedback_system_integrity_over_expressiveness.md)) biases toward narrower changes — clean removal when the surface is small, one-major deprecation when it isn't, coexistence when the old surface deserves to live.
 

@@ -12,7 +12,7 @@ The principles below are *system contracts*. They govern both consumer code and 
 
 ### 1. Token-first
 
-If a token (CSS custom property) exists for what you want to express, use it. Do not hardcode a literal where a token would express the same intent. Do not invent new `--*` names — extend Graffiti's token surface only via documented extension points (theme presets, theme scope, component override variables).
+If a public token exists for what you want to express, use it. Do not hardcode a literal where a token would express the same intent. Do not invent new `--*` names — extend Graffiti's token surface only via documented extension points (theme presets, theme scope, component override variables). A name present in CSS is not sufficient: Registry v2 must classify it as `public: true`. Private calculated tokens are implementation details.
 
 > **Why this matters.** Tokens are the override surface. Inline literals can't be re-themed; tokens can. The framework's "use Graffiti, walk away" promise rests on every visual decision being a token away from change.
 
@@ -36,7 +36,7 @@ Pick a class by the *role* the element plays, not by what it looks like. `.card`
 
 ### 6. Override at the token boundary
 
-When you customize an existing primitive, override its documented tokens (`--button-color`, `--card-bg`, `--bubble-radius`, etc.). Do not write selectors that override component-internal rules. Token overrides cascade cleanly, compose with **aesthetic presets** ([ADR-0003](./adr/0003-aesthetic-preset-architecture.md)) and **theme scopes** ([ADR-0006](./adr/0006-theme-scope-derived-scale-rederivation.md)), and survive framework upgrades. Selector overrides do none of those things.
+When you customize an existing primitive, override its public component-contract tokens (`--button-color`, `--card-bg`, `--bubble-radius`, etc.). Do not write selectors that override component-internal rules or set private calculated tokens. Public token overrides cascade cleanly, compose with **aesthetic presets** ([ADR-0003](./adr/0003-aesthetic-preset-architecture.md)) and **theme scopes** ([ADR-0006](./adr/0006-theme-scope-derived-scale-rederivation.md)), and survive framework upgrades. Internal overrides do none of those things.
 
 ## Where each rule cashes out
 

@@ -4,22 +4,32 @@
  *
  * Outputs:
  *   dist/index.css       - Full file with @layer declarations (main export)
+ *   dist/index.min.css   - Deterministically minified layered full file
  *   dist/drop-in.css     - Full file with @layer wrappers stripped (flat version)
- *   dist/core.css        - @layer base content only (variables, reset, typography)
- *   dist/components.css  - Core vars preamble + @layer components block
- *   dist/layouts.css     - Core vars preamble + @layer layouts block
- *   dist/utilities.css   - Core vars preamble + @layer utilities block
- *   dist/minimal.css     - Core + @layer utilities
- *   dist/standard.css    - Core + @layer utilities + @layer layouts
+ *   dist/drop-in.min.css - Deterministically minified flat full file
+ *   dist/raw.js          - Compatibility JS string export of dist/index.css
+ *   dist/core.css        - Base layer + global safety rules
+ *   dist/components.css  - Layered core vars + components + global safety rules
+ *   dist/layouts.css     - Layered core vars + layouts + global safety rules
+ *   dist/utilities.css   - Layered core vars + utilities + global safety rules
+ *   dist/minimal.css     - Base + utilities + global safety rules
+ *   dist/standard.css    - Base + utilities + layouts + global safety rules
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { generate, parse, tokenize, tokenTypes, walk } from "css-tree";
+
+import { minifyCss } from "./scripts/css-metrics.mjs";
+import { extractCssModules } from "./scripts/module-builder-ast.mjs";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const DIST = join(__dirname, "dist");
 const SOURCE = join(__dirname, "src", "lib", "drop-in.css");
+const SOURCE_LABEL = "src/lib/drop-in.css";
 const REGISTRY_SOURCE = join(__dirname, "src", "lib", "registry.json");
 const LOOKUP_SOURCE = join(__dirname, "scripts", "graffiti-lookup.mjs");
 const THEMES_SOURCE = join(__dirname, "src", "lib", "themes");
@@ -33,6 +43,7 @@ const THEME_NAMES = [
   "studio",
   "signal",
   "lumen",
+  "schematic",
 ];
 
 // Ensure dist/ exists
@@ -43,245 +54,355 @@ if (!existsSync(THEMES_DIST)) {
   mkdirSync(THEMES_DIST, { recursive: true });
 }
 
-/**
- * Strip JSDoc-style annotation blocks (`/** ... *​/`) from CSS.
- *
- * These `@pattern`/`@token` annotations are build-time metadata for source
- * readers, agents, and the registry — they should not ship in the CSS payload
- * (~40KB of comments on the full bundle). Regular `/* ... *​/` comments,
- * including the `} /* END @layer ... *​/` markers the layer extractor relies on,
- * are left untouched.
- */
-function stripAnnotations(css) {
-  return css
-    .replace(/^[ \t]*\/\*\*[\s\S]*?\*\/\n?/gm, "")
-    .replace(/\n{3,}/g, "\n\n");
-}
-
-const source = stripAnnotations(readFileSync(SOURCE, "utf-8"));
+const extracted = extractCssModules(
+  readFileSync(SOURCE, "utf-8"),
+  SOURCE_LABEL,
+);
+const {
+  canonicalRoot,
+  conditionalRootAtRules,
+  flatSource,
+  globalSafetyTail,
+  layerOrder,
+  layers,
+  reducedMotionProperty,
+  source,
+} = extracted;
+const { base, components, layouts, utilities } = layers;
 
 // ── Helpers ──────────────────────────────────────────────────────────
 
-/**
- * Extract the content of a named @layer block, including the wrapper.
- * Returns { wrapped, inner } where wrapped keeps `@layer name { ... }`
- * and inner is just the content between the braces.
- */
-function extractLayer(css, layerName) {
-  const startMarker = `@layer ${layerName} {`;
-  const endMarker = `} /* END @layer ${layerName} */`;
-
-  const startIdx = css.indexOf(startMarker);
-  if (startIdx === -1) {
-    console.warn(`Warning: @layer ${layerName} not found in source`);
-    return { wrapped: "", inner: "" };
-  }
-
-  const endIdx = css.indexOf(endMarker, startIdx);
-  if (endIdx === -1) {
-    console.warn(`Warning: END marker for @layer ${layerName} not found`);
-    return { wrapped: "", inner: "" };
-  }
-
-  const wrapped = css.slice(startIdx, endIdx + endMarker.length);
-  const inner = css
-    .slice(startIdx + startMarker.length, endIdx)
-    .replace(/^\n/, "");
-
-  return { wrapped, inner };
+function wrapLayer(layerName, css) {
+  return `@layer ${layerName} {\n${css.trim()}\n}`;
 }
 
-/**
- * Build a minimal set of CSS custom properties for standalone module use.
- * Extracted from the base layer's :root block.
- */
-function buildCoreVarsPreamble(baseInner) {
-  // Extract key variable groups from the base layer
-  const vars = [];
-
-  // Colors
-  vars.push("  /* Colors - Theme aware */");
-  for (const match of baseInner.matchAll(
-    /--(fg-light|fg-dark|fg|fg-\d+|fg-0\d):\s*[^;]+;/g,
-  )) {
-    vars.push(`  ${match[0]}`);
-  }
-  vars.push("  ");
-  for (const match of baseInner.matchAll(
-    /--(bg-light|bg-dark|bg):\s*[^;]+;/g,
-  )) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Semantic colors
-  vars.push("  ");
-  vars.push("  /* Semantic colors */");
-  for (const match of baseInner.matchAll(
-    /--(primary|error|warning|success):\s*[^;]+;/g,
-  )) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Spacing
-  vars.push("  ");
-  vars.push("  /* Spacing */");
-  for (const match of baseInner.matchAll(/--vs-[a-z]+:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Border radius
-  vars.push("  ");
-  vars.push("  /* Border radius */");
-  for (const match of baseInner.matchAll(/--br-[a-z]+:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Padding
-  vars.push("  ");
-  vars.push("  /* Padding */");
-  for (const match of baseInner.matchAll(/--pad-[a-z]+:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Line height
-  vars.push("  ");
-  vars.push("  /* Line height */");
-  for (const match of baseInner.matchAll(/--lh:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Borders
-  vars.push("  ");
-  vars.push("  /* Borders */");
-  for (const match of baseInner.matchAll(/--border-[a-z0-9]+:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Focus ring
-  vars.push("  ");
-  vars.push("  /* Focus ring */");
-  for (const match of baseInner.matchAll(/--focus-ring[a-z-]*:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Shadows
-  vars.push("  ");
-  vars.push("  /* Shadows */");
-  for (const match of baseInner.matchAll(/--shadow-[0-9]+:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Easing
-  vars.push("  ");
-  vars.push("  /* Easing */");
-  for (const match of baseInner.matchAll(/--ease-[a-z]+:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Safe areas
-  vars.push("  ");
-  vars.push("  /* Safe areas */");
-  for (const match of baseInner.matchAll(/--safe-[a-z]+:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Transition properties
-  vars.push("  ");
-  vars.push("  /* Transition properties */");
-  for (const match of baseInner.matchAll(
-    /--transition-properties:\s*[^;]+;/g,
-  )) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Layout gap
-  vars.push("  ");
-  vars.push("  /* Layout gap */");
-  for (const match of baseInner.matchAll(/--layout-gap:\s*[^;]+;/g)) {
-    vars.push(`  ${match[0]}`);
-  }
-
-  // Color scheme
-  vars.push("  ");
-  vars.push("  /* Color scheme */");
-  vars.push("  color-scheme: light dark;");
-
-  // Dark mode shadow overrides
-  const darkShadows = baseInner.match(
-    /@media\s*\(prefers-color-scheme:\s*dark\)\s*\{[^}]*:root\s*\{[^}]*\}\s*\}/s,
+function writeCssStringModule(outputPath, css, sourceName) {
+  writeFileSync(
+    outputPath,
+    `// Auto-generated from ${sourceName}\nexport default ${JSON.stringify(css)};\n`,
   );
+}
 
-  let result = `\n/* Core CSS Variables - Minimal set for standalone use */\n:root {\n${vars.join("\n")}\n}\n`;
-  if (darkShadows) {
-    result += `\n/* Dark mode shadow overrides */\n${darkShadows[0]}\n`;
+function parseCss(css, sourceName) {
+  try {
+    return parse(css, {
+      filename: sourceName,
+      parseCustomProperty: true,
+      positions: true,
+    });
+  } catch (error) {
+    throw new Error(`Failed to parse ${sourceName}`, { cause: error });
+  }
+}
+
+function collectVarReferences(node) {
+  const references = [];
+
+  walk(node, {
+    enter(currentNode) {
+      if (currentNode.type === "Raw") {
+        references.push(...collectRawVarReferences(currentNode.value));
+        return;
+      }
+      if (currentNode.type !== "Function" || currentNode.name !== "var") {
+        return;
+      }
+
+      const children = currentNode.children.toArray();
+      const token = children[0];
+      if (token?.type !== "Identifier" || !token.name.startsWith("--")) return;
+
+      references.push({
+        name: token.name,
+        hasFallback: children.some(
+          (child) => child.type === "Operator" && child.value === ",",
+        ),
+      });
+    },
+  });
+
+  return references;
+}
+
+function collectRawVarReferences(css) {
+  const references = [];
+  const functionStack = [];
+
+  tokenize(css, (type, start, end) => {
+    const value = css.slice(start, end);
+
+    if (type === tokenTypes.Function) {
+      functionStack.push({
+        isVar: value.toLowerCase() === "var(",
+        name: null,
+        hasFallback: false,
+      });
+      return;
+    }
+    if (type === tokenTypes.LeftParenthesis) {
+      functionStack.push(null);
+      return;
+    }
+    if (type === tokenTypes.RightParenthesis) {
+      const functionState = functionStack.pop();
+      if (functionState?.isVar && functionState.name) {
+        references.push({
+          name: functionState.name,
+          hasFallback: functionState.hasFallback,
+        });
+      }
+      return;
+    }
+
+    const functionState = functionStack.at(-1);
+    if (!functionState?.isVar) return;
+    if (
+      type === tokenTypes.Ident &&
+      functionState.name === null &&
+      value.startsWith("--")
+    ) {
+      functionState.name = value;
+    } else if (type === tokenTypes.Comma) {
+      functionState.hasFallback = true;
+    }
+  });
+
+  return references;
+}
+
+function collectRawDeclarations(css) {
+  const declarations = new Set();
+  let candidate = null;
+
+  tokenize(css, (type, start, end) => {
+    if (type === tokenTypes.WhiteSpace || type === tokenTypes.Comment) return;
+
+    const value = css.slice(start, end);
+    if (type === tokenTypes.Ident && value.startsWith("--")) {
+      candidate = value;
+      return;
+    }
+    if (type === tokenTypes.Colon && candidate) declarations.add(candidate);
+    candidate = null;
+  });
+
+  return declarations;
+}
+
+function collectCanonicalTokens(rootRule) {
+  const tokens = new Map();
+  for (const node of rootRule.block.children) {
+    if (node.type !== "Declaration" || !node.property.startsWith("--")) {
+      continue;
+    }
+    if (tokens.has(node.property)) {
+      throw new Error(
+        `Canonical :root token ${node.property} is declared more than once at line ${node.loc.start.line}`,
+      );
+    }
+
+    const dependencies = collectVarReferences(node.value)
+      .filter((reference) => !reference.hasFallback)
+      .map((reference) => reference.name);
+    tokens.set(node.property, { declaration: node, dependencies });
   }
 
-  return result;
+  for (const [token, { dependencies }] of tokens) {
+    const unknownDependencies = dependencies.filter(
+      (dependency) => !tokens.has(dependency),
+    );
+    if (unknownDependencies.length > 0) {
+      throw new Error(
+        `Canonical token ${token} references unknown token(s): ${unknownDependencies.join(", ")}`,
+      );
+    }
+  }
+
+  assertAcyclicTokenGraph(tokens);
+  return tokens;
 }
 
-/**
- * Strip @layer wrappers from CSS, keeping inner content.
- * Also removes the @layer declaration line.
- */
-function stripLayers(css) {
-  // Remove the @layer declaration line
-  let result = css.replace(/^@layer\s+[^;]+;\s*\n?/m, "");
+function assertAcyclicTokenGraph(tokens) {
+  const visited = new Set();
+  const active = new Set();
+  const path = [];
 
-  // Remove @layer name { and matching } /* END @layer name */
-  result = result.replace(/@layer\s+\w+\s*\{\n?/g, "");
-  result = result.replace(/\}\s*\/\*\s*END @layer \w+\s*\*\/\n?/g, "");
+  function visit(token) {
+    if (active.has(token)) {
+      const cycleStart = path.indexOf(token);
+      throw new Error(
+        `Canonical token dependency cycle: ${[...path.slice(cycleStart), token].join(" -> ")}`,
+      );
+    }
+    if (visited.has(token)) return;
 
-  // Clean up extra blank lines
-  result = result.replace(/\n{3,}/g, "\n\n");
+    active.add(token);
+    path.push(token);
+    for (const dependency of tokens.get(token).dependencies) {
+      visit(dependency);
+    }
+    path.pop();
+    active.delete(token);
+    visited.add(token);
+  }
 
-  return result.trim() + "\n";
+  for (const token of tokens.keys()) visit(token);
 }
 
-// ── Extract layers ───────────────────────────────────────────────────
+function buildTokenDependencyPreamble(
+  css,
+  entryName,
+  canonicalTokens,
+  propertyRegistrations = "",
+  conditionalAtRules = [],
+) {
+  const ast = parseCss(`${propertyRegistrations}\n${css}`, entryName);
+  const declaredTokens = new Set();
 
-const base = extractLayer(source, "base");
-const components = extractLayer(source, "components");
-const layouts = extractLayer(source, "layouts");
-const utilities = extractLayer(source, "utilities");
+  walk(ast, {
+    enter(node) {
+      if (node.type === "Raw") {
+        for (const token of collectRawDeclarations(node.value)) {
+          declaredTokens.add(token);
+        }
+        return;
+      }
+      if (node.type === "Declaration" && node.property.startsWith("--")) {
+        declaredTokens.add(node.property);
+      }
+      if (node.type === "Atrule" && node.name === "property" && node.prelude) {
+        declaredTokens.add(generate(node.prelude));
+      }
+    },
+  });
 
-const coreVarsPreamble = buildCoreVarsPreamble(base.inner);
+  const requiredTokens = new Set(
+    [...canonicalTokens.keys()].filter((token) => token.startsWith("--safe-")),
+  );
+  const unknownTokens = new Set();
+  for (const reference of collectVarReferences(ast)) {
+    if (reference.hasFallback) continue;
+    if (canonicalTokens.has(reference.name)) {
+      requiredTokens.add(reference.name);
+    } else if (!declaredTokens.has(reference.name)) {
+      unknownTokens.add(reference.name);
+    }
+  }
+
+  if (unknownTokens.size > 0) {
+    throw new Error(
+      `${entryName} references unknown token(s) without fallbacks: ${[...unknownTokens].sort().join(", ")}`,
+    );
+  }
+
+  const closure = new Set();
+  function addDependencies(token) {
+    if (closure.has(token)) return;
+    closure.add(token);
+    for (const dependency of canonicalTokens.get(token).dependencies) {
+      addDependencies(dependency);
+    }
+  }
+  for (const token of requiredTokens) addDependencies(token);
+
+  const declarations = [...canonicalTokens]
+    .filter(([token]) => closure.has(token))
+    .map(([, { declaration }]) => `  ${generate(declaration)};`);
+
+  const registrations = propertyRegistrations
+    ? `${propertyRegistrations}\n\n`
+    : "";
+  const nestedRules = conditionalAtRules.map((rule) => `  ${rule}`).join("\n");
+  const nestedRulesBlock = nestedRules ? `\n${nestedRules}` : "";
+  return `${registrations}/* Canonical token dependency closure for standalone use */\n:root {\n${declarations.join("\n")}\n  color-scheme: light dark;${nestedRulesBlock}\n}`;
+}
+
+const canonicalTokens = collectCanonicalTokens(canonicalRoot);
+const componentsBase = wrapLayer(
+  "base",
+  buildTokenDependencyPreamble(
+    `${components.wrapped}\n${globalSafetyTail}`,
+    "components.css",
+    canonicalTokens,
+    reducedMotionProperty,
+    conditionalRootAtRules,
+  ),
+);
+const layoutsBase = wrapLayer(
+  "base",
+  buildTokenDependencyPreamble(
+    `${layouts.wrapped}\n${globalSafetyTail}`,
+    "layouts.css",
+    canonicalTokens,
+    reducedMotionProperty,
+    conditionalRootAtRules,
+  ),
+);
+const utilitiesBase = wrapLayer(
+  "base",
+  buildTokenDependencyPreamble(
+    `${utilities.wrapped}\n${globalSafetyTail}`,
+    "utilities.css",
+    canonicalTokens,
+    reducedMotionProperty,
+    conditionalRootAtRules,
+  ),
+);
+
+function buildLayeredBundle(header, layers) {
+  return (
+    [header.trim(), layerOrder, ...layers, globalSafetyTail].join("\n\n") + "\n"
+  );
+}
 
 // ── Build outputs ────────────────────────────────────────────────────
 
 // index.css - Full source with layers (main export)
 writeFileSync(join(DIST, "index.css"), source);
 console.log("  dist/index.css");
+writeFileSync(join(DIST, "index.min.css"), minifyCss(source, SOURCE_LABEL));
+console.log("  dist/index.min.css");
+writeCssStringModule(join(DIST, "raw.js"), source, SOURCE_LABEL);
+console.log("  dist/raw.js");
 
 // drop-in.css - Flat version without @layer wrappers
-writeFileSync(join(DIST, "drop-in.css"), stripLayers(source));
+writeFileSync(join(DIST, "drop-in.css"), flatSource);
 console.log("  dist/drop-in.css");
+writeFileSync(
+  join(DIST, "drop-in.min.css"),
+  minifyCss(flatSource, "dist/drop-in.css"),
+);
+console.log("  dist/drop-in.min.css");
 
-// core.css - Base layer content only (unwrapped)
+// core.css - Base layer plus global accessibility and print rules
 const coreHeader = `/* @drop-in/graffiti/core */\n/* Core CSS - Variables, reset, typography */\n\n`;
-writeFileSync(join(DIST, "core.css"), coreHeader + base.inner);
+writeFileSync(
+  join(DIST, "core.css"),
+  buildLayeredBundle(coreHeader, [base.wrapped]),
+);
 console.log("  dist/core.css");
 
-// components.css - Core vars + full components layer
+// components.css - Layered core vars + full components layer
 const componentsHeader = `/* @drop-in/graffiti/components */\n/* Auto-generated - do not edit directly */\n`;
 writeFileSync(
   join(DIST, "components.css"),
-  componentsHeader + coreVarsPreamble + "\n" + components.wrapped + "\n",
+  buildLayeredBundle(componentsHeader, [componentsBase, components.wrapped]),
 );
 console.log("  dist/components.css");
 
-// layouts.css - Core vars + full layouts layer
+// layouts.css - Layered core vars + full layouts layer
 const layoutsHeader = `/* @drop-in/graffiti/layouts */\n/* Auto-generated - do not edit directly */\n`;
 writeFileSync(
   join(DIST, "layouts.css"),
-  layoutsHeader + coreVarsPreamble + "\n" + layouts.wrapped + "\n",
+  buildLayeredBundle(layoutsHeader, [layoutsBase, layouts.wrapped]),
 );
 console.log("  dist/layouts.css");
 
-// utilities.css - Core vars + full utilities layer
+// utilities.css - Layered core vars + full utilities layer
 const utilitiesHeader = `/* @drop-in/graffiti/utilities */\n/* Auto-generated - do not edit directly */\n`;
 writeFileSync(
   join(DIST, "utilities.css"),
-  utilitiesHeader + coreVarsPreamble + "\n" + utilities.wrapped + "\n",
+  buildLayeredBundle(utilitiesHeader, [utilitiesBase, utilities.wrapped]),
 );
 console.log("  dist/utilities.css");
 
@@ -289,7 +410,7 @@ console.log("  dist/utilities.css");
 const minimalHeader = `/* @drop-in/graffiti/minimal */\n/* Minimal bundle - core + utilities */\n\n`;
 writeFileSync(
   join(DIST, "minimal.css"),
-  minimalHeader + base.inner + "\n" + utilities.wrapped + "\n",
+  buildLayeredBundle(minimalHeader, [base.wrapped, utilities.wrapped]),
 );
 console.log("  dist/minimal.css");
 
@@ -297,13 +418,11 @@ console.log("  dist/minimal.css");
 const standardHeader = `/* @drop-in/graffiti/standard */\n/* Standard bundle - core + utilities + layouts */\n\n`;
 writeFileSync(
   join(DIST, "standard.css"),
-  standardHeader +
-    base.inner +
-    "\n" +
-    utilities.wrapped +
-    "\n\n" +
-    layouts.wrapped +
-    "\n",
+  buildLayeredBundle(standardHeader, [
+    base.wrapped,
+    utilities.wrapped,
+    layouts.wrapped,
+  ]),
 );
 console.log("  dist/standard.css");
 
@@ -316,9 +435,10 @@ for (const name of THEME_NAMES) {
   }
   const css = readFileSync(srcPath, "utf-8");
   writeFileSync(join(THEMES_DIST, `${name}.css`), css);
-  writeFileSync(
+  writeCssStringModule(
     join(THEMES_DIST, `${name}-raw.js`),
-    `// Auto-generated from src/lib/themes/${name}.css\nexport default ${JSON.stringify(css)};\n`,
+    css,
+    `src/lib/themes/${name}.css`,
   );
   console.log(`  dist/themes/${name}.css`);
 }
@@ -334,7 +454,10 @@ if (existsSync(themesIndexSource)) {
 // registry.json - Copy the canonical catalogue so it ships with the package
 // (consumed by `graffiti-lookup` and the `./registry` export).
 if (existsSync(REGISTRY_SOURCE)) {
-  writeFileSync(join(DIST, "registry.json"), readFileSync(REGISTRY_SOURCE, "utf-8"));
+  writeFileSync(
+    join(DIST, "registry.json"),
+    readFileSync(REGISTRY_SOURCE, "utf-8"),
+  );
   console.log("  dist/registry.json");
 } else {
   console.warn(
@@ -346,7 +469,10 @@ if (existsSync(REGISTRY_SOURCE)) {
 // no runtime deps). bin.graffiti-lookup points at this dist copy; it resolves
 // the sibling dist/registry.json.
 if (existsSync(LOOKUP_SOURCE)) {
-  writeFileSync(join(DIST, "graffiti-lookup.mjs"), readFileSync(LOOKUP_SOURCE, "utf-8"));
+  writeFileSync(
+    join(DIST, "graffiti-lookup.mjs"),
+    readFileSync(LOOKUP_SOURCE, "utf-8"),
+  );
   console.log("  dist/graffiti-lookup.mjs");
 } else {
   console.warn("  Warning: scripts/graffiti-lookup.mjs not found, skipping");

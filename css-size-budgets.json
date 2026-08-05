@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 1,
+  "policy": {
+    "mode": "maximum",
+    "entryPayload": "Local @import closures are measured as the sum of their packed CSS files; gzip is level 9 per file.",
+    "structure": "Rules and declarations are CSS Tree AST nodes; classes and custom properties are unique names per entry closure.",
+    "updates": "Intentional public-entry growth requires review followed by pnpm size:update; ordinary checks never rewrite this file.",
+    "featureGroups": "Evidence-only snapshots serialize matching rule subtrees without shared token or at-rule wrapper overhead."
+  },
+  "entries": {
+    ".": {
+      "target": "./dist/index.css",
+      "files": ["dist/index.css"],
+      "maximum": {
+        "rawBytes": 214383,
+        "gzipBytes": 36793,
+        "rules": 630,
+        "declarations": 2911,
+        "classes": 250,
+        "customProperties": 638
+      }
+    },
+    "./graffiti.css": {
+      "target": "./dist/index.css",
+      "files": ["dist/index.css"],
+      "maximum": {
+        "rawBytes": 214383,
+        "gzipBytes": 36793,
+        "rules": 630,
+        "declarations": 2911,
+        "classes": 250,
+        "customProperties": 638
+      }
+    },
+    "./drop-in.css": {
+      "target": "./dist/index.css",
+      "files": ["dist/index.css"],
+      "maximum": {
+        "rawBytes": 214383,
+        "gzipBytes": 36793,
+        "rules": 630,
+        "declarations": 2911,
+        "classes": 250,
+        "customProperties": 638
+      }
+    },
+    "./min": {
+      "target": "./dist/index.min.css",
+      "files": ["dist/index.min.css"],
+      "maximum": {
+        "rawBytes": 155545,
+        "gzipBytes": 24955,
+        "rules": 630,
+        "declarations": 2911,
+        "classes": 250,
+        "customProperties": 638
+      }
+    },
+    "./drop-in.min.css": {
+      "target": "./dist/drop-in.min.css",
+      "files": ["dist/drop-in.min.css"],
+      "maximum": {
+        "rawBytes": 155431,
+        "gzipBytes": 24886,
+        "rules": 630,
+        "declarations": 2911,
+        "classes": 250,
+        "customProperties": 638
+      }
+    },
+    "./core": {
+      "target": "./dist/core.css",
+      "files": ["dist/core.css"],
+      "maximum": {
+        "rawBytes": 84291,
+        "gzipBytes": 13207,
+        "rules": 105,
+        "declarations": 1137,
+        "classes": 35,
+        "customProperties": 572
+      }
+    },
+    "./utilities": {
+      "target": "./dist/utilities.css",
+      "files": ["dist/utilities.css"],
+      "maximum": {
+        "rawBytes": 10364,
+        "gzipBytes": 3191,
+        "rules": 59,
+        "declarations": 189,
+        "classes": 43,
+        "customProperties": 46
+      }
+    },
+    "./layouts": {
+      "target": "./dist/layouts.css",
+      "files": ["dist/layouts.css"],
+      "maximum": {
+        "rawBytes": 13145,
+        "gzipBytes": 3571,
+        "rules": 69,
+        "declarations": 188,
+        "classes": 29,
+        "customProperties": 35
+      }
+    },
+    "./components": {
+      "target": "./dist/components.css",
+      "files": ["dist/components.css"],
+      "maximum": {
+        "rawBytes": 119656,
+        "gzipBytes": 22324,
+        "rules": 430,
+        "declarations": 1681,
+        "classes": 166,
+        "customProperties": 185
+      }
+    },
+    "./minimal": {
+      "target": "./dist/minimal.css",
+      "files": ["dist/minimal.css"],
+      "maximum": {
+        "rawBytes": 91434,
+        "gzipBytes": 14798,
+        "rules": 153,
+        "declarations": 1261,
+        "classes": 76,
+        "customProperties": 576
+      }
+    },
+    "./standard": {
+      "target": "./dist/standard.css",
+      "files": ["dist/standard.css"],
+      "maximum": {
+        "rawBytes": 101661,
+        "gzipBytes": 16957,
+        "rules": 211,
+        "declarations": 1391,
+        "classes": 102,
+        "customProperties": 577
+      }
+    },
+    "./themes": {
+      "target": "./dist/themes/index.css",
+      "files": [
+        "dist/themes/index.css",
+        "dist/themes/soft-consumer.css",
+        "dist/themes/editorial.css",
+        "dist/themes/paper.css",
+        "dist/themes/system.css",
+        "dist/themes/neon-arcade.css",
+        "dist/themes/studio.css",
+        "dist/themes/signal.css",
+        "dist/themes/lumen.css"
+      ],
+      "maximum": {
+        "rawBytes": 31512,
+        "gzipBytes": 11787,
+        "rules": 88,
+        "declarations": 440,
+        "classes": 42,
+        "customProperties": 54
+      }
+    },
+    "./themes/editorial": {
+      "target": "./dist/themes/editorial.css",
+      "files": ["dist/themes/editorial.css"],
+      "maximum": {
+        "rawBytes": 1804,
+        "gzipBytes": 844,
+        "rules": 5,
+        "declarations": 38,
+        "classes": 2,
+        "customProperties": 26
+      }
+    },
+    "./themes/paper": {
+      "target": "./dist/themes/paper.css",
+      "files": ["dist/themes/paper.css"],
+      "maximum": {
+        "rawBytes": 1470,
+        "gzipBytes": 718,
+        "rules": 5,
+        "declarations": 33,
+        "classes": 1,
+        "customProperties": 23
+      }
+    },
+    "./themes/system": {
+      "target": "./dist/themes/system.css",
+      "files": ["dist/themes/system.css"],
+      "maximum": {
+        "rawBytes": 2452,
+        "gzipBytes": 1079,
+        "rules": 5,
+        "declarations": 47,
+        "classes": 3,
+        "customProperties": 39
+      }
+    },
+    "./themes/neon-arcade": {
+      "target": "./dist/themes/neon-arcade.css",
+      "files": ["dist/themes/neon-arcade.css"],
+      "maximum": {
+        "rawBytes": 2772,
+        "gzipBytes": 1199,
+        "rules": 5,
+        "declarations": 43,
+        "classes": 1,
+        "customProperties": 29
+      }
+    },
+    "./themes/soft-consumer": {
+      "target": "./dist/themes/soft-consumer.css",
+      "files": ["dist/themes/soft-consumer.css"],
+      "maximum": {
+        "rawBytes": 1686,
+        "gzipBytes": 799,
+        "rules": 2,
+        "declarations": 25,
+        "classes": 1,
+        "customProperties": 24
+      }
+    },
+    "./themes/studio": {
+      "target": "./dist/themes/studio.css",
+      "files": ["dist/themes/studio.css"],
+      "maximum": {
+        "rawBytes": 6077,
+        "gzipBytes": 2080,
+        "rules": 20,
+        "declarations": 72,
+        "classes": 19,
+        "customProperties": 32
+      }
+    },
+    "./themes/signal": {
+      "target": "./dist/themes/signal.css",
+      "files": ["dist/themes/signal.css"],
+      "maximum": {
+        "rawBytes": 5649,
+        "gzipBytes": 1936,
+        "rules": 22,
+        "declarations": 88,
+        "classes": 22,
+        "customProperties": 35
+      }
+    },
+    "./themes/lumen": {
+      "target": "./dist/themes/lumen.css",
+      "files": ["dist/themes/lumen.css"],
+      "maximum": {
+        "rawBytes": 8899,
+        "gzipBytes": 2802,
+        "rules": 24,
+        "declarations": 94,
+        "classes": 23,
+        "customProperties": 32
+      }
+    }
+  },
+  "featureGroups": {
+    "gradients": {
+      "rootClasses": [
+        "gradient-sunset",
+        "gradient-ocean",
+        "gradient-aurora",
+        "gradient-midnight",
+        "gradient-dawn",
+        "gradient-forest",
+        "gradient-lavender",
+        "gradient-neon",
+        "gradient-slate",
+        "gradient-surface",
+        "gradient-text"
+      ],
+      "metrics": {
+        "rawBytes": 2713,
+        "gzipBytes": 659,
+        "rules": 11,
+        "declarations": 43,
+        "classes": 11,
+        "customProperties": 4
+      }
+    },
+    "chat-workbench": {
+      "rootClasses": [
+        "chat-thread",
+        "chat-row",
+        "chat-message",
+        "chat-composer",
+        "bubble",
+        "icon-rail",
+        "layout-rail",
+        "log-card",
+        "composer",
+        "workbench-panel"
+      ],
+      "metrics": {
+        "rawBytes": 6521,
+        "gzipBytes": 1739,
+        "rules": 55,
+        "declarations": 209,
+        "classes": 31,
+        "customProperties": 8
+      }
+    },
+    "mobile": {
+      "rootClasses": [
+        "app-shell",
+        "bottom-nav",
+        "bottom-sheet",
+        "safe-top",
+        "safe-bottom",
+        "safe-x",
+        "hide-scrollbar",
+        "momentum-scroll"
+      ],
+      "metrics": {
+        "rawBytes": 3012,
+        "gzipBytes": 1068,
+        "rules": 25,
+        "declarations": 90,
+        "classes": 16,
+        "customProperties": 1
+      }
+    }
+  }
+}

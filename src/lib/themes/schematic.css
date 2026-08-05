@@ -1,0 +1,685 @@
+/**
+ * .theme-schematic — industrial product schematic / field manual
+ *
+ * Warm drafting paper, botanical ink, hairline rules, and compact mono
+ * annotations turn stock Graffiti surfaces into a precise product manual.
+ * Manrope carries the editorial hierarchy while DM Mono marks controls,
+ * labels, code, and data. Color is functional: coral identifies primary
+ * action and focus, mint marks featured or successful states, and the
+ * remaining hues stay available for technical diagrams and status data.
+ *
+ * Component surfaces are deliberately flat: cards share rules in grids,
+ * controls invert ink-on-paper when selected, callouts use an inline-start
+ * signal rule, and code stays on a dark-green plate. The dark branch inverts
+ * to a deep-green canvas without forcing a color scheme; light remains the
+ * intended reference presentation.
+ *
+ * Stress-tests: level-six compressed display type, near-square surfaces beside
+ * pill controls, shadow-free state hierarchy, shared-edge component groups,
+ * coral focus visibility, and warm-text code in both color-scheme branches.
+ */
+
+:root.theme-schematic,
+.theme-schematic {
+  /* Type — compact editorial sans with mono technical annotation. */
+  --font-sans: "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "DM Mono", "SF Mono", Menlo, Consolas, monospace;
+  --font-ratio-min: 1.333;
+  --font-ratio-max: 1.414;
+  --lh: 1.5;
+  --lh-s: 1.08;
+  --lh-l: 1.65;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --ls-h1: -0.075em;
+  --ls-h2: -0.055em;
+  --ls-h3: -0.035em;
+
+  /* Palette — warm paper and botanical ink, with diagram/status hues. */
+  --bg-light: #f4f1e9;
+  --bg-dark: #10201d;
+  --fg-light: #10201d;
+  --fg-dark: #f4f1e9;
+  --fg-05: light-dark(#ece8de, #123c31);
+  --primary: #ff705d;
+  --accent: #4ee0a1;
+  --error: #ff705d;
+  --warning: #e7c95c;
+  --success: #4ee0a1;
+  --red: #ff705d;
+  --yellow: #e7c95c;
+  --blue: #6c9ee8;
+  --purple: #9e85d5;
+  --orange: #db8e4d;
+  --green: #4ee0a1;
+  --teal: #123c31;
+  --gray: #65736f;
+
+  /* Drafting geometry — hairlines, almost-square surfaces, true pills only
+     where a compact control needs the shape. */
+  --br-xs: 0;
+  --br-s: 2px;
+  --br-m: 4px;
+  --br-l: 2px;
+  --br-xl: 2px;
+  --br-xxl: 999px;
+  --border-05: solid 1px light-dark(#cbc7bb, var(--fg-3));
+  --border-1: solid 1px light-dark(#cbc7bb, var(--fg-3));
+  --border-2: solid 1px light-dark(#cbc7bb, var(--fg-3));
+
+  /* Elevation comes from shared rules and tonal plates, never ambient shadow. */
+  --box: none;
+  --shadow-1: none;
+  --shadow-2: none;
+  --shadow-3: none;
+  --shadow-4: none;
+  --shadow-5: none;
+  --shadow-6: none;
+
+  /* Mechanical response: short, direct, and never decorative. */
+  --d-instant: 0.08s;
+  --d-fast: 0.12s;
+  --d-base: 0.18s;
+  --d-slow: 0.18s;
+  --d-emphatic: 0.18s;
+  --focus-ring: 2px solid var(--primary);
+  --focus-ring-offset: 2px;
+
+  /* Inherited component contracts — these cross the themes/components layer
+     boundary without raising the preset above structural component CSS. */
+  --button-background: var(--fg-05);
+  --button-primary-background: var(--primary);
+  --button-primary-text: var(--fg-light);
+  --button-error-background: var(--error);
+  --button-error-text: var(--fg-light);
+  --button-warning-background: var(--warning);
+  --button-warning-text: var(--fg-light);
+  --button-success-background: var(--success);
+  --button-success-text: var(--fg-light);
+  --segmented-selected-bg: var(--fg-light);
+  --segmented-selected-text: var(--bg-light);
+  --segmented-selected-border: var(--fg-light);
+  --segmented-selected-shadow: none;
+  --chip-selected-bg: var(--fg-light);
+  --chip-selected-text: var(--bg-light);
+  --chip-selected-border: var(--fg-light);
+  --chip-selected-hover-bg: var(--fg-light);
+  --chip-selected-hover-border: var(--fg-light);
+  --chip-selected-active-bg: var(--fg-light);
+  --chip-selected-active-border: var(--fg-light);
+  --card-featured-border: light-dark(#cbc7bb, var(--fg-3));
+  --card-featured-shadow: none;
+  --card-featured-header-bg: color-mix(
+    in oklab,
+    var(--success) 14%,
+    var(--bg)
+  );
+  --card-featured-border-block-start: 4px solid var(--success);
+  --feature-card-hover-translate: 0;
+  --dialog-radius: var(--br-l);
+  --list-nav-row-radius: var(--br-s);
+  --surface-bg: var(--fg-05);
+  --table-border: var(--br-s);
+}
+
+@layer themes {
+  .theme-schematic {
+    font-feature-settings: "kern", "liga", "calt";
+  }
+
+  /* The display hierarchy is the theme's strongest non-color move: oversized,
+     compressed headlines against compact technical annotation. */
+  .theme-schematic :is(h1, .h1) {
+    --fl: 6;
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-h1);
+    line-height: 0.86;
+  }
+
+  .theme-schematic :is(h2, .h2) {
+    --fl: 4;
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-h2);
+    line-height: 0.96;
+  }
+
+  .theme-schematic :is(h3, .h3) {
+    --fl: 2;
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-h3);
+    line-height: 1.04;
+  }
+
+  .theme-schematic :is(h4, h5, h6, .h4, .h5, .h6) {
+    font-weight: var(--fw-semibold);
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+
+  /* Existing metadata-bearing selectors become the manual's annotation
+     layer: compact, uppercase, mono, and tracked. */
+  .theme-schematic :is(
+      label,
+      legend,
+      th,
+      .tag,
+      .chip,
+      .stat-card > small,
+      .sidebar-nav-heading,
+      .toc > h1,
+      .toc > h2,
+      .toc > h3,
+      .toc > h4,
+      .toc > h5,
+      .toc > h6,
+      .tabs > details > summary,
+      .workbench-panel > header > .tabs > button
+    ) {
+    --fl: -1;
+    font-family: var(--font-mono);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .theme-schematic :is(a, button, input, select, textarea, summary):focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* Buttons lose framework gloss. Neutral actions use the panel tone;
+     semantic actions stay flat, with coral reserved for the primary path. */
+  .theme-schematic :is(button, .button) {
+    background: var(--fg-05);
+    color: var(--fg);
+    border: var(--border-1);
+    border-radius: var(--br-s);
+    box-shadow: none;
+    font-weight: var(--fw-medium);
+    translate: 0;
+    transition:
+      background-color var(--d-fast) var(--ease-smooth),
+      border-color var(--d-fast) var(--ease-smooth),
+      color var(--d-fast) var(--ease-smooth),
+      translate var(--d-fast) var(--ease-smooth);
+  }
+
+  .theme-schematic :is(button, .button):hover:not(:disabled) {
+    background: var(--fg-1);
+    box-shadow: none;
+    translate: 0;
+  }
+
+  .theme-schematic :is(button, .button):active:not(:disabled) {
+    box-shadow: none;
+    translate: 0 1px;
+  }
+
+  .theme-schematic :is(button, .button).primary,
+  .theme-schematic :is(button, .button).error {
+    background: var(--primary);
+    color: var(--fg-light);
+    border-color: var(--primary);
+  }
+
+  .theme-schematic :is(button, .button).primary:hover:not(:disabled),
+  .theme-schematic :is(button, .button).error:hover:not(:disabled) {
+    background: color-mix(in oklab, var(--primary) 88%, black);
+    border-color: color-mix(in oklab, var(--primary) 88%, black);
+  }
+
+  .theme-schematic :is(button, .button).success {
+    background: var(--success);
+    color: var(--fg-light);
+    border-color: var(--success);
+  }
+
+  .theme-schematic :is(button, .button).warning {
+    background: var(--warning);
+    color: var(--fg-light);
+    border-color: var(--warning);
+  }
+
+  .theme-schematic :is(button, .button):is(.dark, .contrast) {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  .theme-schematic :is(button, .button).light {
+    background: var(--bg-light);
+    color: var(--fg-light);
+    border-color: #cbc7bb;
+  }
+
+  .theme-schematic :is(button, .button):is(.ghost, .minimal) {
+    background: transparent;
+    color: var(--fg);
+    box-shadow: none;
+  }
+
+  .theme-schematic :is(button, .button).minimal {
+    border-color: transparent;
+  }
+
+  /* Role surfaces become one family of ruled technical plates. Components
+     retain their semantics and layout while consumer radius/elevation drops. */
+  .theme-schematic :is(
+      .card,
+      .stat-card,
+      .feature-card,
+      .surface,
+      dialog,
+      .data-table,
+      .composer,
+      .workbench-panel
+    ) {
+    background: var(--bg);
+    border: var(--border-1);
+    border-radius: var(--br-l);
+    box-shadow: none;
+  }
+
+  .theme-schematic .surface {
+    background: var(--fg-05);
+  }
+
+  /* Native dialogs are flat instrument panels, not floating consumer cards.
+     Their open/closed semantics remain native; only decorative scale motion
+     and elevation are removed. */
+  .theme-schematic dialog,
+  .theme-schematic dialog:not([open]),
+  .theme-schematic dialog[open] {
+    scale: 1;
+    transition: none;
+  }
+
+  .theme-schematic dialog[open] {
+    opacity: 1;
+  }
+
+  .theme-schematic .card.linked {
+    transition:
+      background-color var(--d-fast) var(--ease-smooth),
+      border-color var(--d-fast) var(--ease-smooth);
+  }
+
+  .theme-schematic .card.linked:hover,
+  .theme-schematic .card.linked:active {
+    background: var(--fg-05);
+    box-shadow: none;
+    translate: 0;
+  }
+
+  .theme-schematic .card.featured {
+    border-block-start: 4px solid var(--success);
+  }
+
+  .theme-schematic .card.featured > header {
+    background: var(--success-1);
+  }
+
+  .theme-schematic .stat-card {
+    padding: var(--pad-m);
+    background: var(--fg-05);
+  }
+
+  .theme-schematic .stat-card > strong {
+    --fl: 2;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums lining-nums;
+    font-weight: var(--fw-semibold);
+  }
+
+  .theme-schematic .feature-card {
+    transition:
+      background-color var(--d-fast) var(--ease-smooth),
+      border-color var(--d-fast) var(--ease-smooth);
+  }
+
+  .theme-schematic .feature-card:hover {
+    background: var(--fg-05);
+    box-shadow: none;
+    translate: 0;
+  }
+
+  .theme-schematic .feature-card > .icon {
+    background: var(--fg-05);
+    color: var(--fg);
+    border: var(--border-1);
+    border-radius: var(--br-s);
+  }
+
+  /* A card layout becomes a continuous schematic grid. The one-pixel inset
+     compensates the negative item margins so adjacent rules collapse cleanly. */
+  .theme-schematic .layout-card {
+    gap: 0;
+    padding-block-start: 1px;
+    padding-inline-start: 1px;
+  }
+
+  .theme-schematic .layout-card > :is(.card, .stat-card, .feature-card) {
+    margin-block-start: -1px;
+    margin-inline-start: -1px;
+    border-radius: 0;
+  }
+
+  /* Compact choice controls invert the current ink and paper. This keeps the
+     light branch botanical while producing a usable inverse in dark mode. */
+  .theme-schematic .chip {
+    background: transparent;
+    color: var(--fg);
+    border: var(--border-1);
+    border-radius: var(--br-xxl);
+    box-shadow: none;
+    padding: var(--pad-xs) var(--pad-m);
+  }
+
+  .theme-schematic .chip:hover:not(:disabled) {
+    background: var(--fg-05);
+  }
+
+  .theme-schematic .chip[aria-pressed="true"],
+  .theme-schematic .chip.selected,
+  .theme-schematic .chip[aria-pressed="true"]:is(:hover, :active),
+  .theme-schematic .chip.selected:is(:hover, :active) {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  .theme-schematic .segmented-control {
+    background: var(--fg-05);
+    border: var(--border-1);
+    border-radius: var(--br-xxl);
+    box-shadow: none;
+  }
+
+  .theme-schematic .segmented-control > label {
+    border-radius: var(--br-xxl);
+  }
+
+  .theme-schematic .segmented-control > label:has(input:checked) {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+    box-shadow: none;
+  }
+
+  /* Tags keep status hue but flatten it into a translucent technical stamp. */
+  .theme-schematic .tag {
+    background: color-mix(in oklab, var(--tag-color) 14%, var(--bg));
+    color: color-mix(in oklab, var(--tag-color) 70%, var(--fg));
+    border: 1px solid color-mix(in oklab, var(--tag-color) 45%, transparent);
+    border-radius: var(--br-xxl);
+    box-shadow: none;
+    padding: var(--pad-xs) var(--pad-m);
+  }
+
+  .theme-schematic .tag:is(a, button):is(:hover, :active):not(:disabled) {
+    background: color-mix(in oklab, var(--tag-color) 20%, var(--bg));
+    box-shadow: none;
+    translate: 0;
+  }
+
+  .theme-schematic .tabs {
+    column-gap: 2px;
+  }
+
+  .theme-schematic .tabs > details > summary {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--br-xxl);
+    color: var(--fg-6);
+  }
+
+  .theme-schematic .tabs > details[open] > summary {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  .theme-schematic .tabs > details::details-content {
+    transition: none;
+  }
+
+  .theme-schematic .tabs.boxed > details::details-content {
+    border: var(--border-1);
+    border-radius: 0 0 var(--br-s) var(--br-s);
+  }
+
+  .theme-schematic .tabs.pill::after {
+    background: var(--fg-05);
+    box-shadow: none;
+  }
+
+  .theme-schematic .tabs.pill::before {
+    background: var(--fg);
+    border-color: var(--fg);
+    box-shadow: none;
+    transition: none;
+  }
+
+  .theme-schematic .tabs.pill > details[open] > summary {
+    background: transparent;
+    color: var(--bg);
+    border-color: transparent;
+  }
+
+  /* The composer reads as a ruled instrument: one outer hairline and a
+     separated control rail, with a coral outline instead of focus glow. */
+  .theme-schematic .composer:focus-within {
+    border-color: var(--primary);
+    box-shadow: none;
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .theme-schematic .composer > .toolbar {
+    border-block-start: var(--border-1);
+    margin-inline: calc(-1 * var(--pad-s));
+    padding: var(--pad-s);
+  }
+
+  .theme-schematic .workbench-panel > header {
+    background: var(--fg-05);
+    border-block-end: var(--border-1);
+  }
+
+  .theme-schematic .workbench-panel > header > .tabs {
+    background: var(--fg-05);
+    border: var(--border-1);
+    border-radius: var(--br-xxl);
+  }
+
+  .theme-schematic .workbench-panel > header > .tabs > button {
+    background: transparent;
+    border: 0;
+    border-radius: var(--br-xxl);
+  }
+
+  .theme-schematic .workbench-panel > header > .tabs > button[aria-pressed="true"] {
+    background: var(--fg);
+    color: var(--bg);
+    box-shadow: none;
+  }
+
+  /* List navigation becomes a shared-edge index rather than a stack of
+     floating pills. Adjacent rows overlap one hairline without alternating-
+     row assumptions. */
+  .theme-schematic .list-nav {
+    gap: 0;
+  }
+
+  .theme-schematic .list-nav > :is(a, button) {
+    background: var(--bg);
+    border: var(--border-1);
+    border-radius: 0;
+    box-shadow: none;
+    transition: background-color var(--d-fast) var(--ease-smooth);
+  }
+
+  .theme-schematic .list-nav > :is(a, button) + :is(a, button) {
+    margin-block-start: -1px;
+  }
+
+  .theme-schematic .list-nav > :is(a, button):hover:not(:disabled) {
+    background: var(--fg-05);
+  }
+
+  .theme-schematic .list-nav > :is(a, button):active:not(:disabled) {
+    background: var(--fg-1);
+    translate: 0;
+  }
+
+  /* Sidebar rows use the same flat selection grammar as compact controls,
+     replacing the default gloss without changing the navigation API. */
+  .theme-schematic .sidebar-nav > a,
+  .theme-schematic .sidebar-nav > details > a,
+  .theme-schematic .sidebar-nav > details > summary {
+    background: transparent;
+    box-shadow: none;
+    translate: 0;
+  }
+
+  .theme-schematic .sidebar-nav > :is(a[aria-current="page"], a.active) {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  /* Data surfaces use shared hairlines and tabular mono figures. */
+  .theme-schematic .table {
+    border: var(--border-1);
+    border-radius: var(--br-s);
+  }
+
+  .theme-schematic table {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .theme-schematic thead {
+    background: var(--fg-05);
+    border-block-end: var(--border-1);
+  }
+
+  .theme-schematic td {
+    border-block-end: var(--border-1);
+  }
+
+  /* Stateful data tables share one structural frame. The toolbar and table
+     remain independent slots, but no nested card chrome survives. */
+  .theme-schematic .data-table {
+    gap: 0;
+  }
+
+  .theme-schematic .data-table > .data-table-toolbar {
+    background: var(--fg-05);
+    border-block-end: var(--border-1);
+    padding: var(--pad-s);
+  }
+
+  .theme-schematic .data-table > .table {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .theme-schematic .data-table.sticky thead th {
+    border-block-end: var(--border-1);
+    box-shadow: none;
+  }
+
+  /* Form controls remain tonal rather than white boxes; coral is supplied by
+     the shared focus token and semantic validation colors remain intact. */
+  .theme-schematic :is(input, select, textarea) {
+    background: var(--fg-05);
+    border: var(--border-1);
+    border-radius: var(--br-s);
+    box-shadow: none;
+  }
+
+  .theme-schematic select:hover:not(:disabled) {
+    background: var(--fg-1);
+    border-color: var(--fg-4);
+    box-shadow: none;
+  }
+
+  .theme-schematic input[type="checkbox"].toggle,
+  .theme-schematic input[type="checkbox"].toggle:hover:not(:disabled) {
+    background: var(--fg-1);
+    border-color: var(--fg-3);
+    box-shadow: none;
+  }
+
+  .theme-schematic input[type="checkbox"].toggle:checked,
+  .theme-schematic input[type="checkbox"].toggle:checked:hover:not(:disabled) {
+    background: var(--fg);
+    border-color: var(--fg);
+    box-shadow: none;
+  }
+
+  .theme-schematic input[type="checkbox"].toggle::before {
+    background: var(--bg);
+    box-shadow: none;
+  }
+
+  /* The inline-start signal is the callout's only emphasis; fill variants
+     retain their semantic tint without introducing elevation. */
+  .theme-schematic .callout,
+  .theme-schematic .callout.fill {
+    border: var(--border-1);
+    border-inline-start: 4px solid var(--callout-accent);
+    border-radius: var(--br-s);
+    box-shadow: none;
+  }
+
+  .theme-schematic .callout {
+    background: var(--fg-05);
+  }
+
+  .theme-schematic .callout.fill {
+    background: var(--callout-tint);
+  }
+
+  /* Code is a dark-green technical plate in both branches, with warm paper
+     text and no terminal glow or simulated elevation. */
+  .theme-schematic :is(code, pre) {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .theme-schematic pre {
+    background: var(--teal);
+    color: var(--bg-light);
+    border: 1px solid color-mix(in oklab, var(--bg-light) 20%, transparent);
+    border-radius: var(--br-s);
+    box-shadow: none;
+    padding: var(--pad-l);
+  }
+
+  .theme-schematic code:not(pre code) {
+    background: var(--teal);
+    color: var(--bg-light);
+    border-radius: var(--br-xs);
+    padding: 0.1em 0.35em;
+  }
+
+  .theme-schematic pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .theme-schematic .box.semi-gloss {
+    background: var(--fg-05);
+    box-shadow: none;
+  }
+
+  .theme-schematic ::selection {
+    background: var(--success);
+    color: var(--fg-light);
+  }
+}

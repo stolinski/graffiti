@@ -11,8 +11,10 @@ Today's feature list:
 - `@container` queries with `inline-size`
 - `linear()` cubic easing
 - `popover` HTML attribute and `:popover-open` pseudo-class
-- CSS anchor positioning (`anchor()`, `position-anchor`, `position-try`)
+- CSS anchor positioning (`anchor()`, `anchor-scope`, `position-anchor`, `position-try`)
 - Cascade layers (`@layer`)
+- `forced-colors` media queries and CSS system colours
+- `accent-color`
 
 The binding constraint among these is currently CSS anchor positioning. Three Graffiti components depend on it directly: `tooltip`, `dropdown-menu`, and `badge`. As of 2026-05-18 anchor positioning is stable in Chrome 125+ and Safari 17.4+ (partial); Firefox does not yet ship it in stable. Consumers running browsers without anchor positioning will see those three components fail to position correctly — the documents explicitly disclose this.
 

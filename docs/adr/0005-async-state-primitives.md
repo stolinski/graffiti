@@ -6,7 +6,7 @@ Graffiti ships three distinct async-state surfaces, deliberately scoped so each 
 - `<meter>` — known-range gauge (native HTML, e.g. password strength, disk usage). Styled neutrally by default in `@layer base`; `.meter.signaling` opts into red/yellow/green coloring driven by the element's native `low` / `optimum` / `high` attributes.
 - `.spinner` — standalone inline indeterminate loader, a component in `@layer components`. Coexists with `button[aria-busy="true"]`, which styles a busy button by overlaying a spinner, dimming the label, and disabling interaction via `pointer-events: none`.
 
-**Skeleton placeholders are intentionally out of scope** for this round — composing skeletons that mimic real content shapes is a per-app design exercise, not a single component.
+**Superseded by [ADR-0017](./0017-decks-contracts-and-legacy-di-deprecation.md):** the accepted Decks catalog established a reusable `.skeleton` paint/shape primitive while leaving app-specific placeholder composition to consumers. The original concern remains valid at the composition layer, but it no longer blocks the base visual contract.
 
 ## Why three patterns instead of one universal `[aria-busy]`
 

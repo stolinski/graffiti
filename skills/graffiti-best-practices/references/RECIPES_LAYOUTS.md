@@ -25,6 +25,7 @@ Before using recipes alone, check for a matching baseline template:
 - Marketing/landing -> `https://graffiti-ui.com/templates/landing`
 - Dashboard/admin -> `https://graffiti-ui.com/templates/dashboard`
 - Blog/content -> `https://graffiti-ui.com/templates/blog`
+- Docs/knowledge base -> `https://graffiti-ui.com/templates/docs-portal`
 - Settings/account -> `https://graffiti-ui.com/templates/settings`
 - AI chat -> `https://graffiti-ui.com/templates/ai-chat`
 
@@ -145,53 +146,83 @@ Use case: Admin/product dashboard with sidebar and content pane.
 
 ---
 
-## LAYOUT-003: Blog + TOC Shell
+## LAYOUT-003: Editorial / Docs Reading Shell
 
-Use case: Long-form article with right-rail table of contents.
+Use case: Long-form editorial or documentation content with a centered max-width middle column, an optional start rail for navigation, and optional end marginalia.
 
 ### Minimal skeleton
 
 ```html
-<main class="layout-readable center" style="padding-block: var(--vs-xl);">
-  <div class="layout-sidebar invert">
-    <aside
-      class="stack"
-      style="--gap: var(--vs-l); align-self: start; position: sticky; top: var(--pad-xl);"
+<div class="layout-holy-grail">
+  <aside id="article-contents" class="rail-start drawer" popover="auto">
+    <button
+      class="drawer-toggle minimal"
+      type="button"
+      popovertarget="article-contents"
+      popovertargetaction="hide"
     >
-      <nav class="toc" aria-label="Table of contents">
-        <!-- toc links -->
-      </nav>
-    </aside>
+      Close contents
+    </button>
+    <nav class="toc" aria-label="Table of contents">
+      <!-- toc links -->
+    </nav>
+  </aside>
 
+  <main>
+    <button
+      class="drawer-toggle minimal"
+      type="button"
+      popovertarget="article-contents"
+    >
+      Contents
+    </button>
     <article class="stack" style="--gap: var(--vs-m);">
+      <h1>Article title</h1>
       <!-- article content -->
     </article>
-  </div>
-</main>
+  </main>
+
+  <aside class="rail-end" aria-label="Article notes">
+    <!-- marginalia, references, or related links -->
+  </aside>
+</div>
 ```
 
 ### Recommended class set
 
-- `layout-readable center`, `layout-sidebar invert`
-- `toc`, `stack`, `cluster`, `text-muted`
+- `layout-holy-grail` for the centered reading column and optional rails
+- Direct children in semantic order: `.rail-start`, `<main>` or `<article>`, `.rail-end`
+- `toc`, `stack`, `drawer`, `drawer-toggle`
 
 ### Optional variants
 
-- Use `.surface` sections to separate newsletter/related content
-- Use `.layout-card` for related posts grid
+- Omit either rail when that content does not exist.
+- Use a plain `<aside class="rail-start">` when hiding it on mobile is acceptable.
+- Use the shown `.rail-start.drawer[popover]` composition when the start rail must remain available on mobile.
+- Override the documented `--max-width` token on `.layout-holy-grail` when the centered middle needs a different measure.
 
 ### Accessibility notes
 
-- TOC should be in `<nav aria-label="Table of contents">`
-- Use valid heading anchors in article
+- Keep DOM order as start rail → main/article → end rail even when visual placement changes.
+- Give rail navigation and marginalia distinct accessible labels.
+- Pair every drawer toggle's `popovertarget` with the start rail's `id`; `popover="auto"` supplies native light-dismiss and Escape behavior without JavaScript.
+
+### Contract and responsive behavior
+
+- At 1024px and below, `.rail-end` marginalia is hidden.
+- At 768px and below, a plain `.rail-start` is hidden; `.rail-start.drawer[popover]` remains available through `.drawer-toggle`.
+- `.rail-start` and `.rail-end` are direct-child contract classes for `.layout-holy-grail`, not free-floating utilities.
+- `.layout-holy-grail` lives in the highest `@layer layouts`; the current order is `base, themes, components, utilities, layouts`.
 
 ### Anti-pattern warnings
 
-- Do not replace semantic heading structure with arbitrary font-size inline styles
+- Do not use `.layout-three-col` for this reading shape; it is the equal-column primitive for cards and comparisons.
+- Do not place `.rail-start` or `.rail-end` outside `.layout-holy-grail` or wrap them so they are no longer direct children.
+- Do not add JavaScript to toggle the mobile start rail; use the native drawer/popover composition.
 
 ### Fallback path
 
-- If sticky behavior is undesirable in a host app, keep same markup and remove sticky inline tokens only
+- If the page has no rails, use `.layout-readable.center` instead of treating `.layout-holy-grail` as a generic three-column grid.
 
 ---
 

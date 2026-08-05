@@ -8,17 +8,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 `@drop-in/graffiti` is a CSS theming package that provides base styles, fluid typography, and a responsive layout system. It can be used as either:
-1. **CLI tool**: `npx @drop-in/graffiti` copies `drop-in.css` to `src/` folder
-2. **NPM package**: Install and import in Vite-based apps
+1. **CLI tool**: `pnpm dlx @drop-in/graffiti` copies `drop-in.css` to `src/` folder
+2. **Registry package**: Install and import in Vite-based apps
 
 ## Commands
 
 ```bash
-# Build the package (generates raw.js)
-npm run build
+# Build the docs and package outputs
+pnpm build
 
-# Alternative build command
-npm run package
+# Build package outputs without the docs site
+pnpm package
+
+# Run required quality gates
+pnpm test:ci:quality
 
 # Test CLI locally
 node bin.js
@@ -28,16 +31,16 @@ node bin.js
 
 ### Core Files
 
-- **drop-in.css**: Main CSS framework - contains base styles, utilities, layouts, and typography
-- **build.js**: Reads CSS files and generates JavaScript modules (`raw.js`)
+- **src/lib/drop-in.css**: Canonical CSS framework source - contains base styles, utilities, layouts, and typography
+- **build-modules.js**: Generates every modular CSS output and compatibility JS string module under `dist/`
 - **bin.js**: CLI entry point that copies `drop-in.css` to user's project at `src/drop-in.css`
-- **raw.js**: Auto-generated from `drop-in.css` (do not edit manually)
+- **scripts/graffiti-lookup.mjs**: Source for the generated registry lookup CLI
 
 ### Build Pipeline
 
-1. `drop-in.css` is the source file that should be edited for CSS changes
-2. Running `npm run build` converts it to a JavaScript module for imports
-3. The package exports both the raw CSS file and the JS module
+1. `src/lib/drop-in.css` is the canonical CSS source.
+2. `pnpm package` derives mirrors, packages Svelte helpers, validates annotations, and generates every `dist/` entry.
+3. `dist/` is generated and ignored; root-level CSS string artifacts are not sources.
 
 ## CSS System Architecture
 
@@ -62,26 +65,22 @@ Uses a custom CSS variable system based on `--fl` (fluid level) values:
 
 ## Package Exports
 
-```json
-{
-  ".": "./drop-in.css",              // Default: main CSS framework
-  "./drop-in.css": "./drop-in.css",  // Explicit main CSS import
-  "./raw": "./raw.js"                // Main CSS as JS module
-}
-```
+`package.json` is the authoritative export map. The historical `./drop-in.css`,
+and `./raw` paths are generated compatibility aliases; do not create or edit
+root-level copies.
 
 ## Authoring drop-in.css
 
 Every primary class definition (rules with selector exactly `.classname` inside a `@layer` block) and every token at `:root` inside `@layer base` in `src/lib/drop-in.css` requires a structured annotation comment. Use `@pattern` / `@pattern-group` for classes and `@token` / `@token-group` for tokens.
 
-`npm run lint:graffiti` enforces the annotations and emits `registry.json` (the machine-readable catalogue consumed by lookup tools and downstream lint). The lint also runs pre-commit. See [docs/ANNOTATION-SPEC.md](docs/ANNOTATION-SPEC.md) for the full format and validation rules.
+`pnpm lint:graffiti` enforces the annotations and emits `registry.json` (the machine-readable catalogue consumed by lookup tools and downstream lint). The lint also runs pre-commit. See [docs/ANNOTATION-SPEC.md](docs/ANNOTATION-SPEC.md) for the full format and validation rules.
 
 ## Development Workflow
 
-1. Edit `drop-in.css` for framework changes
-2. Run `npm run build` to regenerate `raw.js`
-3. Test locally by opening `index.html` in browser
-4. For CLI testing, run `node bin.js` from package directory
+1. Edit `src/lib/drop-in.css` for framework changes.
+2. Run `pnpm package` to regenerate `dist/`.
+3. Run `pnpm test:ci:quality`; browser tests serve the SvelteKit site on port `6124`.
+4. The package smoke test installs a packed tarball and exercises both CLIs.
 
 ## Usage
 

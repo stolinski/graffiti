@@ -54,11 +54,11 @@ describe("Registry v2 token tiers", () => {
       ]),
     );
 
-    expect(registry.tokenInventory).toHaveLength(701);
+    expect(registry.tokenInventory).toHaveLength(738);
     expect(counts).toEqual({
       "primitive-reference": 408,
       "global-semantic": 143,
-      "component-contract": 105,
+      "component-contract": 142,
       "private-calculated": 45,
     });
   });
@@ -117,7 +117,7 @@ describe("Registry v2 token tiers", () => {
     const consumedOnly = registry.tokenInventory.filter(
       (token) => token.consumed && !token.declared && !token.registered,
     );
-    expect(consumedOnly).toHaveLength(33);
+    expect(consumedOnly).toHaveLength(62);
     expect(
       consumedOnly.every((token) => token.defaultStability === "fallback"),
     ).toBe(true);

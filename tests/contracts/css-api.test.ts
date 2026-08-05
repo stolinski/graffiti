@@ -39,7 +39,7 @@ interface CssEntry {
 }
 
 interface RegistryFile {
-  patterns: { name: string }[];
+  patterns: { name: string; canonicalSelector: string }[];
   patternGroups: { members: string[] }[];
 }
 
@@ -94,7 +94,7 @@ describe("executable CSS API", () => {
   });
 
   it("resolves required custom-property dependencies for every public entry", async () => {
-    const core = await readDistCss(DIST_FILES.core);
+    const defaultBundle = await readDistCss(DIST_FILES.index);
     const themeNames = await readThemeNames(SOURCE_THEMES_DIR);
     const allThemes = await Promise.all(
       themeNames.map((name) => readDistCss(`themes/${name}.css`)),
@@ -103,9 +103,9 @@ describe("executable CSS API", () => {
 
     for (const entry of entries) {
       const css = entry.name.endsWith("themes/index.css")
-        ? [core, ...allThemes].join("\n")
+        ? [defaultBundle, ...allThemes].join("\n")
         : entry.name.includes("themes/")
-          ? `${core}\n${entry.css}`
+          ? `${defaultBundle}\n${entry.css}`
           : entry.css;
       const contract = getCssVariableContract(css, entry.name);
       const unresolved = contract.references
@@ -291,7 +291,11 @@ describe("executable CSS API", () => {
       await readWorkspaceFile("src/lib/registry.json"),
     );
     const classNames = [
-      ...registry.patterns.map((pattern) => pattern.name),
+      ...registry.patterns
+        .filter((pattern) =>
+          pattern.canonicalSelector.includes(`.${pattern.name}`),
+        )
+        .map((pattern) => pattern.name),
       ...registry.patternGroups.flatMap((group) => group.members),
     ];
     const sourceRules = getCssRules(

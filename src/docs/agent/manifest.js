@@ -537,6 +537,21 @@ export const elementsSection = {
       routeAnchor: "#rating",
     },
     {
+      slug: "fab",
+      title: "Floating action button",
+      whenToUse:
+        "A single high-emphasis action pinned above the safe area while content scrolls.",
+      classes: [".fab", ".button", ".circle"],
+      routeAnchor: "#fab",
+    },
+    {
+      slug: "reactions",
+      title: "Reactions",
+      whenToUse: "Choosing one emoji reaction with a native select.",
+      classes: [".reactions"],
+      routeAnchor: "#reactions",
+    },
+    {
       slug: "data-table",
       title: "Data table",
       whenToUse:
@@ -637,14 +652,6 @@ export const uiBlocksSection = {
       classes: [".app-shell", ".bottom-nav", ".bottom-sheet", ".drawer"],
       routeAnchor: "",
       llmsFile: "mobile.txt",
-    },
-    {
-      slug: "fab",
-      title: "Floating action button",
-      whenToUse:
-        "A single high-emphasis action pinned above the safe area while content scrolls.",
-      classes: [".fab", ".button", ".circle"],
-      routeAnchor: "#fab",
     },
     {
       slug: "header",

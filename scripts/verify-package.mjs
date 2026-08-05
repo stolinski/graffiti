@@ -25,10 +25,7 @@ if (!/^pnpm@\d+\.\d+\.\d+$/.test(packageJson.packageManager ?? "")) {
 }
 
 await access(path.join(packageRoot, "pnpm-lock.yaml"));
-for (const obsoleteLockfile of [
-  "package-lock.json",
-  ".opencode/package-lock.json",
-]) {
+for (const obsoleteLockfile of ["package-lock.json"]) {
   try {
     await access(path.join(packageRoot, obsoleteLockfile));
     throw new Error(

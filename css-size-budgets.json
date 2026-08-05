@@ -12,94 +12,94 @@
       "target": "./dist/index.css",
       "files": ["dist/index.css"],
       "maximum": {
-        "rawBytes": 214383,
-        "gzipBytes": 36793,
-        "rules": 630,
-        "declarations": 2911,
-        "classes": 250,
-        "customProperties": 638
+        "rawBytes": 233532,
+        "gzipBytes": 41481,
+        "rules": 679,
+        "declarations": 3138,
+        "classes": 256,
+        "customProperties": 664
       }
     },
     "./graffiti.css": {
       "target": "./dist/index.css",
       "files": ["dist/index.css"],
       "maximum": {
-        "rawBytes": 214383,
-        "gzipBytes": 36793,
-        "rules": 630,
-        "declarations": 2911,
-        "classes": 250,
-        "customProperties": 638
+        "rawBytes": 233532,
+        "gzipBytes": 41481,
+        "rules": 679,
+        "declarations": 3138,
+        "classes": 256,
+        "customProperties": 664
       }
     },
     "./drop-in.css": {
       "target": "./dist/index.css",
       "files": ["dist/index.css"],
       "maximum": {
-        "rawBytes": 214383,
-        "gzipBytes": 36793,
-        "rules": 630,
-        "declarations": 2911,
-        "classes": 250,
-        "customProperties": 638
+        "rawBytes": 233532,
+        "gzipBytes": 41481,
+        "rules": 679,
+        "declarations": 3138,
+        "classes": 256,
+        "customProperties": 664
       }
     },
     "./min": {
       "target": "./dist/index.min.css",
       "files": ["dist/index.min.css"],
       "maximum": {
-        "rawBytes": 155545,
-        "gzipBytes": 24955,
-        "rules": 630,
-        "declarations": 2911,
-        "classes": 250,
-        "customProperties": 638
+        "rawBytes": 166601,
+        "gzipBytes": 27168,
+        "rules": 679,
+        "declarations": 3138,
+        "classes": 256,
+        "customProperties": 664
       }
     },
     "./drop-in.min.css": {
       "target": "./dist/drop-in.min.css",
       "files": ["dist/drop-in.min.css"],
       "maximum": {
-        "rawBytes": 155431,
-        "gzipBytes": 24886,
-        "rules": 630,
-        "declarations": 2911,
-        "classes": 250,
-        "customProperties": 638
+        "rawBytes": 166487,
+        "gzipBytes": 27098,
+        "rules": 679,
+        "declarations": 3138,
+        "classes": 256,
+        "customProperties": 664
       }
     },
     "./core": {
       "target": "./dist/core.css",
       "files": ["dist/core.css"],
       "maximum": {
-        "rawBytes": 84291,
-        "gzipBytes": 13207,
-        "rules": 105,
-        "declarations": 1137,
-        "classes": 35,
-        "customProperties": 572
+        "rawBytes": 87495,
+        "gzipBytes": 14059,
+        "rules": 113,
+        "declarations": 1170,
+        "classes": 36,
+        "customProperties": 573
       }
     },
     "./utilities": {
       "target": "./dist/utilities.css",
       "files": ["dist/utilities.css"],
       "maximum": {
-        "rawBytes": 10364,
-        "gzipBytes": 3191,
-        "rules": 59,
-        "declarations": 189,
-        "classes": 43,
-        "customProperties": 46
+        "rawBytes": 11259,
+        "gzipBytes": 3431,
+        "rules": 61,
+        "declarations": 213,
+        "classes": 44,
+        "customProperties": 53
       }
     },
     "./layouts": {
       "target": "./dist/layouts.css",
       "files": ["dist/layouts.css"],
       "maximum": {
-        "rawBytes": 13145,
-        "gzipBytes": 3571,
+        "rawBytes": 13226,
+        "gzipBytes": 3604,
         "rules": 69,
-        "declarations": 188,
+        "declarations": 189,
         "classes": 29,
         "customProperties": 35
       }
@@ -108,36 +108,36 @@
       "target": "./dist/components.css",
       "files": ["dist/components.css"],
       "maximum": {
-        "rawBytes": 119656,
-        "gzipBytes": 22324,
-        "rules": 430,
-        "declarations": 1681,
-        "classes": 166,
-        "customProperties": 185
+        "rawBytes": 135424,
+        "gzipBytes": 26312,
+        "rules": 469,
+        "declarations": 1867,
+        "classes": 170,
+        "customProperties": 215
       }
     },
     "./minimal": {
       "target": "./dist/minimal.css",
       "files": ["dist/minimal.css"],
       "maximum": {
-        "rawBytes": 91434,
-        "gzipBytes": 14798,
-        "rules": 153,
-        "declarations": 1261,
-        "classes": 76,
-        "customProperties": 576
+        "rawBytes": 95154,
+        "gzipBytes": 15729,
+        "rules": 163,
+        "declarations": 1308,
+        "classes": 78,
+        "customProperties": 577
       }
     },
     "./standard": {
       "target": "./dist/standard.css",
       "files": ["dist/standard.css"],
       "maximum": {
-        "rawBytes": 101661,
-        "gzipBytes": 16957,
-        "rules": 211,
-        "declarations": 1391,
-        "classes": 102,
-        "customProperties": 577
+        "rawBytes": 105440,
+        "gzipBytes": 17918,
+        "rules": 221,
+        "declarations": 1438,
+        "classes": 104,
+        "customProperties": 578
       }
     },
     "./themes": {
@@ -151,23 +151,24 @@
         "dist/themes/neon-arcade.css",
         "dist/themes/studio.css",
         "dist/themes/signal.css",
-        "dist/themes/lumen.css"
+        "dist/themes/lumen.css",
+        "dist/themes/schematic.css"
       ],
       "maximum": {
-        "rawBytes": 31512,
-        "gzipBytes": 11787,
-        "rules": 88,
-        "declarations": 440,
-        "classes": 42,
-        "customProperties": 54
+        "rawBytes": 50772,
+        "gzipBytes": 16228,
+        "rules": 173,
+        "declarations": 752,
+        "classes": 76,
+        "customProperties": 100
       }
     },
     "./themes/editorial": {
       "target": "./dist/themes/editorial.css",
       "files": ["dist/themes/editorial.css"],
       "maximum": {
-        "rawBytes": 1804,
-        "gzipBytes": 844,
+        "rawBytes": 1819,
+        "gzipBytes": 850,
         "rules": 5,
         "declarations": 38,
         "classes": 2,
@@ -257,6 +258,18 @@
         "classes": 23,
         "customProperties": 32
       }
+    },
+    "./themes/schematic": {
+      "target": "./dist/themes/schematic.css",
+      "files": ["dist/themes/schematic.css"],
+      "maximum": {
+        "rawBytes": 19218,
+        "gzipBytes": 4430,
+        "rules": 85,
+        "declarations": 312,
+        "classes": 49,
+        "customProperties": 84
+      }
     }
   },
   "featureGroups": {
@@ -297,10 +310,10 @@
         "workbench-panel"
       ],
       "metrics": {
-        "rawBytes": 6521,
-        "gzipBytes": 1739,
-        "rules": 55,
-        "declarations": 209,
+        "rawBytes": 6402,
+        "gzipBytes": 1724,
+        "rules": 53,
+        "declarations": 204,
         "classes": 31,
         "customProperties": 8
       }

@@ -132592,6 +132592,70 @@
       ]
     },
     {
+      "value": ".fab",
+      "kind": "css",
+      "source": {
+        "file": "src/docs/agent/manifest.js",
+        "line": null,
+        "context": "elements/fab"
+      },
+      "resolved": true,
+      "targets": [
+        {
+          "kind": "class",
+          "name": "fab"
+        }
+      ]
+    },
+    {
+      "value": ".button",
+      "kind": "css",
+      "source": {
+        "file": "src/docs/agent/manifest.js",
+        "line": null,
+        "context": "elements/fab"
+      },
+      "resolved": true,
+      "targets": [
+        {
+          "kind": "class",
+          "name": "button"
+        }
+      ]
+    },
+    {
+      "value": ".circle",
+      "kind": "css",
+      "source": {
+        "file": "src/docs/agent/manifest.js",
+        "line": null,
+        "context": "elements/fab"
+      },
+      "resolved": true,
+      "targets": [
+        {
+          "kind": "class",
+          "name": "circle"
+        }
+      ]
+    },
+    {
+      "value": ".reactions",
+      "kind": "css",
+      "source": {
+        "file": "src/docs/agent/manifest.js",
+        "line": null,
+        "context": "elements/reactions"
+      },
+      "resolved": true,
+      "targets": [
+        {
+          "kind": "class",
+          "name": "reactions"
+        }
+      ]
+    },
+    {
       "value": ".data-table",
       "kind": "css",
       "source": {
@@ -133148,54 +133212,6 @@
         {
           "kind": "class",
           "name": "drawer"
-        }
-      ]
-    },
-    {
-      "value": ".fab",
-      "kind": "css",
-      "source": {
-        "file": "src/docs/agent/manifest.js",
-        "line": null,
-        "context": "ui-blocks/fab"
-      },
-      "resolved": true,
-      "targets": [
-        {
-          "kind": "class",
-          "name": "fab"
-        }
-      ]
-    },
-    {
-      "value": ".button",
-      "kind": "css",
-      "source": {
-        "file": "src/docs/agent/manifest.js",
-        "line": null,
-        "context": "ui-blocks/fab"
-      },
-      "resolved": true,
-      "targets": [
-        {
-          "kind": "class",
-          "name": "button"
-        }
-      ]
-    },
-    {
-      "value": ".circle",
-      "kind": "css",
-      "source": {
-        "file": "src/docs/agent/manifest.js",
-        "line": null,
-        "context": "ui-blocks/fab"
-      },
-      "resolved": true,
-      "targets": [
-        {
-          "kind": "class",
-          "name": "circle"
         }
       ]
     },

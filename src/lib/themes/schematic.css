@@ -641,7 +641,7 @@
   }
 
   .theme-schematic .callout.fill {
-    background: var(--callout-tint);
+    background: var(--callout-tint, var(--fg-05));
   }
 
   /* Code is a dark-green technical plate in both branches, with warm paper

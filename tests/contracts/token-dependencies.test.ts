@@ -263,9 +263,9 @@ describe("standalone token dependencies", () => {
   });
 
   it("resolves required Graffiti tokens in every dist CSS output", async () => {
-    const coreCss = await readFile(path.join(DIST_DIR, "core.css"), "utf8");
-    const canonicalTokens = new Set(
-      collectCanonicalDeclarations(parseCss(coreCss, "dist/core.css")).keys(),
+    const defaultCss = await readFile(path.join(DIST_DIR, "index.css"), "utf8");
+    const defaultTokens = collectProvidedTokens(
+      parseCss(defaultCss, "dist/index.css"),
     );
     const cssFiles = await listCssFiles(DIST_DIR);
 
@@ -277,7 +277,7 @@ describe("standalone token dependencies", () => {
 
       // Theme presets are additive by contract and consume core tokens.
       if (relativePath.startsWith(`themes${path.sep}`)) {
-        for (const token of canonicalTokens) providedTokens.add(token);
+        for (const token of defaultTokens) providedTokens.add(token);
       }
 
       const unresolvedTokens = [...collectRequiredVarReferences(ast)].filter(

@@ -7,6 +7,7 @@ interface RelationContract {
   owner: string;
   selector: string;
   state?: string;
+  alias?: boolean;
 }
 
 interface PatternContract {
@@ -237,12 +238,13 @@ describe("Registry v2 explicit owner contracts", () => {
       classContract("active")?.relations.map((relation) => [
         relation.kind,
         relation.owner,
+        relation.alias ?? false,
       ]),
     ).toEqual(
       expect.arrayContaining([
-        ["state-alias", "navigation"],
-        ["state", "steps"],
-        ["state", "timeline"],
+        ["state", "navigation", true],
+        ["state", "steps", false],
+        ["state", "timeline", false],
       ]),
     );
   });
@@ -256,7 +258,7 @@ describe("Registry v2 explicit owner contracts", () => {
     });
     expect(classContract("active")).toMatchObject({
       public: true,
-      kind: "relation",
+      kind: "state",
     });
   });
 

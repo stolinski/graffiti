@@ -8,7 +8,13 @@
   const version = __APP_VERSION__;
   import { getDocsContentGraph } from "../../docs/content/runtime.js";
   import * as docsRuntime from "../../docs/content/runtime.js";
-  import type { FontSettings, ThemeValues, BorderRadiusSettings } from "$lib/types";
+  import type {
+    FontSettings,
+    ThemeValues,
+    BorderRadiusSettings,
+    ColorSchemeSettings,
+  } from "$lib/types";
+  import { COLOR_SCHEME } from "$docs/theme-controls";
   import ThemeControls from "../../docs/ThemeControls.svelte";
   import CommandPalette from "../../docs/CommandPalette.svelte";
   import Icon from "./Icon.svelte";
@@ -84,6 +90,8 @@
     br_xxl: "32px",
   });
 
+  let scheme_settings: ColorSchemeSettings = $state("system");
+
   const docsRouteKeys = ["base", "utilities", "elements", "ui-blocks"] as const;
   const docsRouteLabels = {
     base: "Base",
@@ -144,6 +152,13 @@
       style.setProperty(`--${key.replace(/_/g, "-")}`, value);
     }
   });
+
+  $effect(() => {
+    document.documentElement.style.setProperty(
+      "color-scheme",
+      COLOR_SCHEME[scheme_settings],
+    );
+  });
 </script>
 
 {#snippet navLinks()}
@@ -201,7 +216,12 @@
   </a>
 {/snippet}
 
-<ThemeControls bind:theme_values bind:font_settings bind:border_radius />
+<ThemeControls
+  bind:theme_values
+  bind:font_settings
+  bind:border_radius
+  bind:scheme_settings
+/>
 
 <CommandPalette bind:open={search_open} />
 

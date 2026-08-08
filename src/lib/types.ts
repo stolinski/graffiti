@@ -24,3 +24,5 @@ export type BorderRadiusSettings = {
   br_xl: string;
   br_xxl: string;
 };
+
+export type ColorSchemeSettings = "system" | "dark" | "light";

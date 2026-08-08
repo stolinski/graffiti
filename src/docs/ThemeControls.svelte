@@ -5,16 +5,20 @@
     ThemeValues,
     FontSettings,
     BorderRadiusSettings,
+    ColorSchemeSettings,
   } from "$lib/types";
+  import { COLOR_SCHEME } from "./theme-controls";
 
   let {
     theme_values = $bindable(),
     font_settings = $bindable(),
     border_radius = $bindable(),
+    scheme_settings = $bindable(),
   }: {
     theme_values: ThemeValues;
     font_settings: FontSettings;
     border_radius: BorderRadiusSettings;
+    scheme_settings: ColorSchemeSettings;
   } = $props();
 
   // Framework defaults — used when the user picks "None" so the layout's
@@ -46,10 +50,146 @@
     br_xl: "24px",
     br_xxl: "32px",
   };
+  const DEFAULT_FONT_SETTINGS: FontSettings = {
+    ...DEFAULT_FONT_AXES,
+    font_family: DEFAULT_FONT_FAMILY,
+  };
 
-  // localStorage key for the preset choice. Only the choice is persisted —
-  // the orthogonal axis controls hydrate from the preset on restore.
+  // localStorage key for persisted theme-control choices.
   const STORAGE_KEY = "graffiti-preset";
+
+  type ThemeControlsStorage = {
+    aesthetic: string;
+    scheme_settings: ColorSchemeSettings;
+    color_theme: string;
+    theme_values: ThemeValues;
+    font_settings: FontSettings;
+    border_radius: BorderRadiusSettings;
+  };
+
+  const DEFAULT_STORAGE: ThemeControlsStorage = {
+    aesthetic: "None",
+    scheme_settings: "system",
+    color_theme: "Default",
+    theme_values: { ...DEFAULT_THEME_VALUES },
+    font_settings: { ...DEFAULT_FONT_SETTINGS },
+    border_radius: { ...DEFAULT_BORDER_RADIUS },
+  };
+
+  function is_color_scheme(value: string): value is ColorSchemeSettings {
+    return value in COLOR_SCHEME;
+  }
+
+  function is_default_storage(state: ThemeControlsStorage): boolean {
+    return (
+      state.aesthetic === DEFAULT_STORAGE.aesthetic &&
+      state.scheme_settings === DEFAULT_STORAGE.scheme_settings &&
+      JSON.stringify(state.theme_values) ===
+        JSON.stringify(DEFAULT_STORAGE.theme_values) &&
+      JSON.stringify(state.font_settings) ===
+        JSON.stringify(DEFAULT_STORAGE.font_settings) &&
+      JSON.stringify(state.border_radius) ===
+        JSON.stringify(DEFAULT_STORAGE.border_radius)
+    );
+  }
+
+  function read_storage(): ThemeControlsStorage {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { ...DEFAULT_STORAGE };
+
+      try {
+        const parsed = JSON.parse(raw) as Partial<ThemeControlsStorage>;
+        if (parsed && typeof parsed === "object") {
+          return {
+            aesthetic: parsed.aesthetic ?? DEFAULT_STORAGE.aesthetic,
+            scheme_settings: is_color_scheme(parsed.scheme_settings ?? "")
+              ? parsed.scheme_settings!
+              : DEFAULT_STORAGE.scheme_settings,
+            color_theme: parsed.color_theme ?? DEFAULT_STORAGE.color_theme,
+            theme_values: {
+              ...DEFAULT_STORAGE.theme_values,
+              ...parsed.theme_values,
+            },
+            font_settings: {
+              ...DEFAULT_STORAGE.font_settings,
+              ...parsed.font_settings,
+            },
+            border_radius: {
+              ...DEFAULT_STORAGE.border_radius,
+              ...parsed.border_radius,
+            },
+          };
+        }
+      } catch {
+        /* legacy plain-string preset value */
+      }
+
+      return {
+        ...DEFAULT_STORAGE,
+        aesthetic: raw,
+      };
+    } catch {
+      return { ...DEFAULT_STORAGE };
+    }
+  }
+
+  function snapshot_storage(): ThemeControlsStorage {
+    return {
+      aesthetic: selected_aesthetic,
+      scheme_settings,
+      color_theme: selected_theme,
+      theme_values: { ...theme_values },
+      font_settings: { ...font_settings },
+      border_radius: { ...border_radius },
+    };
+  }
+
+  function persist_storage() {
+    try {
+      const snapshot = snapshot_storage();
+      if (is_default_storage(snapshot)) {
+        localStorage.removeItem(STORAGE_KEY);
+      } else {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
+      }
+    } catch {
+      /* localStorage may be unavailable */
+    }
+    sync_stored_settings_flag();
+  }
+
+  function has_persisted_settings(): boolean {
+    try {
+      return localStorage.getItem(STORAGE_KEY) !== null;
+    } catch {
+      return false;
+    }
+  }
+
+  function sync_stored_settings_flag() {
+    has_stored_settings = has_persisted_settings();
+  }
+
+  function reset_all_settings() {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      /* localStorage may be unavailable */
+    }
+
+    apply_aesthetic_class("None");
+    scheme_settings = DEFAULT_STORAGE.scheme_settings;
+    theme_values = { ...DEFAULT_THEME_VALUES };
+    Object.assign(font_settings, DEFAULT_FONT_AXES);
+    font_settings.font_family = DEFAULT_FONT_FAMILY;
+    Object.assign(border_radius, DEFAULT_BORDER_RADIUS);
+    selected_theme = "Default";
+    selected_type_scale = "Default";
+    selected_border_radius = "Default";
+    has_stored_settings = false;
+    show_export = false;
+  }
 
   const themes: { name: string; values: ThemeValues }[] = [
     {
@@ -196,12 +336,14 @@
 
   let selected_theme = $state("Default");
   let selected_aesthetic = $state("None");
+  let selected_type_scale = $state("Default");
+  let selected_border_radius = $state("Default");
+  let has_stored_settings = $state(false);
   let copied = $state(false);
   let show_export = $state(false);
 
-  // Aesthetic presets — each entry's `values` hydrate the orthogonal axes
-  // (color / type / radius / font-family) with the preset's nominal choices.
-  // The `class_name` is applied on <html> so the preset's selector rules
+  // Aesthetic presets — apply `class_name` on <html>, the preset font family,
+  // and palette; type scale, corners, and color scheme reset to defaults.
   // (drop caps, opentype features, character treatments) take effect.
   // See CONTEXT.md "ThemeControls UX when a preset is selected".
   type AestheticPreset = {
@@ -470,14 +612,22 @@
 
   // Core preset-application logic — separated from the DOM event so it can
   // be called on mount (from localStorage) and from the dropdown change.
-  function apply_aesthetic_by_name(name: string) {
+  function apply_aesthetic_class(name: string) {
     selected_aesthetic = name;
 
-    // Clear every known preset class — never leave two on at once.
     const html = document.documentElement;
     for (const a of aesthetics) {
       html.classList.remove(a.class_name);
     }
+
+    if (name === "None") return;
+
+    const preset = aesthetics.find((a) => a.name === name);
+    if (preset) html.classList.add(preset.class_name);
+  }
+
+  function apply_aesthetic_by_name(name: string) {
+    apply_aesthetic_class(name);
 
     if (name === "None") {
       // True reset: push framework defaults back through the bindable props.
@@ -490,33 +640,27 @@
       font_settings.font_family = DEFAULT_FONT_FAMILY;
       Object.assign(border_radius, DEFAULT_BORDER_RADIUS);
       selected_theme = "Default";
-      try {
-        localStorage.removeItem(STORAGE_KEY);
-      } catch {
-        /* localStorage may be unavailable (privacy mode, SSR) */
-      }
+      selected_type_scale = "Default";
+      selected_border_radius = "Default";
+      persist_storage();
       return;
     }
 
     const preset = aesthetics.find((a) => a.name === name);
     if (!preset) return;
 
-    html.classList.add(preset.class_name);
-
-    // Hydrate the orthogonal-axis controls so the user sees what the preset
-    // picked. The layout's $effect pushes these into inline styles, which
-    // beats the preset class. That is the "layer" half of hydrate-then-layer:
-    // any future tweak the user makes continues to win.
+    // Apply the preset class, font family, and palette; reset other axes to
+    // framework defaults so users start from a clean slate on each preset.
+    scheme_settings = DEFAULT_STORAGE.scheme_settings;
     theme_values = { ...preset.theme_values };
-    Object.assign(font_settings, preset.type_scale);
+    Object.assign(font_settings, DEFAULT_FONT_AXES);
     font_settings.font_family = preset.font_family;
-    Object.assign(border_radius, preset.border_radius);
+    Object.assign(border_radius, DEFAULT_BORDER_RADIUS);
+    selected_theme = "Default";
+    selected_type_scale = "Default";
+    selected_border_radius = "Default";
 
-    try {
-      localStorage.setItem(STORAGE_KEY, name);
-    } catch {
-      /* localStorage may be unavailable */
-    }
+    persist_storage();
   }
 
   function apply_aesthetic(e: Event) {
@@ -524,20 +668,31 @@
     apply_aesthetic_by_name(select.value);
   }
 
-  // Restore the previously-selected preset on mount. This is what keeps the
-  // preset surviving SvelteKit layout swaps — each layout has its own
-  // ThemeControls instance whose state initializes to defaults; reading the
-  // saved choice here re-hydrates the layout's bindable state so the
-  // preset's tokens (not just its class on <html>) carry through navigation.
+  function apply_scheme_settings(e: Event) {
+    const select = e.target as HTMLSelectElement;
+    scheme_settings = select.value as ColorSchemeSettings;
+    persist_storage();
+  }
+
+  function restore_axis_settings(saved: ThemeControlsStorage) {
+    scheme_settings = saved.scheme_settings;
+    selected_theme = saved.color_theme;
+    theme_values = { ...saved.theme_values };
+    Object.assign(font_settings, saved.font_settings);
+    Object.assign(border_radius, saved.border_radius);
+    selected_type_scale = find_type_scale_name(font_settings);
+    selected_border_radius = find_border_radius_name(border_radius);
+  }
+
+  // Restore persisted choices on mount. This is what keeps selections
+  // surviving SvelteKit layout swaps — each layout has its own ThemeControls
+  // instance whose state initializes to defaults; reading saved choices here
+  // re-hydrates the layout's bindable state so tokens carry through navigation.
   onMount(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved && saved !== "None") {
-        apply_aesthetic_by_name(saved);
-      }
-    } catch {
-      /* localStorage may be unavailable */
-    }
+    const saved = read_storage();
+    apply_aesthetic_class(saved.aesthetic);
+    restore_axis_settings(saved);
+    sync_stored_settings_flag();
   });
 
   type TypeScale = Omit<FontSettings, "font_family">;
@@ -670,20 +825,51 @@
       },
     ];
 
+  function find_color_theme_name(values: ThemeValues): string {
+    const match = themes.find((theme) =>
+      (Object.keys(theme.values) as Array<keyof ThemeValues>).every(
+        (key) => theme.values[key] === values[key],
+      ),
+    );
+    return match?.name ?? "Custom";
+  }
+
+  function find_type_scale_name(settings: FontSettings): string {
+    const match = typeScales.find((scale) =>
+      (Object.keys(scale.values) as Array<keyof TypeScale>).every(
+        (key) => settings[key] === scale.values[key],
+      ),
+    );
+    return match?.name ?? "Default";
+  }
+
+  function find_border_radius_name(values: BorderRadiusSettings): string {
+    const match = borderRadiusPresets.find((preset) =>
+      (Object.keys(preset.values) as Array<keyof BorderRadiusSettings>).every(
+        (key) => values[key] === preset.values[key],
+      ),
+    );
+    return match?.name ?? "Default";
+  }
+
   function apply_border_radius(e: Event) {
     const select = e.target as HTMLSelectElement;
+    selected_border_radius = select.value;
     const preset = borderRadiusPresets.find((p) => p.name === select.value);
     if (preset) {
       Object.assign(border_radius, preset.values);
     }
+    persist_storage();
   }
 
   function apply_type_scale(e: Event) {
     const select = e.target as HTMLSelectElement;
+    selected_type_scale = select.value;
     const scale = typeScales.find((s) => s.name === select.value);
     if (scale) {
       Object.assign(font_settings, scale.values);
     }
+    persist_storage();
   }
 
   function apply_theme(e: Event) {
@@ -693,6 +879,16 @@
     if (theme) {
       theme_values = { ...theme.values };
     }
+    persist_storage();
+  }
+
+  function persist_custom_color() {
+    selected_theme = "Custom";
+    persist_storage();
+  }
+
+  function persist_font_settings() {
+    persist_storage();
   }
 
   function get_google_font_link(): string {
@@ -735,6 +931,7 @@
     parts.push("<!-- Theme Overrides -->");
     parts.push("<style>");
     parts.push(":root {");
+    parts.push(`  color-scheme: ${COLOR_SCHEME[scheme_settings]};`);
     for (const key in theme_values) {
       const css_var = `--${key.replace(/_/g, "-")}`;
       parts.push(`  ${css_var}: ${theme_values[key as keyof ThemeValues]};`);
@@ -889,6 +1086,9 @@
       <header class="tc-header">
         <h2 class="tc-title">Customize</h2>
         <div class="tc-actions">
+          {#if has_stored_settings}
+            <button class="ghost mini" onclick={reset_all_settings}>Reset</button>
+          {/if}
           <button
             class="ghost mini"
             onclick={() => {
@@ -908,20 +1108,42 @@
         </div>
       </header>
 
-      <div class="tc-control tc-control-wide">
-        <label for="aesthetic-preset">Preset</label>
-        <select id="aesthetic-preset" onchange={apply_aesthetic} value={selected_aesthetic}>
-          <option value="None">None</option>
-          {#each aesthetics as a (a.name)}
-            <option value={a.name}>{a.name}</option>
-          {/each}
-        </select>
-      </div>
-
       <div class="tc-grid">
         <div class="tc-control">
+          <label for="aesthetic-preset">Preset</label>
+          <select
+            id="aesthetic-preset"
+            onchange={apply_aesthetic}
+            value={selected_aesthetic}
+          >
+            <option value="None">None</option>
+            {#each aesthetics as a (a.name)}
+              <option value={a.name}>{a.name}</option>
+            {/each}
+          </select>
+        </div>
+        <div class="tc-control">
+          <label for="scheme-settings">Color Scheme</label>
+          <select
+            id="scheme-settings"
+            onchange={apply_scheme_settings}
+            value={scheme_settings}
+          >
+            {#each Object.keys(COLOR_SCHEME) as scheme (scheme)}
+              <option value={scheme} selected={scheme === scheme_settings}
+                >{scheme.charAt(0).toUpperCase() + scheme.slice(1)}</option
+              >
+            {/each}
+          </select>
+        </div>
+
+        <div class="tc-control">
           <label for="theme-preset">Colors</label>
-          <select id="theme-preset" onchange={apply_theme}>
+          <select
+            id="theme-preset"
+            onchange={apply_theme}
+            value={selected_theme}
+          >
             {#each themes as theme (theme.name)}
               <option value={theme.name}>{theme.name}</option>
             {/each}
@@ -934,6 +1156,7 @@
             name="font-family"
             id="font-family"
             bind:value={font_settings.font_family}
+            onchange={persist_font_settings}
           >
             {#each fontOptions as font (font.value)}
               <option value={font.value}>{font.name}</option>
@@ -950,6 +1173,7 @@
               <input
                 type="color"
                 bind:value={theme_values[key as keyof ThemeValues]}
+                oninput={persist_custom_color}
               />
             </label>
           {/each}
@@ -959,21 +1183,25 @@
       <div class="tc-grid">
         <div class="tc-control">
           <label for="type-scale">Type Scale</label>
-          <select id="type-scale" onchange={apply_type_scale}>
+          <select
+            id="type-scale"
+            onchange={apply_type_scale}
+            value={selected_type_scale}
+          >
             {#each typeScales as scale (scale.name)}
-              <option value={scale.name} selected={scale.name === "Default"}
-                >{scale.name}</option
-              >
+              <option value={scale.name}>{scale.name}</option>
             {/each}
           </select>
         </div>
         <div class="tc-control">
           <label for="border-radius">Corners</label>
-          <select id="border-radius" onchange={apply_border_radius}>
+          <select
+            id="border-radius"
+            onchange={apply_border_radius}
+            value={selected_border_radius}
+          >
             {#each borderRadiusPresets as preset (preset.name)}
-              <option value={preset.name} selected={preset.name === "Default"}
-                >{preset.name}</option
-              >
+              <option value={preset.name}>{preset.name}</option>
             {/each}
           </select>
         </div>
